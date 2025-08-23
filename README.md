@@ -6,13 +6,20 @@
 
 ST-Raptor presents a powerful framework for semi-structured table question answering, which integrates a Vision-Language Model (VLM), a Large Language Model (LLM), and an embedding model. Without requiring any model fine-tuning, the framework can be used directly. It achieves high accuracy in answering questions over semi-structured tables, taking only an Excel-formatted table and a natural language query as input to generate precise answers.
 
-## ✨What Tables can ST-Raptor Process?
+## ⏰ TODO
+
+- [x] Support Excel table input.
+- [ ] Support HTML / CSV / JSON / Markdown ... table input.
+- [ ] Expand the table extraction module to support table types beyond problem definition
+- [ ] Provide web demo and API access
+
+## ❓ What Tables can ST-Raptor Process?
 
 <div style="text-align:center"><img src="./assets/examples.png" width = "800" alt="" align="center" /></div>
 
+**Process a large amount of complex Semi-Structured Tables for question answering!**
 
-
-**Examples**
+## 💡 Semi-Structured Table QA Examples
 
 |                           Question                           | Label                                                        | TableLLaMA                                                   | TableLLM                                                     | ReAcTable                                                    | TAT-LLM                                                      | TableLLaVA                                                   | mPLUG-DocOwl1.5                                              | DeepseekV3                                                   | GPT-4o                                                       | ST-Raptor                                                    |
 | :----------------------------------------------------------: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -72,9 +79,7 @@ The following table demonstrates the answering accuracy (%) and ROUGE-L score of
 
 Note that the required question answering is highly dependent on both the semi-structured table complexity and the question complexity.
 
-
-
-**Baselines**
+## Baselines
 
 NL2SQL methods: [OpenSearch-SQL](https://github.com/OpenSearch-AI/OpenSearch-SQL)
 
@@ -86,9 +91,7 @@ Vision Language Model based methods: [TableLLaVA](https://huggingface.co/Spursgo
 
 Foudation Models: [GPT-4o](https://openai.com/index/gpt-4/) [DeepSeekV3](https://www.deepseek.com/)
 
-
-
-**Experiment Results**
+## Experiment Results
 
 | **Method**               | WikiTQ-ST        | TempTabQA-ST     |      SSTQA       |      SSTQA      |
 | ------------------------ | ---------------- | ---------------- | :--------------: | :-------------: |
@@ -115,12 +118,18 @@ Foudation Models: [GPT-4o](https://openai.com/index/gpt-4/) [DeepSeekV3](https:/
 
 #### 1. Clone Repository
 
-##### Please download this anonymous repository.
+```shell
+git clone git@github.com:weAIDB/ST-Raptor.git
+cd ST-Raptor
+```
+
+##### Please download this repository.
 
 #### 2. Environment & Benchmark & Model
 
 **Environment.**
-Use the following command to install the conda environment.
+
+1. Use the following command to install the conda environment.
 
 ```bash
 # create virtual environment
@@ -130,7 +139,7 @@ conda activate straptor
 pip install -m requirements.txt
 ```
 
-Install the HTML rendering plugin wkhtmltox.
+2. Install the HTML rendering plugin wkhtmltox.
 
 ```shell
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
@@ -138,9 +147,11 @@ sudo apt install -f ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 ```
 
 **Benchmark**
-Download the SSTQA with the following link and save in ./data
 
-Change the settings in ./main.py
+1. Download the SSTQA with the link [SSTQA Benchmark](https://drive.google.com/file/d/1LkdxJHJfThNUiEh68YdgkN_eNbJEoRJ7/view?usp=sharing) and save in ./data
+
+2. Change the settings in ./main.py
+
 ```python
 # You need to change this
 input_jsonl = 'PATH_TO_YOUR_INPUT_JSONL'
@@ -162,9 +173,7 @@ The Q&A data is stored in a JSONL format file, and the format of each record is 
 **Model Configuration.**
 The model configuration in our paper includes Deepseek-V3 (LLM API) + InternVL2.5 26B (VLM) + Multilingual-E5-Large-Instruct (Embedding Model). This configuration requires a total of approximately 160GB of GPU memory. You can replace the model according to the hardware situation or change it to use APIs.
 
-[Download InternVL2.5](https://huggingface.co/OpenGVLab/InternVL2_5-26B)
-
-[Download Multilingual-E5](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
+[Download InternVL2.5](https://huggingface.co/OpenGVLab/InternVL2_5-26B) [Download Multilingual-E5](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
 
 You need to set model configuration in /utils/constnts.py
 
@@ -191,13 +200,13 @@ If you want to use other format of apis, please revise the code in ./utils/api_u
 
 We use vLLM to deploy InternVL2.5 as an example.
 
-First install the vllm package.
+1. Install the vllm package.
 
 ```shell
 pip install vllm
 ```
 
-Next denote the GPU and deploy the VLM.
+2. Denote the GPU and deploy the VLM.
 
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m vllm.entrypoints.openai.api_server \
@@ -209,7 +218,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m vllm.entrypoints.openai.api_server \
 --tensor-parallel-size 4
 ```
 
-#### Question Answering!
+#### Question Answering !
 
 If you have completed all the above settings, use the following command to start execution
 
