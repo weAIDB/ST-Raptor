@@ -1,9 +1,16 @@
 # ST-Raptor
 
+<div style="text-align:center"><img src="./assets/header.png" width = "700" alt="" align="center" /></div>
 
 ## ✨ Project Introduction
 
 ST-Raptor presents a powerful framework for semi-structured table question answering, which integrates a Vision-Language Model (VLM), a Large Language Model (LLM), and an embedding model. Without requiring any model fine-tuning, the framework can be used directly. It achieves high accuracy in answering questions over semi-structured tables, taking only an Excel-formatted table and a natural language query as input to generate precise answers.
+
+## ✨What Tables can ST-Raptor Process?
+
+<div style="text-align:center"><img src="./assets/examples.png" width = "800" alt="" align="center" /></div>
+
+
 
 **Examples**
 
@@ -61,65 +68,54 @@ Download the SSTQA benchmark: [SSTQA Benchmark](https://drive.google.com/file/d/
 
 ## 📊 Performance
 
-The following table demonstrates the answering accuracy (%) and ROUGE-L score of different methods over our collected SSTQA benchmark.
+The following table demonstrates the answering accuracy (%) and ROUGE-L score of different methods over our collected SSTQA benchmark and other two benchmarks.
 
 Note that the required question answering is highly dependent on both the semi-structured table complexity and the question complexity.
 
-| **Method**               | **Accuracy (%)** | **ROUGE-L (%)** |
-| ------------------------ | :--------------: | :-------------: |
-| **NL2SQL (200 Samples)** |                  |                 |
-| OpenSearch-SQL           |      24.00       |      23.87      |
-| **Fine-tuning based**    |                  |                 |
-| TableLLaMA               |      40.39       |      26.71      |
-| TableLLM                 |       7.84       |      2.93       |
-| **Agent based**          |                  |                 |
-| ReAcTable                |      37.24       |      7.49       |
-| TAT-LLM                  |      39.78       |      19.26      |
-| **VLM based**            |                  |                 |
-| TableLLaVA               |       9.52       |      5.92       |
-| mPLUG-DocOwl1.5          |      29.56       |      28.43      |
-| **Foundation Model**     |                  |                 |
-| GPT-4o                   |      62.12       |      43.86      |
-| DeepSeekV3               |      62.16       |      46.17      |
-| **ST-Raptor**            |    **72.39**     |    **52.19**    |
+
 
 **Baselines**
 
-NL2SQL methods:
+NL2SQL methods: [OpenSearch-SQL](https://github.com/OpenSearch-AI/OpenSearch-SQL)
 
-- [OpenSearch-SQL](https://github.com/OpenSearch-AI/OpenSearch-SQL)
+Fine-tuning based methods: [TableLLaMA](https://github.com/OSU-NLP-Group/TableLlama) [TableLLM](https://github.com/RUCKBReasoning/TableLLM)
 
-Fine-tuning based methods:
+Agent based methods: [ReAcTable](https://github.com/yunjiazhang/ReAcTable) [TAT-LLM](https://github.com/fengbinzhu/TAT-LLM)
 
-- [TableLLaMA](https://github.com/OSU-NLP-Group/TableLlama)
+Vision Language Model based methods: [TableLLaVA](https://huggingface.co/SpursgoZmy/table-llava-v1.5-13b) [mPLUG-DocOwl1.5](https://huggingface.co/mPLUG/DocOwl1.5)
 
-- [TableLLM](https://github.com/RUCKBReasoning/TableLLM)
-
-Agent based methods:
-
-- [ReAcTable](https://github.com/yunjiazhang/ReAcTable)
-
-- [TAT-LLM](https://github.com/fengbinzhu/TAT-LLM)
-
-Vision Language Model based methods:
-
-- [TableLLaVA](https://huggingface.co/SpursgoZmy/table-llava-v1.5-13b)
-
-- [mPLUG-DocOwl1.5](https://huggingface.co/mPLUG/DocOwl1.5)
-
-Foudation Models:
-
-- [GPT-4o](https://openai.com/index/gpt-4/)
-
-- [DeepSeekV3](https://www.deepseek.com/)
+Foudation Models: [GPT-4o](https://openai.com/index/gpt-4/) [DeepSeekV3](https://www.deepseek.com/)
 
 
+
+**Experiment Results**
+
+| **Method**               | WikiTQ-ST        | TempTabQA-ST     |      SSTQA       |      SSTQA      |
+| ------------------------ | ---------------- | ---------------- | :--------------: | :-------------: |
+|                          | **Accuracy (%)** | **Accuracy (%)** | **Accuracy (%)** | **ROUGE-L (%)** |
+| **NL2SQL (200 Samples)** |                  |                  |                  |                 |
+| OpenSearch-SQL           | 38.89            | 4.76             |      24.00       |      23.87      |
+| **Fine-tuning based**    |                  |                  |                  |                 |
+| TableLLaMA               | 35.01            | 32.70            |      40.39       |      26.71      |
+| TableLLM                 | 62.40            | 9.13             |       7.84       |      2.93       |
+| **Agent based**          |                  |                  |                  |                 |
+| ReAcTable                | 68.00            | 35.88            |      37.24       |      7.49       |
+| TAT-LLM                  | 23.32            | 61.86            |      39.78       |      19.26      |
+| **VLM based**            |                  |                  |                  |                 |
+| TableLLaVA               | 20.41            | 6.91             |       9.52       |      5.92       |
+| mPLUG-DocOwl1.5          | 39.80            | 39.80            |      29.56       |      28.43      |
+| **Foundation Model**     |                  |                  |                  |                 |
+| GPT-4o                   | 60.71            | 74.83            |      62.12       |      43.86      |
+| DeepSeekV3               | 69.64            | 63.81            |      62.16       |      46.17      |
+| **ST-Raptor**            | **71.17**        | **77.59**        |    **72.39**     |    **52.19**    |
+
+<div style="text-align:center"><img src="./assets/TableDifficulty.png" width = "600" alt="" align="center" /></div>
 
 ## 🕹 Quick Start
 
 #### 1. Clone Repository
 
-Please download this anonymous repository.
+##### Please download this anonymous repository.
 
 #### 2. Environment & Benchmark & Model
 
@@ -130,7 +126,6 @@ Use the following command to install the conda environment.
 # create virtual environment
 conda create -n straptor python=3.10
 conda activate straptor
-
 # install required packages
 pip install -m requirements.txt
 ```
@@ -221,6 +216,7 @@ If you have completed all the above settings, use the following command to start
 ```shell
 python ./main.py
 ```
+
 
 
 ## 📝 License
