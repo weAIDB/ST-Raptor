@@ -8,10 +8,15 @@ ST-Raptor presents a powerful framework for semi-structured table question answe
 
 ## ⏰ TODO
 
+**External Support**
+
 - [x] Support Excel table input.
 - [ ] Support HTML / CSV / JSON / Markdown ... table input.
-- [ ] Expand the table extraction module to support table types beyond problem definition
 - [ ] Provide web demo and API access
+
+**Framework Extentions**
+
+- [ ] Expand the table extraction module to support table types beyond problem definition.
 
 ## ❓ What Tables can ST-Raptor Process?
 
@@ -187,7 +192,7 @@ python ./main.py
 
 ## 💡 Semi-Structured Table QA Examples
 
-|                           Question                           | Label                                                        | TableLLaMA                                                   | TableLLM                                                     | ReAcTable                                                    | TAT-LLM                                                      | TableLLaVA                                                   | mPLUG-DocOwl1.5                                              | DeepseekV3                                                   | GPT-4o                                                       | ST-Raptor                                                    |
+|                           Question                           | Ground Truth                                                 | TableLLaMA                                                   | TableLLM                                                     | ReAcTable                                                    | TAT-LLM                                                      | TableLLaVA                                                   | mPLUG-DocOwl1.5                                              | DeepseekV3                                                   | GPT-4o                                                       | ST-Raptor                                                    |
 | :----------------------------------------------------------: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | What is the value of the employment service satisfaction indicator in the overall budget performance target table for municipal departments in 2024? | ≧90%                                                         | 75.0                                                         | 737                                                          | ≧95%                                                         | ≧90%                                                         | 80%                                                          | ≧90%                                                         | ≧90%                                                         | ≧90%                                                         | ≧90%                                                         |
 |   How many items are there in the drawing specifications?    | 15                                                           | 2                                                            | To change the template, you can follow these steps: ...      | 7                                                            | 108                                                          | 17                                                           | 4                                                            | 15                                                           | 23                                                           | 15                                                           |
@@ -225,6 +230,16 @@ python ./main.py
 *Note: The "" cell in the table indicate that the baseline fails to generate an answer of that question.*
 
 The full result please refer to the file: [baseline_output.jsonl](./static/baseline_output.jsonl)
+
+# 👨‍🏫 Join us !
+
+ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
+
+ST-Raptor@复杂半结构表格分析社区 (微信群)
+
+<div style="text-align:center"><img src="./assets/vx.jpg" width = "300" alt="" align="center" /></div>
+
+
 
 ## 📝 License
 
