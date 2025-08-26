@@ -4,8 +4,6 @@
   <img src="./assets/header.png" width = "700" alt="" align="center" />
 </p>
 
-
-
 ## ✨ Project Introduction
 
 **ST-Raptor** is a tool for answering questions over tables with diverse semi-structured layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
