@@ -1,6 +1,10 @@
 # ST-Raptor
 
-<div style="text-align:center"><img src="./assets/header.png" width = "700" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/header.png" width = "700" alt="" align="center" />
+</p>
+
+
 
 ## ✨ Project Introduction
 
@@ -8,21 +12,21 @@
 
 Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
 
-<!-- Without requiring any model fine-tuning, the framework can be used directly. It achieves high accuracy in answering questions over semi-structured tables,  -->
-
 ## ❓ What Tables Can ST-Raptor Handle?
 
-<div style="text-align:center"><img src="./assets/examples.png" width = "800" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/examples.png" width = "800" alt="" align="center" />
+</p>
 
-**Process a large amount of complex Semi-Structured Tables for question answering!**
+**Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
 ## 💻 SSTQA Benchmark
 
 The **102** tables and **764** questions in SSTQA are carefully curated from over **2031** real-world tables by considering $(i)$ tables featuring semi-structured formats, such as nested cells, multi-row/column headers, irregular layouts and $(ii)$ coverage across **19** representative real scenarios.
 
-We list out 19 representative real scenarios as below:
+We list out 10 representative real scenarios as below:
 
-Human Resources, Administrative Management, Corporate Management, Financial Management, Marketing, Processing Management, Production Management, Meeting Management, Warehouse Management, Schedule Management, Asset Management, Archiving Management, Notices-related, Application Forms, Compensation Management, Education-related, Budget Management, Procurement Management, and Sales Management.
+Human Resources, Corporate Management, Financial Management, Marketing, Warehouse Management, Academic, Schedule Management, Application Forms, Education-related, and Sales Management.
 
 Download the unfiltered dataset with 2k+ tables: [Raw Dataset]().
 
@@ -68,7 +72,9 @@ Foudation Models: [GPT-4o](https://openai.com/index/gpt-4/) [DeepSeekV3](https:/
 | DeepSeekV3               | 69.64            | 63.81            |      62.16       |      46.17      |
 | **ST-Raptor**            | **71.17**        | **77.59**        |    **72.39**     |    **52.19**    |
 
-<div style="text-align:center"><img src="./assets/TableDifficulty.png" width = "600" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/TableDifficulty.png" width = "600" alt="" align="center" />
+</p>
 
 ## 🕹 Quick Start
 
@@ -243,7 +249,9 @@ ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
 
 ST-Raptor@复杂半结构表格分析社区 (微信群)
 
-<div style="text-align:center"><img src="./assets/vx.jpg" width = "300" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/vx.jpg" width = "300" alt="" align="center" />
+</p>
 
 
 
