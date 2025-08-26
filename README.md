@@ -22,15 +22,15 @@ ST-Raptor presents a powerful framework for semi-structured table question answe
 
 <div style="text-align:center"><img src="./assets/examples.png" width = "800" alt="" align="center" /></div>
 
-**Process a large amount of complex Semi-Structured Tables for question answering!**
+**Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
 ## 💻 SSTQA Benchmark
 
 The **102** tables and **764** questions in SSTQA are carefully curated from over **2031** real-world tables by considering $(i)$ tables featuring semi-structured formats, such as nested cells, multi-row/column headers, irregular layouts and $(ii)$ coverage across **19** representative real scenarios.
 
-We list out 19 representative real scenarios as below:
+We list out 10 representative real scenarios as below:
 
-Human Resources, Administrative Management, Corporate Management, Financial Management, Marketing, Processing Management, Production Management, Meeting Management, Warehouse Management, Schedule Management, Asset Management, Archiving Management, Notices-related, Application Forms, Compensation Management, Education-related, Budget Management, Procurement Management, and Sales Management.
+Human Resources, Corporate Management, Financial Management, Marketing, Warehouse Management, Academic, Schedule Management, Application Forms, Education-related, and Sales Management.
 
 Download the unfiltered dataset with 2k+ tables: [Raw Dataset]().
 
