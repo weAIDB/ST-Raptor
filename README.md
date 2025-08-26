@@ -4,21 +4,13 @@
 
 ## ✨ Project Introduction
 
-ST-Raptor presents a powerful framework for semi-structured table question answering, which integrates a Vision-Language Model (VLM), a Large Language Model (LLM), and an embedding model. Without requiring any model fine-tuning, the framework can be used directly. It achieves high accuracy in answering questions over semi-structured tables, taking only an Excel-formatted table and a natural language query as input to generate precise answers.
+**ST-Raptor** is a tool for answering questions over Excel tables with diverse layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
 
-## ⏰ TODO
+Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
 
-**External Support**
+<!-- Without requiring any model fine-tuning, the framework can be used directly. It achieves high accuracy in answering questions over semi-structured tables,  -->
 
-- [x] Support Excel table input.
-- [ ] Support HTML / CSV / JSON / Markdown ... table input.
-- [ ] Provide web demo and API access
-
-**Framework Extentions**
-
-- [ ] Expand the table extraction module to support table types beyond problem definition.
-
-## ❓ What Tables can ST-Raptor Process?
+## ❓ What Tables Can ST-Raptor Handle?
 
 <div style="text-align:center"><img src="./assets/examples.png" width = "800" alt="" align="center" /></div>
 
@@ -230,6 +222,20 @@ python ./main.py
 *Note: The "" cell in the table indicate that the baseline fails to generate an answer of that question.*
 
 The full result please refer to the file: [baseline_output.jsonl](./static/baseline_output.jsonl)
+
+## ⏰ TODO
+
+**External Support**
+
+- [x] Support Excel table input.
+- [ ] Support HTML / CSV / JSON / Markdown ... table input.
+- [ ] Provide web demo and API access
+
+**Framework Extentions**
+
+- [ ] Expand the table extraction module to support table types beyond problem definition.
+
+
 
 # 👨‍🏫 Join us !
 
