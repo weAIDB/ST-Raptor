@@ -8,8 +8,6 @@
 
 Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
 
-<!-- Without requiring any model fine-tuning, the framework can be used directly. It achieves high accuracy in answering questions over semi-structured tables,  -->
-
 ## ❓ What Tables Can ST-Raptor Handle?
 
 <div style="text-align:center"><img src="./assets/examples.png" width = "800" alt="" align="center" /></div>
