@@ -1,6 +1,10 @@
 # ST-Raptor
 
-<div style="text-align:center"><img src="./assets/header.png" width = "700" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/header.png" width = "700" alt="" align="center" />
+</p>
+
+
 
 ## ✨ Project Introduction
 
@@ -10,7 +14,9 @@ Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. I
 
 ## ❓ What Tables Can ST-Raptor Handle?
 
-<div style="text-align:center"><img src="./assets/examples.png" width = "800" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/examples.png" width = "800" alt="" align="center" />
+</p>
 
 **Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
@@ -66,7 +72,9 @@ Foudation Models: [GPT-4o](https://openai.com/index/gpt-4/) [DeepSeekV3](https:/
 | DeepSeekV3               | 69.64            | 63.81            |      62.16       |      46.17      |
 | **ST-Raptor**            | **71.17**        | **77.59**        |    **72.39**     |    **52.19**    |
 
-<div style="text-align:center"><img src="./assets/TableDifficulty.png" width = "600" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/TableDifficulty.png" width = "600" alt="" align="center" />
+</p>
 
 ## 🕹 Quick Start
 
@@ -241,7 +249,9 @@ ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
 
 ST-Raptor@复杂半结构表格分析社区 (微信群)
 
-<div style="text-align:center"><img src="./assets/vx.jpg" width = "300" alt="" align="center" /></div>
+<p align="center">
+  <img src="./assets/vx.jpg" width = "300" alt="" align="center" />
+</p>
 
 
 
