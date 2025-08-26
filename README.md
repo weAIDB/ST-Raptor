@@ -8,7 +8,7 @@
 
 ## ✨ Project Introduction
 
-**ST-Raptor** is a tool for answering questions over Excel tables with diverse layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
+**ST-Raptor** is a tool for answering questions over tables with diverse semi-structured layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
 
 Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
 
