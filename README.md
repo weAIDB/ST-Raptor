@@ -243,6 +243,20 @@ The full result please refer to the file: [baseline_output.jsonl](./static/basel
 
 
 
+# 📍 Citation
+
+```
+@misc{tang2025straptorllmpoweredsemistructuredtable,
+      title={ST-Raptor: LLM-Powered Semi-Structured Table Question Answering}, 
+      author={Zirui Tang and Boyu Niu and Xuanhe Zhou and Boxiu Li and Wei Zhou and Jiannan Wang and Guoliang Li and Xinyi Zhang and Fan Wu},
+      year={2025},
+      eprint={2508.18190},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2508.18190}, 
+}
+```
+
 # 👨‍🏫 Join us !
 
 ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
