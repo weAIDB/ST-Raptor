@@ -98,7 +98,7 @@ cd ST-Raptor
 conda create -n straptor python=3.10
 conda activate straptor
 # install required packages
-pip install -m requirements.txt
+pip install -r requirements.txt
 ```
 
 2. Install the HTML rendering plugin wkhtmltox.
