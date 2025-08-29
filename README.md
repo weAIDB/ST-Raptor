@@ -245,15 +245,14 @@ The full result please refer to the file: [baseline_output.jsonl](./static/basel
 
 # 📍 Citation
 
+If you like this project, please cite our paper [link](https://arxiv.org/abs/2508.18190):
+
 ```
-@misc{tang2025straptorllmpoweredsemistructuredtable,
-      title={ST-Raptor: LLM-Powered Semi-Structured Table Question Answering}, 
-      author={Zirui Tang and Boyu Niu and Xuanhe Zhou and Boxiu Li and Wei Zhou and Jiannan Wang and Guoliang Li and Xinyi Zhang and Fan Wu},
-      year={2025},
-      eprint={2508.18190},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2508.18190}, 
+@article{tang2026straptor,
+  author       = {Zirui Tang and Boyu Niu and Xuanhe Zhou and Boxiu Li and Wei Zhou and Jiannan Wang and Guoliang Li and Xinyi Zhang and Fan Wu},
+  title        = {ST-Raptor: LLM-Powered Semi-Structured Table Question Answering},
+  journal      = {Proc. {ACM} Manag. Data},
+  year         = {2026}
 }
 ```
 
@@ -266,7 +265,6 @@ ST-Raptor@复杂半结构表格分析社区 (微信群)
 <p align="center">
   <img src="./assets/vx.jpg" width = "300" alt="" align="center" />
 </p>
-
 
 
 ## 📝 License
