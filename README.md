@@ -111,7 +111,7 @@ sudo apt install -f ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 **Benchmark**
 
 1. Download the SSTQA with the link [SSTQA Benchmark](https://drive.google.com/file/d/1LkdxJHJfThNUiEh68YdgkN_eNbJEoRJ7/view?usp=sharing) and save in ./data
-
+   - You can also find the SSTQA benchmark on hugging face [SSTQA Huggingface](https://huggingface.co/datasets/13515257315Tzr/SSTQA)
 2. Change the settings in ./main.py
 
 ```python
