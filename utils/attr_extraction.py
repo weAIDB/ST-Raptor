@@ -24,7 +24,6 @@ from bs4.element import NavigableString
 from utils.constants import *
 from utils.sheet_utils import *
 
-
 def generate_unique_string(length=10):
     import time
     # 使用当前时间戳
