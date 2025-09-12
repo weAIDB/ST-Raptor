@@ -56,14 +56,6 @@ VLM_API_URL = "YOUR_VLM_API_URL"
 VLM_API_KEY = "YOUR_VLM_API_KEY"
 VLM_MODEL_TYPE = "YOUR_VLM_MODEL_TYPE"
 
-LLM_API_URL = "https://api.deepseek.com"
-LLM_API_KEY = "sk-dc172374d2024da58b22bdb1b0d16699"
-LLM_MODEL_TYPE = "deepseek-chat" 
-
-VLM_API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-VLM_API_KEY = "sk-9ac488d4b6d14598ac08e7c66f19052e"
-VLM_MODEL_TYPE = "qwen-vl-max-latest"
-
 """Set the Embedding model information"""
 EMBEDDING_MODE_PATH = "/data/models/multilingual-e5-large/"
 #################### Change The Model Information ####################
