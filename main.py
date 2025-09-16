@@ -18,213 +18,170 @@ from utils.constants import DELIMITER
 
 
 def answer_question(
-    f_tree: FeatureTree,
-    record,
-    enable_emebdding=True,
-    embedding_cache_file=None,
-    log_dir=None,
+    qa_pair: dict,                          # 一条问答对
+    table_file: str,                        # 表格原文件路径
+    pkl_dir: str,                           # 存储 HO-Tree 中间结果的路径
+    enable_query_decompose: bool = True,    # 是否启用 Query Decomposition 机制
+    enable_emebdding: bool = True,          # 是否启用 Embedding 机制
+    log_dir: str = LOG_DIR                  # Log 日志目录
 ):
-    query = record["query"]
+    qid = qa_pair["id"]
+    table_id = qa_pair['table_id']
+    query = qa_pair["query"]
 
-    # create qa log file
-    if log_dir is not None:
-        log_file = os.path.join(log_dir, f"{record['id']}.txt")
-    else:
-        log_file = None
+    ##### 加载 ho_tree
+    pkl_file = os.path.join(pkl_dir, f'{table_id}.pkl')
+    embedding_cache_file = os.path.join(pkl_dir, f'{table_id}_embedding.json')
+    with open(pkl_file, 'rb') as file:
+        ho_tree = pickle.load(file)
 
-    if log_file is not None:  # Log
-        with open(log_file, "a") as f:
-            f.write(f"{DELIMITER} Query {DELIMITER}\n")
-            f.write(query + "\n")
+    ##### 创建日志文件 命名为 表格id_问题id.log
+    log_file = os.path.join(log_dir, f'{table_id}_{qid}.log')
+    logger.add(log_file)
+
+    logger.info(f"{DELIMITER} Query {DELIMITER}")
+    logger.info(query)
 
     try:
         final_answer, qa_pair, reliability = qa_RWP(
-            f_tree=f_tree,
             query=query,
-            enable_emebdding=enable_emebdding,
+            ho_tree=ho_tree,
+            table_file=table_file,
             embedding_cache_file=embedding_cache_file,
+            enable_emebdding=enable_emebdding,
+            enable_query_decompose=enable_query_decompose,
             log_file=log_file,
         )
-        record["reliability"] = reliability
-        record["model_output"] = final_answer
+        qa_pair["reliability"] = reliability
+        qa_pair["model_output"] = final_answer
 
     except Exception as e:
+        logger.info(f"{DELIMITER} An Error Occurred {DELIMITER}")
+        logger.info(f"Error: {e}")
         if log_file is not None:  # Log
             with open(log_file, "a") as f:
                 f.write(f"{DELIMITER} An Error Occurred {DELIMITER}\n")
                 f.write(f"Error: {e}\n")
-        print(e)
-        import traceback
-        traceback.print_exc()
+        import traceback;traceback.print_exc()
         return None
 
-    if log_file is not None:  # Log
-        with open(log_file, "a") as f:
-            f.write(f"{DELIMITER} Final Output {DELIMITER}\n")
-            f.write(json.dumps(record, ensure_ascii=False, indent=4))
-
-    return record
+    return qa_pair
 
 
 def benchmark(
-    table_dir,
-    cache_dir,
-    input_jsonl,
-    output_jsonl,
-    pkl_dir=None,
-    enable_emebdding=True,
-    embedding_cache_dir=None,
-    log_dir=None,
+    table_dir: str,                     # 保存表格的文件的目录，目录中是一个一个的表格文件，文件名即为表格的唯一标识
+    input_jsonl: str,                   # 保存输入 QA Pair 的 JSONL 文件，每条记录的必要字段为 'id', 'table_id', 'query', 'label'
+    output_jsonl: str,                  # 保存 QA Pair 模型推理结果的文件
+    pkl_dir: str,                       # 保存表格转换后的 HO-Tree 中间结果以及 Embedding Cache 的路径
+    enable_emebdding: bool = True,      # 是否启用 Embedding 机制，对应是否使用两阶段验证的 Forward Verification
+    cache_dir: str = CACHE_DIR,         # Cache 缓存保存路径
+    log_dir: str = LOG_DIR,             # Log 日志保存路径
+    process_from_scratch: bool = False, # 是否重新进行 HO-Tree 与处理过程
+    qa_from_scratch: bool = False,      # 是否从头进行 QA
 ):
-    """
-    table_dir and cache_dir must be not None simutanously. 
-    If pkl_dir is pointed, table_dir and cache_dir is useless.
-    When using table_dir, we default embedding_cache_dir to be None.
-    """
 
+    if not os.path.exists(pkl_dir): os.makedirs(pkl_dir)
+    if not os.path.exists(cache_dir): os.makedirs(cache_dir)
+    if not os.path.exists(log_dir): os.makedirs(log_dir)
+
+    ##### 读入待处理 QA Pair
     input_list = []
     with open(input_jsonl, "r", encoding="utf-8") as file:
         for line in file:
-            tmp = json.loads(line)
-            input_list.append(tmp)
+            input_list.append(json.loads(line))
+    input_list.sort(key=lambda x: x["table_id"])    # 按照 table_id 的顺序排序
 
+    ##### 读入所有 Table 文件列表
+    table_files = sorted(glob.glob(table_dir + "/*"))
+
+    ##### 读取已经处理了的 QA Pair
     output_data = []
-    if os.path.exists(output_jsonl):
+    qid_set = set()
+    if not qa_from_scratch and os.path.exists(output_jsonl):
         with open(output_jsonl, 'r', encoding='utf-8') as file:
             for line in file:
                 output_data.append(json.loads(line))
+        qid_set = set([r['id'] for r in output_data])
 
-    if pkl_dir is not None:
+    ##### 尝试读取 HO-Tree 中间结果文件
+    pkl_files = []
+    embedding_cache_files = []
+    if not process_from_scratch and pkl_dir is not None:
         pkl_files = sorted(glob.glob(pkl_dir + "/*.pkl"))
-        input_list.sort(key=lambda x: x["table_id"])
+        embedding_cache_files = sorted(glob.glob(pkl_dir + "/*_embedding.json"))
 
-        for index, pkl_file in enumerate(pkl_files):
-            name = os.path.basename(pkl_file)[:-4]
+    ##### 逐一处理每一张表格
+    for table_file in table_files:
+        table_id = os.path.basename(table_file).split('.')[0]
 
-            # Find Embedding Cache File
-            embedding_cache_file = None
-            if embedding_cache_dir is not None:
-                if os.path.exists(
-                    os.path.join(embedding_cache_dir, f"{name}.embedding.json")
-                ):
-                    embedding_cache_file = os.path.join(
-                        embedding_cache_dir, f"{name}.embedding.json"
-                    )
-
-            # Preprocess QA List
-            qa_list = []
-            for record in input_list:
-                if str(record["table_id"]) == str(name):
-                    qa_list.append(record)
-
-            # Load FeatureTree
-            with open(pkl_file, "rb") as f:
-                f_tree: FeatureTree = pickle.load(f)
-
-            # Answer Queries
-            for record in qa_list:
-                
-                flag = False
-                for item in output_data:
-                    if item['id'] == record['id']:
-                        flag = True
-                        break
-                if flag:    continue
-                
-                record = answer_question(
-                    f_tree=f_tree,
-                    record=record,
-                    enable_emebdding=enable_emebdding,
-                    embedding_cache_file=embedding_cache_file,
-                    log_dir=log_dir,
-                )
-
-                if record is None:  continue
-
-                # Output QA Information
-                output_data.append(record)
-                with open(output_jsonl, "a", encoding="utf-8") as file:
-                    file.write(f"{json.dumps(record, ensure_ascii=False)}\n")
-    else:
-        table_files = glob.glob(table_dir + "/*.xlsx")
-        os.makedirs(cache_dir, exist_ok=True)
-
-        for table_file in table_files:
-            name = os.path.basename(table_file)[:-5]
-
-            # Preprocess QA List
-            qa_list = []
-            for record in input_list:
-                if str(record["table_id"]) == str(name):
-                    qa_list.append(record)
-
-            # Make pkl file
+        ##### 表格预处理 Table -> HO-Tree
+        if f'{table_id}.pkl' not in pkl_files:
             try:
-                f_tree = get_excel_feature_tree(table_file, log=True, vlm_cache=False)
-                tree_json = f_tree.__json__()
-                tree_str = f_tree.__str__([1])
+                ho_tree = get_excel_feature_tree(table_file, log=True, vlm_cache=False)
+                tree_json = ho_tree.__json__()
+                tree_str = ho_tree.__str__([1])
+
+                with open(os.path.join(pkl_dir, f"{table_id}.pkl"), "wb") as f:
+                    pickle.dump(ho_tree, f)
+                with open(os.path.join(pkl_dir, f"{table_id}.txt"), "w", encoding='utf-8') as f:
+                    f.write(tree_str)
+                with open(os.path.join(pkl_dir, f"{table_id}.json"), "w", encoding='utf-8') as f:
+                    json.dump(tree_json, f, indent=4, ensure_ascii=False)
             except Exception as e:
-                import traceback
-                traceback.print_exc()
-                logger.error(f"File: {name}.xlsx Error: {e}")
-                with open("./error.txt", "a") as f:
-                    f.write(f"process_one_table() error: {name}.xlsx\n")
+                import traceback; traceback.print_exc()
+                logger.error(f"File: {table_id}.xlsx Error: {e}")
                 return
+            
+        ##### 获得表格内容的 embedding
+        if f'{table_id}_embedding.json' not in embedding_cache_files:
+            embedding_dict = EmbeddingModelMultilingualE5().get_embedding_dict(ho_tree.all_value_list())
 
-            with open(os.path.join(cache_dir, f"{name}.pkl"), "wb") as f:
-                pickle.dump(f_tree, f)
-            with open(os.path.join(cache_dir, f"{name}.txt"), "w", encoding='utf-8') as f:
-                f.write(tree_str)
-            with open(os.path.join(cache_dir, f"{name}.json"), "w", encoding='utf-8') as f:
-                json.dump(tree_json, f, indent=4, ensure_ascii=False)
-            embedding_dict = EmbeddingModelMultilingualE5().get_embedding_dict(
-                f_tree.all_value_list()
-            )
-            EmbeddingModelMultilingualE5().save_embedding_dict(
-                embedding_dict, os.path.join(cache_dir, f"{name}.embedding.json")
-            )
+            with open(os.path.join(pkl_dir, f"{table_id}_embedding.json"), "w", encoding='utf-8') as f:
+                json.dump(embedding_dict, f, ensure_ascii=False)
 
-            # Answer Queries
-            for record in qa_list:
+    ##### 逐一处理每一条问题
+    for qa_pair in tqdm(input_list):
+        table_id = qa_pair['table_id']
+        
+        ##### 防止重复问答
+        if not qa_from_scratch:
+            if qa_pair['id'] in qid_set:
+                continue
 
-                flag = False
-                for item in output_data:
-                    if item['id'] == record['id']:
-                        flag = True
-                        break
-                if flag:    continue
-                
-                record = answer_question(
-                    f_tree=f_tree,
-                    record=record,
-                    embedding_cache_file=embedding_cache_file,
-                    log_dir=log_dir,
-                )
-                
-                if record is None:  continue
-                
-                output_data.append(record)
-                # Output QA Information
-                with open(output_jsonl, "a", encoding="utf-8") as file:
-                    file.write(f"{json.dumps(record, ensure_ascii=False)}\n")
+        ##### 执行问答 #####
+        record = answer_question(
+            qa_pair=qa_pair,
+            table_file=table_file,
+            pkl_dir=pkl_dir,
+            enable_emebdding=enable_emebdding,
+            log_dir=log_dir
+        )
+
+        ##### 保存 QA 结果
+        output_data.append(record)
+        qid_set.add(record['id'])
+        with open(output_jsonl, "a", encoding="utf-8") as file:
+            file.write(f"{json.dumps(record, ensure_ascii=False)}\n")
 
 def main():
-    
-    # You need to change this
+    ##### You need to change this
     input_jsonl = None
     table_dir = None
     pkl_dir = None
-    embedding_cache_dir = None
     output_jsonl = None
     log_dir = None
 
-    os.makedirs(log_dir, exist_ok=True)
+    input_jsonl = './data/sstqa_zh_4.0/test_zh.jsonl'
+    table_dir = './data/sstqa_zh_4.0/table/'
+    pkl_dir = './data/sstqa_zh_4.0/pkl_re'
+    output_jsonl = './data/sstqa_zh_4.0/output.jsonl'
+    log_dir = './data/sstqa_zh_4.0/log'
+
     benchmark(
         table_dir=table_dir,
         input_jsonl=input_jsonl,
         output_jsonl=output_jsonl,
         pkl_dir=pkl_dir,
-        embedding_cache_dir=embedding_cache_dir,
         cache_dir=CACHE_DIR,
         log_dir=log_dir,
     )

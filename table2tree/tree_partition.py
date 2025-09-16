@@ -20,7 +20,7 @@ class ClassificationEmbeddingModel:
 
     _instance = None  # 类变量，用于存储唯一实例
 
-    def __init__(self, model_path=CLASSICIFATION_ENBEDDING_MODEL_PATH):
+    def __init__(self, model_path=EMBEDDING_MODE_PATH):
         self.model_path = model_path
         self.model = SentenceTransformer(model_path)
 

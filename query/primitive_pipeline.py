@@ -8,7 +8,7 @@ import traceback
 from tqdm import tqdm
 
 from table2tree.feature_tree import *
-from utils.api_utils import generate_deepseek, generate_text_third_party
+from utils.api_utils import llm_generate
 from embedding import match_sub_table, EmbeddingModelMultilingualE5
 from query.primitive_def import *
 from verifier.verifier import *
@@ -36,7 +36,7 @@ def bool_string(s):
 def query_decompose(f_tree: FeatureTree, query: str):
     prompt = query_decompose_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = generate_deepseek(prompt, key=API_KEY, url=API_URL, temperature=0.7)
+    res = llm_generate(prompt)
 
     queries = []
     retrieve_flags = []
@@ -62,7 +62,7 @@ def query_decompose(f_tree: FeatureTree, query: str):
 def entity_extractor(f_tree: FeatureTree, query: str):
     prompt = entity_extract_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = generate_deepseek(prompt, key=API_KEY, url=API_URL, temperature=1.0)
+    res = llm_generate(prompt, temperature=0.5)
 
     # pattern = r"```python\n(.*?)```"
     # matches = re.findall(pattern, res, re.DOTALL)
@@ -78,7 +78,7 @@ def semantic_reason(evidence, query):
         evidence = evidence.__json__()
     prompt = semantic_reasoning_prompt.format(evidence=evidence, query=query)
 
-    res = generate_deepseek(prompt, key=API_KEY, url=API_URL, temperature=1.0)
+    res = llm_generate(prompt, temperature=0.5)
 
     return res
 
@@ -90,12 +90,8 @@ def calc_math(f_tree: FeatureTree, query, log_file=None):
     retry_cnt = 1
     while retry_cnt < MAX_RETRY_PRIMITIVE:
         try:
-            primitive_seq = generate_deepseek(
-                prompt = math_prompt,
-                key = API_KEY,
-                url = API_URL,
-                temperature = 1.0,
-            )
+            primitive_seq = llm_generate(prompt=math_prompt, temperature = 0.5)
+
             operation = primitive_seq.splitlines()[0].strip()
             if operation == "None":
                 if log_file is not None:
@@ -192,7 +188,7 @@ def dfs_reasoning(
             with open(log_file, 'a') as file:
                 file.write(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}\n")
         
-        operation = generate_deepseek(cond_prompt, API_KEY, API_URL).strip()
+        operation = llm_generate(cond_prompt).strip()
         
         if "None" in operation:
             if log_file is not None:    # Log
@@ -265,12 +261,7 @@ def dfs_reasoning(
     while retry_cnt < MAX_RETRY_PRIMITIVE:
 
         # Generate primitive
-        primitive_seq = generate_deepseek(
-            prompt=prompt,
-            key=API_KEY,
-            url=API_URL,
-            temperature=1.0,
-        )
+        primitive_seq = llm_generate(prompt=prompt)
         operation = primitive_seq.splitlines()[0].strip()
 
         print(operation)
@@ -493,7 +484,7 @@ def dfs_reasoning(
             with open(log_file, 'a') as file:
                 file.write(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}\n")
         
-        operation = generate_deepseek(cond_prompt, API_KEY, API_URL).strip()
+        operation = llm_generate(cond_prompt).strip()
         
         if "None" in operation:
             if log_file is not None:    # Log
@@ -613,34 +604,12 @@ def delete_list_empty_elem(data: list):
     return new_data        
 
 
-def qa_PTR(f_tree, query):
-    """Plan-then-Reason
-    Challenge: 需要每一个action都可以对应到一个primitive上
-    """
-
-    start_time = tm.time()
-
-    # 1. Query Decompose
-    decomposed_queries = [query]
-    retrieve_flag = [True]
-    # decomposed_queries, retrieve_flag = query_decompose(f_tree=f_tree, query=query)
-    # print(decomposed_queries)
-    # print(retrieve_flag)
-
-    # 2. Query Rewrite: only rewrite queries if retrieval is needed
-    # for query, flag in zip(decomposed_queries, retrieve_flag):
-    #     if flag:
-    #         query = query_rewrite(f_tree=f_tree, query=query)
-    # print(decomposed_queries)
-    # print(retrieve_flag)
-
-    # 3. Sequence Query Answering
-
-    end_time = tm.time()
-    print(f"time: {end_time - start_time}s")
-
-
-def qa_RWP(f_tree, query, enable_emebdding=False, embedding_cache_file=None, log_file=None, enable_query_decompose=True):
+def qa_RWP(f_tree, 
+           query, 
+           enable_emebdding=False, 
+           embedding_cache_file=None, 
+           log_file=None, 
+           enable_query_decompose=True):
     """Reason-while-Planning"""
 
     start_time = tm.perf_counter()
@@ -695,7 +664,7 @@ def qa_RWP(f_tree, query, enable_emebdding=False, embedding_cache_file=None, log
             retrieved_data = delete_list_empty_elem(retrieved_data)
             if len(retrieved_data) == 0:
                 prompt = direct_table_reasoning_prompt.format(table=f_tree.__json__(), query=query)
-                answer = generate_deepseek(prompt, API_KEY, API_URL)
+                answer = llm_generate(prompt)
             else:
                 answer = semantic_reason(retrieved_data, query)
             check_res = Verifier().check_answer(query, answer)
@@ -723,7 +692,7 @@ def qa_RWP(f_tree, query, enable_emebdding=False, embedding_cache_file=None, log
                 if len(retrieved_data) == 0:
                     # Direct Reasoning
                     prompt = direct_table_reasoning_prompt.format(table=f_tree.__json__(), query=query)
-                    answer = generate_deepseek(prompt, API_KEY, API_URL)
+                    answer = llm_generate(prompt)
                     if log_file is not None:    # Log
                         with open(log_file, 'a') as f:
                             f.write(f"{DELIMITER} Bottom Up Reaoning Failed, Direct Reasoning {subquery_index} {DELIMITER}\n")
@@ -771,7 +740,7 @@ def qa_RWP(f_tree, query, enable_emebdding=False, embedding_cache_file=None, log
                 f.write(f"{final_answer}\n")
     else:
         prompt = direct_table_reasoning_prompt.format(table=f_tree.__json__(), query=raw_query)
-        final_answer = generate_deepseek(prompt, API_KEY, API_URL)
+        final_answer = llm_generate(prompt)
         if log_file is not None:    # Log
             with open(log_file, 'a') as f:
                 f.write(f"{DELIMITER} Final Answer for Whole Table Reasoning {DELIMITER}\n")

@@ -17,9 +17,7 @@ from utils.constants import *
 
 def is_equal(a, b):
     prompt = evaluation_prompt.format(a=a, b=b)
-
-    res = generate_deepseek(prompt, API_KEY, API_URL)
-
+    res = llm_generate(prompt)
     return res
 
 

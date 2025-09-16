@@ -6,7 +6,7 @@ import time
 
 from openai import OpenAI
 
-from constants import *
+from utils.constants import *
 
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
@@ -17,7 +17,8 @@ def vlm_generate(
     image,
     key=VLM_API_KEY,
     url=VLM_API_URL, 
-    model=VLM_MODEL_TYPE, 
+    model=VLM_MODEL_TYPE,
+    temperature=0.5,
 ):
     if os.path.exists(image):
         image = f"data:image/jpeg;base64,{encode_image(image)}"
@@ -35,6 +36,7 @@ def vlm_generate(
                 ],
             }
         ],
+        temperature=temperature
     )
     # print("Chat response:", chat_response.choices[0].message.content)
 
@@ -46,7 +48,7 @@ def llm_generate(
     url=LLM_API_URL, 
     model=LLM_MODEL_TYPE, 
     max_tokens=8192, 
-    temperature=1.0
+    temperature=0.5
 ):
     client = OpenAI(api_key=key, base_url=url)
 
