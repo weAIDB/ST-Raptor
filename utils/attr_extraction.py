@@ -107,6 +107,30 @@ def capture_screenshot(html_file, screenshot_file):
     driver.save_screenshot(screenshot_file)
     driver.quit()
 
+def resize_to_target_size(input_path, output_path, target_kb, quality=90):
+    img = Image.open(input_path)
+    original_size = os.path.getsize(input_path)
+    
+    # 初步调整
+    if original_size > target_kb * 1024:
+        print(f'Origin size {original_size // 1024} KB')
+        # 根据大小比例初步缩放尺寸
+        scale = (target_kb * 1024 / original_size) ** 0.5
+        new_width = int(img.width * scale)
+        new_height = int(img.height * scale)
+        img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+
+        # 精细调整质量参数
+        temp_path = os.path.dirname(output_path) + '/tmp.png'
+        for q in range(quality, 10, -5):
+            img.save(temp_path, optimize=True, quality=q)
+            if os.path.getsize(temp_path) <= target_kb * 1024:
+                break
+        
+        os.rename(temp_path, output_path)
+        print(f'Scaled size {os.path.getsize(output_path) // 1024} KB')
+
+
 
 def sheet_to_image(sheet, output_image_file=None):
     if output_image_file is None:
@@ -129,6 +153,8 @@ def sheet_to_image(sheet, output_image_file=None):
         "quiet": "",
     }
     imgkit.from_file(html_file, screenshot_file, options=options)
+
+    resize_to_target_size(screenshot_file, screenshot_file, target_kb=5120)
 
     return screenshot_file
 
@@ -161,7 +187,7 @@ def vlm_get_direction(sheet, model="internvl", save=False):
     return res
     
 
-def vlm_get_schema(sheet, model=INTERNVL, save=False):
+def vlm_get_schema(sheet, model=VLM_MODEL_TYPE, save=False):
     """
     sheet: 获取schema的sheet
     model: 使用的多模态大模型
@@ -177,7 +203,7 @@ def vlm_get_schema(sheet, model=INTERNVL, save=False):
     while cnt < MAX_ITER_META_INFORMATION_DETECTION:
         res = vlm_generate(prompt, image_file, model)
 
-        if VLM_MODEL_TYPE == INTERNVL:
+        if VLM_MODEL_TYPE == VLM_MODEL_TYPE:
             flag = False
             
             match = re.findall(r"```python(.*?)```", res, re.DOTALL)    # 尝试匹配 python 格式
@@ -247,7 +273,7 @@ def vlm_get_schema(sheet, model=INTERNVL, save=False):
     return res
 
 
-def vlm_get_json(sheet, model=INTERNVL, save=False):
+def vlm_get_json(sheet, model=VLM_MODEL_TYPE, save=False):
     image_file = sheet_to_image(sheet)
     prompt = "请将给定的表格图片转换为JSON格式，注意，JSON的键与值都必须直接是表格的内容，请直接返回转化后的标准格式的JSON，不要使用任何Markdown格式，不要修改表格内容。"
 
@@ -256,7 +282,7 @@ def vlm_get_json(sheet, model=INTERNVL, save=False):
         res = vlm_generate(prompt, image_file, model)
 
         flag = False
-        if VLM_MODEL_TYPE == INTERNVL:
+        if VLM_MODEL_TYPE == VLM_MODEL_TYPE:
             match = re.findall(r"```json(.*?)```", res, re.DOTALL)
         try:
             if len(match) == 0:

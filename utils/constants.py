@@ -39,7 +39,7 @@ MAX_RETRY_HOTREE = 3  # 表格转换HO-Tree的最大尝试次数
 MAX_RETRY_PRIMITIVE = 5  # 前向验证时重新生成原语句的次数
 
 #################### Change The Directory Path ####################
-BASE_DIR = '/home/zirui/SemiTableQA'            # The Project Directory
+BASE_DIR = '/home/zirui/ST-Raptor/'            # The Project Directory
 CACHE_DIR = os.path.join(BASE_DIR, 'cache')     # The Cache Directory
 LOG_DIR = os.path.join(BASE_DIR, 'log')
 #################### Change The Directory Path ####################
@@ -57,7 +57,7 @@ VLM_API_KEY = "YOUR_VLM_API_KEY"
 VLM_MODEL_TYPE = "YOUR_VLM_MODEL_TYPE"
 
 """Set the Embedding model information"""
-EMBEDDING_MODE_PATH = "/data/models/multilingual-e5-large/"
+EMBEDDING_MODE_PATH = "/data/zirui/model/multilingual-e5-large"
 #################### Change The Model Information ####################
 
 FONT_PATH = "file://" + os.path.join(BASE_DIR, "static/simfang.ttf")

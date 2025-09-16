@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from transformers import AutoTokenizer, AutoModel
 from sentence_transformers import SentenceTransformer
 
-from utils.constants import MULTILINGUAL_E5_MODEL_PATH, ALLMINILM_MODEL_PATH
+from utils.constants import EMBEDDING_MODE_PATH
 from table2tree.feature_tree import *
 
 
@@ -34,7 +34,7 @@ class EmbeddingModelMultilingualE5:
 
     _instance = None  # 类变量，用于存储唯一实例
 
-    def __init__(self, model_path=MULTILINGUAL_E5_MODEL_PATH):
+    def __init__(self, model_path=EMBEDDING_MODE_PATH):
         self.model_path = model_path
         self.model = SentenceTransformer(model_path)
         # self.tokenizer = AutoTokenizer.from_pretrained(model_path)
@@ -281,141 +281,141 @@ def calculate_topk_similarity(query_vectors, target_vectors, topk=6):
     return topk_indices.tolist(), topk_scores.tolist()
 
 
-class EmbeddingModelAllMiniLML6V2:
+# class EmbeddingModelAllMiniLML6V2:
 
-    _instance = None  # 类变量，用于存储唯一实例
+#     _instance = None  # 类变量，用于存储唯一实例
 
-    def __init__(self, model_path=ALLMINILM_MODEL_PATH):
-        self.model_path = model_path
-        self.model = SentenceTransformer(model_path)
+#     def __init__(self, model_path=ALLMINILM_MODEL_PATH):
+#         self.model_path = model_path
+#         self.model = SentenceTransformer(model_path)
 
-    def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super().__new__(cls)
-        return cls._instance
+#     def __new__(cls, *args, **kwargs):
+#         if not cls._instance:
+#             cls._instance = super().__new__(cls)
+#         return cls._instance
 
-    def get_entity_embedding(self, entity_list):
-        embeddings = self.model.encode(entity_list)
-        return embeddings
+#     def get_entity_embedding(self, entity_list):
+#         embeddings = self.model.encode(entity_list)
+#         return embeddings
 
-    def get_embedding_dict(self, entity_list):
-        embeddings = self.get_entity_embedding(entity_list)
-        embedding_dict = {
-            str(entity): embedding.tolist()
-            for entity, embedding in zip(entity_list, embeddings)
-        }
-        return embedding_dict
+#     def get_embedding_dict(self, entity_list):
+#         embeddings = self.get_entity_embedding(entity_list)
+#         embedding_dict = {
+#             str(entity): embedding.tolist()
+#             for entity, embedding in zip(entity_list, embeddings)
+#         }
+#         return embedding_dict
 
-    def save_embedding_dict(self, embedding_dict, output_file):
-        with open(output_file, "w") as f:
-            json.dump(embedding_dict, f, ensure_ascii=False)
+#     def save_embedding_dict(self, embedding_dict, output_file):
+#         with open(output_file, "w") as f:
+#             json.dump(embedding_dict, f, ensure_ascii=False)
 
-    def load_embedding_dict(self, input_file):
-        # 从 JSON 文件加载
-        with open(input_file, "r") as f:
-            loaded_embedding_dict = json.load(f)
+#     def load_embedding_dict(self, input_file):
+#         # 从 JSON 文件加载
+#         with open(input_file, "r") as f:
+#             loaded_embedding_dict = json.load(f)
 
-        # 将列表转换回 NumPy 数组
-        loaded_embedding_dict = {
-            k: np.array(v) for k, v in loaded_embedding_dict.items()
-        }
+#         # 将列表转换回 NumPy 数组
+#         loaded_embedding_dict = {
+#             k: np.array(v) for k, v in loaded_embedding_dict.items()
+#         }
 
-        return loaded_embedding_dict
+#         return loaded_embedding_dict
 
-    def split_embedding_dict(self, embedding_dict):
-        values = []
-        embeddings = []
-        for (
-            k,
-            v,
-        ) in embedding_dict.items():
-            values.append(k)
-            embeddings.append(v.tolist())
-        return values, embeddings
+#     def split_embedding_dict(self, embedding_dict):
+#         values = []
+#         embeddings = []
+#         for (
+#             k,
+#             v,
+#         ) in embedding_dict.items():
+#             values.append(k)
+#             embeddings.append(v.tolist())
+#         return values, embeddings
 
-    def one_to_many_semilarity(self, value, value_list=None, embedding_cache_file=None):
-        """One of value_list or embedding_cache_file must be specified"""
-        if embedding_cache_file is None:  # without cache
-            input_texts = [value] + value_list
-            input_texts = [str(s) for s in input_texts]
+#     def one_to_many_semilarity(self, value, value_list=None, embedding_cache_file=None):
+#         """One of value_list or embedding_cache_file must be specified"""
+#         if embedding_cache_file is None:  # without cache
+#             input_texts = [value] + value_list
+#             input_texts = [str(s) for s in input_texts]
 
-            embeddings = self.get_entity_embedding(input_texts)
+#             embeddings = self.get_entity_embedding(input_texts)
 
-            scores = (embeddings[:1] @ embeddings[1:].T) * 100
-            scores = scores.tolist()
-        else:
-            embedding_dict = self.load_embedding_dict(embedding_cache_file)
-            value_list, embedding_list = self.split_embedding_dict(embedding_dict)
-            value_embedding = self.get_entity_embedding([value]).astype(np.float64)
+#             scores = (embeddings[:1] @ embeddings[1:].T) * 100
+#             scores = scores.tolist()
+#         else:
+#             embedding_dict = self.load_embedding_dict(embedding_cache_file)
+#             value_list, embedding_list = self.split_embedding_dict(embedding_dict)
+#             value_embedding = self.get_entity_embedding([value]).astype(np.float64)
 
-            scores = self.model.similarity(
-                value_embedding, embedding_dict
-            )
-            scores = scores.tolist()
+#             scores = self.model.similarity(
+#                 value_embedding, embedding_dict
+#             )
+#             scores = scores.tolist()
 
-        return scores
+#         return scores
 
-    def topk_match(
-        self,
-        entities: list,
-        table: list = None,
-        k=10,
-        threshold=None,
-        embedding_cache_file=None,
-        log_file=None,
-    ):
-        """One of table or embedding_cache_file must be specified"""
-        if embedding_cache_file is None:  # without cache
-            input_texts = entities + table
-            input_texts = [str(s) for s in input_texts]
+#     def topk_match(
+#         self,
+#         entities: list,
+#         table: list = None,
+#         k=10,
+#         threshold=None,
+#         embedding_cache_file=None,
+#         log_file=None,
+#     ):
+#         """One of table or embedding_cache_file must be specified"""
+#         if embedding_cache_file is None:  # without cache
+#             input_texts = entities + table
+#             input_texts = [str(s) for s in input_texts]
 
-            embeddings = self.get_entity_embedding(input_texts)
+#             embeddings = self.get_entity_embedding(input_texts)
 
-            scores = (embeddings[: len(entities)] @ embeddings[len(entities) :].T) * 100
-            scores = scores.tolist()
-            if not isinstance(scores, list): scores = [[scores]]
+#             scores = (embeddings[: len(entities)] @ embeddings[len(entities) :].T) * 100
+#             scores = scores.tolist()
+#             if not isinstance(scores, list): scores = [[scores]]
 
-            # Find Max Top-k Values
-            values = []
-            for index, score_lst in enumerate(scores):
-                indices = find_topk_indices(score_lst, k)
-                values.append([table[i] for i in indices])
-        else:
-            embedding_dict = self.load_embedding_dict(embedding_cache_file)
-            value_list, embedding_list = self.split_embedding_dict(embedding_dict)
-            value_embedding = self.get_entity_embedding(entities)
+#             # Find Max Top-k Values
+#             values = []
+#             for index, score_lst in enumerate(scores):
+#                 indices = find_topk_indices(score_lst, k)
+#                 values.append([table[i] for i in indices])
+#         else:
+#             embedding_dict = self.load_embedding_dict(embedding_cache_file)
+#             value_list, embedding_list = self.split_embedding_dict(embedding_dict)
+#             value_embedding = self.get_entity_embedding(entities)
 
-            # Find Max Top-k Values
-            scores = self.model.similarity(
-                value_embedding.tolist(), embedding_list
-            )
-            scores = scores.tolist()
-            if not isinstance(scores, list): scores = [[scores]]
+#             # Find Max Top-k Values
+#             scores = self.model.similarity(
+#                 value_embedding.tolist(), embedding_list
+#             )
+#             scores = scores.tolist()
+#             if not isinstance(scores, list): scores = [[scores]]
             
-            values = []
-            for index, score_lst in enumerate(scores):
-                indices = find_topk_indices(score_lst, k)
-                values.append([value_list[i] for i in indices])
+#             values = []
+#             for index, score_lst in enumerate(scores):
+#                 indices = find_topk_indices(score_lst, k)
+#                 values.append([value_list[i] for i in indices])
 
-        if log_file is not None:  # Log
-            with open(log_file, "a") as file:
-                file.write(f"{DELIMITER} Top-{k} Match Result {DELIMITER}\n")
-                for i, (entity, values) in enumerate(zip(entities, values)):
-                    file.write(f"Entity: {entity}\n")
-                    file.write(f"Values: {values}\n")
+#         if log_file is not None:  # Log
+#             with open(log_file, "a") as file:
+#                 file.write(f"{DELIMITER} Top-{k} Match Result {DELIMITER}\n")
+#                 for i, (entity, values) in enumerate(zip(entities, values)):
+#                     file.write(f"Entity: {entity}\n")
+#                     file.write(f"Values: {values}\n")
 
-        return values
+#         return values
 
-    def top1_match(self, entities: list, table: list = None, embedding_cache_file=None, threshold=None):
-        """One of table or file must be specified"""
-        return flatten_nested_list(
-            self.topk_match(entities=entities, table=table, k=1, embedding_cache_file=embedding_cache_file, threshold=threshold)
-        )
+#     def top1_match(self, entities: list, table: list = None, embedding_cache_file=None, threshold=None):
+#         """One of table or file must be specified"""
+#         return flatten_nested_list(
+#             self.topk_match(entities=entities, table=table, k=1, embedding_cache_file=embedding_cache_file, threshold=threshold)
+#         )
 
 
 def match_sub_table(entities: list, f_tree):  #: FeatureTree):
     """使用 Embedding Vector 从 FeatureTree 中提取子部分，返回JSON"""
-    model = EmbeddingModelMultilingualE5(MULTILINGUAL_E5_MODEL_PATH)
+    model = EmbeddingModelMultilingualE5(EMBEDDING_MODE_PATH)
 
     values = model.topk_match(entities, f_tree.body_value_list())
 
@@ -511,7 +511,7 @@ def main():
 
 
 def main2():
-    model = EmbeddingModelAllMiniLML6V2()
+    model = EmbeddingModelMultilingualE5()
 
     res = model.topk_match(
         entities=["预算整体情况", "城乡居民养老"],
