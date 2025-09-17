@@ -6,7 +6,7 @@ from openpyxl.utils import get_column_letter, range_boundaries
 
 from utils.api_utils import *
 from utils.constants import *
-from embedding import *
+from embedding import EmbeddingModelMultilingualE5
 
 def delete_dict_none_none(data : dict):
     """将JSON中None:None的项去除"""

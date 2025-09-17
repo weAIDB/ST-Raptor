@@ -334,13 +334,15 @@ def dfs_reasoning(
 
                 elif args[0] == "EXT" and len(args) == 3:  # Extract Operation
                     if enable_embedding_match:
-                        t = EmbeddingModelMultilingualE5().top1_match(
-                            [args[1], args[2]],
-                            table=f_tree.all_value_list(),
-                            embedding_cache_file=embedding_cache_file,
-                        )
-                        args[1] = t[0]
-                        args[2] = t[1]
+                        # 注释掉Embedding匹配代码以避免CUDA内存不足
+                        # t = EmbeddingModelMultilingualE5().top1_match(
+                        #     [args[1], args[2]],
+                        #     table=f_tree.all_value_list(),
+                        #     embedding_cache_file=embedding_cache_file,
+                        # )
+                        # args[1] = t[0]
+                        # args[2] = t[1]
+                        pass  # 直接跳过Embedding匹配
 
                     if log_file is not None:  # Log
                         with open(log_file, "a") as file:
@@ -355,13 +357,15 @@ def dfs_reasoning(
 
                 elif args[0] == "COND" and len(args) == 3:  # Conditional Search
                     if enable_embedding_match:  # Embedding Match
-                        t = EmbeddingModelMultilingualE5().top1_match(
-                            [args[1], args[2]],
-                            table=f_tree.all_value_list(),
-                            embedding_cache_file=embedding_cache_file,
-                        )
-                        args[1] = t[0]
-                        args[2] = t[1]
+                        # 注释掉Embedding匹配代码以避免CUDA内存不足
+                        # t = EmbeddingModelMultilingualE5().top1_match(
+                        #     [args[1], args[2]],
+                        #     table=f_tree.all_value_list(),
+                        #     embedding_cache_file=embedding_cache_file,
+                        # )
+                        # args[1] = t[0]
+                        # args[2] = t[1]
+                        pass  # 直接跳过Embedding匹配
 
                     if log_file is not None:  # Log
                         with open(log_file, "a") as file:
@@ -374,11 +378,13 @@ def dfs_reasoning(
 
                 elif args[0] == "FOREACH" and len(args) == 3:  # Foreach Operation
                     if enable_embedding_match:  # Embedding Match
-                        args[1] = EmbeddingModelMultilingualE5().top1_match(
-                            [args[1]],
-                            table=f_tree.all_value_list(),
-                            embedding_cache_file=embedding_cache_file,
-                        )[0]
+                        # 注释掉Embedding匹配代码以避免CUDA内存不足
+                        # args[1] = EmbeddingModelMultilingualE5().top1_match(
+                        #     [args[1]],
+                        #     table=f_tree.all_value_list(),
+                        #     embedding_cache_file=embedding_cache_file,
+                        # )[0]
+                        pass  # 直接跳过Embedding匹配
 
                     if log_file is not None:  # Log
                         with open(log_file, "a") as file:

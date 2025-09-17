@@ -80,8 +80,8 @@ def vlm_generate(
     if os.path.exists(image):
         image = f"data:image/jpeg;base64,{encode_image(image)}"
     # Set OpenAI's API key and API base to use vLLM's API server.
-    openai_api_key = "EMPTY"
-    openai_api_base = f"http://localhost:{port}/v1"
+    openai_api_key = #在此处填写你的key   
+    openai_api_base = "https://dashscope.aliyuncs.com/compatible-mode/v1"#这里默认使用qwen-vl-max，也可改成你喜欢的模型url
 
     client = OpenAI(
         api_key=openai_api_key,
@@ -89,7 +89,7 @@ def vlm_generate(
     )
 
     chat_response = client.chat.completions.create(
-        model=model,
+        model="qwen-vl-max",
         messages=[
             {
                 "role": "user",

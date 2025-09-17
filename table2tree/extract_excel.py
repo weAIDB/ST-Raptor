@@ -309,19 +309,21 @@ def process_sheet_vlm(sheet,            # 待处理的Excel工作簿格式的表
         #     granularity_directon_row = SCHEMA_FAIL
 
         # 其次使用VLM辅助判断
+        print(f"🔍 VLM Schema检测开始: {key}")
         schema_vague = vlm_get_schema(sheet, save=cache)
+        print(f"🔍 VLM Schema检测结束: {schema_vague}")
         pos_list, schema_list, pos2schema = schema_pos_match(
             sheet, schema_vague, enable_embedding=True
         )  # 将 vlm 的输出与表格内容对应，并获取 schema 的位置
         direction = get_schema_direction_by_pos(sheet, pos_list)
-        direction = SCHEMA_TOP
+        #direction = SCHEMA_TOP
         # direction = SCHEMA_TOP
         schema_height = get_schema_height(sheet, direction)
         d = "上部" if direction == SCHEMA_TOP else "左侧"
         logAuto(f"{key} 的 Schema 方向为 {d}", log)
         logAuto(f"{key} 的 Schema 高度为 {schema_height}", log)
         logAuto(f"{key} 的 Schema 为: {schema_list}", log)
-
+        print(f"📋 Schema方向判断: {direction}")
         # Step 5 根据 schema 方向拆分表格, Schema在左边, 上下拆分为并列的多个子部分; Schema在上面, 左右拆分为并列的多个子部分
         parallel_sheet = None
         if direction == SCHEMA_TOP:
@@ -354,6 +356,7 @@ def process_sheet_vlm(sheet,            # 待处理的Excel工作簿格式的表
             if isinstance(parallel_sheet, list):
                 json_dict = {}
                 subtable_cnt = 1
+                print(f"🔄 递归处理子表 {index}")
                 for index, subsheet in enumerate(parallel_sheet):
                     res = process_sheet_vlm(subsheet, get_json, log)
                     logAuto(f"subsheet {index} done", log)

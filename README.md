@@ -137,6 +137,8 @@ The model configuration in our paper includes Deepseek-V3 (LLM API) + InternVL2.
 
 [Download InternVL2.5](https://huggingface.co/OpenGVLab/InternVL2_5-26B) [Download Multilingual-E5](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
 
+git submodule add https://www.modelscope.cn/OpenGVLab/InternVL2_5-26B.git data/models/InternVL2_5-26B
+
 You need to set model configuration in /utils/constnts.py
 
 ```python
@@ -187,7 +189,7 @@ If you have completed all the above settings, use the following command to start
 ```shell
 python ./main.py
 ```
-
+可通过运行python .gradio_app.py运行可视化版本，如果担心有gpu耗尽的情况，请仍然使用python ./main.py
 ## 💡 Semi-Structured Table QA Examples
 
 |                           Question                           | Ground Truth                                                 | TableLLaMA                                                   | TableLLM                                                     | ReAcTable                                                    | TAT-LLM                                                      | TableLLaVA                                                   | mPLUG-DocOwl1.5                                              | DeepseekV3                                                   | GPT-4o                                                       | ST-Raptor                                                    |
@@ -270,4 +272,10 @@ ST-Raptor@复杂半结构表格分析社区 (微信群)
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## TODO
+
+1.表格生成图片太大，超出qwen-vl-max的最大限制，考虑进行图片压缩
+2.模型运行较慢，考虑优化EmbeddingModelMultilingualE5
+3.我们更需要 LLM 和嵌入式模型 API，而且大多数 Linux 环境无法支持大内存 GPU，因此通过 vllm 在本地部署/包含嵌入式模型比较困难成本较高。
 

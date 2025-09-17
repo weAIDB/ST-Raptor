@@ -183,7 +183,7 @@ def benchmark(
             EmbeddingModelMultilingualE5().save_embedding_dict(
                 embedding_dict, os.path.join(cache_dir, f"{name}.embedding.json")
             )
-
+            embedding_cache_file = os.path.join(cache_dir, f"{name}.embedding.json")
             # Answer Queries
             for record in qa_list:
 
@@ -211,12 +211,12 @@ def benchmark(
 def main():
     
     # You need to change this
-    input_jsonl = None
-    table_dir = None
+    input_jsonl = "data/SSTQA/test.jsonl"
+    table_dir = "data/SSTQA/table"
     pkl_dir = None
-    embedding_cache_dir = None
-    output_jsonl = None
-    log_dir = None
+    embedding_cache_dir = "cache/embeddings"
+    output_jsonl = "output/output.jsonl"
+    log_dir = "logs/"
 
     os.makedirs(log_dir, exist_ok=True)
     benchmark(

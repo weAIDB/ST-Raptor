@@ -25,7 +25,7 @@ SCHEMA_LEFT = False
 SCHEMA_FAIL = -1
 
 
-INTERNVL = "internvl"
+INTERNVL = None
 INTERNVL_1B = 8101
 INTERNVL_2B = 8102
 INTERNVL_4B = 8104
@@ -70,7 +70,7 @@ DEEPSEEK_PORT = ""
 
 
 #################### Change The Directory Path ####################
-BASE_DIR = '/home/zirui/SemiTableQA'            # The Project Directory
+BASE_DIR = '/mnt/d/Desktop/st-raptor/ST-Raptor'            # The Project Directory
 CACHE_DIR = os.path.join(BASE_DIR, 'cache')     # The Cache Directory
 LOG_DIR = os.path.join(BASE_DIR, 'log')
 #################### Change The Directory Path ####################
@@ -84,17 +84,19 @@ The LLM_PORT parameter is useless when using external LLM API.
 If you use local deployment LLM, change API_URL, LLM_MODEL_TYPE, and LLM_PORT
 The API_KEY parameter is useless when using local deployment LLM.
 """
-API_URL = ""
-API_KEY = ""
+API_URL = "https://api.deepseek.com"#这里默认使用deepseek，也可改成你喜欢的模型url
+API_KEY = #在此处填写你的key
 LLM_MODEL_TYPE = DEEPSEEK 
 LLM_PORT = DEEPSEEK_PORT
 
 """Set local deployment VLM information"""
-VLM_MODEL_TYPE = INTERNVL
-VLM_PORT = INTERNVL_38B
+VLM_MODEL_TYPE = None   #注意此处是调用外部api的方式，如果使用本地部署，则需要修改为本地部署的模型路径，同时需要修改28行的INTERVAL参数，详情可于github咨询
+VLM_PORT = None
+
+
 
 """Set the Embedding model information"""
-MULTILINGUAL_E5_MODEL_PATH = "/data/models/multilingual-e5-large/"
+MULTILINGUAL_E5_MODEL_PATH = "./data/models/multilingual-e5-large-instruct/"
 EMBEDDING_MODE_PATH = MULTILINGUAL_E5_MODEL_PATH
 CLASSICIFATION_ENBEDDING_MODEL_PATH = MULTILINGUAL_E5_MODEL_PATH
 #################### Change The Model Information ####################

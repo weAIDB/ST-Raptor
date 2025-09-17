@@ -1,7 +1,7 @@
-{"id": 1, "table_id": 1, "query": "What is the proposed funding for the social insurance gap and living allowance for college graduates under the \"Three Supports and One Assistance\" program?", "label": "587.81 million yuan"}
-{"id": 2, "table_id": 1, "query": "What is the proposed funding for the special funds for promoting employment?", "label": "11.40 million yuan"}
-{"id": 3, "table_id": 1, "query": "What is the target value for the number of new urban employment in the 2024 Municipal Department Overall Budget Performance Target Table?", "label": "50000 people"}
-{"id": 4, "table_id": 1, "query": "What is the target value for employment service satisfaction under the service recipient satisfaction indicators in the 2024 City-level Department Overall Budget Performance Target Table?", "label": "≥90%"}
+{"id": 1, "table_id": 1, "query": "销售总额是多少？", "label": "1700"}
+{"id": 2, "table_id": 1, "query": "哪个商品单价最高？", "label": "葡萄"}
+{"id": 3, "table_id": 1, "query": "销售量最多的商品是什么？", "label": "橙子"}
+{"id": 4, "table_id": 1, "query": "哪个商品的销售额最高？", "label": "葡萄"}
 {"id": 5, "table_id": 1, "query": "How many first-level indicators are there in the performance metrics?", "label": "3"}
 {"id": 6, "table_id": 1, "query": "How many secondary indicators are there in the output indicators of the performance metrics?", "label": "4"}
 {"id": 7, "table_id": 1, "query": "How many secondary indicators are there in the effectiveness indicators of the performance metrics?", "label": "4"}
