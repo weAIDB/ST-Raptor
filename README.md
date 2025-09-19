@@ -18,7 +18,7 @@
 
 - [ ] Main functionss
   - [x] Support both local deployment or API calls for LLM, VLM, and Embedding models.
-  - [ ] Support diverse input formats: HTML, CSV, MARKDOWN, ...
+  - [x] Support diverse input formats: HTML, CSV, MARKDOWN, ...
   - [ ] Support Image input.
   - [ ] Expand the table extraction module to support table types beyond problem definition.
 

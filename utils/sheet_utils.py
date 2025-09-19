@@ -45,6 +45,40 @@ def sheet2markdown(sheet):
         
     return markdown_table
 
+
+def extract_markdown_tables(content):
+    """
+    从Markdown内容中提取表格数据
+    Args:
+        content (str): Markdown内容
+    Returns:
+        list: 包含所有表格数据的列表
+    """
+    # 正则表达式匹配Markdown表格
+    table_pattern = r'\|(.+)\|\n\|[-:| -]+\|\n((?:\|.+\\|\n)+)'
+    matches = re.findall(table_pattern, content, re.MULTILINE)
+    
+    tables = []
+    for match in matches:
+        header_row = match[0]
+        data_rows = match[1].strip().split('\n')
+        
+        # 处理表头
+        headers = [cell.strip() for cell in header_row.split('|') if cell.strip()]
+        
+        # 处理数据行
+        table_data = [headers]
+        for row in data_rows:
+            cells = [cell.strip() for cell in row.split('|') if cell.strip()]
+            if cells:  # 确保不是空行
+                table_data.append(cells)
+        
+        tables.append(table_data)
+    
+    if len(tables) > 0:
+        return tables[0]
+    return ""
+
 # 将HTMl表格转换为Excel表格
 def html2workbook(html_content):
     # 使用 BeautifulSoup 解析 HTML
