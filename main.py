@@ -176,12 +176,6 @@ def main():
     output_jsonl = None
     log_dir = None
 
-    input_jsonl = '/home/zirui/sstqa_zh_4.0/test_zh.jsonl'
-    table_dir = '/home/zirui/sstqa_zh_4.0/table/'
-    pkl_dir = '/home/zirui/sstqa_zh_4.0/pkl_re/'
-    output_jsonl = '/home/zirui/sstqa_zh_4.0/output.jsonl'
-    log_dir = '/home/zirui/sstqa_zh_4.0/log'
-
     benchmark(
         table_dir=table_dir,
         input_jsonl=input_jsonl,

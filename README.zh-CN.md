@@ -14,52 +14,54 @@
   </p>
 </div>
 
-## 📣 Updates
+## 📣 近期更新
 
-- [ ] Main functionss
-  - [x] Support both local deployment or API calls for LLM, VLM, and Embedding models.
-  - [ ] Support diverse input formats: HTML, CSV, MARKDOWN, ...
-  - [ ] Support Image input.
-  - [ ] Expand the table extraction module to support table types beyond problem definition.
+- [ ] 主要功能
+  - [x] 支持LLM、VLM及嵌入模型的本地部署与API调用
+  - [ ] 支持多样化输入格式：HTML、CSV、MARKDOWN等
+  - [ ] 支持图像输入
+  - [ ] 扩展表格提取模块，支持问题定义之外的表格类型
 
-- [ ] Benchmark
-  - [x] Update both english and chinese version of SSTQA Benchmark.
-  - [ ] The SSTQAv2 is on the way!!!
+- [ ] 基准测试数据集
+  - [x] 更新中英文双版本SSTQA基准测试集
+  - [ ] SSTQAv2版本即将发布！
 
-- [ ] Visualization
-  - [x] Support visualization platform based on Gradio.
-  - [ ] Support hyper-parameter settings through Gradio. 
-  - [ ] Support the visualization of HO-Tree structure and manually revise.
+- [ ] 可视化功能
+  - [x] 支持基于Gradio的可视化平台
+  - [ ] 支持通过Gradio进行超参数设置
+  - [ ] 支持HO-Tree结构可视化与人工修正功能
 
-## ✨ Project Introduction
+## ✨ 项目介绍
 
-**ST-Raptor** is a tool for answering questions over tables with diverse semi-structured layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
+ST-Raptor 是一款专为多样化半结构化布局表格问答而设计的工具。它仅需输入Excel格式的表格和自然语言问题，即可生成精确答案。
 
-Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
+与许多现有方法不同，ST-Raptor无需额外微调。它结合了视觉语言模型（VLM）与树形构建算法（HO-Tree），并能灵活集成不同的大语言模型（LLM）。ST-Raptor采用双阶段验证机制，确保输出结果的可靠性。
 
-## ❓ What Tables Can ST-Raptor Handle?
+## ❓ ST-Raptor 可以处理哪些表格？
 
 <p align="center">
   <img src="./assets/examples.png" width = "800" alt="" align="center" />
 </p>
 
-**Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
+**诸如个人信息表格、学术表格、财务表格等复杂半结构化表格，支持Excel、HTML、Markdown、csv等格式。**
 
-## 💻 SSTQA Benchmark
+## 💻 SSTQA 基准测试数据集
 
-The **102** tables and **764** questions in SSTQA are carefully curated from over **2031** real-world tables by considering $(i)$ tables featuring semi-structured formats, such as nested cells, multi-row/column headers, irregular layouts and $(ii)$ coverage across **19** representative real scenarios.
+SSTQA数据集中的102张表格和764个问题，是从2031张真实场景表格中经过双重标准精心筛选而成：$(i)$ 选择具有半结构化特征的表格（如包含嵌套单元格、多行列标题、非常规布局等）$(ii)$ 确保覆盖19类代表性现实场景。
 
-We list out 10 representative real scenarios as below:
+SSTQA包含 **102** 张表格以及 **764** 个问题。这些表格从 **2031** 张来自真实场景中的表格筛选并构建，并考虑了 $(i)$ 包含复杂结构的表格，例如嵌套单元格、多级标题、不规则的布局等 $(ii)$ 覆盖了 **19** 个代表性的真实场景。
 
-Human Resources, Corporate Management, Financial Management, Marketing, Warehouse Management, Academic, Schedule Management, Application Forms, Education-related, and Sales Management.
+以下是10类典型的现实场景示例：
 
-You can find the SSTQA benchmark in ```./data``` directory: [SSTQA-en]("./data/SSTQA-en") [SSTQA-ch]("./data/SSTQA-ch")
+人力资源、企业管理、财务管理、市场营销、仓储管理、学术研究、日程管理、申请表、教育相关以及销售管理。
 
-## 📊 Performance
+您可在```./data```目录下获取SSTQA基准数据集：[SSTQA英文版]("./data/SSTQA-en") [SSTQA中文版]("./data/SSTQA-ch")
 
-The following table demonstrates the answering accuracy (%) and ROUGE-L score of different methods over our collected SSTQA benchmark and other two benchmarks.
+## 📊 框架效果
 
-Note that the required question answering is highly dependent on both the semi-structured table complexity and the question complexity.
+下表展示了不同方法在我们收集的SSTQA基准及其他两个基准测试中的回答准确率（%）与ROUGE-L得分对比。
+
+需要说明的是，问答效果高度依赖于半结构化表格的复杂性和问题本身的复杂性。
 
 ## Baselines
 
@@ -98,22 +100,20 @@ Foudation Models: [GPT-4o](https://openai.com/index/gpt-4/) [DeepSeekV3](https:/
   <img src="./assets/TableDifficulty.png" width = "600" alt="" align="center" />
 </p>
 
-## 🕹 Quick Start
+## 🕹 快速开始
 
-#### 1. Clone Repository
+#### 1. Clone 仓库
 
 ```shell
 git clone git@github.com:weAIDB/ST-Raptor.git
 cd ST-Raptor
 ```
 
-##### Please download this repository.
+#### 2. 部署环境 & Benchmark & 模型设置
 
-#### 2. Environment & Benchmark & Model
+**部署环境.**
 
-**Environment.**
-
-1. Use the following command to install the conda environment.
+1. 使用下面的指令来安装 ```conda``` 环境。
 
 ```bash
 # create virtual environment
@@ -123,7 +123,7 @@ conda activate straptor
 pip install -r requirements.txt
 ```
 
-2. Install the HTML rendering plugin ```wkhtmltox ``` and font package.
+2. 安装 HTML 渲染工具```wkhtmltox ```以及字体包。
 
 ```shell
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
@@ -133,9 +133,9 @@ sudo apt-get install -y fonts-noto-cjk fonts-wqy-microhei
 
 **Benchmark**
 
-1. You can find the SSTQA benchmark in ```./data``` directory: [SSTQA-en]("./data/SSTQA-en") [SSTQA-ch]("./data/SSTQA-ch")
-   - You can also find the SSTQA benchmark on hugging face [SSTQA Huggingface](https://huggingface.co/datasets/13515257315Tzr/SSTQA)
-2. Change the settings in ```./main.py```
+1. SSTQA Benchmark存储在了 ```./data``` 文件夹中： [SSTQA-en]("./data/SSTQA-en") [SSTQA-ch]("./data/SSTQA-ch")
+   - 您也可以在 HuggingFace 上访问 SSTQA Benchmark： [SSTQA Huggingface](https://huggingface.co/datasets/13515257315Tzr/SSTQA)
+2. 修改在 ```./main.py``` 中的设定。
 
 ```python
 # You need to change this
@@ -146,7 +146,7 @@ output_jsonl = 'PATH_TO_YOUR_OUTPUT_JSONL'    # The QA results
 log_dir = 'PATH_TO_YOUR_LOG_DIR'              # The directory to store log files
 ```
 
-The Q&A data is stored in a JSONL format file, and the format of each record is as follows.
+QA 数据是以 JSON 的格式保存的，以下是其格式。
 ```json
 {
 	"id": "XXX", 
@@ -156,10 +156,10 @@ The Q&A data is stored in a JSONL format file, and the format of each record is 
 }
 ```
 
-**Model Configuration.**
-The model configuration in our paper includes Deepseek-V3 (LLM API) + InternVL2.5 26B (VLM) + Multilingual-E5-Large-Instruct (Embedding Model). This configuration requires a total of approximately 160GB of GPU memory. You can replace the model according to the hardware situation or change it to use APIs.
+**模型设置.**
+本文的模型配置包括Deepseek-V3（LLM API）+InternVL2.526B（VLM）+Multilingule-E5-Large-Instruct（嵌入式模型）。此配置总共需要大约160GB的GPU内存。您可以根据硬件情况替换模型，也可以将其更改为使用API。
 
-You need to set model configuration in ```./utils/constnts.py```
+您需要更改在 ```./utils/constnts.py``` 中的模型调用设置。
 
 ```python
 """Change this for requesting LLM"""
@@ -184,19 +184,19 @@ EMBEDDING_API_KEY = "YOUR_EMBEDDING_API_KEY"
 EMBEDDING_MODEL_TYPE = "YOUR_EMBEDDING_MODEL_TYPE"
 ```
 
-If you want to use other format of APIs, please revise the code in ```./utils/api_utils.py```
+现在的 API 默认使用 OpenAI 调用格式，如果你需要修改为其他的调用方式，请参考 ```./utils/api_utils.py``` 文件。
 
-Use local deployment VLM and Embedding Model with LLM API as an example.
+使用本地部署的 VLM 以及 Embedding 模型作为一个部署示例。
 
-First to [Download InternVL2.5](https://huggingface.co/OpenGVLab/InternVL2_5-26B) and [Download Multilingual-E5](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
+首先 [下载 InternVL2.5](https://huggingface.co/OpenGVLab/InternVL2_5-26B) 以及 [下载 Multilingual-E5](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
 
-1. Install the vllm package.
+1. 安装 ```vllm``` 包.
 
 ```shell
 pip install vllm
 ```
 
-2. Denote the GPU and deploy the VLM.
+2. 指定 GPU 并部署 VLM。
 
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m vllm.entrypoints.openai.api_server \
@@ -209,7 +209,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m vllm.entrypoints.openai.api_server \
 --tensor-parallel-size 4
 ```
 
-3. Set API configs in ```./utils/constnts.py```
+3. 在 ```./utils/constnts.py``` 文件中设置模型调用方式
 
 ```python
 """Change this for requesting LLM"""
@@ -229,15 +229,15 @@ EMBEDDING_TYPE = "local" # api / local
 EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"  # [Change This]
 ```
 
-#### Question Answering !
+#### 开始 QA !
 
-If you have completed all the above settings, use the following command to start execution.
+如果您已经完成了上述所有设置，则可以运行以下代码执行您的 QA。
 
 ```shell
 python ./main.py
 ```
 
-## 💡 Semi-Structured Table QA Examples
+## 💡 半结构化表格 QA 示例
 
 |                           Question                           | Ground Truth                                                 | TableLLaMA                                                   | TableLLM                                                     | ReAcTable                                                    | TAT-LLM                                                      | TableLLaVA                                                   | mPLUG-DocOwl1.5                                              | DeepseekV3                                                   | GPT-4o                                                       | ST-Raptor                                                    |
 | :----------------------------------------------------------: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -274,13 +274,13 @@ python ./main.py
 | What is the percentage of unemployment insurance fund expenditure out of its fund revenue? | 96.53%                                                       | 0.023256                                                     | 1279                                                         | 95.76%                                                       | 0.96911                                                      | 55.56                                                        | 33%                                                          | 96.53                                                        | 96.53%                                                       | 96.53                                                        |
 | What is the total number of urban unemployed individuals who have found employment again and the number of individuals with employment difficulties who have found employment in employment and reemployment programs? | 668                                                          | 254                                                          | 1279                                                         | 668                                                          | 668                                                          | 10000                                                        | 584                                                          | 668                                                          | 668                                                          | 66                                                           |
 
-*Note: The "" cell in the table indicate that the baseline fails to generate an answer of that question.*
+*注意: 内容为 "" 的单元格代表 Baseline 执行该问答失败。*
 
-The full result please refer to the file: [baseline_output.jsonl](./static/baseline_output.jsonl)
+完整的结果请参考: [baseline_output.jsonl](./static/baseline_output.jsonl)
 
 # 📍 Citation
 
-If you like this project, please cite our paper [link](https://arxiv.org/abs/2508.18190):
+如果您对本项目感兴趣，请引用我们的论文 [link](https://arxiv.org/abs/2508.18190):
 
 ```
 @article{tang2026straptor,
@@ -291,7 +291,7 @@ If you like this project, please cite our paper [link](https://arxiv.org/abs/250
 }
 ```
 
-# 👨‍🏫 Join us !
+# 👨‍🏫 加入我们 !
 
 ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
 
