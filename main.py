@@ -97,6 +97,31 @@ def benchmark(
     ##### 读入所有 Table 文件列表
     table_files = sorted(glob.glob(table_dir + "/*"))
 
+    # 处理不同格式的输入，即都转换为 Excel 格式
+    new_table_files = []
+    for table_file in table_files:
+        last_dot_idx = os.path.basename(table_file).rfind('.')
+        new_table_file = os.path.join(log_dir, os.path.basename(table_file)[:last_dot_idx] + '.xlsx')
+
+        if table_file.endswith(".xlsx"):
+            pass
+        elif table_file.endswith(".csv"):
+            df = pd.read_csv(new_table_file)
+            df.to_excel(new_table_file, index=False, engine='openpyxl')
+        elif table_file.endswith(".html"):
+            html_content = open(table_file).read()
+            html2workbook(html_content).save(new_table_file)
+        elif table_file.endswith(".md"):
+            markdown_content = open(table_file).read()
+            table = extract_markdown_tables(markdown_content)
+            with pd.ExcelWriter(new_table_file, engine='openpyxl') as writer:
+                sheet_name = f'sheet'
+                df = pd.DataFrame(table[1:], columns=table[0])
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
+        
+        new_table_files.append(new_table_file)
+    table_files = new_table_files
+
     ##### 读取已经处理了的 QA Pair
     output_data = []
     qid_set = set()
