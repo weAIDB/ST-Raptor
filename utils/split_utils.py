@@ -33,7 +33,10 @@ def build_rowspan_entire_dict_recur(sheet, merged_cell_list):
 
 
 def rowspan_entire(sheet):
-    """处理横跨整张表的合并行"""
+    """
+    处理横跨整张表的合并行
+    return dict: {"tname1": sheet, "tname2": sheet}
+    """
 
     nrows = sheet.max_row
     ncols = sheet.max_column
@@ -66,16 +69,19 @@ def rowspan_entire(sheet):
             if x2 == nrows:  # 最后一个整行的合并单元格即为表格最后一行
                 res[key] = None
             else:  # 最后一个整行的合并单元格不是表格最后一行
-                res[key] = get_sub_sheet(sheet, x2 + 1, 1, nrows, ncols).active
+                res[key] = get_sub_sheet(sheet, x2 + 1, 1, nrows, ncols)
         else:
             res[key] = get_sub_sheet(
                 sheet, x2 + 1, 1, merged_cell_list[index + 1].min_row - 1, ncols
-            ).active
+            )
     return res
 
 
 def colspan_entire(sheet):
-    """处理纵跨整张表的合并列"""
+    """
+    处理纵跨整张表的合并列
+    return dict: {"tname1": sheet, "tname2": sheet}
+    """
     nrows = sheet.max_row
     ncols = sheet.max_column
 
@@ -104,11 +110,11 @@ def colspan_entire(sheet):
             if y2 == nrows:  # 最后一个整列的合并单元格即为表格最后一列
                 res[key] = None
             else:  # 最后一个整列的合并单元格不是表格最后一列
-                res[key] = get_sub_sheet(sheet, 1, y2 + 1, nrows, ncols).active
+                res[key] = get_sub_sheet(sheet, 1, y2 + 1, nrows, ncols)
         else:
             res[key] = get_sub_sheet(
                 sheet, 1, y2 + 1, nrows, merged_cell_list[index + 1].min_col - 1
-            ).active
+            )
     return res
 
 
@@ -141,12 +147,12 @@ def split_subtable_row(sheet):
     wb_list = []
     for index, start_row in enumerate(split_pos_list):
         if index == len(split_pos_list) - 1:
-            wb_list.append(get_sub_sheet(sheet, start_row, 1, nrows, ncols).active)
+            wb_list.append(get_sub_sheet(sheet, start_row, 1, nrows, ncols))
         else:
             wb_list.append(
                 get_sub_sheet(
                     sheet, start_row, 1, split_pos_list[index + 1] - 1, ncols
-                ).active
+                )
             )
 
     return wb_list
@@ -205,9 +211,9 @@ def split_subtable_each_row(sheet, schema_height):
                     index += 1
                 sheet_dict[f"{DEFAULT_SUBTABLE_NAME}{index}"] = get_sub_sheet(
                     sheet, x1, 1, x2, ncols
-                ).active
+                )
         else:  # 这一行有单数个单元格，说明kv pair list是value，外面还有一个key
-            sheet_dict[key] = get_sub_sheet(sheet, x1, y2 + 1, x2, ncols).active
+            sheet_dict[key] = get_sub_sheet(sheet, x1, y2 + 1, x2, ncols)
 
         row += x2 - x1 + 1
 
@@ -243,12 +249,12 @@ def split_subtable_column(sheet):
     wb_list = []
     for index, start_row in enumerate(split_pos_list):
         if index == len(split_pos_list) - 1:
-            wb_list.append(get_sub_sheet(sheet, start_row, 1, nrows, ncols).active)
+            wb_list.append(get_sub_sheet(sheet, start_row, 1, nrows, ncols))
         else:
             wb_list.append(
                 get_sub_sheet(
                     sheet, start_row, 1, split_pos_list[index + 1] - 1, ncols
-                ).active
+                )
             )
 
     return wb_list
@@ -294,7 +300,7 @@ def extract_schema_row(sheet):
         x1, y1, x2, y2 = get_merge_cell_size(sheet, cell.coordinate)
 
         if not single_cell(sheet, x1, y1, nrows, y2):  # 该列还有嵌套的Schema
-            sub_schema_wb = get_sub_sheet(sheet, x2 + 1, y1, nrows, y2)
+            sub_schema_wb = get_sub_sheet(sheet, x2 + 1, y1, nrows, y2, use_wb=True)
             schema.append(
                 {
                     sheet.cell(row=x1, column=y1).value: extract_schema_row(
@@ -322,7 +328,7 @@ def extract_schema_column(sheet):
         x1, y1, x2, y2 = get_merge_cell_size(sheet, cell.coordinate)
 
         if not single_cell(sheet, x1, y1, x2, ncols):  # 该行还有嵌套的Schema
-            sub_schema_wb = get_sub_sheet(sheet, x1, y2 + 1, x2, ncols)
+            sub_schema_wb = get_sub_sheet(sheet, x1, y2 + 1, x2, ncols, use_wb=True)
             schema.append(
                 {
                     sheet.cell(row=x1, column=y1).value: extract_schema_column(
@@ -457,7 +463,7 @@ def extract_rows(sheet):
                         row_i += 1
                 one_row.append(
                     extract_rows(
-                        get_sub_sheet(sheet, x1, y1, x1 + height - 1, pos - 1).active
+                        get_sub_sheet(sheet, x1, y1, x1 + height - 1, pos - 1)
                     )
                 )
                 col = pos
@@ -509,7 +515,7 @@ def extract_columns(sheet):
                         col_i += 1
                 one_col.append(
                     extract_columns(
-                        get_sub_sheet(sheet, x1, y1, pos - 1, y1 + width - 1).active
+                        get_sub_sheet(sheet, x1, y1, pos - 1, y1 + width - 1)
                     )
                 )
                 row = pos
@@ -532,8 +538,8 @@ def split_schema_row(sheet):
         height = max(height, x2)
 
     return (
-        get_sub_sheet(sheet, 1, 1, height, ncols).active,
-        get_sub_sheet(sheet, height + 1, 1, nrows, ncols).active,
+        get_sub_sheet(sheet, 1, 1, height, ncols),
+        get_sub_sheet(sheet, height + 1, 1, nrows, ncols),
     )
 
 
@@ -548,8 +554,8 @@ def split_schema_column(sheet):
         width = max(width, y2)
 
     return (
-        get_sub_sheet(sheet, 1, 1, nrows, width).active,
-        get_sub_sheet(sheet, 1, width + 1, nrows, ncols).active,
+        get_sub_sheet(sheet, 1, 1, nrows, width),
+        get_sub_sheet(sheet, 1, width + 1, nrows, ncols),
     )
 
 

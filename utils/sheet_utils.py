@@ -3,10 +3,101 @@ from collections import Counter
 
 import openpyxl
 from openpyxl.utils import get_column_letter, range_boundaries
+from bs4 import BeautifulSoup
 
 from utils.api_utils import *
 from utils.constants import *
 from embedding import *
+
+# 将半结构化的sheet转换为结构化的
+def sheet2structure(sheet):
+    nrows = sheet.max_row
+    ncols = sheet.max_column
+    
+    for x in range(1, nrows + 1):
+        for y in range(1, ncols + 1):
+            cell = sheet.cell(row=x, column=y)
+            value = cell.value
+            x1, y1, x2, y2 = get_merge_cell_size(sheet, cell.coordinate)
+            if x1!= x2 or y1!= y2:
+                sheet.unmerge_cells(start_row=x1, start_column=y1, end_row=x2, end_column=y2)
+
+            for xx in range(x1, x2 + 1):
+                for yy in range(y1, y2 + 1):
+                    sheet.cell(row=xx, column=yy, value=value)
+    return sheet
+
+
+# 将Sheet序列化为Markdown格式，必须要求Sheet是结构化的！
+def sheet2markdown(sheet):
+    # 初始化 Markdown 表格
+    markdown_table = ""
+    
+    # 遍历工作表的每一行
+    for index, row in enumerate(sheet.iter_rows(values_only=True)):
+        # 如果是第一行，添加表头分隔线
+        if index == 0:
+            markdown_table += "| " + " | ".join("---" for _ in row) + " |\n"
+        else:
+            # 将每一行的单元格值转换为 Markdown 格式
+            markdown_row = "| " + " | ".join(str(cell) if cell is not None else "" for cell in row) + " |"
+            markdown_table += markdown_row + "\n"
+        
+    return markdown_table
+
+# 将HTMl表格转换为Excel表格
+def html2workbook(html_content):
+    # 使用 BeautifulSoup 解析 HTML
+    soup = BeautifulSoup(html_content, 'html.parser')
+    table = soup.find('table')  # 找到表格
+
+    # 创建一个新的 Excel 文件
+    wb = openpyxl.Workbook()
+    ws = wb.active
+
+    # 首先处理合并单元格的情况
+    for row_idx, row in enumerate(table.find_all('tr')):
+        for col_idx, cell in enumerate(row.find_all(['td', 'th'])):  # 处理 td 和 th 标签
+            # 处理合并单元格
+            colspan = 1
+            rowspan = 1
+            if cell.has_attr('colspan'):  # 列合并
+                colspan = int(cell['colspan'])
+            if cell.has_attr('rowspan'):  # 行合并
+                rowspan = int(cell['rowspan'])
+            ws.merge_cells(start_row=row_idx + 1, start_column=col_idx + 1,
+                            end_row=row_idx + rowspan, end_column=col_idx + colspan)
+    
+    # 逐行填入值，如果不是合并单元格的左上角，则往右填值
+    x = 1
+    for row_idx, row in enumerate(table.find_all('tr')):
+        y = 1
+        for col_idx, cell in enumerate(row.find_all(['td', 'th'])):  # 处理 td 和 th 标签
+            cell_value = cell.get_text(strip=True)
+            # 判断当前 x y 位置是否是合并单元格的左上角
+            x1, y1, x2, y2 = get_merge_cell_size(ws, ws.cell(row=x, column=y).coordinate)
+            while x != x1 and y != y1:
+                y += 1
+                x1, y1, x2, y2 = get_merge_cell_size(ws, ws.cell(row=x, column=y).coordinate)
+
+            # 填入值
+            x1, y1, x2, y2 = get_merge_cell_size(ws, ws.cell(row=x, column=y).coordinate)
+            if x1 != x2 or y1 != y2:
+                ws.unmerge_cells(start_row=x1, start_column=y1, end_row=x2, end_column=y2)
+                ws.cell(row=x, column=y, value=cell_value)
+                ws.merge_cells(start_row=x1, start_column=y1, end_row=x2, end_column=y2)
+            else:
+                ws.cell(row=x, column=y, value=cell_value)
+            # 移动到下一列
+            y += 1
+        x += 1
+            
+    return wb
+
+def get_xlsx_table_string(table_file):
+    sheet = openpyxl.load_workbook(table_file).active
+    s = sheet2html(sheet)
+    return s
 
 def delete_dict_none_none(data : dict):
     """将JSON中None:None的项去除"""
@@ -29,7 +120,7 @@ def delete_dict_none_none(data : dict):
                 new_dict[k] = v
     return new_dict
 
-def sheet_to_html(sheet):
+def sheet2html(sheet):
     """Transform a excel sheet into a html file."""
     # 初始化HTML表格
     html = "<table border='1'>\n"
@@ -73,7 +164,7 @@ def delete_empty_rows(sheet):
     for row in sheet.iter_rows(
         min_row=1, max_row=sheet.max_row, min_col=1, max_col=sheet.max_column
     ):
-        if all(get_merge_cell_value(sheet, cell.coordinate) is None for cell in row):
+        if all(get_merge_cell_value(sheet, cell.coordinate) is None or str(get_merge_cell_value(sheet, cell.coordinate)).strip() == '' for cell in row):
             rows_to_delete.append(row[0].row)
 
     for row in reversed(rows_to_delete):  # 从下往上删除行，避免影响行号
@@ -83,18 +174,23 @@ def delete_empty_rows(sheet):
 def delete_empty_columns(sheet):
     """删除空列"""
     cols_to_delete = []
-    for col in sheet.iter_cols(
-        min_row=1, max_row=sheet.max_row, min_col=1, max_col=sheet.max_column
-    ):
-        if all(get_merge_cell_value(sheet, cell.coordinate) is None for cell in col):
+    for col in sheet.iter_cols(min_row=1, max_row=sheet.max_row, min_col=1, max_col=sheet.max_column):
+        if all(get_merge_cell_value(sheet, cell.coordinate) is None or str(get_merge_cell_value(sheet, cell.coordinate)).strip() == '' for cell in col):
             cols_to_delete.append(col[0].column)
 
     for col in reversed(cols_to_delete):  # 从右往左删除列，避免影响列号
         sheet.delete_cols(col)
 
 
-def get_sub_sheet(sheet, min_row, min_col, max_row, max_col):
+def get_sub_sheet(sheet, min_row, min_col, max_row, max_col, use_wb=False):
     """获取工作表的一个子部分，返回一个新的工作簿"""
+    # 不符合坐标规定，返回
+    if min_row > max_row or min_col > max_col:
+        return None
+    # 只有一个单元格且单元格为空，返回
+    if min_row == max_row and min_col == max_col and (sheet.cell(row=min_row, column=min_col) is None or str(sheet.cell(row=min_row, column=min_col)).strip() == ""):
+        return None
+    
     # 定义要提取的子区域的范围（例如，A1到D10）
     # 创建一个新的工作表
     wb = openpyxl.Workbook()
@@ -131,7 +227,8 @@ def get_sub_sheet(sheet, min_row, min_col, max_row, max_col):
                 )
             )
 
-    return wb
+    if use_wb: return wb
+    return wb.active
 
 
 def get_sheet_value_list(sheet):
@@ -661,7 +758,7 @@ def schema_pos_match(sheet, schema_list, ngram=3, enable_embedding=False):
         value_list = [x for x in value_list if x is not None and x != ""]
 
         schema_list = [str(x).strip() for x in schema_list]
-        schema = EmbeddingModelMultilingualE5().top1_match(schema_list, value_list)
+        schema = EmbeddingModel().top1_match(schema_list, value_list)
 
         for row in range(1, nrows + 1):
             col = 1
@@ -742,7 +839,6 @@ def get_schema_direction_by_pos(sheet, pos_list):
         return SCHEMA_TOP
 
     return SCHEMA_LEFT  # 默认按照Schema Left来处理
-
 
 def granularity_decrease_row(sheet):
     """判断sheet的每一行合并单元格粒度是不是递减的"""
