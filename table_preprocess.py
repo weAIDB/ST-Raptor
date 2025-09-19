@@ -104,10 +104,10 @@ def excel2tree(
         with open(os.path.join(str_dir, f"{name}.txt"), "w") as f:
             f.write(tree_str)
     if convert_embedding:
-        embedding_dict = EmbeddingModelMultilingualE5().get_embedding_dict(
+        embedding_dict = EmbeddingModel().get_embedding_dict(
             f_tree.all_value_list()
         )
-        EmbeddingModelMultilingualE5().save_embedding_dict(
+        EmbeddingModel().save_embedding_dict(
             embedding_dict, os.path.join(embedding_dir, f"{name}.embedding.json")
         )
     return f_tree
@@ -174,10 +174,10 @@ def preprocess_one_pkl(
         with open(os.path.join(json_dir, f"{name}.json"), "w") as f:
             json.dump(tree_json, f, indent=4, ensure_ascii=False)
     if convert_embedding:
-        embedding_dict = EmbeddingModelMultilingualE5().get_embedding_dict(
+        embedding_dict = EmbeddingModel().get_embedding_dict(
             f_tree.all_value_list()
         )
-        EmbeddingModelMultilingualE5().save_embedding_dict(
+        EmbeddingModel().save_embedding_dict(
             embedding_dict, os.path.join(embedding_dir, f"{name}.embedding.json")
         )
     return f_tree

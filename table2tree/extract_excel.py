@@ -2,11 +2,8 @@ import re
 import os
 import glob
 import json
+import time
 import openpyxl
-# import openpyxl.workbook
-# import openpyxl.workbook.properties
-# import openpyxl.worksheet
-# import openpyxl.worksheet.worksheet
 import requests
 
 import pandas as pd
@@ -21,27 +18,21 @@ from utils.attr_extraction import *
 from utils.constants import *
 
 
-def logAuto(info, flag=True):
-    if flag:
-        logger.info(info)
-
-
-def match_min_table_structure(sheet):
-    """匹配最小结构，即一个或两个单元格的时候"""
+def match_minimal_table_structure(sheet):
+    """
+    匹配最小结构，即一个或两个单元格的时候
+    
+    返回 dict: {"content1": "content2"}
+    """
     nrows = sheet.max_row
     ncols = sheet.max_column
-
-    # if nrows < 1 or ncols < 1 or nrows > 2 or ncols > 2 or (nrows == 2 and ncols == 2):
-    # return None
-    # if nrows == 1 and ncols == 1:
-    # return {sheet.cell(row=1, column=1).value : None}
 
     first_cell = sheet.cell(row=1, column=1)
     _, _, x2, y2 = get_merge_cell_size(sheet, first_cell.coordinate)
 
-    if x2 == nrows and y2 == ncols:
+    if x2 == nrows and y2 == ncols: # 一个整体的单元格
         return {get_merge_cell_value(sheet, first_cell.coordinate): None}
-    if x2 == nrows:
+    if x2 == nrows: # 横着两个单元格
         second_cell = sheet.cell(row=1, column=y2 + 1)
         _, _, xx2, yy2 = get_merge_cell_size(sheet, second_cell.coordinate)
         if yy2 == ncols:
@@ -50,7 +41,7 @@ def match_min_table_structure(sheet):
                     sheet, first_cell.coordinate
                 ): get_merge_cell_value(sheet, second_cell.coordinate)
             }
-    if y2 == ncols:
+    if y2 == ncols: # 竖着两个单元格
         second_cell = sheet.cell(row=x2 + 1, column=1)
         _, _, xx2, yy2 = get_merge_cell_size(sheet, second_cell.coordinate)
         if xx2 == nrows:
@@ -201,10 +192,8 @@ def get_ncol_cells(sheet):
     return n
 
 def preprocess_cell(value):
-
     value = str(value)
     # value = re.sub(r"\s+", "", value)  # 去除所有空白字符
-
     return value
 
 
@@ -222,23 +211,29 @@ def get_xlsx_sheet(file):
     return sheet
 
 
-def process_xlsx_vlm(file, get_json=False, log=False, cache=False):
-    logAuto(f"process_xlsx_vlm() Start to Process File: {file}", log)
+def get_structured_xlsx_sheet(file):
     wb = openpyxl.load_workbook(file, data_only=True)
-    sheet = preprocess_sheet(wb.active)
-    res = process_sheet_vlm(sheet, get_json=get_json, log=log, cache=cache)
-    logAuto(f"process_xlsx_vlm() Process File Successfully: {file} ", log)
-    return res
+
+    sheet = wb.active
+
+    sheet = sheet2structure(sheet)
+
+    sheet = preprocess_sheet(sheet)
+    
+    return sheet
+
 
 ################################# Main #################################
 def process_sheet_vlm(sheet,            # 待处理的Excel工作簿格式的表格
                       get_json=False,   # 获得VLM + Rule识别后的中间结果JSON
-                      log=False,        # 在控制台输出日志
-                      log_file=None,    # 日志输出文件
                       cache=False       # 保存中间结果文件
                       ):
     
-    # Step 1 preprocess
+    ##### Step 0: 确认 sheet 非空
+    if sheet is None:
+        logger.info(f'Sheet 为空, process_sheet_vlm() 直接返回')
+
+    ##### Step 1: 删除空行，空列 Tested
     delete_empty_columns(sheet)
     delete_empty_rows(sheet)
 
@@ -248,55 +243,45 @@ def process_sheet_vlm(sheet,            # 待处理的Excel工作簿格式的表
     nrow_cells = get_nrow_cells(sheet)
     ncol_cells = get_ncol_cells(sheet)
 
-    if log_file is not None:    # Log
-        with open(log_file, 'w') as file:
-            file.write(f'{DELIMITER} 进入 process_sheet_vlm() 函数 {DELIMITER}\n')
-            file.write(f'表格行数: {nrows} 表格列数: {ncols}\n表格每行最多出现的Cell数: {nrow_cells} 表格每列最多出现的Cell数: {ncol_cells}\n')
-    logAuto(f"当前表格 nrows: {nrows} ncols: {ncols}", log)
+    logger.info(f'{DELIMITER} 进入 process_sheet_vlm() 函数 {DELIMITER}')
+    logger.info(f'表格行数: {nrows} 表格列数: {ncols}\n表格每行最多出现的Cell数: {nrow_cells} 表格每列最多出现的Cell数: {ncol_cells}')
 
-    # 递归返回条件 1: 匹配到最小结构单元
-    res = match_min_table_structure(sheet)
+    ##### 递归返回条件 1: 匹配到最小结构单元
+    res = match_minimal_table_structure(sheet)
+    logger.info(f"{DELIMITER} 递归返回条件1: 匹配到最小结构单元 {DELIMITER}")
     if res is not None:
-        logAuto(f"匹配到最小结构单元: {res}", log)
-        if log_file is not None:    # Log
-            with open(log_file, 'w') as file:
-                file.write(f'{DELIMITER} 递归返回条件: 匹配到最小结构单元 {DELIMITER}\n')
-                file.write(f'最小结构单元: {res}\n')
+        logger.info(f"匹配到最小结构单元: {res}")
         return res
+    else:
+        logger.info(f"未匹配到最小结构单元")
 
-    # 递归返回条件 2: 表为小表
+    ##### 递归返回条件 2: 表为小表
+    logger.info(f"{DELIMITER} 递归返回条件2: 表为小表 {DELIMITER}")
     if (nrow_cells < SMALL_TABLE_ROWS and ncol_cells < BIG_TABLE_COLUMNS) or (
         nrow_cells < BIG_TABLE_ROWS and ncol_cells < SMALL_TABLE_COLUMNS
     ):
-        logAuto(f"表为小表，为避免幻觉直接解析", log)
-        res = vlm_get_json(sheet)
-        if log_file is not None:    # Log
-            with open(log_file, 'w') as file:
-                file.write(f'{DELIMITER} 递归返回条件: 表为小表 {DELIMITER}\n')
-                file.write(f'VLM直接解析结果: {res}\n')
+        res = vlm_get_json(sheet, enable_crop=False)
+        logger.info(f"VLM 小表直接解析结果: {res}")
         return res
+    else:
+        logger.info(f"该表不是小表")
 
-    # Step 2 split merged entire
+    ##### Step 2: 拆分整行 / 整列的合并单元格
+    logger.info(f"{DELIMITER} 拆分整行 / 整列的合并单元格 {DELIMITER}")
     sheet_dict = rowspan_entire(sheet)  # 获得深度可能不为1的sheet_dict
     if len(sheet_dict) == 1 and list(sheet_dict.keys())[0] == DEFAULT_TABLE_NAME:
         sheet_dict = colspan_entire(sheet)
-    logAuto(f"跨表拆解出 {len(sheet_dict)} 个子表", log)
-    logAuto(sheet_dict, log)
-    if log_file is not None:    # Log
-        with open(log_file, 'w') as file:
-            file.write(f'{DELIMITER} 整行/整列合并单元格拆分结果, key为table意思是不存在整行/整列合并 {DELIMITER}\n')
-            file.write(f'{sheet_dict}\n')
+    logger.info(f"拆分出 {len(sheet_dict)} 个子表")
+    logger.info(f"拆分结果列表: {sheet_dict}")
 
-    # Step 3 iterate each element
+    ##### Step 3: 遍历每一个子表进行处理
     for key, sheet in sheet_dict.items():
-
-        if sheet is None:
-            continue
+        if sheet is None: continue
 
         delete_empty_columns(sheet)
         delete_empty_rows(sheet)
 
-        # Step 4 judge the direction of the schema
+        ##### Step 4: 提取并判断 Schema 的方向
 
         # 根据表格合并单元格的粒度变化来判断Schema方向
         # if granularity_decrease_col(sheet):
@@ -308,55 +293,68 @@ def process_sheet_vlm(sheet,            # 待处理的Excel工作簿格式的表
         # else:
         #     granularity_directon_row = SCHEMA_FAIL
 
-        # 其次使用VLM辅助判断
-        schema_vague = vlm_get_schema(sheet, save=cache)
-        pos_list, schema_list, pos2schema = schema_pos_match(
+        ##### 使用 VLM 识别 Schema
+        logger.info(f"{DELIMITER} 使用 VLM 识别表格 Schema {DELIMITER}")
+        schema_vague = vlm_get_schema(sheet)
+        pos_list, schema_list, _ = schema_pos_match(
             sheet, schema_vague, enable_embedding=True
         )  # 将 vlm 的输出与表格内容对应，并获取 schema 的位置
-        direction = get_schema_direction_by_pos(sheet, pos_list)
-        direction = SCHEMA_TOP
-        # direction = SCHEMA_TOP
+        direction = get_schema_direction_by_pos(sheet, pos_list)  # Rule 2
+        # direction = get_schema_direction_by_vlm(sheet)
         schema_height = get_schema_height(sheet, direction)
         d = "上部" if direction == SCHEMA_TOP else "左侧"
-        logAuto(f"{key} 的 Schema 方向为 {d}", log)
-        logAuto(f"{key} 的 Schema 高度为 {schema_height}", log)
-        logAuto(f"{key} 的 Schema 为: {schema_list}", log)
 
-        # Step 5 根据 schema 方向拆分表格, Schema在左边, 上下拆分为并列的多个子部分; Schema在上面, 左右拆分为并列的多个子部分
+        logger.info(f"子表格 {key} Schema 的方向为 {d}")
+        logger.info(f"子表格 {key} Schema 的高度为 {schema_height}")
+        logger.info(f"子表格 {key} Schema 为 {schema_list}")
+
+        ##### Step 5: 根据 schema 方向拆分表格, Schema在左边, 上下拆分为并列的多个子部分; Schema在上面, 左右拆分为并列的多个子部分
+        logger.info(f"{DELIMITER} 根据 Schema 方向拆解并列表格 {DELIMITER}")
         parallel_sheet = None
+
         if direction == SCHEMA_TOP:
             parallel_sheet = split_subtable_row(sheet)
-            logAuto(
-                f"{key} 子表根据粒度变化拆解为了 {len(parallel_sheet)} 个子部分", log
-            )
+            new_parallel_sheet = []
+            for x in parallel_sheet:
+                if x is not None:
+                    new_parallel_sheet.append(x)
+            parallel_sheet = new_parallel_sheet
+            logger.info(f"子表 {key} 根据粒度变化拆解为了 {len(parallel_sheet)} 个子部分")
+
         elif direction == SCHEMA_LEFT:
             # 根据粒度变化判断是一个结构化表格，还是一个半结构化子表
             schema, data_sheet = split_schema_column(sheet)
             if (
-                granularity_decrease_row(data_sheet)
-                and data_sheet.max_column / data_sheet.max_row > 2
-            ):  # 粒度递减并且是宽表
+                data_sheet is not None and granularity_decrease_row(data_sheet) and data_sheet.max_column / data_sheet.max_row > 2
+            ):  # 行粒度递减并且是宽表
                 parallel_sheet = []
                 sheet = transpose_sheet(sheet)
             else:
                 parallel_sheet = split_subtable_each_row(sheet, schema_height)
-                logAuto(
-                    f"{key} 子表根据行数拆解为了 {len(parallel_sheet)} 个子部分", log
-                )
+                logger.info(f"子表 {key} 根据行数拆解为了 {len(parallel_sheet)} 个子部分")
+        
         else:
-            res = vlm_get_json(sheet, save=cache)
+            res = vlm_get_json(sheet, save=cache, enable_crop=False)
             sheet_dict[key] = res
-            logAuto(f"{key} 子表未识别Schema方向, 使用 VLM 直接解析, 结果为 {res}", log)
+            
+            logger.info(f"子表 {key} 识别 Schema 方向失败, 使用 VLM 直接解析为 JSON")
+            logger.info(f"{res}")
             continue
 
         # Step 6 如果sheet被分为了多个并列的sheet，则分别递归处理，否则直接处理
-        if len(parallel_sheet) > 1:
+        logger.info(f"{DELIMITER} 递归处理平行表格 {DELIMITER}")
+        if len(parallel_sheet) > 1: # 分别递归处理，否则直接处理
+            logger.info(f"递归处理多张平行表格")
             if isinstance(parallel_sheet, list):
                 json_dict = {}
-                subtable_cnt = 1
+                subtable_cnt = 1                
                 for index, subsheet in enumerate(parallel_sheet):
-                    res = process_sheet_vlm(subsheet, get_json, log)
-                    logAuto(f"subsheet {index} done", log)
+                    if subsheet is None:
+                        logger.info(f"平行表格 {subtable_cnt} 默认表名 {DEFAULT_SUBTABLE_NAME}{subtable_cnt} 为None")
+                        continue
+                    logger.info(f"开始递归处理平行表格 {subtable_cnt} 默认表名 {DEFAULT_SUBTABLE_NAME}{subtable_cnt}")
+                    
+                    res = process_sheet_vlm(subsheet, get_json)
                     if DEFAULT_TABLE_NAME in res:
                         res = res[DEFAULT_TABLE_NAME]
                         if isinstance(res, dict):
@@ -366,42 +364,49 @@ def process_sheet_vlm(sheet,            # 待处理的Excel工作簿格式的表
                             subtable_cnt += 1
                     else:
                         json_dict.update(res)
+                    logger.info(f"完成递归处理平行表格 {subtable_cnt} 默认表名 {DEFAULT_SUBTABLE_NAME}{subtable_cnt}")
+                    
                 sheet_dict[key] = json_dict
             elif isinstance(parallel_sheet, dict):
                 json_dict = {}
                 for name, sheet in parallel_sheet.items():
+                    logger.info(f"开始递归处理平行表格 指定表名 {name}")
                     if isinstance(sheet, (str, int, float)) or sheet is None:
+                        logger.info(f"isinstance(sheet, (str, int, float)) or sheet is None")
                         json_dict[name] = sheet
                     else:
-                        res = process_sheet_vlm(sheet, get_json, log)  # a dict
+                        res = process_sheet_vlm(sheet, get_json)  # a dict
                         if len(res) == 1 and DEFAULT_TABLE_NAME in res:
                             res = res[DEFAULT_TABLE_NAME]
                         if DEFAULT_SUBTABLE_NAME in name and isinstance(res, dict):
                             json_dict.update(res)
                         else:
                             json_dict[name] = res
-                    logAuto(f"subsheet {name} done", log)
+                    logger.info(f"完成递归处理平行表格 指定表名 {name}")
                 sheet_dict[key] = json_dict
-            continue
 
-        # Step 7 直接处理
-        # Treat as List
-        if get_json:
-            try:
-                schema_sheet, data_sheet = split_schema_row(sheet)
-                res = match_list_column(schema_sheet, data_sheet)
-            except Exception as e:
-                import traceback
-                traceback.print_exc()
-                logAuto(f"Process List Exception {e}", log)
-                res = vlm_get_json(sheet, save=cache)
-            sheet_dict[key] = res
-
-        # Step 7.1 尝试根据匹配到的Schema，再进行拆分为多个并列的表格
-        # if direction == SCHEMA_TOP:
-        #     try_sheet_list = split_subtable_by_schema(sheet, pos_list)
-        #     pass
-        # elif direction == SCHEMA_LEFT:
-        #     pass
+        else:   # 直接处理
+            logger.info(f"只有一张平行表格，直接进行处理")
+            
+            if get_json:
+                try:
+                    schema_sheet, data_sheet = split_schema_row(sheet)
+                    res = match_list_column(schema_sheet, data_sheet)
+                except Exception as e:
+                    import traceback; traceback.print_exc()
+                    res = vlm_get_json(sheet, save=cache, enable_crop=False)
+                sheet_dict[key] = res
 
     return sheet_dict
+
+
+def process_table_vlm(file,              # 输入的表格文件路径
+                     get_json=False,    # 是否获取 JSON
+                     cache=False        # 是否保存中间结果
+                     ):
+
+    wb = openpyxl.load_workbook(file, data_only=True)
+    sheet = preprocess_sheet(wb.active)
+    res = process_sheet_vlm(sheet, get_json=get_json, cache=cache)
+
+    return res

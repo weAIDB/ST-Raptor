@@ -56,8 +56,17 @@ VLM_API_URL = "YOUR_VLM_API_URL"
 VLM_API_KEY = "YOUR_VLM_API_KEY"
 VLM_MODEL_TYPE = "YOUR_VLM_MODEL_TYPE"
 
-"""Set the Embedding model information"""
+"""Change this for requesting Embedding Model"""
+EMBEDDING_TYPE = "api" # api / local
+
+## If EMBEDDING_TYPE is local
 EMBEDDING_MODE_PATH = "/data/zirui/model/multilingual-e5-large"
+
+## If EMBEDDING_TYPE is api
+EMBEDDING_API_URL = "YOUR_EMBEDDING_API_URL"
+EMBEDDING_API_KEY = "YOUR_EMBEDDING_API_KEY"
+EMBEDDING_MODEL_TYPE = "YOUR_EMBEDDING_MODEL_TYPE"
+
 #################### Change The Model Information ####################
 
 FONT_PATH = "file://" + os.path.join(BASE_DIR, "static/simfang.ttf")
