@@ -5,6 +5,21 @@
 </p>
 
 
+## Updates
+
+- [ ] Main functions
+  - [x] Support both local deployment or API calls for LLM, VLM, and Embedding models.
+  - [ ] Support diverse input formats: HTML, CSV, MARKDOWN, ...
+  - [ ] Support Image input.
+
+- Benchmark
+  - [x] Update both english and chinese version of SSTQA Benchmark.
+  - [ ] The SSTQAv2 is on the way!!!
+
+- [ ] Visualization
+  - [x] Support visualization platform based on Gradio.
+  - [ ] Support hyper-parameter settings through Gradio. 
+  - [ ] Support the visualization of HO-Tree structure and manually revise.
 
 ## ✨ Project Introduction
 
