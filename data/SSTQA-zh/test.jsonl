@@ -1,0 +1,764 @@
+{"id": 1, "table_id": 1, "type": "Content Match", "difficulty": "Simple", "query": "“三支一扶”高校毕业生社会保险缺口资金及生活补贴的拟投入资金是多少？", "label": "587.81万元"}
+{"id": 2, "table_id": 1, "type": "Content Match", "difficulty": "Simple", "query": "促进就业专项资金的拟投入资金是多少？", "label": "1140万元"}
+{"id": 3, "table_id": 1, "type": "Content Match", "difficulty": "Medium", "query": "2024年市级部门整体预算绩效目标表中，城镇新增就业人数的指标值是多少？", "label": "50000人"}
+{"id": 4, "table_id": 1, "type": "Content Match", "difficulty": "Medium", "query": "2024年市级部门整体预算绩效目标表中，服务对象满意度指标中，就业服务满意度的指标值是多少？", "label": "≧90%"}
+{"id": 5, "table_id": 1, "type": "Content Match", "difficulty": "Hard", "query": "绩效指标中有多少一级指标？", "label": "3"}
+{"id": 6, "table_id": 1, "type": "Content Match", "difficulty": "Hard", "query": "绩效指标的产出指标中有多少二级指标？", "label": "4"}
+{"id": 7, "table_id": 1, "type": "Content Match", "difficulty": "Hard", "query": "绩效指标的效益指标中有多少二级指标？", "label": "4"}
+{"id": 8, "table_id": 1, "type": "Content Match", "difficulty": "Hard", "query": "效益指标中的数量指标有多少三级指标？", "label": "4"}
+{"id": 9, "table_id": 1, "type": "Content Match", "difficulty": "Hard", "query": "经济效益指标的三级指标是什么？", "label": "解决就业困难人员就业人数（人），失业人员再就业人数（人）"}
+{"id": 10, "table_id": 1, "type": "Content Match", "difficulty": "Medium", "query": "基层服务覆盖范围的指标值是什么？", "label": "湛江市基层"}
+{"id": 11, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Simple", "query": "基本绩效考核指标中什么项目标准分最高？", "label": "工作态度"}
+{"id": 12, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Simple", "query": "不遵守纪律每次扣分多少？", "label": "0.5"}
+{"id": 13, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Simple", "query": "有哪些项目可以有加分的情况存在？", "label": "安全生产，质量控制，工程进度"}
+{"id": 14, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Medium", "query": "关键绩效考核指标中，工程进度有多少条考核内容？", "label": "5"}
+{"id": 15, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Medium", "query": "关键绩效考核指标中，技术管理有多少条考核内容？", "label": "9"}
+{"id": 16, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Medium", "query": "关键绩效考核指标中，质量控制有多少条考核内容？", "label": "5"}
+{"id": 17, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Medium", "query": "标准分为2的考核项目有多少条？", "label": "3"}
+{"id": 18, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Medium", "query": "标准分为5的考核项目有多少条？", "label": "3"}
+{"id": 19, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Medium", "query": "基本绩效考核指标中有多少条考核项目？", "label": "5"}
+{"id": 20, "table_id": 2, "type": "Semantic-Aware", "difficulty": "Medium", "query": "关键绩效考核指标中有多少考核项目？", "label": "6"}
+{"id": 21, "table_id": 3, "type": "Content Match", "difficulty": "Simple", "query": "电脑的资产原值是多少？", "label": "196690"}
+{"id": 22, "table_id": 3, "type": "Numeric Computation", "difficulty": "Hard", "query": "电脑的总折旧额是多少？", "label": "186855.5"}
+{"id": 23, "table_id": 3, "type": "Content Match", "difficulty": "Simple", "query": "电脑的启用日期是什么时候？", "label": "2006-05-0200:00:00"}
+{"id": 24, "table_id": 4, "type": "Content Match", "difficulty": "Simple", "query": "本次招标区域是否已完成消防报建手续？", "label": "已报建、提供"}
+{"id": 25, "table_id": 4, "type": "Content Match", "difficulty": "Hard", "query": "工程现场涉及的的责任部门有几个？", "label": "1"}
+{"id": 26, "table_id": 4, "type": "Content Match", "difficulty": "Simple", "query": "招标文件涉及的的责任部门有几个？", "label": "3"}
+{"id": 27, "table_id": 4, "type": "Content Match", "difficulty": "Hard", "query": "工程范围涉及的的责任部门有几个？", "label": "2"}
+{"id": 28, "table_id": 4, "type": "Content Match", "difficulty": "Medium", "query": "招标文件中一共有多少条目？", "label": "8"}
+{"id": 29, "table_id": 4, "type": "Content Match", "difficulty": "Medium", "query": "图纸技术中一共有多少条目？", "label": "15"}
+{"id": 30, "table_id": 4, "type": "Content Match", "difficulty": "Medium", "query": "工程现场中一共有多少条目？", "label": "9"}
+{"id": 31, "table_id": 4, "type": "Content Match", "difficulty": "Medium", "query": "工程范围中一共有多少条目？", "label": "20"}
+{"id": 32, "table_id": 4, "type": "Content Match", "difficulty": "Medium", "query": "本项目级别是什么？", "label": "普通住宅项目"}
+{"id": 33, "table_id": 4, "type": "Content Match", "difficulty": "Medium", "query": "消防设施设备的预留洞、套管内的封堵由谁负责？", "label": "中标单位"}
+{"id": 34, "table_id": 4, "type": "Content Match", "difficulty": "Hard", "query": "本次招标的施工范围包括哪些部分？", "label": "一期和二期复建房的待建部分"}
+{"id": 35, "table_id": 4, "type": "Semantic-Aware", "difficulty": "Hard", "query": "消防设备监控系统、电气火灾监控系统、防火卷帘系统是否在本次招标范围？", "label": "这三个系统主干部分已完成施工，需要延申至待建地下室的由中标单位负责施工。"}
+{"id": 36, "table_id": 4, "type": "Content Match", "difficulty": "Hard", "query": "消防验收分几次验收？", "label": "一次验收"}
+{"id": 37, "table_id": 4, "type": "Content Match", "difficulty": "Hard", "query": "消防套管、消防线槽内的防火封堵由谁负责？", "label": "中标单位"}
+{"id": 38, "table_id": 4, "type": "Content Match", "difficulty": "Hard", "query": "本次招标是否需缴纳总包配合费费用及施工水电费？", "label": "不需要缴纳配合费用，但需要缴纳施工水电费"}
+{"id": 39, "table_id": 5, "type": "Content Match", "difficulty": "Simple", "query": "王琳琳报销了多少次差旅费？", "label": "5"}
+{"id": 40, "table_id": 5, "type": "Content Match", "difficulty": "Simple", "query": "王琳琳的报销记录中，费用金额最高的是哪一次？", "label": "广州展会参展差旅费"}
+{"id": 41, "table_id": 5, "type": "Semantic-Aware", "difficulty": "Medium", "query": "总结一下田小红的报销活动。", "label": "田小红在2020年11月报销了四次办公用品，费用总额为1987元，其中三次已报销，一次未报销。"}
+{"id": 42, "table_id": 5, "type": "Content Match", "difficulty": "Simple", "query": "哪个部门的报销记录最多？", "label": "人事部, 销售部"}
+{"id": 43, "table_id": 5, "type": "Content Match", "difficulty": "Simple", "query": "所有报销记录中，费用金额最低的是多少？", "label": "124"}
+{"id": 44, "table_id": 6, "type": "Numeric Computation", "difficulty": "Medium", "query": "6月份A产品的利润相比5月份减少了多少？", "label": "61974"}
+{"id": 45, "table_id": 6, "type": "Semantic-Aware", "difficulty": "Medium", "query": "A产品的营销额在二季度中哪个月份最低？", "label": "6月"}
+{"id": 46, "table_id": 7, "type": "Numeric Computation", "difficulty": "Medium", "query": "前三个月的主营业务利润总和是多少？", "label": "4262"}
+{"id": 47, "table_id": 7, "type": "Numeric Computation", "difficulty": "Medium", "query": "所有月份的财务费用总和是多少？", "label": "1412"}
+{"id": 48, "table_id": 8, "type": "Content Match", "difficulty": "Simple", "query": "确定成本计算对象的具体内容有哪些？", "label": "某产品半成品/批次订单产品、某条生产线及其产品、某某机组/某某分厂及其产品、某车间及产品、某产品的生产步骤。"}
+{"id": 49, "table_id": 8, "type": "Content Match", "difficulty": "Simple", "query": "成本计算方法有哪些？", "label": "品种法、分批法、分步法、分类法、定额法。"}
+{"id": 50, "table_id": 8, "type": "Content Match", "difficulty": "Medium", "query": "财物计量计价确认包括哪些内容？", "label": "财产成本组成内容合法准确性、固定资产折旧政策、低值易耗品摊销政策、材料计价方法一贯性、财物计量单位一致性。"}
+{"id": 51, "table_id": 8, "type": "Content Match", "difficulty": "Hard", "query": "如何分配材料费用？", "label": "采购进料成本确定、发出材料成本计价方法、产品材料消耗定额制定、材料费用分配原则及分配方法、材料费用分配表。"}
+{"id": 52, "table_id": 8, "type": "Content Match", "difficulty": "Hard", "query": "人工费用核算流程包括哪些步骤？", "label": "建立完善制造人工工资核算的基础工作，分批别、分产品、分工序的作业工时统计，制造部各部门工资费用归集和分配。"}
+{"id": 53, "table_id": 8, "type": "Semantic-Aware", "difficulty": "Simple", "query": "总体项目一共有多少条？", "label": "7"}
+{"id": 54, "table_id": 8, "type": "Semantic-Aware", "difficulty": "Simple", "query": "具体项目一共有多少条？", "label": "10"}
+{"id": 55, "table_id": 9, "type": "Content Match", "difficulty": "Simple", "query": "豆奶在6月份的销售量是多少？", "label": "5000"}
+{"id": 56, "table_id": 9, "type": "Content Match", "difficulty": "Simple", "query": "哪个月份营养麦片的销售量最高？", "label": "6月份"}
+{"id": 57, "table_id": 9, "type": "Numeric Computation", "difficulty": "Medium", "query": "薯条在整个上半年的销售量是多少？", "label": "6590"}
+{"id": 58, "table_id": 9, "type": "Numeric Computation", "difficulty": "Simple", "query": "葡萄糖在2月份的销售量比1月份增加了多少？", "label": "350"}
+{"id": 59, "table_id": 9, "type": "Numeric Computation", "difficulty": "Hard", "query": "豆奶在5月份的销售量是XX土豆片在5月份销售量的多少倍？", "label": "1.32"}
+{"id": 60, "table_id": 9, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪两种产品在6月份的销售量超过了3800？", "label": "土豆片, 豆奶"}
+{"id": 61, "table_id": 9, "type": "Numeric Computation", "difficulty": "Simple", "query": "土豆片在6月份的销售量比XX豆奶在6月份的销售量少多少？", "label": "1100"}
+{"id": 62, "table_id": 9, "type": "Content Match", "difficulty": "Simple", "query": "葡萄糖在3月份的销售量是多少？", "label": "1150"}
+{"id": 63, "table_id": 9, "type": "Content Match", "difficulty": "Hard", "query": "公司各类产品中，平均销售额在3000以上的产品是哪些？", "label": "营养麦片，土豆片。"}
+{"id": 64, "table_id": 9, "type": "Content Match", "difficulty": "Hard", "query": "公司一共有几种产品？", "label": "5"}
+{"id": 65, "table_id": 9, "type": "Content Match", "difficulty": "Hard", "query": "一共统计了几个月的销售情况？", "label": "6"}
+{"id": 66, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更模板的说明是什么？", "label": "选择变更模型"}
+{"id": 67, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更阶段代码表中变更实施阶段的描述是什么？", "label": "变更实施"}
+{"id": 68, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更理由表中涉及信息安全需要的描述是什么？", "label": "信息安全相关管理需要"}
+{"id": 69, "table_id": 10, "type": "Numeric Computation", "difficulty": "Medium", "query": "信息项对照表中有多少个信息项涉及风险评估定义？", "label": "6"}
+{"id": 70, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更状态代码表中“已申报”状态的描述是什么？", "label": "变更协调变更顾问委员会进行可行性评审。"}
+{"id": 71, "table_id": 10, "type": "Semantic-Aware", "difficulty": "Medium", "query": "变更理由表中有多少个条目一般不与项目相关", "label": "2"}
+{"id": 72, "table_id": 10, "type": "Semantic-Aware", "difficulty": "Medium", "query": "信息项对照表中有多少条目涉及共享事件和服务请求管理分级定义？", "label": "3"}
+{"id": 73, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更阶段代码表中变更关闭阶段的描述是什么？", "label": "变更关闭并归档"}
+{"id": 74, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更理由表中第三方升级更新需要的描述是什么？", "label": "供应商优化、升级、补丁都会发起变更"}
+{"id": 75, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更阶段代码表有几个阶段？", "label": "6"}
+{"id": 76, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更状态代码表有几个状态？", "label": "3"}
+{"id": 77, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "信息项对照表中有几个条目？", "label": "30"}
+{"id": 78, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更理由表中有几个条目？", "label": "10"}
+{"id": 79, "table_id": 10, "type": "Content Match", "difficulty": "Simple", "query": "变更理由表中一般不与项目相关的理由有什么？", "label": "业务连续性管理需要，已申报，业务部门日常运营需要"}
+{"id": 80, "table_id": 11, "type": "Content Match", "difficulty": "Simple", "query": "城镇新增就业人数是多少？", "label": "1279万人"}
+{"id": 81, "table_id": 11, "type": "Numeric Computation", "difficulty": "Medium", "query": "失业保险和工伤保险的期末参保人数总和是多少？", "label": "45830.3268万人"}
+{"id": 82, "table_id": 11, "type": "Numeric Computation", "difficulty": "Simple", "query": "城镇职工基本养老保险和城乡居民基本养老保险的基金收入总和是多少？", "label": "49421.36620321亿元"}
+{"id": 83, "table_id": 11, "type": "Numeric Computation", "difficulty": "Simple", "query": "就业和再就业项目中，城镇失业人员再就业人数和就业困难人员就业人数的总和是多少？", "label": "668万人"}
+{"id": 84, "table_id": 11, "type": "Numeric Computation", "difficulty": "Medium", "query": "工伤保险的基金收入和基金支出的差额是多少？", "label": "1.98488亿元"}
+{"id": 85, "table_id": 11, "type": "Numeric Computation", "difficulty": "Hard", "query": "失业保险的基金支出占其基金收入的百分比是多少？", "label": "96.53%"}
+{"id": 86, "table_id": 11, "type": "Semantic-Aware", "difficulty": "Simple", "query": "在2019年的人力资源和社会保障数据中，哪些项目涉及基金收入？", "label": "城镇职工基本养老保险, 城乡居民基本养老保险, 失业保险, 工伤保险"}
+{"id": 87, "table_id": 11, "type": "Numeric Computation", "difficulty": "Medium", "query": "城乡居民基本养老保险的期末参保人数比城镇职工基本养老保险多多少？", "label": "9745.2486万人"}
+{"id": 88, "table_id": 11, "type": "Content Match", "difficulty": "Medium", "query": "工伤保险有哪些统计指标？", "label": "期末参保人数，基金收入，基金支出"}
+{"id": 89, "table_id": 11, "type": "Content Match", "difficulty": "Hard", "query": "2019年城乡居民基本养老保险的期末参保人数是多少？基金收入和基金支出是多少？", "label": "53046.1618 万人，基金收入为 3510.749245 亿元，基金支出为 2846.111351 亿元"}
+{"id": 90, "table_id": 12, "type": "Content Match", "difficulty": "Simple", "query": "5月份有多少笔银收类型的记账凭证？", "label": 10}
+{"id": 91, "table_id": 12, "type": "Content Match", "difficulty": "Simple", "query": "总账科目中银行存款出现了多少次？", "label": 8}
+{"id": 92, "table_id": 12, "type": "Content Match", "difficulty": "Simple", "query": "5月4日有多少笔转账类型的记账凭证？", "label": 4}
+{"id": 93, "table_id": 12, "type": "Content Match", "difficulty": "Medium", "query": "5月份银付类型的记账凭证中，金额最大的是多少？", "label": 220000}
+{"id": 94, "table_id": 12, "type": "Content Match", "difficulty": "Medium", "query": "5月1日的记账凭证中，金额最小的是多少？", "label": 8000}
+{"id": 95, "table_id": 12, "type": "Numeric Computation", "difficulty": "Hard", "query": "5月份的记账凭证中，现收类型的总金额是多少？", "label": 128000}
+{"id": 96, "table_id": 12, "type": "Content Match", "difficulty": "Simple", "query": "5月7日有多少笔现付类型的记账凭证？", "label": 2}
+{"id": 97, "table_id": 12, "type": "Numeric Computation", "difficulty": "Hard", "query": "5月份的记账凭证中，银收类型的金额总和是多少？", "label": 881000}
+{"id": 98, "table_id": 12, "type": "Content Match", "difficulty": "Simple", "query": "5月15日的记账凭证中，现付类型的金额是多少？", "label": 76000}
+{"id": 99, "table_id": 12, "type": "Numeric Computation", "difficulty": "Hard", "query": "5月份的记账凭证中，转账类型的总金额是多少？", "label": 273000}
+{"id": 100, "table_id": 12, "type": "Content Match", "difficulty": "Hard", "query": "借方金额最多的是哪一项？", "label": "001，出售A产品。"}
+{"id": 101, "table_id": 13, "type": "Content Match", "difficulty": "Simple", "query": "2013年1月1日，行政部的办公费支出金额是多少？", "label": "1200"}
+{"id": 102, "table_id": 13, "type": "Semantic-Aware", "difficulty": "Medium", "query": "王晓航负责的支出记录中，支出金额最高的是哪一项？", "label": "业务拓展费"}
+{"id": 103, "table_id": 13, "type": "Numeric Computation", "difficulty": "Medium", "query": "2013年1月份，人事部的总支出金额是多少？", "label": "3270"}
+{"id": 104, "table_id": 13, "type": "Content Match", "difficulty": "Simple", "query": "哪些部门的费用类别涉及“通讯费”？", "label": "销售部, 行政部, 企划部"}
+{"id": 105, "table_id": 13, "type": "Numeric Computation", "difficulty": "Medium", "query": "2013年2月，设备修理费的总支出金额是多少？", "label": "6280"}
+{"id": 106, "table_id": 13, "type": "Numeric Computation", "difficulty": "Simple", "query": "摘要为空的支出记录有多少条？", "label": "26"}
+{"id": 107, "table_id": 13, "type": "Numeric Computation", "difficulty": "Hard", "query": "2013年1月和2月，企划部的业务拓展费总支出金额是多少？", "label": "15380"}
+{"id": 108, "table_id": 13, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪两位负责人涉及的支出记录最多？", "label": "王晓航,张华"}
+{"id": 109, "table_id": 13, "type": "Semantic-Aware", "difficulty": "Medium", "query": "负责人张华涉及的记录有多少条？", "label": "7"}
+{"id": 110, "table_id": 13, "type": "Content Match", "difficulty": "Simple", "query": "2013年1月23日，销售部的差旅费支出金额是多少？", "label": "700"}
+{"id": 111, "table_id": 13, "type": "Content Match", "difficulty": "Simple", "query": "一共有多少条记录？", "label": "46"}
+{"id": 112, "table_id": 13, "type": "Numeric Computation", "difficulty": "Medium", "query": "2013年1月，福利支出的总金额是多少？", "label": "4800"}
+{"id": 113, "table_id": 14, "type": "Content Match", "difficulty": "Simple", "query": "离心风机的资产原值是多少？", "label": "3960"}
+{"id": 114, "table_id": 14, "type": "Content Match", "difficulty": "Simple", "query": "离心风机的使用年限是多少年？", "label": "14"}
+{"id": 115, "table_id": 14, "type": "Content Match", "difficulty": "Medium", "query": "离心风机在第12年的月折旧率是多少？", "label": "0.226%"}
+{"id": 116, "table_id": 14, "type": "Content Match", "difficulty": "Simple", "query": "离心风机的净残值是多少？", "label": "198"}
+{"id": 117, "table_id": 14, "type": "Content Match", "difficulty": "Simple", "query": "离心风机的资产状态是什么？", "label": "报废"}
+{"id": 118, "table_id": 15, "type": "Content Match", "difficulty": "Simple", "query": "连续性与可用性规划师的主要职责是什么？", "label": "负责管理可用性，保证IT能够按照计划的业务对象实现服务目标；负责维持IT服务的可用性和可靠性，并审核相应变更；负责评价可用性指标，并评审可用性计划；负责优化和改进可用性管理流程及可用性指标；负责评审各维护组所制定的《服务级别目标》中分级判断与《IT服务连续性计划》（应急预案）内容的适应性；负责将通过初审与《IT服务连续性计划》呈交至IT服务管理委员会进行正式批准。"}
+{"id": 119, "table_id": 15, "type": "Content Match", "difficulty": "Simple", "query": "连续性与可用性规划师的角色匹配是谁？", "label": "应用系统负责人"}
+{"id": 120, "table_id": 15, "type": "Semantic-Aware", "difficulty": "Medium", "query": "连续性与可用性规划师是否需要审核变更？", "label": "是"}
+{"id": 121, "table_id": 15, "type": "Content Match", "difficulty": "Medium", "query": "连续性与可用性规划师负责的流程优化包括哪些方面？", "label": "可用性管理流程及可用性指标"}
+{"id": 122, "table_id": 15, "type": "Content Match", "difficulty": "Simple", "query": "连续性与可用性规划师需要将什么文件呈交至IT服务管理委员会？", "label": "《IT服务连续性计划》"}
+{"id": 123, "table_id": 16, "type": "Content Match", "difficulty": "Simple", "query": "基本绩效考核指标的总分是多少？", "label": "10"}
+{"id": 124, "table_id": 16, "type": "Content Match", "difficulty": "Medium", "query": "关键绩效考核指标中，安全生产的扣分标准是什么？", "label": "每发生一起安全事故扣0.5分，较大安全事故扣1分，重大人员伤亡事故绩效0分。"}
+{"id": 125, "table_id": 16, "type": "Content Match", "difficulty": "Simple", "query": "如果资料员未完成工作计划，由于自身原因每拖延1天，扣多少分？", "label": "1"}
+{"id": 126, "table_id": 16, "type": "Content Match", "difficulty": "Medium", "query": "在基本绩效考核指标中，工作态度的扣分标准是什么？", "label": "对职责范围内的事是否主动积极完成，确保工作顺利进行。不主动、不积极每次扣1分，下不保底。"}
+{"id": 127, "table_id": 16, "type": "Content Match", "difficulty": "Medium", "query": "基本绩效考核指标中，遵守纪律的扣分标准是什么？", "label": "是否能严格遵守公司劳动纪律管理制度。每违反一次，扣0.5分，下不保底。"}
+{"id": 128, "table_id": 16, "type": "Content Match", "difficulty": "Simple", "query": "标准分占比最大的考核项目是什么？", "label": "资料管控"}
+{"id": 129, "table_id": 17, "type": "Numeric Computation", "difficulty": "Hard", "query": "返乡创业人数和失业人员再就业人数的总和是多少？", "label": "1780人"}
+{"id": 130, "table_id": 17, "type": "Content Match", "difficulty": "Hard", "query": "社会公众或服务对象满意度指标与仲裁案件法定期限结案率的指标值分别是多少？", "label": "95%，95%"}
+{"id": 131, "table_id": 17, "type": "Numeric Computation", "difficulty": "Hard", "query": "2019年，2020年两年的总预算是多少？", "label": "12170万元"}
+{"id": 132, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "项目总预算金额是多少？", "label": "6730万元"}
+{"id": 133, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "项目负责人的联系电话是什么？", "label": "67880231"}
+{"id": 134, "table_id": 17, "type": "Numeric Computation", "difficulty": "Medium", "query": "2020年预算金额较2019年增加了多少？", "label": "1290万元"}
+{"id": 135, "table_id": 17, "type": "Semantic-Aware", "difficulty": "Hard", "query": "项目的主要内容包括哪些方面？", "label": "举办公益性招聘活动，开展辖区社会保险登记、注销、年检、异动、转移等业务，开展养老保险待遇、失业保险待遇的审核，开展医疗保险待遇、生育保险待遇的审核，对辖区内参保企业开展实地稽核和书面稽核工作"}
+{"id": 136, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "项目资金来源中，一般公共预算财政拨款收入的金额是多少？", "label": "6730万元"}
+{"id": 137, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "社会保障卡发卡量的目标是多少？", "label": "7万张"}
+{"id": 138, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "项目支出明细预算中，对机关事业单位养老保险基金的补助金额是多少？", "label": "3080万元"}
+{"id": 139, "table_id": 17, "type": "Semantic-Aware", "difficulty": "Hard", "query": "项目申请理由中提到的法律依据有哪些？", "label": "武政规【2015】15号、武政规【2018】31号、鄂财社【2017】102号、武财社【2018】413号、《社会保险法》、《工伤保险条例》、《武汉市政府办公厅关于全市部分公共服务窗口延长服务时间的通知》（武政办［2009］109号）、《劳动合同法》、《劳动争议调解仲裁法》、《劳动保障监察条例》"}
+{"id": 140, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "对机关事业单位养老保险基金的补助金额是多少？", "label": "3080万元"}
+{"id": 141, "table_id": 17, "type": "Semantic-Aware", "difficulty": "Medium", "query": "2020年项目中，就业补助的主要用途是什么？", "label": "主要用于职业介绍补贴、创业培训补贴、职业培训补贴、社会保险补贴、求职创业补贴、就业技能及新型学徒制补贴、职业技能鉴定补贴等"}
+{"id": 142, "table_id": 17, "type": "Content Match", "difficulty": "Medium", "query": "2020年项目中，劳动监察网格日常巡查的最低标准是什么？", "label": "不低于60户/人.月"}
+{"id": 143, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "2020年项目中，仲裁案件法定期限结案率的目标是多少？", "label": "95%"}
+{"id": 144, "table_id": 17, "type": "Content Match", "difficulty": "Simple", "query": "2020年项目中，普惠金融发展支出的金额是多少？", "label": "25万元"}
+{"id": 145, "table_id": 17, "type": "Content Match", "difficulty": "Hard", "query": "项目主管部门与项目类型分别是什么？", "label": "武汉市人力资源和社会保障局东湖新技术开发区分局，公共项目"}
+{"id": 146, "table_id": 17, "type": "Content Match", "difficulty": "Hard", "query": "财政对基本医疗保险基金的补助主要用于什么？", "label": "城乡居民基本医疗保险基金区级补助资金上解支出"}
+{"id": 147, "table_id": 18, "type": "Content Match", "difficulty": "Medium", "query": "定额比例法的适用情形包括哪些？", "label": "消耗定额准确稳定/各期期末在产品数量变化较大的产品"}
+{"id": 148, "table_id": 19, "type": "Numeric Computation", "difficulty": "Simple", "query": "研发成本的总成本是多少？", "label": "745111"}
+{"id": 149, "table_id": 19, "type": "Numeric Computation", "difficulty": "Simple", "query": "基本开销的总成本是多少？", "label": "78225"}
+{"id": 150, "table_id": 19, "type": "Content Match", "difficulty": "Medium", "query": "员工奖金提成和福利的成本金额分别是多少？", "label": "183049, 102739"}
+{"id": 151, "table_id": 19, "type": "Semantic-Aware", "difficulty": "Medium", "query": "研发成本中，哪些项目的成本金额超过了150000？", "label": "产品研发经费, 专利授权经费"}
+{"id": 152, "table_id": 19, "type": "Content Match", "difficulty": "Hard", "query": "员工薪酬、研发成本和基本开销的成本金额比例是多少？", "label": "0.5774, 0.3824, 0.0401"}
+{"id": 153, "table_id": 19, "type": "Content Match", "difficulty": "Simple", "query": "员工薪酬由哪几部分组成？", "label": "员工工资、员工奖金提成、福利"}
+{"id": 154, "table_id": 19, "type": "Content Match", "difficulty": "Simple", "query": "研发成本中哪个部分成本最高？", "label": "产品研发经费"}
+{"id": 155, "table_id": 19, "type": "Content Match", "difficulty": "Simple", "query": "员工薪酬的成本比基本开销多了多少？", "label": "1,046,772.00"}
+{"id": 156, "table_id": 19, "type": "Content Match", "difficulty": "Simple", "query": "一共有几项类目？", "label": "3"}
+{"id": 157, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "变动制造费用中，间接人工全年总费用是多少？", "label": "13648.5"}
+{"id": 158, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "变动制造费用中，全年合计费用是多少？", "label": "45037"}
+{"id": 159, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "固定费用中，全年财产税费用是多少？", "label": "480"}
+{"id": 160, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "变动制造费用有哪几类？", "label": "间接人工、间接材料、修理费、水电费"}
+{"id": 161, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "全年的固定费用总计是多少？", "label": "65547"}
+{"id": 162, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "哪个季度的固定修理费最高？", "label": "第一季度"}
+{"id": 163, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "变动制造费用一共有多少条目？", "label": "4"}
+{"id": 164, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "固定费用一共有多少条目？", "label": "9"}
+{"id": 165, "table_id": 20, "type": "Content Match", "difficulty": "Simple", "query": "第二季度的变动制造费相较于第一季度有什么变化？", "label": "减少了3340元"}
+{"id": 166, "table_id": 21, "type": "Content Match", "difficulty": "Simple", "query": "橡胶手套对应的两次采购数量分别是多少？", "label": "30, 30"}
+{"id": 167, "table_id": 21, "type": "Numeric Computation", "difficulty": "Medium", "query": "客服部门有多少种产品？", "label": "8"}
+{"id": 168, "table_id": 21, "type": "Numeric Computation", "difficulty": "Medium", "query": "生产部门有多少种产品？", "label": "10"}
+{"id": 169, "table_id": 21, "type": "Numeric Computation", "difficulty": "Medium", "query": "哪些部门有办公用品类别的产品？", "label": "客服，销售，财务"}
+{"id": 170, "table_id": 21, "type": "Content Match", "difficulty": "Hard", "query": "橡胶手套的需求说明是什么？", "label": "2双/人/天*25人"}
+{"id": 171, "table_id": 21, "type": "Content Match", "difficulty": "Simple", "query": "打印纸的规格是什么？", "label": "500张/包"}
+{"id": 172, "table_id": 22, "type": "Numeric Computation", "difficulty": "Medium", "query": "三环电子在2012年6月的贷方发生额总计是多少？", "label": "80960"}
+{"id": 173, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "新大电子在2012年6月有几次结算材料的记录？", "label": "3"}
+{"id": 174, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "恒杰集团在2012年6月的最小贷方发生额是多少？", "label": "498"}
+{"id": 175, "table_id": 22, "type": "Semantic-Aware", "difficulty": "Medium", "query": "2012年6月，有哪些供应商进行了材料采购？", "label": "三环电子, 恒杰集团, 罗威, 金亚, 时代先锋, 金元通, 华盛, 华兴"}
+{"id": 176, "table_id": 22, "type": "Numeric Computation", "difficulty": "Medium", "query": "五顶集团在2012年6月的借方发生额总计是多少？", "label": "16800"}
+{"id": 177, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "2012年6月，贷方发生额最高的是哪家供应商？", "label": "三环电子"}
+{"id": 178, "table_id": 22, "type": "Numeric Computation", "difficulty": "Medium", "query": "金亚在2012年6月的贷方发生额总计是多少？", "label": "12998"}
+{"id": 179, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "2012年6月，有多少家供应商进行了结算材料的操作？", "label": "2"}
+{"id": 180, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "6月16号前有哪些供应商？", "label": "三环电子，恒杰集团，新大电子，五顶集团，罗威，金亚"}
+{"id": 181, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "材料采购总共的贷方发生额是多少？", "label": "141232"}
+{"id": 182, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "从三环电子采购材料共花费多少？", "label": "80,960.00"}
+{"id": 183, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "在哪个企业结算材料的借方发生额最高？", "label": "新大电子"}
+{"id": 184, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "编号为GY01的供应商一共有多少条目？", "label": "7"}
+{"id": 185, "table_id": 22, "type": "Content Match", "difficulty": "Simple", "query": "编号为GY02的供应商一共有多少条目？", "label": "3"}
+{"id": 186, "table_id": 23, "type": "Content Match", "difficulty": "Simple", "query": "研究生处招收的法律(非法学)专业的学生人数是多少？", "label": "91"}
+{"id": 187, "table_id": 23, "type": "Content Match", "difficulty": "Simple", "query": "民商法学院负责法律事务专业的老师是谁？", "label": "李明鸣"}
+{"id": 188, "table_id": 23, "type": "Content Match", "difficulty": "Simple", "query": "公共管理学院的行政管理专科专业有多少学生？", "label": "98"}
+{"id": 189, "table_id": 23, "type": "Content Match", "difficulty": "Simple", "query": "民商法学院的法学专业有多少名学生？", "label": "305"}
+{"id": 190, "table_id": 23, "type": "Content Match", "difficulty": "Hard", "query": "商学院有几个专业？", "label": "7"}
+{"id": 191, "table_id": 23, "type": "Content Match", "difficulty": "Hard", "query": "刑事司法学院有几个负责老师？", "label": "2"}
+{"id": 192, "table_id": 23, "type": "Content Match", "difficulty": "Hard", "query": "商学院学院有几个负责老师？", "label": "4"}
+{"id": 193, "table_id": 23, "type": "Content Match", "difficulty": "Hard", "query": "外国语学院有几个负责老师？", "label": "1"}
+{"id": 194, "table_id": 23, "type": "Content Match", "difficulty": "Hard", "query": "网络空间安全学院有几个专业？", "label": "3"}
+{"id": 195, "table_id": 24, "type": "Content Match", "difficulty": "Medium", "query": "2017-09-01至2017-09-12期间，采购金额最高的是哪一天？", "label": "2017-09-09"}
+{"id": 196, "table_id": 24, "type": "Numeric Computation", "difficulty": "Medium", "query": "华峰供应商提供的主板总采购量是多少？", "label": 27}
+{"id": 197, "table_id": 24, "type": "Semantic-Aware", "difficulty": "Simple", "query": "显示器的采购涉及哪些供应商？", "label": "华峰, 长生"}
+{"id": 198, "table_id": 24, "type": "Numeric Computation", "difficulty": "Medium", "query": "2017-09-05和2017-09-10采购的主板总金额是多少？", "label": "12050"}
+{"id": 199, "table_id": 24, "type": "Numeric Computation", "difficulty": "Hard", "query": "机箱的平均采购单价是多少？", "label": "2416.67"}
+{"id": 200, "table_id": 24, "type": "Content Match", "difficulty": "Simple", "query": "2017-09-07采购的显示器数量是多少？", "label": "15"}
+{"id": 201, "table_id": 24, "type": "Content Match", "difficulty": "Simple", "query": "哪个供应商供应的货品种类最多？", "label": "长生"}
+{"id": 202, "table_id": 24, "type": "Content Match", "difficulty": "Simple", "query": "9月1号到9月7号共采购了多少货品？", "label": "70"}
+{"id": 203, "table_id": 24, "type": "Content Match", "difficulty": "Simple", "query": "单价最高的产品是什么？", "label": "机箱"}
+{"id": 204, "table_id": 24, "type": "Content Match", "difficulty": "Medium", "query": "一共有多少条目？", "label": "12"}
+{"id": 205, "table_id": 24, "type": "Content Match", "difficulty": "Simple", "query": "哪一天采购的货品最多？", "label": "2017-9-7"}
+{"id": 206, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "发票号码为7894561的发票的不含税金额是多少？", "label": "3846.15"}
+{"id": 207, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "一共有多少发票？", "label": "6"}
+{"id": 208, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "开票日期为2020-04-16的发票的税率是多少？", "label": "0.03"}
+{"id": 209, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "小熊猫有限公司的纳税人识别号是什么？", "label": "9133010015306234567"}
+{"id": 210, "table_id": 25, "type": "Numeric Computation", "difficulty": "Medium", "query": "2020年4月开具的发票总开票金额是多少？", "label": "10500"}
+{"id": 211, "table_id": 25, "type": "Content Match", "difficulty": "Medium", "query": "发票类型为电子发票的发票号码有哪些？", "label": "1894563,1894566"}
+{"id": 212, "table_id": 25, "type": "Numeric Computation", "difficulty": "Medium", "query": "杭州大华电子有限公司在2020年5月开具的发票的不含税金额总和是多少？", "label": "3846.15"}
+{"id": 213, "table_id": 25, "type": "Semantic-Aware", "difficulty": "Hard", "query": "税率最高的发票的开票金额是多少？", "label": "5000,4500"}
+{"id": 214, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "备注为空的发票共有几张？", "label": 6}
+{"id": 215, "table_id": 25, "type": "Semantic-Aware", "difficulty": "Hard", "query": "花儿有限责任公司的发票中，税额最低的是多少？", "label": "174.76"}
+{"id": 216, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "2020年6月开具的发票中，不含税金额最高的是多少？", "label": "5825.24"}
+{"id": 217, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "杭州大华电子有限公司的纳税人识别号是多少", "label": "913301001530621847"}
+{"id": 218, "table_id": 25, "type": "Content Match", "difficulty": "Simple", "query": "最高的税率是多少？", "label": "13%"}
+{"id": 219, "table_id": 26, "type": "Content Match", "difficulty": "Simple", "query": "在天猫活动期间，店铺是否可以指定快递？", "label": "不能指定快递，店铺会根据实际情况或者地区进行选择"}
+{"id": 220, "table_id": 26, "type": "Content Match", "difficulty": "Simple", "query": "天猫活动期间的发货时间是如何规定的？", "label": "不承诺发货时间，遵守官方活动7天内发货的要求"}
+{"id": 221, "table_id": 26, "type": "Content Match", "difficulty": "Medium", "query": "如果买家需要发票，他们应该在什么时候提出要求？", "label": "需客户自行索要，并在拍下时说明"}
+{"id": 222, "table_id": 26, "type": "Semantic-Aware", "difficulty": "Medium", "query": "对于尺码建议，店铺提供什么具体的建议？", "label": "仅供参考，不能保证合适，建议买家购买退运保险，以减少损失"}
+{"id": 223, "table_id": 26, "type": "Content Match", "difficulty": "Simple", "query": "等候语话术的包含内容是什么？", "label": "需等候+致歉，欢迎语中已经提到相关内容，此处主要是聊天对话中的等候"}
+{"id": 224, "table_id": 27, "type": "Content Match", "difficulty": "Hard", "query": "费用占比最高的项目是什么？", "label": "交际应酬费"}
+{"id": 225, "table_id": 27, "type": "Numeric Computation", "difficulty": "Hard", "query": "销售2部和销售3部的合计费用相差多少？", "label": "591.54"}
+{"id": 226, "table_id": 28, "type": "Content Match", "difficulty": "Simple", "query": "会议地点是什么？", "label": "二楼会议室"}
+{"id": 227, "table_id": 29, "type": "Content Match", "difficulty": "Simple", "query": "省教育厅负责采购哪些类型的物品？", "label": "教学设备（集中采购目录之外）, 教学用品, 图书（财政补贴资金）"}
+{"id": 228, "table_id": 29, "type": "Content Match", "difficulty": "Simple", "query": "省卫生厅的采购项目中，哪些与医疗相关？", "label": "医疗设备和器械（集中采购目录标准之外的项目）, 医用耗材, 药品(在现行集中招标的基础上纳入政府采购监管)"}
+{"id": 229, "table_id": 29, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪些部门的项目涉及车辆采购？", "label": "省消防总队, 省公安厅"}
+{"id": 230, "table_id": 30, "type": "Content Match", "difficulty": "Simple", "query": "服务目录为'业务应用系统'的服务子项有哪些？", "label": "账号创建, 账号关闭, 密码重置, 操作权限修改, 账号信息修改, 组织架构调整, 组织架构信息修改, 信息咨询"}
+{"id": 231, "table_id": 30, "type": "Numeric Computation", "difficulty": "Medium", "query": "服务编号为'XX-R-I-4'的服务子项有多少类？", "label": "8"}
+{"id": 232, "table_id": 30, "type": "Content Match", "difficulty": "Medium", "query": "服务编号为XX-R-I-2，请求目录为'主机运维'且备注为'非生产环境'的服务子项有哪些？", "label": "服务器配置管理, 服务器位置管理, 服务器容量性能管理, 服务器网络管理, 服务器迁移, 操作系统升级, 管理平台搭建"}
+{"id": 233, "table_id": 30, "type": "Content Match", "difficulty": "Simple", "query": "服务编号为'XX-T-DW-4'的网络设备管理服务的备注是什么？", "label": "非生产环境"}
+{"id": 234, "table_id": 30, "type": "Content Match", "difficulty": "Medium", "query": "服务目录为'基础架构服务'，编号为XX-R-I-3，请求目录为'存储运维'的服务子项有哪些？", "label": "存储硬件管理, 存储平台搭建, 存储资源分配, 存储权限管理, 存储位置管理, 存储网络管理"}
+{"id": 235, "table_id": 30, "type": "Semantic-Aware", "difficulty": "Hard", "query": "服务目录为'基础架构服务'且请求目录为'网络运维'的服务子项中，哪些与VPN管理相关？", "label": "VPN管理"}
+{"id": 236, "table_id": 30, "type": "Semantic-Aware", "difficulty": "Hard", "query": "有多少服务的备注是非生产环境？", "label": "36"}
+{"id": 237, "table_id": 30, "type": "Semantic-Aware", "difficulty": "Hard", "query": "有多少服务的备注是生产环境？", "label": "4"}
+{"id": 238, "table_id": 30, "type": "Semantic-Aware", "difficulty": "Hard", "query": "有多少服务的备注是低风险低影响？", "label": "6"}
+{"id": 239, "table_id": 30, "type": "Semantic-Aware", "difficulty": "Hard", "query": "基础架构服务的主机运维请求目录有多少不同的服务子项？", "label": "11"}
+{"id": 240, "table_id": 30, "type": "Semantic-Aware", "difficulty": "Hard", "query": "基础架构服务的网络运维请求目录有多少不同的服务子项？", "label": "8"}
+{"id": 241, "table_id": 31, "type": "Numeric Computation", "difficulty": "Simple", "query": "女士T恤的生产数量总和是多少？", "label": "240000"}
+{"id": 242, "table_id": 31, "type": "Content Match", "difficulty": "Simple", "query": "女士连衣裙的毛利最高是多少？", "label": "900000"}
+{"id": 243, "table_id": 31, "type": "Numeric Computation", "difficulty": "Medium", "query": "女士短裙中规格为M的毛利总和是多少？", "label": "1480000"}
+{"id": 244, "table_id": 31, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪种产品的生产数量最多？", "label": "女士连衣裙"}
+{"id": 245, "table_id": 31, "type": "Content Match", "difficulty": "Simple", "query": "女士T恤的制造成本最高是多少？", "label": "49000"}
+{"id": 246, "table_id": 31, "type": "Numeric Computation", "difficulty": "Hard", "query": "女士短裙的物料成本总和是多少？", "label": "6325000"}
+{"id": 247, "table_id": 31, "type": "Numeric Computation", "difficulty": "Medium", "query": "女士连衣裙中规格为S的生产数量总和是多少？", "label": "130000"}
+{"id": 248, "table_id": 31, "type": "Numeric Computation", "difficulty": "Hard", "query": "女士T恤和女士短裙的毛利总和是多少？", "label": "7770000"}
+{"id": 249, "table_id": 31, "type": "Content Match", "difficulty": "Simple", "query": "女士连衣裙的型号是什么？", "label": "B-0001(一级)"}
+{"id": 250, "table_id": 31, "type": "Semantic-Aware", "difficulty": "Simple", "query": "女士短裙的规格有哪些？", "label": "S, M, L"}
+{"id": 251, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "模块1：质量、环保体系管控中，有关培训的子项目有哪些？", "label": "培训系统建立（入职培训、部门培训、在职培训、上岗转岗培训，以及培训后的效果评估）；特殊、关键岗位的定义，以及其培训及考核；全员质量基础知识培训（计划、实施、达成）；SPC、环保、ESD等专项培训（计划、实施、达成）；内审员、仪校员等培训及资格考核认证；新产品导入培训（计划、实施、达成）"}
+{"id": 252, "table_id": 32, "type": "Content Match", "difficulty": "Hard", "query": "模块3：研发、工程管理中，涉及环保设计的子项目有哪些？", "label": "产品绿色环保设计（如欧盟RoHS、WEEE、EUP指令、能耗标准等），客户的环保需求如何满足（如提供原材料不使用禁用物质保证书、测试报告、MSDS等）"}
+{"id": 253, "table_id": 32, "type": "Content Match", "difficulty": "Simple", "query": "模块5：设备与仪器管控中，涉及设备保养维护的子项目有哪些？", "label": "生产设备的保养维护管理（计划、实施），测试设备的保养维护管理（计划、实施），工装治具的保养维护管理（计划、实施）"}
+{"id": 254, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "模块6：供应商管理中，涉及环保考核的子项目有哪些？", "label": "供应商的风险评估管理（包括环保风险），新供应商的导入与评审流程（包括环保），供应商的绩效考核管理（包括激励、淘汰管理，以及环保考核等），供应商协议管理（质量环保协议、承诺书、框架协议等），环保原材料清单及物料有害物质信息调查，以及有害物质测试报告管理"}
+{"id": 255, "table_id": 32, "type": "Content Match", "difficulty": "Simple", "query": "模块7：仓库管理中，涉及ESD敏感元器件管理的子项目有哪些？", "label": "ESD敏感元器件的管理（存储、发货等）"}
+{"id": 256, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "模块8：来料质量控制中，涉及环保检验的子项目有哪些？", "label": "来料检验区温湿度控制（环保检测区，以及有无尘、ESD要求时），环保检验的管控（检验频率、拆分标准、记录）"}
+{"id": 257, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "模块9：制程质量控制中，涉及环保监测的子项目有哪些？", "label": "IPQC巡检制度（标准、实施、环保监测），产线维修管理（维修区、返修区、SOP、报表，还包括环保与非环保区域划分）"}
+{"id": 258, "table_id": 32, "type": "Content Match", "difficulty": "Simple", "query": "模块10：最终产品控制中，涉及产品追溯性的子项目有哪些？", "label": "产品出货后是否可以追溯到原材料？"}
+{"id": 259, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "模块11：客诉及满意度管理中，涉及客户投诉处理的子项目有哪些？", "label": "客户投诉清单管理，客户投诉的纠正预防处理流程（8D报告），客户投诉及时有效的处理（响应时间、处理周期），客户退货、返修管理（流程、记录）"}
+{"id": 260, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "评审项目最多的模块是什么？", "label": "模块9：制程质量控制"}
+{"id": 261, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "模块十有多少条审评项目？", "label": "10"}
+{"id": 262, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "请列出模块11的所有审评项目。", "label": "客户投诉清单管理，客户投诉的纠正预防处理流程（8D报告），客户投诉及时有效的处理（响应时间、处理周期），客户退货、返修管理（流程、记录），客户满意度调查管理（流程、记录），客户质量问题处理沟通机制，产品返修数据统计（月报、周报、分析处理）"}
+{"id": 263, "table_id": 32, "type": "Content Match", "difficulty": "Medium", "query": "请列出模块5的所有审评项目。", "label": "生产设备管理（采购、验收、编号、清单、以及设备状态标识），生产设备的保养维护管理（计划、实施），生产设备的维修管理（程序、实施），生产设备的报废管理（制度、实施），测试设备管理（采购、验收、编号、清单、以及测试设备状态标识），测试设备的保养维护管理（计划、实施），测试设备的维修管理（程序、实施），测试设备的校验管理（计划、实施、内校标准、校验标识），测试设备的报废管理（制度、实施），工装治具的管理（采购或制作、验收、编号、清单），工装治具的保养维护管理（计划、实施），工装治具的维修管理（程序、实施），工装治具的报废管理（制度、实施），环保检测设备、工装治具管理（记录、维护保养、区域划分存放）"}
+{"id": 264, "table_id": 33, "type": "Content Match", "difficulty": "Simple", "query": "库存现金的期末余额是多少？", "label": "610"}
+{"id": 265, "table_id": 33, "type": "Content Match", "difficulty": "Medium", "query": "银行存款期初的借方金额和贷方金额分别是多少？", "label": "834450,0"}
+{"id": 266, "table_id": 33, "type": "Content Match", "difficulty": "Simple", "query": "应收账款的期末余额是多少？", "label": "308750"}
+{"id": 267, "table_id": 33, "type": "Numeric Computation", "difficulty": "Medium", "query": "原材料的期末余额与期初余额的差额是多少？", "label": "38300"}
+{"id": 268, "table_id": 33, "type": "Content Match", "difficulty": "Simple", "query": "固定资产的期末余额是多少？", "label": "2114500"}
+{"id": 269, "table_id": 33, "type": "Numeric Computation", "difficulty": "Hard", "query": "短期借款的总金额是多少？", "label": "2100000"}
+{"id": 270, "table_id": 33, "type": "Content Match", "difficulty": "Simple", "query": "应付职工薪酬的期末余额是多少？", "label": "59828.4"}
+{"id": 271, "table_id": 34, "type": "Content Match", "difficulty": "Simple", "query": "应付账款的增长额是多少？", "label": "-17834868.3"}
+{"id": 272, "table_id": 34, "type": "Numeric Computation", "difficulty": "Medium", "query": "预收账款和存货的期初数总和是多少？", "label": "724948978.24"}
+{"id": 273, "table_id": 34, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪个项目的期末数最高？", "label": "存货"}
+{"id": 274, "table_id": 34, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪些项目的增长率为负？", "label": "应付账款, 其他应收款"}
+{"id": 275, "table_id": 34, "type": "Content Match", "difficulty": "Hard", "query": "预收账款的增长额和增长率的数值关系是什么？", "label": "增长率＝增长额/期初数"}
+{"id": 276, "table_id": 34, "type": "Numeric Computation", "difficulty": "Simple", "query": "存货的期初数和期末数的差异是多少？", "label": "631893884.25"}
+{"id": 277, "table_id": 35, "type": "Content Match", "difficulty": "Simple", "query": "2021年9月1日开具的发票号码是多少？", "label": "35734919"}
+{"id": 278, "table_id": 35, "type": "Content Match", "difficulty": "Simple", "query": "笔记本电脑的税额是多少？", "label": "152.2"}
+{"id": 279, "table_id": 35, "type": "Numeric Computation", "difficulty": "Medium", "query": "广州新南公司购买的计算器的总金额是多少？", "label": "14186"}
+{"id": 280, "table_id": 35, "type": "Numeric Computation", "difficulty": "Medium", "query": "晴天设计稻壳1购买的主板的总税额是多少？", "label": "674.9500000000002"}
+{"id": 281, "table_id": 35, "type": "Content Match", "difficulty": "Simple", "query": "2021年9月8日开具的发票的货物名称是什么？", "label": "主板"}
+{"id": 282, "table_id": 35, "type": "Semantic-Aware", "difficulty": "Medium", "query": "所有发票中，单位是'套'的货物有哪些？", "label": "笔记本电脑, 主板"}
+{"id": 283, "table_id": 35, "type": "Semantic-Aware", "difficulty": "Medium", "query": "有多少张涉及主板的发票？", "label": "4"}
+{"id": 284, "table_id": 36, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪个项目的期末数最高？", "label": "存货"}
+{"id": 285, "table_id": 36, "type": "Content Match", "difficulty": "Simple", "query": "华云信息有限公司的应收账款期初数是多少？", "label": "2622583.58"}
+{"id": 286, "table_id": 36, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪个项目的增长额为负？", "label": "应收账款, 其他应收款"}
+{"id": 287, "table_id": 36, "type": "Content Match", "difficulty": "Simple", "query": "存货的增长额是多少？", "label": "631893884.2499999"}
+{"id": 288, "table_id": 36, "type": "Semantic-Aware", "difficulty": "Hard", "query": "华云信息有限公司的财务状况分析中，哪个项目的增长率最高？", "label": "存货"}
+{"id": 289, "table_id": 37, "type": "Numeric Computation", "difficulty": "Simple", "query": "比尔科技在2020年4月20日的应收账款总额是多少？", "label": "14000"}
+{"id": 290, "table_id": 37, "type": "Content Match", "difficulty": "Simple", "query": "哪一笔交易的期末金额为-1800？", "label": "序号为2的交易"}
+{"id": 291, "table_id": 37, "type": "Numeric Computation", "difficulty": "Medium", "query": "余乐乐负责的所有交易中，实收金额的总和是多少？", "label": "12200"}
+{"id": 292, "table_id": 37, "type": "Semantic-Aware", "difficulty": "Medium", "query": "所有交易中，是否有未结清的账款？", "label": "是"}
+{"id": 293, "table_id": 37, "type": "Content Match", "difficulty": "Simple", "query": "采购部在2020年4月20日的交易中，使用了哪种结算方式？", "label": "银行转账"}
+{"id": 294, "table_id": 37, "type": "Numeric Computation", "difficulty": "Medium", "query": "所有交易的应收金额和实收金额的差异是多少？", "label": "1800"}
+{"id": 295, "table_id": 37, "type": "Content Match", "difficulty": "Simple", "query": "比尔科技在2020年4月20日的交易中，哪一笔交易的应收金额最高？", "label": "序号为1的交易"}
+{"id": 296, "table_id": 37, "type": "Numeric Computation", "difficulty": "Simple", "query": "所有交易中，期末金额为0的交易有多少笔？", "label": "2"}
+{"id": 297, "table_id": 38, "type": "Content Match", "difficulty": "Simple", "query": "主要利益点有哪些？", "label": "1.私人订制2.免费试用3.专场秒杀4.两件包邮5.五款上新"}
+{"id": 298, "table_id": 38, "type": "Content Match", "difficulty": "Medium", "query": "9月会员专享日主推私人订制的目标群体是谁？", "label": "高级会员、VIP和至尊VIP会员，且均M>=500F>=5"}
+{"id": 299, "table_id": 38, "type": "Content Match", "difficulty": "Medium", "query": "9月23日上新的EDM标题中，哪个标题提到了麦麦小姐？", "label": "不想上班，但如果非去不可，让麦麦小姐来帮你"}
+{"id": 300, "table_id": 38, "type": "Semantic-Aware", "difficulty": "Hard", "query": "9月23日上新的短信文案中，提到了哪些新品？", "label": "编织包、编制钱包"}
+{"id": 301, "table_id": 38, "type": "Content Match", "difficulty": "Hard", "query": "预期目标中回头人数与发送人数的比值是多少？", "label": "0.0133"}
+{"id": 302, "table_id": 38, "type": "Content Match", "difficulty": "Hard", "query": "9月会员专享日中免费试用的对象和专场秒杀的对象分别是什么？", "label": "近一个月有购买的，参加过店庆等大促的。"}
+{"id": 303, "table_id": 39, "type": "Numeric Computation", "difficulty": "Simple", "query": "销售一部在2012年1月的运输费总额是多少？", "label": "13078.8"}
+{"id": 304, "table_id": 39, "type": "Content Match", "difficulty": "Simple", "query": "销售二部在2012年1月31日的费用类别是什么？", "label": "租赁费"}
+{"id": 305, "table_id": 39, "type": "Semantic-Aware", "difficulty": "Medium", "query": "总结一下销售三部在2012年1月的广告费支出情况。", "label": "销售三部在2012年1月的广告费支出包括12540元、71250元、2100元和3256.5元。"}
+{"id": 306, "table_id": 39, "type": "Content Match", "difficulty": "Simple", "query": "2012年1月1日至2012年1月5日，销售一部的展览费是多少？", "label": "5200"}
+{"id": 307, "table_id": 39, "type": "Numeric Computation", "difficulty": "Medium", "query": "销售二部在2012年1月的租赁费总额是多少？", "label": "51039.5"}
+{"id": 308, "table_id": 39, "type": "Semantic-Aware", "difficulty": "Hard", "query": "在2012年1月，哪个部门的广告费支出最高？", "label": "销售三部"}
+{"id": 309, "table_id": 39, "type": "Content Match", "difficulty": "Simple", "query": "2012年1月20日，销售一部的展览费是多少？", "label": "500"}
+{"id": 310, "table_id": 39, "type": "Numeric Computation", "difficulty": "Medium", "query": "销售三部在2012年1月的运输费总额是多少？", "label": "11000"}
+{"id": 311, "table_id": 39, "type": "Semantic-Aware", "difficulty": "Hard", "query": "2012年1月，销售一部的广告费支出有哪些日期？", "label": "2012-01-02, 2012-01-30"}
+{"id": 312, "table_id": 40, "type": "Content Match", "difficulty": "Simple", "query": "湛江市人力资源和社会保障局的财政供养人员数是多少？", "label": "750"}
+{"id": 313, "table_id": 40, "type": "Semantic-Aware", "difficulty": "Medium", "query": "创业担保贷款贴息资金的期望目标是什么？", "label": "有效落实创业担保贷款政策，完成当年度新增创业担保贷款发放任务，按规定支付贷款贴息资金，促进创业带动就业。"}
+{"id": 314, "table_id": 40, "type": "Semantic-Aware", "difficulty": "Medium", "query": "城乡居民基本养老保险的总体绩效目标中，参保人数和养老金发放的要求是什么？", "label": "城乡居民基本养老保险参保人数达到计划指标，城乡居民养老金应发尽发，缴费补贴应补尽补。"}
+{"id": 315, "table_id": 40, "type": "Semantic-Aware", "difficulty": "Hard", "query": "“智慧人社”建设的主要目标是什么？", "label": "一是将分散的业务信息系统数据互通，业务协同，联结成“一个整体”；二是推进业务全流程网上办理；三是推动县（市、区）人社信息化基础建设平衡协调发展；四是强化社保卡“一卡通”应用。"}
+{"id": 316, "table_id": 40, "type": "Content Match", "difficulty": "Simple", "query": "城乡居民基础养老金的标准是多少？", "label": "≥200元每人每月"}
+{"id": 317, "table_id": 40, "type": "Content Match", "difficulty": "Simple", "query": "促进就业专项资金的拟投入资金是多少？", "label": "500万元"}
+{"id": 318, "table_id": 40, "type": "Content Match", "difficulty": "Simple", "query": "2023年湛江市人力资源和社会保障局的项目支出预算金额是多少？", "label": "72204.57万元"}
+{"id": 319, "table_id": 40, "type": "Content Match", "difficulty": "Hard", "query": "湛江市人力资源和社会保障局2023年的预算支出中，基本支出和项目支出分别是多少？", "label": "基本支出为 10596.35 万元，项目支出为 72204.57 万元。"}
+{"id": 320, "table_id": 40, "type": "Content Match", "difficulty": "Hard", "query": "该局2023年的收入来源有哪些？各占多少？", "label": "财政拨款为 82800.92 万元，其他资金为 0 万元。"}
+{"id": 321, "table_id": 40, "type": "Content Match", "difficulty": "Hard", "query": "湛江市人力资源和社会保障局2023年财政供养人数和下属单位数分别是多少？", "label": "财政供养人员数为 750，下属二级单位数为 10。"}
+{"id": 322, "table_id": 40, "type": "Content Match", "difficulty": "Hard", "query": "绩效指标中一共有多少二级指标？", "label": "9"}
+{"id": 323, "table_id": 40, "type": "Content Match", "difficulty": "Hard", "query": "绩效指标中一共有多少三级指标？", "label": "16"}
+{"id": 324, "table_id": 41, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为1的记录的借方金额是多少？", "label": "264810"}
+{"id": 325, "table_id": 41, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为2的二级名称是什么？", "label": "人民币"}
+{"id": 326, "table_id": 41, "type": "Numeric Computation", "difficulty": "Medium", "query": "2007年7月15日有多少笔记录？", "label": 4}
+{"id": 327, "table_id": 41, "type": "Numeric Computation", "difficulty": "Medium", "query": "科目名称为“现金/人民币”的记录中，金额为负数的有多少笔？", "label": 4}
+{"id": 328, "table_id": 41, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为6的摘要是什么？", "label": "人民币"}
+{"id": 329, "table_id": 41, "type": "Numeric Computation", "difficulty": "Hard", "query": "所有记录的借方金额总和是多少？", "label": "675810"}
+{"id": 330, "table_id": 41, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为5的贷方金额是多少？", "label": "407800"}
+{"id": 331, "table_id": 41, "type": "Semantic-Aware", "difficulty": "Medium", "query": "2007年7月16日有哪些凭证号？", "label": "7, 8"}
+{"id": 332, "table_id": 41, "type": "Content Match", "difficulty": "Simple", "query": "科目名称为“管理费用/办公费”的记录的金额是多少？", "label": "-1000"}
+{"id": 333, "table_id": 42, "type": "Content Match", "difficulty": "Simple", "query": "五月总收入是多少？", "label": "235459"}
+{"id": 334, "table_id": 42, "type": "Content Match", "difficulty": "Hard", "query": "五月收入明细中，收入金额超过30000的项目有哪些？", "label": "项目名称2, 项目名称5, 项目名称6, 项目名称7"}
+{"id": 335, "table_id": 42, "type": "Numeric Computation", "difficulty": "Hard", "query": "五月收入明细中，收入金额的平均值是多少？", "label": "26162.11"}
+{"id": 336, "table_id": 42, "type": "Numeric Computation", "difficulty": "Medium", "query": "五月收入明细中，收入金额的总和是否等于五月总收入？", "label": "是"}
+{"id": 337, "table_id": 42, "type": "Numeric Computation", "difficulty": "Hard", "query": "五月收入明细中，收入金额的中位数是多少？", "label": "23588"}
+{"id": 338, "table_id": 42, "type": "Numeric Computation", "difficulty": "Hard", "query": "五月收入明细中，收入金额的标准差是多少？", "label": "7238.55"}
+{"id": 339, "table_id": 42, "type": "Semantic-Aware", "difficulty": "Hard", "query": "五月收入明细中，收入金额的分布情况如何？", "label": "收入金额主要分布在18000到37000之间，大部分收入金额集中在20000到35000之间"}
+{"id": 340, "table_id": 43, "type": "Content Match", "difficulty": "Simple", "query": "阳光服装生产的女士T恤中，售价最高的是多少？", "label": "48"}
+{"id": 341, "table_id": 43, "type": "Content Match", "difficulty": "Simple", "query": "蓝天服装生产的女士短裙中，估计年销量最高的是多少？", "label": "80000"}
+{"id": 342, "table_id": 43, "type": "Content Match", "difficulty": "Simple", "query": "霓裳生产的女士针织衫中，二级品质的售价是多少？", "label": "38"}
+{"id": 343, "table_id": 43, "type": "Content Match", "difficulty": "Simple", "query": "浪漫风情生产的女士连衣裙中，估计年销量最高的是多少？", "label": "90000"}
+{"id": 344, "table_id": 43, "type": "Content Match", "difficulty": "Medium", "query": "阳光服装和蓝天服装生产的女士连衣裙中，一级品质的售价分别是多少？", "label": "42, 44"}
+{"id": 345, "table_id": 43, "type": "Content Match", "difficulty": "Medium", "query": "霓裳生产的女士T恤中，二级品质的估计年销量是多少？", "label": "80000"}
+{"id": 346, "table_id": 43, "type": "Content Match", "difficulty": "Medium", "query": "浪漫风情生产的女士短裙中，一级和二级品质的售价分别是多少？", "label": "40, 38"}
+{"id": 347, "table_id": 43, "type": "Semantic-Aware", "difficulty": "Hard", "query": "所有公司生产的女士针织衫中，一级品质的售价范围是多少？", "label": "38-42"}
+{"id": 348, "table_id": 43, "type": "Numeric Computation", "difficulty": "Hard", "query": "霓裳生产的女士连衣裙和女士短裙中，一级品质的估计年销量总和是多少？", "label": "140000"}
+{"id": 349, "table_id": 43, "type": "Content Match", "difficulty": "Simple", "query": "浪漫风情生产的女士连衣裙中，三级品质的售价是多少？", "label": "38"}
+{"id": 350, "table_id": 44, "type": "Content Match", "difficulty": "Simple", "query": "谁的上报额最高？", "label": "沙亚琴"}
+{"id": 351, "table_id": 44, "type": "Content Match", "difficulty": "Simple", "query": "龚瑞萍的余留金额是多少？", "label": "69.1"}
+{"id": 352, "table_id": 44, "type": "Content Match", "difficulty": "Medium", "query": "上报额超过10000的人有哪些？", "label": "钱炳岩, 马静静, 林祖芳, 沙亚琴, 徐秀兰, 成汉冲, 顾亚群, 吴承尧,施辉,"}
+{"id": 353, "table_id": 44, "type": "Content Match", "difficulty": "Simple", "query": "余留金额最低的是谁？", "label": "季素萍"}
+{"id": 354, "table_id": 44, "type": "Numeric Computation", "difficulty": "Hard", "query": "上报额和余留金额之间的比例最高的那个人是谁？", "label": "顾亚群"}
+{"id": 355, "table_id": 44, "type": "Numeric Computation", "difficulty": "Medium", "query": "计算所有人的上报额总和。", "label": "269,345.36"}
+{"id": 356, "table_id": 44, "type": "Numeric Computation", "difficulty": "Hard", "query": "谁的余留金额超过了上报额的50%？", "label": "徐秀兰, 宋亚芳,吴秀兰,施辉,戴希金,陆金善,蔡雷,沙亚琴,张菊英"}
+{"id": 357, "table_id": 44, "type": "Semantic-Aware", "difficulty": "Medium", "query": "总结一下余留金额的分布情况。", "label": "余留金额分布在36.3到19558.21之间，大多数人的余留金额在2000以下，但有少数人如沙亚琴和徐秀兰的余留金额远高于其他人。"}
+{"id": 358, "table_id": 45, "type": "Content Match", "difficulty": "Simple", "query": "潇秋鱼的平均值是多少？", "label": "2000"}
+{"id": 359, "table_id": 45, "type": "Content Match", "difficulty": "Simple", "query": "柳随风的方差是多少？", "label": "610520"}
+{"id": 360, "table_id": 45, "type": "Numeric Computation", "difficulty": "Medium", "query": "金算蟠和慕容芙的观测数总和是多少？", "label": "10"}
+{"id": 361, "table_id": 45, "type": "Semantic-Aware", "difficulty": "Hard", "query": "所有人员中，谁的求和值最大？", "label": "南宫雁"}
+{"id": 362, "table_id": 45, "type": "Numeric Computation", "difficulty": "Hard", "query": "潇秋鱼和柳随风的置信度(95.0%)相差多少？", "label": "692.5393301841069"}
+{"id": 363, "table_id": 45, "type": "Content Match", "difficulty": "Simple", "query": "慕容芙的区域是多少？", "label": "2050"}
+{"id": 364, "table_id": 46, "type": "Content Match", "difficulty": "Simple", "query": "2020年11月5日的支出是通过哪个账户进行的？", "label": "微信"}
+{"id": 365, "table_id": 46, "type": "Semantic-Aware", "difficulty": "Medium", "query": "2020年11月1日至5日期间，哪个账户的支出次数最多？", "label": "微信"}
+{"id": 366, "table_id": 46, "type": "Semantic-Aware", "difficulty": "Hard", "query": "2020年11月1日至5日期间，收入来源有哪几种？", "label": "基金收益, 工资"}
+{"id": 367, "table_id": 47, "type": "Content Match", "difficulty": "Simple", "query": "1月份的产品销量是多少？", "label": "31730"}
+{"id": 368, "table_id": 47, "type": "Content Match", "difficulty": "Simple", "query": "指数平滑预测在3月份的值是多少？", "label": "33370"}
+{"id": 369, "table_id": 47, "type": "Content Match", "difficulty": "Medium", "query": "在6月份，标准误差是多少？", "label": "3220.8170311790964"}
+{"id": 370, "table_id": 47, "type": "Content Match", "difficulty": "Medium", "query": "12月份的产品销量预测与实际销量的标准误差是多少？", "label": "4753.816011023846"}
+{"id": 371, "table_id": 47, "type": "Content Match", "difficulty": "Medium", "query": "哪个月份的产品销量最高？", "label": "18月"}
+{"id": 372, "table_id": 47, "type": "Numeric Computation", "difficulty": "Hard", "query": "从1月到18月，产品销量的平均标准误差是多少？", "label": "3685.4505"}
+{"id": 373, "table_id": 47, "type": "Content Match", "difficulty": "Medium", "query": "在18个月中，哪个月份的标准误差最大？", "label": "18月"}
+{"id": 374, "table_id": 47, "type": "Semantic-Aware", "difficulty": "Hard", "query": "产品销量在18个月中呈现出什么趋势？", "label": "整体呈上升趋势，但有波动"}
+{"id": 375, "table_id": 48, "type": "Numeric Computation", "difficulty": "Simple", "query": "单位1的开票金额总和是多少？", "label": "580091"}
+{"id": 376, "table_id": 48, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为209946的发票开票金额是多少？", "label": "137795"}
+{"id": 377, "table_id": 48, "type": "Semantic-Aware", "difficulty": "Medium", "query": "单位2的收款日期最早的发票号是多少？", "label": "11860110"}
+{"id": 378, "table_id": 48, "type": "Numeric Computation", "difficulty": "Medium", "query": "单位1和单位2的开票金额差异是多少？", "label": "112229"}
+{"id": 379, "table_id": 48, "type": "Content Match", "difficulty": "Simple", "query": "发票号为13698788的凭证号是多少？", "label": "209952"}
+{"id": 380, "table_id": 48, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为209938的收款日期是哪一天？", "label": "2134-10-0700:00:00"}
+{"id": 381, "table_id": 48, "type": "Numeric Computation", "difficulty": "Hard", "query": "单位1和单位2的发票数量分别是多少？", "label": "单位1: 10, 单位2: 10"}
+{"id": 382, "table_id": 49, "type": "Content Match", "difficulty": "Simple", "query": "2020年5月1日的结转材料费用金额是多少？", "label": "3000"}
+{"id": 383, "table_id": 49, "type": "Content Match", "difficulty": "Simple", "query": "2020年5月6日有多少笔与现金相关的交易？", "label": "1"}
+{"id": 384, "table_id": 49, "type": "Numeric Computation", "difficulty": "Medium", "query": "2020年5月10日的应付工资总额是多少？", "label": "8000"}
+{"id": 385, "table_id": 49, "type": "Content Match", "difficulty": "Simple", "query": "2020年5月15日的提现金额是多少？", "label": "20000"}
+{"id": 386, "table_id": 49, "type": "Semantic-Aware", "difficulty": "Hard", "query": "2020年5月21日的交易中，哪笔交易的金额最大？", "label": "出售N产品10件"}
+{"id": 387, "table_id": 49, "type": "Content Match", "difficulty": "Simple", "query": "2020年5月25日的主营业务收入是多少？", "label": "16000"}
+{"id": 388, "table_id": 49, "type": "Content Match", "difficulty": "Simple", "query": "2020年5月31日的支付赔偿金的金额是多少？", "label": "400"}
+{"id": 389, "table_id": 49, "type": "Numeric Computation", "difficulty": "Hard", "query": "2020年5月的主营业务收入总额是多少？", "label": "96500"}
+{"id": 390, "table_id": 49, "type": "Semantic-Aware", "difficulty": "Hard", "query": "2020年5月的银行存款账户中，哪一天的总支出最高？", "label": "5月22日"}
+{"id": 391, "table_id": 49, "type": "Content Match", "difficulty": "Hard", "query": "应付工资总额是多少？", "label": "20000"}
+{"id": 392, "table_id": 49, "type": "Content Match", "difficulty": "Hard", "query": "会计凭证种类中，涉及到银行存款的项目有什么？", "label": "材料采购，现金，应付账款，主营业务收入，营业外支出，预提费用，待摊费用。"}
+{"id": 393, "table_id": 49, "type": "Content Match", "difficulty": "Hard", "query": "2016年5月31日，共发生的资金流动是多少？", "label": "1000元"}
+{"id": 394, "table_id": 49, "type": "Content Match", "difficulty": "Hard", "query": "该会计凭证中一共有多少条目？", "label": "59"}
+{"id": 395, "table_id": 49, "type": "Content Match", "difficulty": "Hard", "query": "5月4日一共有多少条目？", "label": "3"}
+{"id": 396, "table_id": 50, "type": "Content Match", "difficulty": "Simple", "query": "山东女子学院2024届毕业生总人数是多少？", "label": "5660"}
+{"id": 397, "table_id": 50, "type": "Content Match", "difficulty": "Medium", "query": "会计学院中，哪个专业的本科毕业生人数最多？", "label": "会计学（专升本）"}
+{"id": 398, "table_id": 50, "type": "Content Match", "difficulty": "Simple", "query": "外国语学院的就业联系人是谁？", "label": "宋老师"}
+{"id": 399, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "教育学院和会计学院的就业联系人分别是谁？", "label": "教育学院联系人为宫老师，会计学院的就业联系人为石老师。"}
+{"id": 400, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "数据科学与计算机学院里层次为专科的专业中人数最少的是哪个专业？有多少人？", "label": "计算机应用技术(校企合作)，36人"}
+{"id": 401, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "经济学院中，本科层次一共有多少专业？", "label": "5个"}
+{"id": 402, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "教育学院本科中一共有多少专业？", "label": "7"}
+{"id": 403, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "艺术学院本科中一共有多少专业？", "label": "9"}
+{"id": 404, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "艺术学院有几个负责老师？", "label": "1"}
+{"id": 405, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "工商管理学院中，本科层次一共有多少专业？", "label": "8"}
+{"id": 406, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "工商管理学院中有多少专业是专升本？", "label": "4"}
+{"id": 407, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "旅游学院中多少专业是专升本？", "label": "2"}
+{"id": 408, "table_id": 50, "type": "Content Match", "difficulty": "Hard", "query": "经济学院中多少专业是校企合作？", "label": "3"}
+{"id": 409, "table_id": 51, "type": "Content Match", "difficulty": "Simple", "query": "全年的预计销售量是多少？", "label": "4650"}
+{"id": 410, "table_id": 51, "type": "Numeric Computation", "difficulty": "Medium", "query": "第二季度的预计销售量与预计期末存货之和是多少？", "label": "1240"}
+{"id": 411, "table_id": 52, "type": "Content Match", "difficulty": "Simple", "query": "2020年10月1日的收入金额是多少？", "label": "28608"}
+{"id": 412, "table_id": 52, "type": "Numeric Computation", "difficulty": "Hard", "query": "十月收入明细中，收入金额超过30000的项目有几个？", "label": "3"}
+{"id": 413, "table_id": 52, "type": "Content Match", "difficulty": "Simple", "query": "项目名称7的收入金额是多少？", "label": "38119"}
+{"id": 414, "table_id": 52, "type": "Numeric Computation", "difficulty": "Hard", "query": "十月收入明细中，收入金额在20000到30000之间的项目有几个？", "label": "4"}
+{"id": 415, "table_id": 52, "type": "Semantic-Aware", "difficulty": "Medium", "query": "十月收入明细中，收入金额总和与十月总收入是否一致？", "label": "是"}
+{"id": 416, "table_id": 53, "type": "Numeric Computation", "difficulty": "Medium", "query": "2018年5月6日共支出了多少金额？", "label": 331}
+{"id": 417, "table_id": 53, "type": "Content Match", "difficulty": "Simple", "query": "表格中支出金额最高的项目是什么？", "label": "彩色打印机"}
+{"id": 418, "table_id": 53, "type": "Numeric Computation", "difficulty": "Medium", "query": "顿经理报销的总金额是多少？", "label": 325}
+{"id": 419, "table_id": 53, "type": "Semantic-Aware", "difficulty": "Simple", "query": "表格中使用了哪些支付方式？", "label": ["微信支付", "现金垫付", "支付宝"]}
+{"id": 420, "table_id": 53, "type": "Numeric Computation", "difficulty": "Medium", "query": "5月10日通过支付宝支付的总金额是多少？", "label": 1259}
+{"id": 421, "table_id": 53, "type": "Numeric Computation", "difficulty": "Hard", "query": "表格中涉及到的工人借款总金额是多少？", "label": 835}
+{"id": 422, "table_id": 53, "type": "Numeric Computation", "difficulty": "Hard", "query": "2018年5月6日到5月13日的总支出金额是多少？", "label": 8804.29}
+{"id": 423, "table_id": 54, "type": "Content Match", "difficulty": "Simple", "query": "霓裳生产的女士T恤的估计年销量是多少？", "label": "70000"}
+{"id": 424, "table_id": 54, "type": "Content Match", "difficulty": "Simple", "query": "蓝天服装生产的女士T恤的市场占有率是多少？", "label": "0.3409090909090909"}
+{"id": 425, "table_id": 54, "type": "Content Match", "difficulty": "Medium", "query": "定价分析中，定价为46的产品的利润是多少？", "label": "1678400"}
+{"id": 426, "table_id": 54, "type": "Content Match", "difficulty": "Medium", "query": "定价分析中，定价为48的产品的估计市场占有率是多少？", "label": "0.2413793103448276"}
+{"id": 427, "table_id": 54, "type": "Content Match", "difficulty": "Medium", "query": "定价分析中，定价为47的产品的利润是多少？", "label": "1648500"}
+{"id": 428, "table_id": 55, "type": "Numeric Computation", "difficulty": "Medium", "query": "2017年1月的总收入是多少？", "label": "70000"}
+{"id": 429, "table_id": 55, "type": "Numeric Computation", "difficulty": "Medium", "query": "2017年3月的总支出是多少？", "label": "4000"}
+{"id": 430, "table_id": 55, "type": "Content Match", "difficulty": "Simple", "query": "2017年6月的收入来源有哪些？", "label": "费用退回, 收到工程款"}
+{"id": 431, "table_id": 55, "type": "Content Match", "difficulty": "Simple", "query": "2017年9月19日的收入摘要是什么？", "label": "坏账收入"}
+{"id": 432, "table_id": 55, "type": "Numeric Computation", "difficulty": "Hard", "query": "2017年全年支出金额大于10000的次数是多少？", "label": "3"}
+{"id": 433, "table_id": 55, "type": "Content Match", "difficulty": "Medium", "query": "2017年12月的最大一笔支出是什么？", "label": "员工工资,付水泥材料款"}
+{"id": 434, "table_id": 55, "type": "Content Match", "difficulty": "Simple", "query": "2017年7月10日的收入类型是什么？", "label": "变卖固定资产"}
+{"id": 435, "table_id": 55, "type": "Numeric Computation", "difficulty": "Hard", "query": "2017年全年收入总额是多少？", "label": "559500"}
+{"id": 436, "table_id": 55, "type": "Content Match", "difficulty": "Simple", "query": "2017年5月16日的收入金额是多少？", "label": "5000"}
+{"id": 437, "table_id": 56, "type": "Content Match", "difficulty": "Medium", "query": "2020年总收入金额是多少？", "label": "69100"}
+{"id": 438, "table_id": 56, "type": "Content Match", "difficulty": "Medium", "query": "2020年总支出金额是多少？", "label": "29300"}
+{"id": 439, "table_id": 56, "type": "Content Match", "difficulty": "Medium", "query": "2020年总结余金额是多少？", "label": "39800"}
+{"id": 440, "table_id": 56, "type": "Semantic-Aware", "difficulty": "Hard", "query": "2020年收入金额最高的月份是哪个月？", "label": "12月份"}
+{"id": 441, "table_id": 56, "type": "Semantic-Aware", "difficulty": "Hard", "query": "2020年支出金额最低的月份是哪个月？", "label": "2月份"}
+{"id": 442, "table_id": 56, "type": "Semantic-Aware", "difficulty": "Hard", "query": "2020年哪个账户的收入金额最高？", "label": "账户5"}
+{"id": 443, "table_id": 56, "type": "Semantic-Aware", "difficulty": "Medium", "query": "2020年哪些月份的结余金额超过4000？", "label": "8月份, 9月份, 10月份, 11月份, 12月份"}
+{"id": 444, "table_id": 57, "type": "Content Match", "difficulty": "Simple", "query": "明年的销售收入预计值是多少？", "label": "982000"}
+{"id": 445, "table_id": 57, "type": "Content Match", "difficulty": "Simple", "query": "今年的销售净利率是多少？", "label": "0.05"}
+{"id": 446, "table_id": 57, "type": "Content Match", "difficulty": "Simple", "query": "明年的股利支付率预计值是多少？", "label": "0.25"}
+{"id": 447, "table_id": 57, "type": "Content Match", "difficulty": "Simple", "query": "明年的资金需求量预测是多少？", "label": "421227.47403024323"}
+{"id": 448, "table_id": 57, "type": "Content Match", "difficulty": "Medium", "query": "哪些资产是敏感项目？", "label": "贷币资金, 应收账款, 存货, 固定资产"}
+{"id": 449, "table_id": 57, "type": "Content Match", "difficulty": "Medium", "query": "资产总额占销售收入的百分比是多少？", "label": "2.372983563"}
+{"id": 450, "table_id": 57, "type": "Content Match", "difficulty": "Simple", "query": "明年的零星资金需求预计值是多少？", "label": "52630"}
+{"id": 451, "table_id": 57, "type": "Content Match", "difficulty": "Medium", "query": "存货是否是敏感项目？", "label": "是"}
+{"id": 452, "table_id": 58, "type": "Numeric Computation", "difficulty": "Simple", "query": "工商银行的流动资金借款总额是多少？", "label": "56000"}
+{"id": 453, "table_id": 58, "type": "Content Match", "difficulty": "Medium", "query": "建设银行的哪一笔借款的借款期限最长？", "label": "项目借款（360天）"}
+{"id": 454, "table_id": 58, "type": "Numeric Computation", "difficulty": "Medium", "query": "招商银行的所有借款的应付利息总和是多少？", "label": "9234.0"}
+{"id": 455, "table_id": 58, "type": "Content Match", "difficulty": "Simple", "query": "借款种类为'项目借款'的借款笔数是多少？", "label": "6"}
+{"id": 456, "table_id": 58, "type": "Content Match", "difficulty": "Medium", "query": "招商银行的哪一笔借款的借款年利率最高？", "label": "项目借款（0.0631）"}
+{"id": 457, "table_id": 58, "type": "Content Match", "difficulty": "Simple", "query": "所有借款中，借款额度最大的是哪一笔？", "label": "工商银行的项目借款（260000）"}
+{"id": 458, "table_id": 58, "type": "Content Match", "difficulty": "Medium", "query": "农业银行的借款中，借款期限最短的是多少天？", "label": "90"}
+{"id": 459, "table_id": 58, "type": "Content Match", "difficulty": "Simple", "query": "哪一笔借款的抵押资产编号是'KBL-1S02419'？", "label": "工商银行的项目借款"}
+{"id": 460, "table_id": 58, "type": "Content Match", "difficulty": "Hard", "query": "所有借款中，应付利息最高的是哪一笔？", "label": "中国银行的项目借款（7157.09589041096）"}
+{"id": 461, "table_id": 58, "type": "Content Match", "difficulty": "Simple", "query": "建设银行的借款中，借款额度是多少？", "label": "65000"}
+{"id": 462, "table_id": 59, "type": "Numeric Computation", "difficulty": "Medium", "query": "所有合同的合同金额总和是多少？", "label": 65000}
+{"id": 463, "table_id": 59, "type": "Semantic-Aware", "difficulty": "Medium", "query": "付款率最高的合同是哪个？", "label": "合同8"}
+{"id": 464, "table_id": 59, "type": "Content Match", "difficulty": "Simple", "query": "稻壳1作为客户名称的合同有哪些？", "label": "合同1, 合同6"}
+{"id": 465, "table_id": 59, "type": "Numeric Computation", "difficulty": "Hard", "query": "所有合同的平均付款率是多少？", "label": 0.3476}
+{"id": 466, "table_id": 60, "type": "Numeric Computation", "difficulty": "Medium", "query": "2019年6月的总支出金额是多少？", "label": "36200"}
+{"id": 467, "table_id": 60, "type": "Content Match", "difficulty": "Simple", "query": "谁经办了6月10日的支出？", "label": "李四"}
+{"id": 468, "table_id": 60, "type": "Content Match", "difficulty": "Simple", "query": "6月5日的支出类型是什么？", "label": "差旅费"}
+{"id": 469, "table_id": 60, "type": "Numeric Computation", "difficulty": "Medium", "query": "员工福利类支出的总金额是多少？", "label": "3000"}
+{"id": 470, "table_id": 60, "type": "Content Match", "difficulty": "Simple", "query": "哪一天的支出摘要为'买A4打印纸'？", "label": "2019-06-10, 2018-06-15"}
+{"id": 471, "table_id": 60, "type": "Semantic-Aware", "difficulty": "Hard", "query": "经办人张三在6月处理的最大金额支出是多少？", "label": "5400"}
+{"id": 472, "table_id": 60, "type": "Numeric Computation", "difficulty": "Medium", "query": "6月份的差旅费支出有多少次？", "label": "3"}
+{"id": 473, "table_id": 60, "type": "Semantic-Aware", "difficulty": "Hard", "query": "哪些支出类型的经办人都是李四？", "label": "办公用品, 餐饮, 差旅费, 薪酬管理"}
+{"id": 474, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "土木工程学院研究生中，土木工程专业的学生人数是多少？", "label": "41"}
+{"id": 475, "table_id": 61, "type": "Numeric Computation", "difficulty": "Hard", "query": "管理工程学院本科生的总人数是多少？", "label": "608"}
+{"id": 476, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "热能工程学院研究生中，供热供燃气通风及空调工程专业的学生在日照的人数是多少？", "label": "1"}
+{"id": 477, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "市政与环境工程学院本科生中，环境工程专业的学生在临沂的人数是多少？", "label": "11"}
+{"id": 478, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "建筑城规学院研究生中，建筑学（专硕）专业的学生在青岛的人数是多少？", "label": "6"}
+{"id": 479, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "艺术学院研究生中，美术学专业的学生在安徽的人数是多少？", "label": "1"}
+{"id": 480, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "机电工程学院本科生中，机械工程专业的学生在济南的人数是多少？", "label": "36"}
+{"id": 481, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "信息与电气工程学院研究生中，控制科学与工程专业的学生在菏泽的人数是多少？", "label": "5"}
+{"id": 482, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "商学院本科生中，会计学专业的学生在潍坊的人数是多少？", "label": "12"}
+{"id": 483, "table_id": 61, "type": "Content Match", "difficulty": "Simple", "query": "材料科学与工程学院研究生中，材料科学与工程专业的学生在临沂的人数是多少？", "label": "1"}
+{"id": 484, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "山东建筑大学2025届毕业生专业中，一共有多少个专业是在烟台基地？", "label": "33个"}
+{"id": 485, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "山东建筑大学2025届毕业生专业中，土木工程学院一共有多少毕业生？", "label": "653"}
+{"id": 486, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "山东建筑大学2025届毕业生专业中，负责老师为王文龙的专业是什么？", "label": "供热供燃气通风及空调工程，动力工程及工程热物理，能源动力，土木水利"}
+{"id": 487, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "艺术学院的研究生专业有多少？", "label": "6"}
+{"id": 488, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "济南招收人数最多的专业是什么？", "label": "机械工程"}
+{"id": 489, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "艺术学院的本科生专业有多少？", "label": "8"}
+{"id": 490, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "机电工程学院的本科生专业有什么？", "label": "机械工程，机械电子工程，车辆工程"}
+{"id": 491, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "信息与电气工程学院的研究生专业有什么？", "label": "控制科学与工程，控制工程"}
+{"id": 492, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "外国语学院的专业一共有多少个？", "label": "3"}
+{"id": 493, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "交通工程学院的交通运输专业负责人老师电话是什么", "label": "0531-86361175"}
+{"id": 494, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "光电信息科学与工程专业的负责老师是谁？", "label": "刘霞"}
+{"id": 495, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "刘霞老师是几个专业的负责老师？", "label": "3"}
+{"id": 496, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "李涛老师是几个专业的负责老师？", "label": "6"}
+{"id": 497, "table_id": 61, "type": "Content Match", "difficulty": "Hard", "query": "计算机科学与技术学院有多少专业在烟台基地？", "label": "2"}
+{"id": 498, "table_id": 62, "type": "Content Match", "difficulty": "Simple", "query": "购买A机器的投资回收期是多少年？", "label": "5"}
+{"id": 499, "table_id": 62, "type": "Content Match", "difficulty": "Medium", "query": "购买A机器的净现值是多少？", "label": "307252.279192669"}
+{"id": 500, "table_id": 62, "type": "Content Match", "difficulty": "Simple", "query": "购买A机器的预计期末残值是多少？", "label": "18000"}
+{"id": 501, "table_id": 62, "type": "Content Match", "difficulty": "Simple", "query": "购买A机器的年运行费用是多少？", "label": "80000"}
+{"id": 502, "table_id": 62, "type": "Semantic-Aware", "difficulty": "Hard", "query": "购买A机器的净现值是如何计算的？", "label": "基于贴现率、年运行费用、预计期末残值、投资回收期计算得出"}
+{"id": 503, "table_id": 62, "type": "Semantic-Aware", "difficulty": "Hard", "query": "购买A机器的投资回收期与净现值之间有什么关系？", "label": "投资回收期是衡量投资回收时间的指标，而净现值是衡量投资盈利能力的指标"}
+{"id": 504, "table_id": 63, "type": "Content Match", "difficulty": "Simple", "query": "一月份会务费的实际支出是多少？", "label": "7800"}
+{"id": 505, "table_id": 63, "type": "Content Match", "difficulty": "Medium", "query": "一月份福利的预算与实际支出的差异率是多少？", "label": "-2800"}
+{"id": 506, "table_id": 63, "type": "Content Match", "difficulty": "Simple", "query": "一月份设备修理费的实际支出是多少？", "label": "0"}
+{"id": 507, "table_id": 63, "type": "Semantic-Aware", "difficulty": "Hard", "query": "一月份哪些费用类别的实际支出超过了预算？", "label": "餐饮费、会务费、通讯费、福利、外加工费"}
+{"id": 508, "table_id": 63, "type": "Numeric Computation", "difficulty": "Hard", "query": "一月份外加工费的实际支出占总支出额的比例是多少？", "label": "0.5009000547859435"}
+{"id": 509, "table_id": 64, "type": "Content Match", "difficulty": "Simple", "query": "制表部门是哪个部门？", "label": "财务部"}
+{"id": 510, "table_id": 64, "type": "Content Match", "difficulty": "Simple", "query": "制表时间是什么时候？", "label": "2025-03-02"}
+{"id": 511, "table_id": 64, "type": "Numeric Computation", "difficulty": "Medium", "query": "固定资产清单中编号的数量是多少？", "label": "42"}
+{"id": 512, "table_id": 64, "type": "Semantic-Aware", "difficulty": "Hard", "query": "制表时间的格式是什么？", "label": "年-月-日"}
+{"id": 513, "table_id": 65, "type": "Content Match", "difficulty": "Simple", "query": "关键绩效考核指标的总分是多少？", "label": "70"}
+{"id": 514, "table_id": 65, "type": "Content Match", "difficulty": "Simple", "query": "安全生产考核的标准分是多少？", "label": "12"}
+{"id": 515, "table_id": 65, "type": "Content Match", "difficulty": "Medium", "query": "如果项目部未执行绩效考核制度，每次扣多少分？", "label": "4"}
+{"id": 516, "table_id": 65, "type": "Content Match", "difficulty": "Medium", "query": "如果当月安全无事故，加多少分？", "label": "5"}
+{"id": 517, "table_id": 65, "type": "Content Match", "difficulty": "Medium", "query": "如果项目部未完成月进度计划，由于项目部管理原因每拖延1天，扣多少分？", "label": "1"}
+{"id": 518, "table_id": 65, "type": "Content Match", "difficulty": "Medium", "query": "如果项目部按时完成进度计划，每提前10%，加多少分？", "label": "2"}
+{"id": 519, "table_id": 65, "type": "Content Match", "difficulty": "Simple", "query": "基本绩效考核指标中，工作态度考核的标准分是多少？", "label": "2"}
+{"id": 520, "table_id": 65, "type": "Content Match", "difficulty": "Simple", "query": "关键绩效考核指标中，材料使用考核的标准分是多少？", "label": "12"}
+{"id": 521, "table_id": 65, "type": "Content Match", "difficulty": "Medium", "query": "如果项目部材料消耗报表未按时上报公司，每次扣多少分？", "label": "3"}
+{"id": 522, "table_id": 66, "type": "Numeric Computation", "difficulty": "Medium", "query": "2012年6月的移动平均法预测值与标准误差的和是多少？", "label": "50263.715118595336"}
+{"id": 523, "table_id": 66, "type": "Numeric Computation", "difficulty": "Medium", "query": "2010年3月到2010年6月的主营业务利润总和是多少？", "label": "133188.23"}
+{"id": 524, "table_id": 66, "type": "Numeric Computation", "difficulty": "Medium", "query": "2011年1月到2011年6月的主营业务利润平均值是多少？", "label": "38724.98"}
+{"id": 525, "table_id": 66, "type": "Content Match", "difficulty": "Simple", "query": "2012年4月的标准误差是多少？", "label": "3069.663390341032"}
+{"id": 526, "table_id": 66, "type": "Semantic-Aware", "difficulty": "Hard", "query": "总结2010年到2012年主营业务利润的变化趋势。", "label": "2010年到2012年主营业务利润整体呈上升趋势，但存在波动。"}
+{"id": 527, "table_id": 67, "type": "Content Match", "difficulty": "Simple", "query": "二月份的差旅费实际支出是多少？", "label": "3180"}
+{"id": 528, "table_id": 67, "type": "Content Match", "difficulty": "Simple", "query": "二月份的总支出是多少？", "label": "36350"}
+{"id": 529, "table_id": 68, "type": "Numeric Computation", "difficulty": "Medium", "query": "凭证审核表中“现金/人民币”科目的借方总金额是多少？", "label": "671810"}
+{"id": 530, "table_id": 68, "type": "Content Match", "difficulty": "Simple", "query": "凭证审核表中代码为“34520”的科目是什么？", "label": "银行存款人民币"}
+{"id": 531, "table_id": 68, "type": "Content Match", "difficulty": "Simple", "query": "凭证审核表中“其他应收款、周州”科目的借方金额是多少？", "label": "3000"}
+{"id": 532, "table_id": 68, "type": "Numeric Computation", "difficulty": "Medium", "query": "凭证审核表中“银行存款人民币”科目的贷方总金额是多少？", "label": "672610"}
+{"id": 533, "table_id": 68, "type": "Semantic-Aware", "difficulty": "Hard", "query": "凭证审核表中“现金/人民币”科目的贷方金额有多少条记录为0？", "label": "6"}
+{"id": 534, "table_id": 68, "type": "Content Match", "difficulty": "Simple", "query": "凭证审核表中“管理费用/办公费”科目的借方金额是多少？", "label": "1000"}
+{"id": 535, "table_id": 68, "type": "Semantic-Aware", "difficulty": "Hard", "query": "凭证审核表中“现金/人民币”科目出现的次数是多少？", "label": "7"}
+{"id": 536, "table_id": 68, "type": "Content Match", "difficulty": "Simple", "query": "凭证审核表中“银行存款人民币”科目的借方金额是多少？", "label": "0"}
+{"id": 537, "table_id": 69, "type": "Content Match", "difficulty": "Medium", "query": "C产品中销售利润最低的是哪个计算？", "label": "C-c"}
+{"id": 538, "table_id": 69, "type": "Numeric Computation", "difficulty": "Medium", "query": "C产品中所有计算的销售利润总和是多少？", "label": "1448897.8"}
+{"id": 539, "table_id": 69, "type": "Semantic-Aware", "difficulty": "Medium", "query": "C产品的销售利润是如何分布的？", "label": "C-a: 355386.2, C-b: 435755.5, C-c: 298670.6, C-d: 359085.5"}
+{"id": 540, "table_id": 69, "type": "Numeric Computation", "difficulty": "Simple", "query": "A产品和B产品的销售利润总和是多少？", "label": "2424094.1"}
+{"id": 541, "table_id": 70, "type": "Semantic-Aware", "difficulty": "Simple", "query": "哪个月份的实际主营业务收入最高？", "label": "6月"}
+{"id": 542, "table_id": 70, "type": "Numeric Computation", "difficulty": "Hard", "query": "1月至6月的实际主营业务收入总和是多少？", "label": "1778.22万元"}
+{"id": 543, "table_id": 70, "type": "Semantic-Aware", "difficulty": "Medium", "query": "主营业务收入预测在7月至12月间的变化趋势是怎样的？", "label": "逐渐增加"}
+{"id": 544, "table_id": 71, "type": "Content Match", "difficulty": "Hard", "query": "藤缘名居共有多少种产品？", "label": "7种"}
+{"id": 545, "table_id": 71, "type": "Content Match", "difficulty": "Hard", "query": "有多少种产品的业务员是吴媛媛？", "label": "6种"}
+{"id": 546, "table_id": 71, "type": "Content Match", "difficulty": "Hard", "query": "永嘉家居有限公司购买了多少种产品？", "label": "14种"}
+{"id": 547, "table_id": 71, "type": "Content Match", "difficulty": "Hard", "query": "一共有多少条宜家品牌产品的记录？", "label": "8"}
+{"id": 548, "table_id": 71, "type": "Numeric Computation", "difficulty": "Medium", "query": "6月份的销售总额是多少？", "label": "985045"}
+{"id": 549, "table_id": 71, "type": "Numeric Computation", "difficulty": "Medium", "query": "廖可总共销售了多少件产品？", "label": "190"}
+{"id": 550, "table_id": 71, "type": "Content Match", "difficulty": "Simple", "query": "品牌“藤缘名居”在6月份的销售记录有多少条？", "label": "7"}
+{"id": 551, "table_id": 71, "type": "Semantic-Aware", "difficulty": "Simple", "query": "哪些业务员在6月份有销售记录？", "label": "廖可, 滕念, 彭宇, 孙飞飞, 吴媛媛"}
+{"id": 552, "table_id": 71, "type": "Semantic-Aware", "difficulty": "Simple", "query": "一共有多少位业务员？", "label": "5"}
+{"id": 553, "table_id": 71, "type": "Numeric Computation", "difficulty": "Medium", "query": "“一点家居”品牌的最高销售额是多少？", "label": "54400"}
+{"id": 554, "table_id": 71, "type": "Semantic-Aware", "difficulty": "Hard", "query": "6月份销售最多的是哪种产品？", "label": "时尚办公家用转椅"}
+{"id": 555, "table_id": 71, "type": "Numeric Computation", "difficulty": "Medium", "query": "客户“布洛克家居”在6月份的消费总额是多少？", "label": "180900"}
+{"id": 556, "table_id": 71, "type": "Numeric Computation", "difficulty": "Medium", "query": "“丰穗家具”品牌的产品销售数量总和是多少？", "label": "119"}
+{"id": 557, "table_id": 71, "type": "Semantic-Aware", "difficulty": "Hard", "query": "哪些产品在6月份有多次销售记录？", "label": "成套餐桌椅子, 白像CT703A长茶几,白像T705休闲几,白橡CT701C小方茶几,储物柜书架,单人折叠加长加宽懒人沙发,儿童床,仿古实木手工雕刻咖啡桌三件套 ,韩式雕花梳妆台,韩式简约衣橱,韩式鞋柜,花几/电话几N-L-004,进口印尼藤椅,梨木色高档大气茶几,美式乡村方形4人桌,欧美式 椭圆餐桌,撇腿香槟椭圆边茶几,时尚办公家用转椅,时尚布艺转角布艺沙发,时尚五金玻璃茶几,田园折叠双人懒人沙发床 "}
+{"id": 558, "table_id": 72, "type": "Content Match", "difficulty": "Simple", "query": "2021年城镇新增就业人数的目标是多少？", "label": "39500人"}
+{"id": 559, "table_id": 72, "type": "Content Match", "difficulty": "Simple", "query": "2021年实际城镇新增就业人数是多少？", "label": "49358人"}
+{"id": 560, "table_id": 72, "type": "Content Match", "difficulty": "Simple", "query": "公共就业服务满意度的目标是多少？", "label": "≥90%"}
+{"id": 561, "table_id": 72, "type": "Content Match", "difficulty": "Medium", "query": "2021年新增区级创业孵化基地数量的目标是多少？", "label": "≥1个"}
+{"id": 562, "table_id": 72, "type": "Content Match", "difficulty": "Medium", "query": "年末应届离校未就业高效毕业生就业率的目标是多少？", "label": "≥90%"}
+{"id": 563, "table_id": 72, "type": "Content Match", "difficulty": "Hard", "query": "管理类指标中，有明确的数值指标的是哪一项？", "label": "预算执行率"}
+{"id": 564, "table_id": 72, "type": "Content Match", "difficulty": "Hard", "query": "各类指标中，指标权重为5的是哪几项？", "label": "社会保险补贴发放准确率，就业见习补贴发放准确率，公益性岗位补贴发放准确率，就业见习补贴发放及时率，低保就业补贴发放及时率，城镇新增就业人数，零就业家庭帮扶率，年末应届离校未就业高效毕业生就业率"}
+{"id": 565, "table_id": 72, "type": "Content Match", "difficulty": "Hard", "query": "指标名称中一共有多少个", "label": "16"}
+{"id": 566, "table_id": 72, "type": "Content Match", "difficulty": "Hard", "query": "一共有多少指标类型？", "label": "4"}
+{"id": 567, "table_id": 72, "type": "Content Match", "difficulty": "Hard", "query": "指标权重为5的指标有多少个？", "label": "8"}
+{"id": 568, "table_id": 73, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为N001的借方金额是多少？", "label": "100"}
+{"id": 569, "table_id": 73, "type": "Content Match", "difficulty": "Medium", "query": "哪些凭证涉及中国银行的交易？", "label": "N001, N003, N006"}
+{"id": 570, "table_id": 73, "type": "Numeric Computation", "difficulty": "Medium", "query": "所有管理费用类别的借方总金额是多少？", "label": "1700"}
+{"id": 571, "table_id": 73, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为N005的贷方科目名称是什么？", "label": "银行存款/人民币"}
+{"id": 572, "table_id": 73, "type": "Content Match", "difficulty": "Medium", "query": "在2007年8月，涉及C企业的所有凭证号有哪些？", "label": "N005, N002"}
+{"id": 573, "table_id": 73, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为N004的借方和贷方金额分别是多少？", "label": "借方: 1500, 贷方: 1720"}
+{"id": 574, "table_id": 73, "type": "Numeric Computation", "difficulty": "Hard", "query": "所有银行存款类别的贷方总金额是多少？", "label": "3100"}
+{"id": 575, "table_id": 73, "type": "Content Match", "difficulty": "Simple", "query": "凭证号为N007的借方摘要是什么？", "label": "水电费"}
+{"id": 576, "table_id": 73, "type": "Content Match", "difficulty": "Medium", "query": "在2007年8月，涉及库贷的所有凭证号有哪些？", "label": "N001, N003, N006, N007"}
+{"id": 577, "table_id": 74, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月5日的值班人是谁？", "label": "王荣"}
+{"id": 578, "table_id": 74, "type": "Content Match", "difficulty": "Simple", "query": "周国菊的电子邮箱是什么？", "label": "CH2011@126.com"}
+{"id": 579, "table_id": 74, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月10日的值班人的电话号码是多少？", "label": "1324556974x"}
+{"id": 580, "table_id": 74, "type": "Numeric Computation", "difficulty": "Medium", "query": "值班人中使用126.com邮箱的有多少人？", "label": "9"}
+{"id": 581, "table_id": 74, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月15日的值班人的QQ号码是多少？", "label": "2568874××"}
+{"id": 582, "table_id": 74, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月20日的值班人的电子邮箱是什么？", "label": "HZY2011@126.com"}
+{"id": 583, "table_id": 74, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月25日的值班人是谁？", "label": "刘玉"}
+{"id": 584, "table_id": 74, "type": "Numeric Computation", "difficulty": "Medium", "query": "值班人中使用163.com邮箱的有多少人？", "label": "11"}
+{"id": 585, "table_id": 74, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月12日的值班人的电话号码是多少？", "label": "1347885474x"}
+{"id": 586, "table_id": 74, "type": "Numeric Computation", "difficulty": "Hard", "query": "值班人中使用126.com和163.com邮箱的比例是多少？", "label": "9:11"}
+{"id": 587, "table_id": 75, "type": "Content Match", "difficulty": "Simple", "query": "生产费用合计的本年累计实际是多少？", "label": "58100"}
+{"id": 588, "table_id": 75, "type": "Numeric Computation", "difficulty": "Medium", "query": "产品总成本的上年实际和本年累计实际的差异是多少？", "label": "5230"}
+{"id": 589, "table_id": 75, "type": "Semantic-Aware", "difficulty": "Medium", "query": "总结一下制造费用的本年累计实际与上年实际的变化情况。", "label": "制造费用的本年累计实际为15000，比上年实际的12050增加了2950。"}
+{"id": 590, "table_id": 76, "type": "Content Match", "difficulty": "Hard", "query": "课程中，课程主题与毛泽东有关的课程有几项？", "label": "3"}
+{"id": 591, "table_id": 76, "type": "Content Match", "difficulty": "Hard", "query": "职业道德课程一共有多少项？", "label": "6"}
+{"id": 592, "table_id": 76, "type": "Content Match", "difficulty": "Hard", "query": "专业胜任能力里，学时大于4的课程是哪几门？", "label": "中国注册会计师审计准则最新变化，企业会计准则最新变化及重点难点解读，注册会计师行业行政监管政策解读，证券市场财务舞弊最新特征及有效识别（上)：财务舞弊最新案例及手法，国资监管新要求下的内控风险体系建设与优化，管理会计新发展：业财融合。"}
+{"id": 593, "table_id": 76, "type": "Content Match", "difficulty": "Hard", "query": "扩展课程的平均学时是多少？", "label": "3.29"}
+{"id": 594, "table_id": 76, "type": "Content Match", "difficulty": "Simple", "query": "中注协2024年度“继续教育在线”系统课程的总学时是多少？", "label": "260.7"}
+{"id": 595, "table_id": 76, "type": "Numeric Computation", "difficulty": "Simple", "query": "课程类别为“职业道德”的课程有多少门？", "label": "6"}
+{"id": 596, "table_id": 76, "type": "Content Match", "difficulty": "Simple", "query": "课程主题为“中国注册会计师审计准则最新变化”的学时是多少？", "label": "8"}
+{"id": 597, "table_id": 76, "type": "Semantic-Aware", "difficulty": "Medium", "query": "课程类别为“专业胜任能力”且学时超过5小时的课程有哪些？", "label": "中国注册会计师审计准则最新变化, 企业会计准则最新变化及重点难点解读, 国资监管新要求下的内控风险体系建设与优化, 管理会计新发展：业财融合"}
+{"id": 598, "table_id": 76, "type": "Content Match", "difficulty": "Medium", "query": "课程主题中包含“毛泽东”的课程有哪些？", "label": "《毛泽东的账簿》系列讲座：毛泽东的口头禅“账”, 《毛泽东的账簿》系列讲座：毛泽东著作中的会计术语及其数字指挥艺术, 《毛泽东的账簿》系列讲座：延安时期，毛泽东的会计战术和战略"}
+{"id": 599, "table_id": 76, "type": "Semantic-Aware", "difficulty": "Hard", "query": "课程类别为“扩展课程”且学时少于2小时的课程有哪些？", "label": "2023年最新税费优惠政策解读 （所得税篇）, 2023年最新税费优惠政策解读（增值税和其他税篇）, 小图表，大作用——统计数据的可视化, 孙子兵法与人生战略之二：《孙子兵法》架构分析"}
+{"id": 600, "table_id": 76, "type": "Numeric Computation", "difficulty": "Medium", "query": "课程主题为“孙子兵法与人生战略”系列课程的总学时是多少？", "label": "11.7"}
+{"id": 601, "table_id": 76, "type": "Semantic-Aware", "difficulty": "Hard", "query": "课程类别为“实务操作”且学时在3到4小时之间的课程有哪些？", "label": "财务标准化、自动化、智能化模式下，拟 IPO企业财务尽职调查实务操作要点及风险分析"}
+{"id": 602, "table_id": 77, "type": "Numeric Computation", "difficulty": "Simple", "query": "应付账款记录表中未付金额的总和是多少？", "label": "11864"}
+{"id": 603, "table_id": 77, "type": "Content Match", "difficulty": "Simple", "query": "供应商5的应付日期是什么时候？", "label": "2020-12-24"}
+{"id": 604, "table_id": 77, "type": "Semantic-Aware", "difficulty": "Medium", "query": "应付账款记录表中已付金额为0的供应商有哪些？", "label": "供应商2, 供应商4, 供应商5, 供应商6, 供应商8, 供应商9"}
+{"id": 605, "table_id": 77, "type": "Content Match", "difficulty": "Hard", "query": "剩余天数最长的记录对应的供应商名称是什么？", "label": "供应商10"}
+{"id": 606, "table_id": 77, "type": "Numeric Computation", "difficulty": "Medium", "query": "应付账款记录表中所有记录的应付金额平均值是多少？", "label": "1496.4"}
+{"id": 607, "table_id": 77, "type": "Content Match", "difficulty": "Simple", "query": "经办人是谁处理了所有应付账款记录？", "label": "经办1"}
+{"id": 608, "table_id": 77, "type": "Semantic-Aware", "difficulty": "Medium", "query": "应付账款记录表中应付日期在2021年的供应商有哪些？", "label": "供应商6, 供应商8, 供应商10"}
+{"id": 609, "table_id": 77, "type": "Content Match", "difficulty": "Simple", "query": "供应商3的未付金额是多少？", "label": "279"}
+{"id": 610, "table_id": 77, "type": "Numeric Computation", "difficulty": "Hard", "query": "应付账款记录表中所有记录的剩余天数的总和是多少？", "label": "16013"}
+{"id": 611, "table_id": 78, "type": "Content Match", "difficulty": "Simple", "query": "利息支出的金额是多少？", "label": "3020"}
+{"id": 612, "table_id": 79, "type": "Content Match", "difficulty": "Simple", "query": "编码为A-001的产品单价是多少？", "label": "4.8"}
+{"id": 613, "table_id": 79, "type": "Content Match", "difficulty": "Medium", "query": "品种为酸乳的产品有哪些？", "label": "酸乳无糖, 酸乳原味"}
+{"id": 614, "table_id": 79, "type": "Semantic-Aware", "difficulty": "Hard", "query": "单价最高的产品是什么？", "label": "袋酸草莓, 袋酸高钙, 袋酸原味"}
+{"id": 615, "table_id": 79, "type": "Numeric Computation", "difficulty": "Medium", "query": "所有产品的平均单价是多少？", "label": "8.92"}
+{"id": 616, "table_id": 79, "type": "Semantic-Aware", "difficulty": "Medium", "query": "品种为单果粒的产品中，单价最低的是哪个？", "label": "猕猴桃125克"}
+{"id": 617, "table_id": 79, "type": "Content Match", "difficulty": "Simple", "query": "编码为E-001和E-002的产品单价是否相同？", "label": "是"}
+{"id": 618, "table_id": 79, "type": "Content Match", "difficulty": "Medium", "query": "品种为普通杯的产品中，哪些产品的规格是125克？", "label": "无糖125克, 原味125克"}
+{"id": 619, "table_id": 79, "type": "Content Match", "difficulty": "Simple", "query": "品种为果蔬的产品有哪些？", "label": "草莓125克, 黄桃125克, 原味125克, 猕猴桃125克"}
+{"id": 620, "table_id": 80, "type": "Content Match", "difficulty": "Simple", "query": "第一季度的直接材料支出是多少？", "label": "37247"}
+{"id": 621, "table_id": 80, "type": "Content Match", "difficulty": "Simple", "query": "第二季度的期末现金余额是多少？", "label": "4534.5"}
+{"id": 622, "table_id": 80, "type": "Numeric Computation", "difficulty": "Medium", "query": "全年各项支出的总和是多少？", "label": "265270.5"}
+{"id": 623, "table_id": 80, "type": "Content Match", "difficulty": "Simple", "query": "第三季度的现金多余或不足是多少？", "label": "133255.5"}
+{"id": 624, "table_id": 81, "type": "Content Match", "difficulty": "Simple", "query": "第一季度采购的现金支出是多少？", "label": "49714"}
+{"id": 625, "table_id": 81, "type": "Content Match", "difficulty": "Simple", "query": "全年预计金额总计是多少？", "label": "382360"}
+{"id": 626, "table_id": 81, "type": "Content Match", "difficulty": "Simple", "query": "第三季度的预计材料采购量是多少？", "label": "5446.4"}
+{"id": 627, "table_id": 81, "type": "Content Match", "difficulty": "Simple", "query": "期初应付账款的金额是多少？", "label": "35000"}
+{"id": 628, "table_id": 82, "type": "Content Match", "difficulty": "Simple", "query": "明细表中一共有多少个科目代码？", "label": "9"}
+{"id": 629, "table_id": 82, "type": "Content Match", "difficulty": "Simple", "query": "普通精装住宅的核算内容是什么？", "label": "核算144M2（含）以下精装修住宅"}
+{"id": 630, "table_id": 82, "type": "Content Match", "difficulty": "Simple", "query": "车库车位的核算方式是什么？", "label": "分项目辅助核算"}
+{"id": 631, "table_id": 82, "type": "Semantic-Aware", "difficulty": "Medium", "query": "非普通住宅和普通住宅的主要区别是什么？", "label": "非普通住宅指144M2以上住宅，普通住宅指144M2（含）以下住宅"}
+{"id": 632, "table_id": 82, "type": "Content Match", "difficulty": "Simple", "query": "商铺的核算内容是什么？", "label": "核算临街商铺"}
+{"id": 633, "table_id": 82, "type": "Content Match", "difficulty": "Hard", "query": "开发产品科目明细表中共有多少个产品类别？", "label": "共4类产品。"}
+{"id": 634, "table_id": 83, "type": "Content Match", "difficulty": "Simple", "query": "资金计划表中，供应商1的第二周计划金额是多少？", "label": "87200"}
+{"id": 635, "table_id": 83, "type": "Content Match", "difficulty": "Simple", "query": "资金计划表中，供应商11的第四周计划金额是多少？", "label": "456788"}
+{"id": 636, "table_id": 83, "type": "Content Match", "difficulty": "Medium", "query": "资金计划表中，第三周计划金额最高的供应商是哪个？", "label": "供应商6"}
+{"id": 637, "table_id": 83, "type": "Content Match", "difficulty": "Simple", "query": "资金计划表中，所有供应商的第四周计划金额总和是多少？", "label": "475788"}
+{"id": 638, "table_id": 83, "type": "Content Match", "difficulty": "Medium", "query": "资金计划表中，供应商5和供应商12的计划汇总金额分别是多少？", "label": "83632, 69700"}
+{"id": 639, "table_id": 83, "type": "Semantic-Aware", "difficulty": "Hard", "query": "资金计划表中，第一周没有计划金额的供应商有哪些？", "label": "供应商2, 供应商3, 供应商4, 供应商5, 供应商6, 供应商8, 供应商9, 供应商11, 供应商13, 供应商14"}
+{"id": 640, "table_id": 83, "type": "Semantic-Aware", "difficulty": "Medium", "query": "资金计划表中，计划汇总金额超过100000的供应商有哪些？", "label": "供应商11"}
+{"id": 641, "table_id": 83, "type": "Content Match", "difficulty": "Simple", "query": "资金计划表中，合计的计划汇总金额是多少？", "label": "1006151"}
+{"id": 642, "table_id": 84, "type": "Numeric Computation", "difficulty": "Medium", "query": "2012年8月的水费总使用量是多少？", "label": "678.56"}
+{"id": 643, "table_id": 84, "type": "Numeric Computation", "difficulty": "Medium", "query": "2012年8月的电费总使用量是多少？", "label": "1733.32"}
+{"id": 644, "table_id": 84, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月6日的水费预存金额是多少？", "label": "500"}
+{"id": 645, "table_id": 84, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月电费的单价是多少？", "label": "0.75"}
+{"id": 646, "table_id": 84, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月水费的平均日用量是多少？", "label": "11.4"}
+{"id": 647, "table_id": 84, "type": "Numeric Computation", "difficulty": "Medium", "query": "2012年8月电费的使用天数总和是多少？", "label": "54"}
+{"id": 648, "table_id": 84, "type": "Numeric Computation", "difficulty": "Medium", "query": "2012年8月水费和电费的总预存金额是多少？", "label": "3200"}
+{"id": 649, "table_id": 84, "type": "Content Match", "difficulty": "Simple", "query": "2012年8月水费和电费的备注信息是什么？", "label": "收据"}
+{"id": 650, "table_id": 84, "type": "Semantic-Aware", "difficulty": "Hard", "query": "总结2012年8月水费和电费的使用情况。", "label": "水费总使用量为678.56 M3，电费总使用量为1733.32 Kwh。"}
+{"id": 651, "table_id": 85, "type": "Numeric Computation", "difficulty": "Simple", "query": "计划单位成本与实际单位成本的总金额是多少？", "label": 617200}
+{"id": 652, "table_id": 85, "type": "Content Match", "difficulty": "Medium", "query": "在计划单位成本与实际单位成本的比较中，哪个百分比最高？", "label": "实际单位成本的固定成本"}
+{"id": 653, "table_id": 85, "type": "Content Match", "difficulty": "Simple", "query": "计划单位成本与实际单位成本的比较中，金额最低的是多少？", "label": 294000}
+{"id": 654, "table_id": 85, "type": "Content Match", "difficulty": "Simple", "query": "计划单位成本与实际单位成本的比较中，百分比最低的是多少？", "label": "0.1485148514851485"}
+{"id": 655, "table_id": 85, "type": "Semantic-Aware", "difficulty": "Hard", "query": "总结一下计划单位成本与实际单位成本的比较结果", "label": "在比较中，实际单位成本是计划单位成本的109.93%，实际单位成本是323000，计划单位成本是294000，但实际产量是计划产量的120%。"}
+{"id": 656, "table_id": 86, "type": "Content Match", "difficulty": "Simple", "query": "科目编码为1002的科目名称是什么？", "label": "银行存款"}
+{"id": 657, "table_id": 86, "type": "Numeric Computation", "difficulty": "Simple", "query": "总账科目中有多少个科目？", "label": 39}
+{"id": 658, "table_id": 86, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪些科目与收入相关？", "label": "主营业务收入, 其他业务收入, 投资收益, 营业外收入，盈余公积，本年利润，实收资本"}
+{"id": 659, "table_id": 86, "type": "Semantic-Aware", "difficulty": "Medium", "query": "列出所有与成本相关的科目", "label": "主营业务成本, 营业税金及附加, 销售费用, 管理费用, 财务费用"}
+{"id": 660, "table_id": 86, "type": "Semantic-Aware", "difficulty": "Hard", "query": "哪些科目属于负债类？", "label": "短期借款, 应付票据, 应付账款, 应付职工薪酬, 应付股利, 应交税费, 其他应付款"}
+{"id": 661, "table_id": 86, "type": "Semantic-Aware", "difficulty": "Hard", "query": "列出所有与资产相关的科目", "label": "库存现金, 银行存款, 其他货币基金, 应收票据, 应收账款, 其他应收款, 坏账准备, 材料采购, 库存商品, 待摊费用, 固定资产, 累计折旧, 待处理财产损益"}
+{"id": 662, "table_id": 87, "type": "Content Match", "difficulty": "Simple", "query": "培训的考核指标是什么？", "label": "计划内培训完成情况"}
+{"id": 663, "table_id": 87, "type": "Content Match", "difficulty": "Simple", "query": "管理的考核部门签字是哪个部门？", "label": "总经理"}
+{"id": 664, "table_id": 87, "type": "Content Match", "difficulty": "Medium", "query": "工作态度的评分标准是什么？", "label": "1次不积极扣1分，1次态度恶劣扣2分，同一问题投诉2次扣3分/次。"}
+{"id": 665, "table_id": 87, "type": "Content Match", "difficulty": "Medium", "query": "安全事故的评分标准中，大事故的定义是什么？", "label": "大事故指1001--1万元内的事故"}
+{"id": 666, "table_id": 87, "type": "Content Match", "difficulty": "Medium", "query": "成本节约的评分标准中，实际用量每降低0.5百分点会有什么奖励？", "label": "奖2分"}
+{"id": 667, "table_id": 88, "type": "Numeric Computation", "difficulty": "Medium", "query": "根据表格中的信息，计算单位产品的直接人工成本。", "label": "19.7625"}
+{"id": 668, "table_id": 88, "type": "Semantic-Aware", "difficulty": "Medium", "query": "单位工时的工资率是否高于单位产品定额工时？", "label": "是"}
+{"id": 669, "table_id": 88, "type": "Semantic-Aware", "difficulty": "Hard", "query": "表格中提到的单位产品定额工时与单位工时的工资率的关系是什么？", "label": "单位产品定额工时与单位工时的工资率是计算直接人工成本的两个要素。"}
+{"id": 670, "table_id": 89, "type": "Content Match", "difficulty": "Simple", "query": "预计财务费用明细表中利息收入的金额是多少？", "label": "2950"}
+{"id": 671, "table_id": 89, "type": "Content Match", "difficulty": "Simple", "query": "预计财务费用明细表中汇兑损失的金额是多少？", "label": "3500"}
+{"id": 672, "table_id": 89, "type": "Content Match", "difficulty": "Simple", "query": "预计财务费用明细表中手续费的金额是多少？", "label": "8000"}
+{"id": 673, "table_id": 89, "type": "Content Match", "difficulty": "Simple", "query": "预计财务费用明细表中其他项目的金额是多少？", "label": "15250"}
+{"id": 674, "table_id": 89, "type": "Content Match", "difficulty": "Simple", "query": "预计财务费用明细表中合计金额是多少？", "label": "37220"}
+{"id": 675, "table_id": 89, "type": "Numeric Computation", "difficulty": "Medium", "query": "预计财务费用明细表中利息支出和利息收入的差额是多少？", "label": "70"}
+{"id": 676, "table_id": 89, "type": "Numeric Computation", "difficulty": "Medium", "query": "预计财务费用明细表中汇兑收益和汇兑损失的差额是多少？", "label": "1000"}
+{"id": 677, "table_id": 89, "type": "Semantic-Aware", "difficulty": "Medium", "query": "预计财务费用明细表中金额最大的项目是什么？", "label": "其他"}
+{"id": 678, "table_id": 89, "type": "Semantic-Aware", "difficulty": "Medium", "query": "预计财务费用明细表中金额最小的项目是什么？", "label": "利息收入"}
+{"id": 679, "table_id": 89, "type": "Numeric Computation", "difficulty": "Hard", "query": "预计财务费用明细表中所有项目的金额总和是多少？", "label": "37220"}
+{"id": 680, "table_id": 90, "type": "Numeric Computation", "difficulty": "Simple", "query": "应收账款余额统计表中，借方金额的总和是多少？", "label": "1435120"}
+{"id": 681, "table_id": 90, "type": "Numeric Computation", "difficulty": "Simple", "query": "应收账款余额统计表中，贷方金额的总和是多少？", "label": "73310"}
+{"id": 682, "table_id": 90, "type": "Content Match", "difficulty": "Simple", "query": "应收账款余额统计表中，哪一行的贷方金额最高？", "label": "永嘉家居有限公司"}
+{"id": 683, "table_id": 90, "type": "Numeric Computation", "difficulty": "Medium", "query": "应收账款余额统计表中，借方金额与贷方金额的差额是多少？", "label": "1361810"}
+{"id": 684, "table_id": 90, "type": "Content Match", "difficulty": "Simple", "query": "应收账款余额统计表中，哪一行的借方金额最高？", "label": "百家汇家居世界"}
+{"id": 685, "table_id": 90, "type": "Numeric Computation", "difficulty": "Hard", "query": "应收账款余额统计表中，借方金额与贷方金额的比例是多少？", "label": "19.5760"}
+{"id": 686, "table_id": 91, "type": "Content Match", "difficulty": "Simple", "query": "货币资金的年初数和期末数分别是多少？", "label": "1000000, 1000000"}
+{"id": 687, "table_id": 91, "type": "Content Match", "difficulty": "Simple", "query": "应收账款的期末数是多少？", "label": "66965.66"}
+{"id": 688, "table_id": 91, "type": "Content Match", "difficulty": "Simple", "query": "长期股权投资的年初数和期末数分别是多少？", "label": "1508637.56, 1536435.66"}
+{"id": 689, "table_id": 91, "type": "Content Match", "difficulty": "Simple", "query": "在建工程的期末数是多少？", "label": "3056435.66"}
+{"id": 690, "table_id": 91, "type": "Content Match", "difficulty": "Simple", "query": "资产总计的年初数和期末数分别是多少？", "label": "29178637.56, 29491676.7"}
+{"id": 691, "table_id": 91, "type": "Numeric Computation", "difficulty": "Medium", "query": "应收账款从年初到期末的变化量是多少？", "label": "10328.10"}
+{"id": 692, "table_id": 91, "type": "Numeric Computation", "difficulty": "Medium", "query": "长期股权投资和长期债权投资的期末数总和是多少？", "label": "1536435.66"}
+{"id": 693, "table_id": 91, "type": "Semantic-Aware", "difficulty": "Medium", "query": "总结一下流动资产的组成部分。", "label": "货币资金、短期投资、应收票据、应收股利、应收利息、应收账款、其他应收款、预付账款、应收补贴款、存货、待摊费用、一年内到期的长期债权投资、其他流动资产"}
+{"id": 694, "table_id": 91, "type": "Content Match", "difficulty": "Medium", "query": "无形资产及其他资产合计的年初数和期末数分别是多少？", "label": "170000, 170000"}
+{"id": 695, "table_id": 92, "type": "Content Match", "difficulty": "Simple", "query": "银行存款的余额是多少？", "label": "5635559.66"}
+{"id": 696, "table_id": 92, "type": "Numeric Computation", "difficulty": "Medium", "query": "管理费用和财务费用的总和是多少？", "label": "64800"}
+{"id": 697, "table_id": 92, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪些科目的余额超过了500万？", "label": "银行存款, 固定资产,股本"}
+{"id": 698, "table_id": 92, "type": "Content Match", "difficulty": "Simple", "query": "销售费用的余额是多少？", "label": "6500"}
+{"id": 699, "table_id": 93, "type": "Content Match", "difficulty": "Hard", "query": "应付金额最大的合同的应付金额是多少？", "label": "20000"}
+{"id": 700, "table_id": 93, "type": "Content Match", "difficulty": "Hard", "query": "有多少合同存在未付款项？", "label": "9"}
+{"id": 701, "table_id": 93, "type": "Content Match", "difficulty": "Hard", "query": "有多少合同不存在未付款项？", "label": "1"}
+{"id": 702, "table_id": 93, "type": "Content Match", "difficulty": "Simple", "query": "应付账款明细表中总共有多少个合同？", "label": 10}
+{"id": 703, "table_id": 93, "type": "Content Match", "difficulty": "Medium", "query": "应付账款明细表中，未付金额最高的合同编号是多少？", "label": "HT-008"}
+{"id": 704, "table_id": 93, "type": "Numeric Computation", "difficulty": "Medium", "query": "所有合同的未付金额总和是多少？", "label": "103000"}
+{"id": 705, "table_id": 93, "type": "Content Match", "difficulty": "Simple", "query": "单位1的联系方式是什么？", "label": "158****4589"}
+{"id": 706, "table_id": 93, "type": "Content Match", "difficulty": "Simple", "query": "合同编号为HT-010的合同期限是多少天？", "label": "120"}
+{"id": 707, "table_id": 93, "type": "Content Match", "difficulty": "Simple", "query": "有多少合同的已付金额为1000？", "label": "7"}
+{"id": 708, "table_id": 93, "type": "Semantic-Aware", "difficulty": "Hard", "query": "应付账款明细表中，哪些合同的已付金额与未付金额相等？", "label": "合同编号为HT-003的合同"}
+{"id": 709, "table_id": 94, "type": "Content Match", "difficulty": "Simple", "query": "流动资产合计的年初数是多少？", "label": "14064131.22"}
+{"id": 710, "table_id": 94, "type": "Content Match", "difficulty": "Simple", "query": "固定资产合计的期末数是多少？", "label": "14398198.89"}
+{"id": 711, "table_id": 94, "type": "Content Match", "difficulty": "Medium", "query": "资产总计的年初数和期末数分别是多少？", "label": "30657053.79 和 29600802.64"}
+{"id": 712, "table_id": 94, "type": "Numeric Computation", "difficulty": "Hard", "query": "存货的期末数相比于年初数增加了多少百分比？", "label": "24.02%"}
+{"id": 713, "table_id": 94, "type": "Content Match", "difficulty": "Simple", "query": "负债和所有者权益（或股东权益）总计的期末数是多少？", "label": "29600802.64"}
+{"id": 714, "table_id": 94, "type": "Semantic-Aware", "difficulty": "Hard", "query": "总结一下资产负债表中资产部分的主要变化。", "label": "资产总计从年初的30657053.79减少到期末的29600802.64，主要变化包括其他应收款减少、固定资产减少、存货增加等。"}
+{"id": 715, "table_id": 95, "type": "Content Match", "difficulty": "Simple", "query": "表格中工龄最长的员工是谁？", "label": "张学兴，赵青"}
+{"id": 716, "table_id": 95, "type": "Content Match", "difficulty": "Simple", "query": "编号为015的员工的基本工资是多少？", "label": "2000"}
+{"id": 717, "table_id": 95, "type": "Numeric Computation", "difficulty": "Medium", "query": "销售部有多少名业务员？", "label": "8"}
+{"id": 718, "table_id": 95, "type": "Content Match", "difficulty": "Medium", "query": "哪些员工的工龄工资超过了1800？", "label": "吴小华，张学兴, 汪磊，赵青，周江"}
+{"id": 719, "table_id": 95, "type": "Numeric Computation", "difficulty": "Hard", "query": "部门经理的平均基本工资是多少？", "label": "2450"}
+{"id": 720, "table_id": 95, "type": "Content Match", "difficulty": "Simple", "query": "入职时间最早的是哪位员工？", "label": "张学兴"}
+{"id": 721, "table_id": 95, "type": "Numeric Computation", "difficulty": "Medium", "query": "财务部员工的总工龄工资是多少？", "label": "5000"}
+{"id": 722, "table_id": 95, "type": "Content Match", "difficulty": "Simple", "query": "表格中工龄为18年的员工有哪些？", "label": "陈南, 王青, 杨静"}
+{"id": 723, "table_id": 95, "type": "Numeric Computation", "difficulty": "Simple", "query": "编号为020的员工的总工资是多少？", "label": "3600"}
+{"id": 724, "table_id": 95, "type": "Semantic-Aware", "difficulty": "Medium", "query": "表格中有多少名员工的职位是部门经理或部门副经理？", "label": "6"}
+{"id": 725, "table_id": 96, "type": "Numeric Computation", "difficulty": "Simple", "query": "销售部在一月份的总费用是多少？", "label": "12707.8"}
+{"id": 726, "table_id": 96, "type": "Content Match", "difficulty": "Simple", "query": "综合管理办在二月份的业务招待费是多少？", "label": "5106.36"}
+{"id": 727, "table_id": 96, "type": "Content Match", "difficulty": "Medium", "query": "物流部在三月份的最高单笔费用是多少？", "label": "632.45916"}
+{"id": 728, "table_id": 96, "type": "Numeric Computation", "difficulty": "Medium", "query": "财务部在一月份和二月份的会议费总和是多少？", "label": "6205.3479"}
+{"id": 729, "table_id": 96, "type": "Semantic-Aware", "difficulty": "Medium", "query": "哪些部门在二月份发生了水电费？", "label": "销售部, 综合管理办"}
+{"id": 730, "table_id": 96, "type": "Numeric Computation", "difficulty": "Hard", "query": "三月份，A类费用的总支出是多少？", "label": "26461.98"}
+{"id": 731, "table_id": 96, "type": "Content Match", "difficulty": "Simple", "query": "在一月份，哪个部门的业务招待费最高？", "label": "物流部"}
+{"id": 732, "table_id": 96, "type": "Content Match", "difficulty": "Simple", "query": "二月份，财务部的低值易耗品摊销费用是多少？", "label": "5130.676"}
+{"id": 733, "table_id": 96, "type": "Semantic-Aware", "difficulty": "Medium", "query": "三月份，哪些费用类型被记录？", "label": "A类费用, B类费用, C类费用"}
+{"id": 734, "table_id": 96, "type": "Numeric Computation", "difficulty": "Hard", "query": "在一月份和三月份，销售部的办公费总和是多少？", "label": "2769.75"}
+{"id": 735, "table_id": 97, "type": "Content Match", "difficulty": "Medium", "query": "在财务比率综合分析表中，哪些财务比率的重要性系数超过了0.2？", "label": "资产负债率, 股东权益比率"}
+{"id": 736, "table_id": 97, "type": "Semantic-Aware", "difficulty": "Hard", "query": "流动比率的综合指数是如何影响整体综合指数的？", "label": "流动比率的综合指数为0.3521739130434783，它对整体综合指数的贡献是第二大的。"}
+{"id": 737, "table_id": 98, "type": "Content Match", "difficulty": "Simple", "query": "表格中有几种结款方式？", "label": "6"}
+{"id": 738, "table_id": 98, "type": "Content Match", "difficulty": "Simple", "query": "货到付款的发货日期超期天数是多少？", "label": "3"}
+{"id": 739, "table_id": 98, "type": "Content Match", "difficulty": "Medium", "query": "表格中哪些结款方式的发货日期超期天数为30天？", "label": "一个月月结, 其他"}
+{"id": 740, "table_id": 99, "type": "Content Match", "difficulty": "Simple", "query": "事件管理过程中，事件类别的划分包括哪些类型？", "label": "故障、信息咨询、服务请求"}
+{"id": 741, "table_id": 99, "type": "Content Match", "difficulty": "Simple", "query": "事件处理的优先顺序是如何确定的？", "label": "时间顺序和紧急程度"}
+{"id": 742, "table_id": 99, "type": "Content Match", "difficulty": "Medium", "query": "事件升级的条件是什么？", "label": "业务中断时间增长或范围扩大"}
+{"id": 743, "table_id": 99, "type": "Content Match", "difficulty": "Medium", "query": "事件处理记录中，事件单的记录信息存在什么问题？", "label": "完整性和准确性欠佳"}
+{"id": 744, "table_id": 99, "type": "Content Match", "difficulty": "Hard", "query": "重大事件的处理记录包括哪些内容？", "label": "发现、分析、处置过程都要求记录，（时间、人物、状态、操作）见故障处置报告"}
+{"id": 745, "table_id": 99, "type": "Content Match", "difficulty": "Hard", "query": "事件处理中，如何访问CMDB？", "label": "可以在流程平台上查询Tivoli Enterprise Portal"}
+{"id": 746, "table_id": 100, "type": "Content Match", "difficulty": "Simple", "query": "销售商品、提供劳务收到的现金是多少？", "label": "8783565693.09"}
+{"id": 747, "table_id": 100, "type": "Content Match", "difficulty": "Simple", "query": "经营活动产生的现金净流量净额是多少？", "label": "1360955086.71"}
+{"id": 748, "table_id": 100, "type": "Content Match", "difficulty": "Simple", "query": "投资活动所产生的现金流量净额是多少？", "label": "464877486.42"}
+{"id": 749, "table_id": 100, "type": "Content Match", "difficulty": "Simple", "query": "筹资活动产生的现金流量净额是多少？", "label": "931936241.1199999"}
+{"id": 750, "table_id": 100, "type": "Content Match", "difficulty": "Simple", "query": "现金及现金等价物净额增加额是多少？", "label": "2757768814.25"}
+{"id": 751, "table_id": 100, "type": "Content Match", "difficulty": "Simple", "query": "支付给职工以及为职工支付的现金是多少？", "label": "421732641.31"}
+{"id": 752, "table_id": 100, "type": "Content Match", "difficulty": "Simple", "query": "购建固定资产、无形资产和其他长期资产所支付的现金是多少？", "label": "21413225.58"}
+{"id": 753, "table_id": 101, "type": "Semantic-Aware", "difficulty": "Medium", "query": "资本收益率的百分比是否高于其参考值？", "label": "是"}
+{"id": 754, "table_id": 101, "type": "Semantic-Aware", "difficulty": "Medium", "query": "在盈利能力分析中，哪些指标的百分比是正常的？", "label": "主营业务利润率, 主营业务成本利润率, 主营业务税金及附加利润率, 净资产收益率, 资本收益率"}
+{"id": 755, "table_id": 101, "type": "Semantic-Aware", "difficulty": "Medium", "query": "主营业务税金及附加利润率的百分比与参考值相比如何？", "label": "高于参考值"}
+{"id": 756, "table_id": 101, "type": "Content Match", "difficulty": "Simple", "query": "净资产收益率的百分比是多少？", "label": "0.27859266386800974"}
+{"id": 757, "table_id": 101, "type": "Content Match", "difficulty": "Simple", "query": "总资产报酬率的百分比是否正常？", "label": "异常"}
+{"id": 758, "table_id": 102, "type": "Content Match", "difficulty": "Simple", "query": "2019年12月7日的支出金额是多少？", "label": "3200"}
+{"id": 759, "table_id": 102, "type": "Content Match", "difficulty": "Simple", "query": "2019年12月8日的销售收入金额是多少？", "label": "4500"}
+{"id": 760, "table_id": 102, "type": "Numeric Computation", "difficulty": "Medium", "query": "2019年12月的总收入金额是多少？", "label": "16300"}
+{"id": 761, "table_id": 102, "type": "Numeric Computation", "difficulty": "Medium", "query": "2019年12月的总支出金额是多少？", "label": "8240"}
+{"id": 762, "table_id": 102, "type": "Numeric Computation", "difficulty": "Medium", "query": "2019年12月的净收入金额是多少？", "label": "8600"}
+{"id": 763, "table_id": 102, "type": "Numeric Computation", "difficulty": "Hard", "query": "2019年12月8日的余额与12月1日的余额相比增加了多少？", "label": "8060"}
+{"id": 764, "table_id": 102, "type": "Semantic-Aware", "difficulty": "Simple", "query": "2019年12月有哪些类型的收入？", "label": "销售收入"}
