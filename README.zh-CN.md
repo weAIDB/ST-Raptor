@@ -17,19 +17,20 @@
 ## 📣 近期更新
 
 - [ ] 主要功能
-  - [x] 支持LLM、VLM及嵌入模型的本地部署与API调用
-  - [x] 支持多样化输入格式：HTML、CSV、MARKDOWN等
+  - [×] 支持LLM、VLM及嵌入模型的本地部署与API调用
+  - [×] 支持多样化输入格式：HTML、CSV、MARKDOWN等
   - [ ] 支持图像输入
   - [ ] 扩展表格提取模块，支持问题定义之外的表格类型
 
 - [ ] 基准测试数据集
-  - [x] 更新中英文双版本SSTQA基准测试集
+  - [×] 更新中英文双版本SSTQA基准测试集
   - [ ] SSTQAv2版本即将发布！
 
 - [ ] 可视化功能
-  - [x] 支持基于Gradio的可视化平台
+  - [×] 支持基于Gradio的可视化平台
   - [ ] 支持通过Gradio进行超参数设置
-  - [ ] 支持HO-Tree结构可视化与人工修正功能
+  - [×] 支持HO-Tree结构可视化
+  - [ ] 支持HO-Tree人工修正功能
 
 ## ✨ 项目介绍
 
@@ -129,8 +130,8 @@ pip install -r requirements.txt
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 sudo apt-get install -f ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 sudo apt-get install -y fonts-noto-cjk fonts-wqy-microhei
-```
 
+```
 **Benchmark**
 
 1. SSTQA Benchmark存储在了 ```./data``` 文件夹中： [SSTQA-en]("./data/SSTQA-en") [SSTQA-ch]("./data/SSTQA-ch")
@@ -236,6 +237,12 @@ EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"  # [Change This]
 ```shell
 python ./main.py
 ```
+如果您想要使用我们搭建的可视化平台，则可以运行以下代码生成可视化页面
+
+```shell
+python ./gradio_app.py
+```
+
 
 ## 💡 半结构化表格 QA 示例
 

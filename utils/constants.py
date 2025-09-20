@@ -39,7 +39,7 @@ MAX_RETRY_HOTREE = 3  # 表格转换HO-Tree的最大尝试次数
 MAX_RETRY_PRIMITIVE = 5  # 前向验证时重新生成原语句的次数
 
 #################### Change The Directory Path ####################
-BASE_DIR = '/home/zirui/ST-Raptor/'            # The Project Directory
+BASE_DIR = ''            # The Project Directory
 CACHE_DIR = os.path.join(BASE_DIR, 'cache')     # The Cache Directory
 LOG_DIR = os.path.join(BASE_DIR, 'log')
 #################### Change The Directory Path ####################
@@ -47,14 +47,14 @@ LOG_DIR = os.path.join(BASE_DIR, 'log')
 
 #################### Change The Model Information ####################
 """Change this for requesting LLM"""
-LLM_API_URL = "YOUR_LLM_API_URL"
-LLM_API_KEY = "YOUR_LLM_API_KEY"
-LLM_MODEL_TYPE = "YOUR_LLM_MODEL_TYPE" 
+LLM_API_URL = ""
+LLM_API_KEY = ""
+LLM_MODEL_TYPE = "" 
 
 """Change this for requesting VLM"""
-VLM_API_URL = "YOUR_VLM_API_URL"
-VLM_API_KEY = "YOUR_VLM_API_KEY"
-VLM_MODEL_TYPE = "YOUR_VLM_MODEL_TYPE"
+VLM_API_URL = ""
+VLM_API_KEY = ""
+VLM_MODEL_TYPE = ""
 
 """Change this for requesting Embedding Model"""
 EMBEDDING_TYPE = "api" # api / local
@@ -63,9 +63,9 @@ EMBEDDING_TYPE = "api" # api / local
 EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"
 
 ## If EMBEDDING_TYPE is api
-EMBEDDING_API_URL = "YOUR_EMBEDDING_API_URL"
-EMBEDDING_API_KEY = "YOUR_EMBEDDING_API_KEY"
-EMBEDDING_MODEL_TYPE = "YOUR_EMBEDDING_MODEL_TYPE"
+EMBEDDING_API_URL = ""
+EMBEDDING_API_KEY = ""
+EMBEDDING_MODEL_TYPE = ""
 
 #################### Change The Model Information ####################
 
