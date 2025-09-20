@@ -14,6 +14,7 @@ from sentence_transformers import SentenceTransformer
 from table2tree.feature_tree import *
 from utils.constants import *
 from utils.data_type_utils import *
+from utils.api_utils import embedding_generate
 
 
 class ClassificationEmbeddingModel:
@@ -21,14 +22,23 @@ class ClassificationEmbeddingModel:
     _instance = None  # 类变量，用于存储唯一实例
 
     def __init__(self, model_path=EMBEDDING_MODE_PATH):
-        self.model_path = model_path
-        self.model = SentenceTransformer(model_path)
+        if EMBEDDING_TYPE == 'local':
+            self.model_path = model_path
+            self.model = SentenceTransformer(model_path)
+        else:
+            self.model = None
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super().__new__(cls)
         return cls._instance
-
+    def get_entity_embedding(self, entity_list):
+        entity_list = ["#" if str(x).strip() == '' else x for x in entity_list]
+        if EMBEDDING_TYPE == 'local':
+            embeddings = self.model.encode(entity_list)
+        else:
+            embeddings = embedding_generate(input_texts=entity_list)
+        return embeddings
 
 def generate_cluster_labels(texts, cluster_ids):
     """为每个文本聚类生成可解释的标签
@@ -61,7 +71,7 @@ def generate_cluster_labels(texts, cluster_ids):
 
         # 方法2：使用嵌入向量找中心文档
         try:
-            embeddings = ClassificationEmbeddingModel().model.encode(docs)
+            embeddings = ClassificationEmbeddingModel().get_entity_embedding(docs)
             centroid = embeddings.mean(axis=0)
             sim_scores = embeddings.dot(centroid)
             most_representative = docs[np.argmax(sim_scores)]
@@ -249,7 +259,7 @@ def tag_one_list(value_list, classify_threshold=3, n_bins=3):
 
         else:  # 文本型
             # print("当前是文本连续型！")
-            embeddings = ClassificationEmbeddingModel().model.encode(
+            embeddings = ClassificationEmbeddingModel().get_entity_embedding(
                 value_list
             )  # 生成文本嵌入
 

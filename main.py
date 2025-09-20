@@ -101,7 +101,7 @@ def benchmark(
     new_table_files = []
     for table_file in table_files:
         last_dot_idx = os.path.basename(table_file).rfind('.')
-        new_table_file = os.path.join(log_dir, os.path.basename(table_file)[:last_dot_idx] + '.xlsx')
+        new_table_file = os.path.join(table_dir, os.path.basename(table_file)[:last_dot_idx] + '.xlsx')
 
         if table_file.endswith(".xlsx"):
             pass
@@ -195,11 +195,11 @@ def benchmark(
 
 def main():
     ##### You need to change this
-    input_jsonl = None
-    table_dir = None
-    pkl_dir = None
-    output_jsonl = None
-    log_dir = None
+    input_jsonl ="data/SSTQA-zh/test.jsonl"
+    table_dir = "data/SSTQA-zh/table"
+    pkl_dir = "data/SSTQA-zh/pkl"
+    output_jsonl = "SSTQA-zh/output.jsonl"
+    log_dir = "data/SSTQA-zh/log"
 
     benchmark(
         table_dir=table_dir,
