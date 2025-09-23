@@ -248,7 +248,7 @@ python ./gradio_app.py
 如果服务正常启动，您可以在浏览器中打开这样的界面
 
 <p align="center">
-  <img src="./assets/gradio.png" width = "300" alt="" align="center" />
+  <img src="./assets/gradio.png" width = "800" alt="" align="center" />
 </p>
 
 您可以在这个界面中上传表格，查看该表格生成的H-O Tree的结构，并针对这个表格向我们的模型提问！
