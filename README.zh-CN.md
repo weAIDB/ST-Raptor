@@ -237,12 +237,21 @@ EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"  # [Change This]
 ```shell
 python ./main.py
 ```
-如果您想要使用我们搭建的可视化平台，则可以运行以下代码生成可视化页面
+
+#### 使用可视化平台
+
+如果您想要使用我们搭建的可视化平台，则可以运行以下代码生成页面
 
 ```shell
 python ./gradio_app.py
 ```
+如果服务正常启动，您可以在浏览器中打开这样的界面
 
+<p align="center">
+  <img src="./assets/gradio.png" width = "300" alt="" align="center" />
+</p>
+
+您可以在这个界面中上传表格，查看该表格生成的H-O Tree的结构，并针对这个表格向我们的模型提问！
 
 ## 💡 半结构化表格 QA 示例
 

@@ -29,7 +29,8 @@
 - [ ] Visualization
   - [x] Support visualization platform based on Gradio.
   - [ ] Support hyper-parameter settings through Gradio. 
-  - [ ] Support the visualization of HO-Tree structure and manually revise.
+  - [×] Support the visualization of HO-Tree structure.
+  - [ ] Support the HO-Tree manual correction function.
 
 ## ✨ Project Introduction
 
@@ -236,6 +237,20 @@ If you have completed all the above settings, use the following command to start
 ```shell
 python ./main.py
 ```
+#### Visualization Platform
+
+If you want to use the visualization platform, you can run the following code to generate the page:
+
+```shell
+python ./gradio_app.py
+```
+If the service starts correctly, you will be able to open an interface like this in your browser:
+
+<p align="center">
+  <img src="./assets/gradio.png" width = "300" alt="" align="center" />
+</p>
+
+On this interface, you can upload a table, view the structure of the H-O Tree generated from the table, and ask our model questions about it!
 
 ## 💡 Semi-Structured Table QA Examples
 
