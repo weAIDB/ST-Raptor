@@ -247,7 +247,7 @@ python ./gradio_app.py
 If the service starts correctly, you will be able to open an interface like this in your browser:
 
 <p align="center">
-  <img src="./assets/gradio.png" width = "300" alt="" align="center" />
+  <img src="./assets/gradio.png" width = "800" alt="" align="center" />
 </p>
 
 On this interface, you can upload a table, view the structure of the H-O Tree generated from the table, and ask our model questions about it!
