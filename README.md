@@ -29,7 +29,7 @@
 - [ ] Visualization
   - [x] Support visualization platform based on Gradio.
   - [ ] Support hyper-parameter settings through Gradio. 
-  - [×] Support the visualization of HO-Tree structure.
+  - [x] Support the visualization of HO-Tree structure.
   - [ ] Support the HO-Tree manual correction function.
 
 ## ✨ Project Introduction
