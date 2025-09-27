@@ -15,7 +15,7 @@ class Verifier():
         """判断 answer 的内容是否可以和query对应上"""
         prompt = check_answer_prompt.format(query=query, answer=answer)
         
-        res = generate_deepseek(prompt, API_KEY, API_URL)
+        res = llm_generate(prompt)
         
         if "T" in res:
             return True
@@ -25,7 +25,7 @@ class Verifier():
 
         prompt = back_verification_prompt.format(table=f_tree.__json__(), query=query, answer=answer, n=n)
 
-        res = generate_deepseek(prompt, API_KEY, API_URL)
+        res = llm_generate(prompt)
         res = res.splitlines()
         res = [x.strip() for x in res]
 
@@ -35,7 +35,7 @@ class Verifier():
 
         query_list = self.get_queryset_by_answer(f_tree, query, answer, n)
 
-        similarity = EmbeddingModelMultilingualE5().one_to_many_semilarity(
+        similarity = EmbeddingModel().one_to_many_semilarity(
             query, query_list
         )[0]
 

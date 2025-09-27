@@ -189,3 +189,4 @@ xgrammar==0.1.18
 xxhash==3.5.0
 yarl==1.17.0
 zipp==3.21.0
+gradio
