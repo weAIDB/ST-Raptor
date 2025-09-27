@@ -8,13 +8,13 @@ import traceback
 from tqdm import tqdm
 
 from table2tree.feature_tree import *
-from utils.api_utils import generate_deepseek, generate_text_third_party
-from embedding import match_sub_table, EmbeddingModelMultilingualE5
+from utils.api_utils import llm_generate
+from embedding import match_sub_table, EmbeddingModel
 from query.primitive_def import *
 from verifier.verifier import *
 from utils.constants import *
 from utils.prompt_template import *
-
+from utils.sheet_utils import get_xlsx_table_string
 
 def flatten_nested_list(value):
     res = []
@@ -36,7 +36,7 @@ def bool_string(s):
 def query_decompose(f_tree: FeatureTree, query: str):
     prompt = query_decompose_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = generate_deepseek(prompt, key=API_KEY, url=API_URL, temperature=0.7)
+    res = llm_generate(prompt)
 
     queries = []
     retrieve_flags = []
@@ -62,7 +62,7 @@ def query_decompose(f_tree: FeatureTree, query: str):
 def entity_extractor(f_tree: FeatureTree, query: str):
     prompt = entity_extract_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = generate_deepseek(prompt, key=API_KEY, url=API_URL, temperature=1.0)
+    res = llm_generate(prompt, temperature=0.5)
 
     # pattern = r"```python\n(.*?)```"
     # matches = re.findall(pattern, res, re.DOTALL)
@@ -78,29 +78,23 @@ def semantic_reason(evidence, query):
         evidence = evidence.__json__()
     prompt = semantic_reasoning_prompt.format(evidence=evidence, query=query)
 
-    res = generate_deepseek(prompt, key=API_KEY, url=API_URL, temperature=1.0)
+    res = llm_generate(prompt, temperature=0.5)
 
     return res
 
 
-def calc_math(f_tree: FeatureTree, query, log_file=None):
+def calc_math(f_tree: FeatureTree, query):
 
     math_prompt = primitive_prompt_math.format(query=query, table=f_tree.__json__())
 
     retry_cnt = 1
     while retry_cnt < MAX_RETRY_PRIMITIVE:
         try:
-            primitive_seq = generate_deepseek(
-                prompt = math_prompt,
-                key = API_KEY,
-                url = API_URL,
-                temperature = 1.0,
-            )
+            primitive_seq = llm_generate(prompt=math_prompt, temperature = 0.5)
+
             operation = primitive_seq.splitlines()[0].strip()
             if operation == "None":
-                if log_file is not None:
-                    with open(log_file, 'a') as file:
-                        file.write(f'{DELIMITER} 不需要进行MATH操作 {DELIMITER}\n')
+                logger.info(f'{DELIMITER} 不需要进行MATH操作 {DELIMITER}')
                 return f_tree
 
             args = re.findall(r"\[(.*?)\]", operation, re.DOTALL)
@@ -110,10 +104,8 @@ def calc_math(f_tree: FeatureTree, query, log_file=None):
             if args[0]!="MATH" or not args[2] in ["SUM", "MAX", "MIN", "CNT", "AVR"]:
                 raise ValueError("False primitive generated!")
             
-            if log_file is not None:
-                with open(log_file, 'a') as file:
-                    file.write(f'{DELIMITER} 生成的MATH操作为 {DELIMITER}\n')
-                    file.write(f'[MATH] + [{args[1]}] + [{args[2]}]\n')
+            logger.info(f'{DELIMITER} 生成的MATH操作为 {DELIMITER}')
+            logger.info(f'[MATH] + [{args[1]}] + [{args[2]}]')
                     
             break
         except Exception as e:
@@ -163,7 +155,6 @@ def dfs_reasoning(
     depth=1,
     enable_embedding_match=False,
     embedding_cache_file=None,
-    log_file=None,
 ):
     """Reasoning in a depth-first search manner"""
     if depth > MAX_ITER_PRIMITIVE:
@@ -188,16 +179,12 @@ def dfs_reasoning(
             table=f_tree.__json__(),
         )
         
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as file:
-                file.write(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}\n")
+        logger.info(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}")
         
-        operation = generate_deepseek(cond_prompt, API_KEY, API_URL).strip()
+        operation = llm_generate(cond_prompt).strip()
         
         if "None" in operation:
-            if log_file is not None:    # Log
-                with open(log_file, 'a') as file:
-                    file.write(f"{DELIMITER} 检测不使用COND操作 {DELIMITER}\n")
+            logger.info(f"{DELIMITER} 检测不使用COND操作 {DELIMITER}")
         else:
             args = re.findall(r"\[(.*?)\]", operation, re.DOTALL)
             if len(args) % 4 != 0 or args[0] != 'COND':
@@ -208,27 +195,22 @@ def dfs_reasoning(
                     op = args[2]
                     value = args[3]
                     f_tree = condition_search(f_tree, column, op, value)
-                    if log_file is not None:    # Log
-                        with open(log_file, 'a') as file:
-                            file.write(f"{DELIMITER} 使用COND操作 {DELIMITER}\n")
-                            file.write(f"[COND] + [{column}] + [{op}] + [{value}]\n")
-                            file.write(f"{DELIMITER} COND操作结果 {DELIMITER}\n")
-                            file.write(f"{f_tree.__json__()}\n")
+                    logger.info(f"{DELIMITER} 使用COND操作 {DELIMITER}")
+                    logger.info(f"[COND] + [{column}] + [{op}] + [{value}]")
+                    logger.info(f"{DELIMITER} COND操作结果 {DELIMITER}")
+                    logger.info(f"{f_tree.__json__()}")
                     args = args[4:]
 
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as file:
-                file.write(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}\n")
+        logger.info(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}")
         
         ### Math based on the f_tree
-        res = calc_math(f_tree, query, log_file)
+        res = calc_math(f_tree, query)
         if isinstance(res, FeatureTree):
             pass
         else:
             return [res], ""
     
     ### Retrieval
-    
     if flag:  # 嵌套有FeatureTree，只给Schema
         table_string = f"{f_tree.__index__()}"
 
@@ -252,35 +234,20 @@ def dfs_reasoning(
     )
 
     print(f"query: {query}\ntable: {table_string}")
-    if log_file is not None:  # Log
-        with open(log_file, "a") as file:
-            file.write(
-                f"{DELIMITER} Prompt Args for Primitive Depth {depth} {DELIMITER}\n"
-            )
-            file.write(
-                f"### Query\n{query}\n### Table\n{table_string}\n###Query History\n{query_history}\n"
-            )
+    logger.info(f"{DELIMITER} Prompt Args for Primitive Depth {depth} {DELIMITER}")
+    logger.info(f"### Query\n{query}\n### Table\n{table_string}\n###Query History\n{query_history}")
 
     retry_cnt = 1
     while retry_cnt < MAX_RETRY_PRIMITIVE:
 
         # Generate primitive
-        primitive_seq = generate_deepseek(
-            prompt=prompt,
-            key=API_KEY,
-            url=API_URL,
-            temperature=1.0,
-        )
+        primitive_seq = llm_generate(prompt=prompt)
         operation = primitive_seq.splitlines()[0].strip()
 
         print(operation)
-        if log_file is not None:  # Log
-            with open(log_file, "a") as file:
-                file.write(
-                    f"{DELIMITER} Generated Primitive of {LLM_MODEL_TYPE} Try {retry_cnt} {DELIMITER}\n"
-                )
-                file.write(f"{operation}\n")
-                file.write(f"{DELIMITER} Primitive Execution {DELIMITER}\n")
+        logger.info(f"{DELIMITER} Generated Primitive of {LLM_MODEL_TYPE} Try {retry_cnt} {DELIMITER}")
+        logger.info(f"{operation}")
+        logger.info(f"{DELIMITER} Primitive Execution {DELIMITER}")
 
         try:
             step_info = f"# Iter{depth}\n Operation: {operation}\n"
@@ -296,45 +263,37 @@ def dfs_reasoning(
                 ):  # Retrieve Children
                     if enable_embedding_match:  # Embedding Match
                         print(f_tree.all_value_list())
-                        # args[1] = EmbeddingModelMultilingualE5().top1_match(
+                        # args[1] = EmbeddingModel().top1_match(
                         #     [args[1]], table=f_tree.all_value_list(), embedding_cache_file=embedding_cache_file
                         # )[0]
-                        topk_values = EmbeddingModelMultilingualE5().topk_match(
+                        topk_values = EmbeddingModel().topk_match(
                             [args[1]],
                             f_tree.all_value_list(),
                             embedding_cache_file=embedding_cache_file,
                         )
                         args[1] = topk_values[0][0]
 
-                    if log_file is not None:  # Log
-                        with open(log_file, "a") as file:
-                            file.write(
-                                f"{DELIMITER} Primitive After Embedding {DELIMITER}\n"
-                            )
-                            file.write(f"[CHL] + [{args[1]}]\n")
+                    logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
+                    logger.info(f"[CHL] + [{args[1]}]")
 
                     op_res = meta_search(f_tree, [args[1], "n"])
 
                 elif args[0] == "FAT" and len(args) == 2:  # Retrieve Father
                     if enable_embedding_match:  # Embedding Match
-                        args[1] = EmbeddingModelMultilingualE5().top1_match(
+                        args[1] = EmbeddingModel().top1_match(
                             [args[1]],
                             table=f_tree.all_value_list(),
                             embedding_cache_file=embedding_cache_file,
                         )[0]
 
-                    if log_file is not None:  # Log
-                        with open(log_file, "a") as file:
-                            file.write(
-                                f"{DELIMITER} Primitive After Embedding {DELIMITER}\n"
-                            )
-                            file.write(f"[FAT] + [{args[1]}]\n")
+                    logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
+                    logger.info(f"[FAT] + [{args[1]}]")
 
                     op_res = meta_search(f_tree, ["n", args[1]])
 
                 elif args[0] == "EXT" and len(args) == 3:  # Extract Operation
                     if enable_embedding_match:
-                        t = EmbeddingModelMultilingualE5().top1_match(
+                        t = EmbeddingModel().top1_match(
                             [args[1], args[2]],
                             table=f_tree.all_value_list(),
                             embedding_cache_file=embedding_cache_file,
@@ -342,12 +301,8 @@ def dfs_reasoning(
                         args[1] = t[0]
                         args[2] = t[1]
 
-                    if log_file is not None:  # Log
-                        with open(log_file, "a") as file:
-                            file.write(
-                                f"{DELIMITER} Primitive After Embedding {DELIMITER}\n"
-                            )
-                            file.write(f"[EXT] + [{args[1]}] + [{args[2]}] \n")
+                    logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
+                    logger.info(f"[EXT] + [{args[1]}] + [{args[2]}]")
 
                     op_res = meta_search(f_tree, [args[1], "n", args[2]])
                     # step_info += f"Extract Result: {op_res}\n"
@@ -355,7 +310,7 @@ def dfs_reasoning(
 
                 elif args[0] == "COND" and len(args) == 3:  # Conditional Search
                     if enable_embedding_match:  # Embedding Match
-                        t = EmbeddingModelMultilingualE5().top1_match(
+                        t = EmbeddingModel().top1_match(
                             [args[1], args[2]],
                             table=f_tree.all_value_list(),
                             embedding_cache_file=embedding_cache_file,
@@ -363,45 +318,33 @@ def dfs_reasoning(
                         args[1] = t[0]
                         args[2] = t[1]
 
-                    if log_file is not None:  # Log
-                        with open(log_file, "a") as file:
-                            file.write(
-                                f"{DELIMITER} Primitive After Embedding {DELIMITER}\n"
-                            )
-                            file.write(f"[COND] + [{args[1]}] + [{args[2]}]\n")
+                    logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
+                    logger.info(f"[COND] + [{args[1]}] + [{args[2]}]")
 
                     op_res = meta_search(f_tree, ["cond", args[1], args[2]])
 
                 elif args[0] == "FOREACH" and len(args) == 3:  # Foreach Operation
                     if enable_embedding_match:  # Embedding Match
-                        args[1] = EmbeddingModelMultilingualE5().top1_match(
+                        args[1] = EmbeddingModel().top1_match(
                             [args[1]],
                             table=f_tree.all_value_list(),
                             embedding_cache_file=embedding_cache_file,
                         )[0]
 
-                    if log_file is not None:  # Log
-                        with open(log_file, "a") as file:
-                            file.write(
-                                f"{DELIMITER} Primitive After Embedding {DELIMITER}\n"
-                            )
-                            file.write(f"[FOREACH] + [{args[1]}] + [{args[2]}]\n")
+                    logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
+                    logger.info(f"[FOREACH] + [{args[1]}] + [{args[2]}]")
 
                     op_res = meta_search(f_tree, ["foreach", args[1], args[2]])
 
-                if log_file is not None:  # Log
-                    with open(log_file, "a") as file:
-                        file.write(f"{DELIMITER} Retreval Result {DELIMITER}\n")
-                        if len(op_res) == 0:
-                            file.write(f"Nothing Retrieved\n")
+                logger.info(f"{DELIMITER} Retreval Result {DELIMITER}")
+                if len(op_res) == 0:
+                    logger.info(f"Nothing Retrieved")
+                else:
+                    for subdata in op_res:
+                        if isinstance(subdata, FeatureTree):
+                            logger.info(f"Retrieved Schema: {subdata.__index__()}")
                         else:
-                            for subdata in op_res:
-                                if isinstance(subdata, FeatureTree):
-                                    file.write(
-                                        f"Retrieved Schema: {subdata.__index__()}\n"
-                                    )
-                                else:
-                                    file.write(f"Retrieved Data: {subdata}\n")
+                            logger.info(f"Retrieved Data: {subdata}")
 
                 tree_cnt = 1
                 data_cnt = 1
@@ -416,7 +359,6 @@ def dfs_reasoning(
                             + f"Retrieve Subtree Schema {tree_cnt}: {subdata.__index__()}\n",
                             depth=depth + 1,
                             embedding_cache_file=embedding_cache_file,
-                            log_file=log_file,
                         )
                         if sub_answer is not None and len(sub_answer) > 0:
                             step_info += f"Retrieve Subtree Schema {tree_cnt}: {subdata.__index__()}\n"
@@ -433,7 +375,7 @@ def dfs_reasoning(
 
             elif args[0] == "CMP" and len(args) == 4:  # Compare Operation
                 if enable_embedding_match:
-                    t = EmbeddingModelMultilingualE5().top1_match(
+                    t = EmbeddingModel().top1_match(
                         [args[1], args[2]],
                         table=f_tree.all_value_list(),
                         embedding_cache_file=embedding_cache_file,
@@ -441,12 +383,10 @@ def dfs_reasoning(
                     args[1] = t[0]
                     args[2] = t[1]
 
-                if log_file is not None:  # Log
-                    with open(log_file, "a") as file:
-                        file.write(
-                            f"{DELIMITER} Primitive After Embedding {DELIMITER}\n"
-                        )
-                        file.write(f"[CMP] + [{args[1]}] + [{args[2]}] + [{args[3]}]\n")
+                logger.info(
+                    f"{DELIMITER} Primitive After Embedding {DELIMITER}"
+                )
+                logger.info(f"[CMP] + [{args[1]}] + [{args[2]}] + [{args[3]}]")
 
                 op_res = meta_search(f_tree, ["cmp", args[1], args[2], args[3]])
                 step_info += f"Compare Result: {op_res}\n"
@@ -466,11 +406,7 @@ def dfs_reasoning(
             import traceback
             traceback.print_exc()
             print(e, f"Generated primitive have unknown error, need regenerate!")
-            if log_file is not None:  # Log
-                with open(log_file, "a") as file:
-                    file.write(
-                        f"Primitive Need Regenerate! Primitive Execution Error: {e}\n{traceback.print_exc()}\n"
-                    )
+            logger.error(f"Primitive Need Regenerate! Primitive Execution Error: {e}\n{traceback.print_exc()}")
             retry_cnt += 1
 
         # 这里 retrieved_data 是最终的答案列表
@@ -489,16 +425,12 @@ def dfs_reasoning(
             table=f_tree.__json__(),
         )
         
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as file:
-                file.write(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}\n")
+        logger.info(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}")
         
-        operation = generate_deepseek(cond_prompt, API_KEY, API_URL).strip()
+        operation = llm_generate(cond_prompt).strip()
         
         if "None" in operation:
-            if log_file is not None:    # Log
-                with open(log_file, 'a') as file:
-                    file.write(f"{DELIMITER} 检测不使用COND操作 {DELIMITER}\n")
+            logger.info(f"{DELIMITER} 检测不使用COND操作 {DELIMITER}")
         else:
             args = re.findall(r"\[(.*?)\]", operation, re.DOTALL)
             if len(args) % 4 != 0 or args[0] != 'COND':
@@ -509,24 +441,16 @@ def dfs_reasoning(
                     op = args[2]
                     value = args[3]
                     f_tree = condition_search(f_tree, column, op, value)
-                    if log_file is not None:    # Log
-                        with open(log_file, 'a') as file:
-                            file.write(f"{DELIMITER} 使用COND操作 {DELIMITER}\n")
-                            file.write(f"[COND] + [{column}] + [{op}] + [{value}]\n")
-                            file.write(f"{DELIMITER} COND操作结果 {DELIMITER}\n")
-                            file.write(f"{f_tree.__json__()}\n")
+                    logger.info(f"{DELIMITER} 使用COND操作 {DELIMITER}")
+                    logger.info(f"[COND] + [{column}] + [{op}] + [{value}]")
+                    logger.info(f"{DELIMITER} COND操作结果 {DELIMITER}")
+                    logger.info(f"{f_tree.__json__()}")
                     args = args[4:]
 
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as file:
-                file.write(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}\n")
+        logger.info(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}")
 
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as file:
-                file.write(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}\n")
-        
         ### Math based on the f_tree
-        res = calc_math(f_tree, query, log_file)
+        res = calc_math(f_tree, query)
         r_data.append(res)
         # if isinstance(res, FeatureTree):
             # pass
@@ -562,23 +486,20 @@ def bottom_up_reasoning(
     query: str,
     f_tree: FeatureTree,
     embedding_cache_file=None,
-    log_file=None,
 ):
     """
     return: FeatureTree / String
     """
     entities = entity_extractor(f_tree, query)
-    start_from = EmbeddingModelMultilingualE5().top1_match(
+    start_from = EmbeddingModel().top1_match(
         entities, f_tree.all_value_list(), embedding_cache_file
     )
 
-    if log_file is not None:  # Log
-        with open(log_file, "a") as file:
-            file.write(f"{DELIMITER} Buttom Up Reasoning {DELIMITER}\n")
-            file.write(f"Extracted Entities: {entities}\n")
-            file.write(f"Matched Table Content: {start_from}\n")
+    logger.info(f"{DELIMITER} Buttom Up Reasoning {DELIMITER}")
+    logger.info(f"Extracted Entities: {entities}")
+    logger.info(f"Matched Table Content: {start_from}")
 
-    # 获得 embedding 结果所在的 subdata
+    ##### 获得 embedding 结果所在的 subdata
     subdata_list = []
     retrieved_data_list = []
     for index, content in enumerate(start_from):
@@ -592,15 +513,12 @@ def bottom_up_reasoning(
                 f_tree=subdata,
                 enable_embedding_match=True,
                 embedding_cache_file=embedding_cache_file,
-                log_file=log_file,
             )
             retrieved_data_list.append(retrieved_data)
         else:
             retrieved_data_list.append(subdata)
 
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as file:
-                file.write(f"Subdata for {content}:\n {retrieved_data_list[-1]}\n")
+        logger.info(f"Subdata for {content}:\n {retrieved_data_list[-1]}")
 
     return retrieved_data_list  # 可能为空 []，则最终基于整表进行reasoning
 
@@ -613,186 +531,131 @@ def delete_list_empty_elem(data: list):
     return new_data        
 
 
-def qa_PTR(f_tree, query):
-    """Plan-then-Reason
-    Challenge: 需要每一个action都可以对应到一个primitive上
-    """
-
-    start_time = tm.time()
-
-    # 1. Query Decompose
-    decomposed_queries = [query]
-    retrieve_flag = [True]
-    # decomposed_queries, retrieve_flag = query_decompose(f_tree=f_tree, query=query)
-    # print(decomposed_queries)
-    # print(retrieve_flag)
-
-    # 2. Query Rewrite: only rewrite queries if retrieval is needed
-    # for query, flag in zip(decomposed_queries, retrieve_flag):
-    #     if flag:
-    #         query = query_rewrite(f_tree=f_tree, query=query)
-    # print(decomposed_queries)
-    # print(retrieve_flag)
-
-    # 3. Sequence Query Answering
-
-    end_time = tm.time()
-    print(f"time: {end_time - start_time}s")
-
-
-def qa_RWP(f_tree, query, enable_emebdding=False, embedding_cache_file=None, log_file=None, enable_query_decompose=True):
+def qa_RWP(query: str, 
+           ho_tree: FeatureTree, 
+           table_file: str,
+           embedding_cache_file=None, 
+           enable_emebdding=False, 
+           enable_query_decompose=True):
     """Reason-while-Planning"""
 
-    start_time = tm.perf_counter()
+    try:
+        ##### Step 1. 问题分解
+        raw_query = query
+        if enable_query_decompose:
+            decomposed_queries, retrieve_flag = query_decompose(f_tree=ho_tree, query=query)
+        else:
+            decomposed_queries = [query]
+            retrieve_flag = [True]
 
-    # 1. Query Decompose
-    raw_query = query
-    if enable_query_decompose:
-        decomposed_queries, retrieve_flag = query_decompose(f_tree=f_tree, query=query)
-    else:
-        decomposed_queries = [query]
-        retrieve_flag = [True]
+        logger.info(f"{DELIMITER} Query Decompose {DELIMITER}")
+        logger.info(f"{decomposed_queries}")
+        logger.info(f"{DELIMITER} Retreive Flag {DELIMITER}")
+        logger.info(f"{retrieve_flag}")
 
-    # Log
-    print("Query Decompose:")
-    print(f"\t{decomposed_queries}")
-    print(f"\t{retrieve_flag}")
-    if log_file is not None:
-        with open(log_file, "a") as f:
-            f.write(f"{DELIMITER} Query Decompose {DELIMITER}\n")
-            f.write(f"{decomposed_queries}\n")
-            f.write(f"{DELIMITER} Retreive Flag {DELIMITER}\n")
-            f.write(f"{retrieve_flag}\n")
+        logger.info(f"{DELIMITER} 开始遍历解决分解后的每一个子问题 {DELIMITER}")
+        
+        ##### 依次遍历每一个子问题
+        qa_pair = []
+        subquery_index = 1
+        for query, flag in zip(decomposed_queries, retrieve_flag):
+            logger.info(f"{DELIMITER} Answering Subquery {subquery_index} {DELIMITER}")
+            logger.info(f"{query}")
 
-    # 3. Sequence Query Answering
-    qa_pair = []
-    subquery_index = 1
-    for query, flag in zip(decomposed_queries, retrieve_flag):
+            answer = None
+            if flag:  # Need Retrieval
+                retrieved_data, reasoning_path = dfs_reasoning(
+                    query=query,
+                    f_tree=ho_tree,
+                    query_history=qa_pair,
+                    iter_history="",
+                    depth=1,
+                    enable_embedding_match=enable_emebdding,
+                    embedding_cache_file=embedding_cache_file,
+                )
 
-        if log_file is not None: # Log
-            with open(log_file, "a") as f:
-                f.write(f"{DELIMITER} Answering Subquery {subquery_index} {DELIMITER}\n")
-                f.write(f"{query}\n")
-
-        answer = None
-        if flag:  # Need Retrieval
-            retrieved_data, reasoning_path = dfs_reasoning(
-                query=query,
-                f_tree=f_tree,
-                query_history=qa_pair,
-                iter_history="",
-                depth=1,
-                enable_embedding_match=enable_emebdding,
-                embedding_cache_file=embedding_cache_file,
-                log_file=log_file,
-            )
-
-            retrieved_data = flatten_nested_list(retrieved_data)
-            for index, data in enumerate(retrieved_data):
-                if isinstance(data, FeatureTree):
-                    retrieved_data[index] = data.__json__()
-
-            retrieved_data = delete_list_empty_elem(retrieved_data)
-            if len(retrieved_data) == 0:
-                prompt = direct_table_reasoning_prompt.format(table=f_tree.__json__(), query=query)
-                answer = generate_deepseek(prompt, API_KEY, API_URL)
-            else:
-                answer = semantic_reason(retrieved_data, query)
-            check_res = Verifier().check_answer(query, answer)
-
-            # print(retrieved_data)
-            if log_file is not None:  # Log
-                with open(log_file, "a") as f:
-                    f.write(f"{DELIMITER} Final Retrieved Data for Subquery {subquery_index} {DELIMITER}\n")
-                    f.write(f"{retrieved_data}\n")
-                    f.write(f"{DELIMITER} Answer for Subquery {subquery_index} {DELIMITER}\n")
-                    f.write(f"{answer}\n")
-                    f.write(f"{DELIMITER} Verifier Check Answer for Subquery {subquery_index} {DELIMITER}\n")
-                    f.write(f"{check_res}\n")
-
-            if check_res is False:
-                st = tm.perf_counter()
-                retrieved_data = bottom_up_reasoning(query, f_tree, embedding_cache_file, log_file)
-                et = tm.perf_counter()
                 retrieved_data = flatten_nested_list(retrieved_data)
                 for index, data in enumerate(retrieved_data):
                     if isinstance(data, FeatureTree):
                         retrieved_data[index] = data.__json__()
-                
+
                 retrieved_data = delete_list_empty_elem(retrieved_data)
                 if len(retrieved_data) == 0:
-                    # Direct Reasoning
-                    prompt = direct_table_reasoning_prompt.format(table=f_tree.__json__(), query=query)
-                    answer = generate_deepseek(prompt, API_KEY, API_URL)
-                    if log_file is not None:    # Log
-                        with open(log_file, 'a') as f:
-                            f.write(f"{DELIMITER} Bottom Up Reaoning Failed, Direct Reasoning {subquery_index} {DELIMITER}\n")
-                            f.write(f"{answer}\n")
-                            f.write(f"Time: {et - st}\n")
-
+                    prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
+                    answer = llm_generate(prompt)
                 else:
                     answer = semantic_reason(retrieved_data, query)
+                check_res = Verifier().check_answer(query, answer)
+
+                logger.info(f"{DELIMITER} Final Retrieved Data for Subquery {subquery_index} {DELIMITER}")
+                logger.info(f"{retrieved_data}")
+                logger.info(f"{DELIMITER} Answer for Subquery {subquery_index} {DELIMITER}")
+                logger.info(f"{answer}")
+                logger.info(f"{DELIMITER} Verifier Check Answer for Subquery {subquery_index} {DELIMITER}")
+                logger.info(f"{check_res}")
+
+                if check_res is False:
+                    st = tm.perf_counter()
+                    retrieved_data = bottom_up_reasoning(query, ho_tree, embedding_cache_file)
+                    et = tm.perf_counter()
+                    retrieved_data = flatten_nested_list(retrieved_data)
+                    for index, data in enumerate(retrieved_data):
+                        if isinstance(data, FeatureTree):
+                            retrieved_data[index] = data.__json__()
                     
-                    if log_file is not None:    # Log
-                        with open(log_file, 'a') as f:
-                            f.write(f"{DELIMITER} Bottom Up Reaoning Answer for Query {subquery_index} {DELIMITER}\n")
-                            f.write(f"{answer}\n")
-                            f.write(f"Time: {et - st}\n")
+                    retrieved_data = delete_list_empty_elem(retrieved_data)
+                    if len(retrieved_data) == 0:
+                        # Direct Reasoning
+                        prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
+                        answer = llm_generate(prompt)
 
-        else:  # Do not need retrieval, directly Semantic Reasoning
-            answer = semantic_reason(qa_pair, query)
+                        logger.info(f"{DELIMITER} Bottom Up Reaoning Failed, Direct Reasoning {subquery_index} {DELIMITER}")
+                        
+                    else:
+                        answer = semantic_reason(retrieved_data, query)
+                        
+                        logger.info(f"{DELIMITER} Bottom Up Reaoning Answer for Query {subquery_index} {DELIMITER}")
+                    logger.info(f"{answer}")
+                    logger.info(f"Time: {et - st}")
 
-            if log_file is not None:  # Log
-                with open(log_file, "a") as f:
-                    f.write(
-                        f"{DELIMITER} Answer for Subquery {subquery_index} {DELIMITER}\n"
-                    )
-                    f.write(f"{answer}\n")
+            else:  # Do not need retrieval, directly Semantic Reasoning
+                answer = semantic_reason(qa_pair, query)
 
-        
-        qa_pair.append({"query": query, "answer": answer})
+                logger.info(f"{DELIMITER} Answer for Subquery {subquery_index} {DELIMITER}")
+                logger.info(f"{answer}")
 
-        subquery_index += 1
+            qa_pair.append({"query": query, "answer": answer})
 
-    # final_answer = semantic_reason(qa_pair, query)
-    print(qa_pair)
-    final_answer = qa_pair[-1]["answer"]
+            subquery_index += 1
+
+        # final_answer = semantic_reason(qa_pair, query)
+        final_answer = qa_pair[-1]["answer"]
+
+    except Exception as e:
+        table_str = get_xlsx_table_string(table_file)
+
+        logger.error(f"{DELIMITER} DFS Reasoning Fail! Try to Reason from Scratch! {DELIMITER}")
+        direct_table_reasoning_prompt(table=table_str, query=raw_query)
+        final_answer = llm_generate(prompt)
+        logger.info(f"{final_answer}")
     
-    # Last Check
+    ##### Final Check
+    logger.info(f"{DELIMITER} Final Check for Query {DELIMITER}")
     final_check = Verifier().check_answer(query=raw_query, answer=final_answer)
-    if log_file is not None:    # Log
-        with open(log_file, 'a') as f:
-            f.write(f"{DELIMITER} Final Check for Query {DELIMITER}\n")
-            f.write(f"{final_check}\n")
+    logger.info(f"{final_check}")
     if final_check:
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as f:
-                f.write(f"{DELIMITER} Final Check Passed and Final Answer{DELIMITER}\n")
-                f.write(f"{final_answer}\n")
+        logger.info(f"{DELIMITER} Final Check Passed and Final Answer{DELIMITER}")
+        logger.info(f"{final_answer}")
     else:
-        prompt = direct_table_reasoning_prompt.format(table=f_tree.__json__(), query=raw_query)
-        final_answer = generate_deepseek(prompt, API_KEY, API_URL)
-        if log_file is not None:    # Log
-            with open(log_file, 'a') as f:
-                f.write(f"{DELIMITER} Final Answer for Whole Table Reasoning {DELIMITER}\n")
-                f.write(f"{final_answer}\n")
-
-    print(qa_pair)
-    print(final_answer)
+        prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=raw_query)
+        final_answer = llm_generate(prompt)
+        logger.info(f"{DELIMITER} Final Answer for Whole Table Reasoning {DELIMITER}")
+        logger.info(f"{final_answer}")
     
-    ### Back Verification
-    reliability, query_list = Verifier().back_verify(f_tree=f_tree, query=raw_query, answer=final_answer)
-    if log_file is not None:    # Log
-        with open(log_file, 'a') as f:
-            f.write(f"{DELIMITER} Back Verification {DELIMITER}\n")
-            f.write(f"Query List: \n{query_list}\n")
-            f.write(f"Reliabillity: {reliability}\n")
-
-    end_time = tm.perf_counter()
-    print(f"time: {end_time - start_time}s")
-    if log_file is not None:  # Log
-        with open(log_file, "a") as f:
-            f.write(f"{DELIMITER} Total Process Time {DELIMITER}\n")
-            f.write(f"{end_time - start_time}s\n")
+    ##### Back Verification
+    reliability, query_list = Verifier().back_verify(f_tree=ho_tree, query=raw_query, answer=final_answer)
+    logger.info(f"{DELIMITER} Back Verification {DELIMITER}")
+    logger.info(f"Query List: {query_list}")
+    logger.info(f"Reliabillity: {reliability}")
 
     return final_answer, qa_pair, reliability

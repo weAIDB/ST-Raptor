@@ -4,17 +4,51 @@
   <img src="./assets/header.png" width = "700" alt="" align="center" />
 </p>
 
+<div align="center">
+  <p>
+    <b>
+      <a href="README.md">English</a>
+      |
+      <a href="README.zh-CN.md">中文</a>
+    </b>
+  </p>
+</div>
+
+
 ## ✨ Project Introduction
 
 **ST-Raptor** is a tool for answering questions over tables with diverse semi-structured layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
 
 Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
 
+<p align="center">
+  <img src="./assets/gradio.png" width = "800" alt="" align="center" />
+</p>
+
+
 ## ❓ What Tables Can ST-Raptor Handle?
 
 <p align="center">
   <img src="./assets/examples.png" width = "800" alt="" align="center" />
 </p>
+
+## 📣 Updates
+
+- [ ] Main functionss
+  - [x] Support both local deployment or API calls for LLM, VLM, and Embedding models.
+  - [x] Support diverse input formats: HTML, CSV, MARKDOWN, ...
+  - [ ] Support Image input.
+  - [ ] Expand the table extraction module to support table types beyond problem definition.
+
+- [ ] Benchmark
+  - [x] Update both english and chinese version of SSTQA Benchmark.
+  - [ ] The SSTQAv2 is on the way!!!
+
+- [ ] Visualization
+  - [x] Support visualization platform based on Gradio.
+  - [ ] Support hyper-parameter settings through Gradio. 
+  - [x] Support the visualization of HO-Tree structure.
+  - [ ] Support the HO-Tree manual correction function.
 
 **Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
@@ -26,10 +60,7 @@ We list out 10 representative real scenarios as below:
 
 Human Resources, Corporate Management, Financial Management, Marketing, Warehouse Management, Academic, Schedule Management, Application Forms, Education-related, and Sales Management.
 
-Download the unfiltered dataset with 2k+ tables: [Raw Dataset]().
-
-Download the SSTQA benchmark: [SSTQA Benchmark](https://drive.google.com/file/d/1LkdxJHJfThNUiEh68YdgkN_eNbJEoRJ7/view?usp=sharing).
-
+You can find the SSTQA benchmark in ```./data``` directory: [SSTQA-en]("./data/SSTQA-en") [SSTQA-ch]("./data/SSTQA-ch")
 
 ## 📊 Performance
 
@@ -96,28 +127,30 @@ cd ST-Raptor
 conda create -n straptor python=3.10
 conda activate straptor
 # install required packages
-pip install -m requirements.txt
+pip install -r requirements.txt
 ```
 
-2. Install the HTML rendering plugin wkhtmltox.
+2. Install the HTML rendering plugin ```wkhtmltox ``` and font package.
 
 ```shell
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-sudo apt install -f ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+sudo apt-get install -f ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+sudo apt-get install -y fonts-noto-cjk fonts-wqy-microhei
 ```
 
 **Benchmark**
 
-1. Download the SSTQA with the link [SSTQA Benchmark](https://drive.google.com/file/d/1LkdxJHJfThNUiEh68YdgkN_eNbJEoRJ7/view?usp=sharing) and save in ./data
-
-2. Change the settings in ./main.py
+1. You can find the SSTQA benchmark in ```./data``` directory: [SSTQA-en]("./data/SSTQA-en") [SSTQA-ch]("./data/SSTQA-ch")
+   - You can also find the SSTQA benchmark on hugging face [SSTQA Huggingface](https://huggingface.co/datasets/13515257315Tzr/SSTQA)
+2. Change the settings in ```./main.py```
 
 ```python
 # You need to change this
-input_jsonl = 'PATH_TO_YOUR_INPUT_JSONL'
-table_dir = 'PATH_TO_YOUR_TABLE_DIR'
-output_jsonl = 'PATH_TO_YOUR_OUTPUT_JSONL'
-log_dir = 'PATH_TO_YOUR_LOG_DIR'
+input_jsonl = 'PATH_TO_YOUR_INPUT_JSONL'      # The QA pairs
+table_dir = 'PATH_TO_YOUR_TABLE_DIR'          # The corresponding tables
+pkl_dir = 'PATH_TO_YOUR_PKL_DIR'              # The directory to store HO-Tree object files 
+output_jsonl = 'PATH_TO_YOUR_OUTPUT_JSONL'    # The QA results
+log_dir = 'PATH_TO_YOUR_LOG_DIR'              # The directory to store log files
 ```
 
 The Q&A data is stored in a JSONL format file, and the format of each record is as follows.
@@ -126,39 +159,43 @@ The Q&A data is stored in a JSONL format file, and the format of each record is 
 	"id": "XXX", 
 	"table_id": "XXX", 
 	"query": "XXX", 
-	"label": "XXX"
+	"label": "XXX"    // Optional when inference
 }
 ```
 
 **Model Configuration.**
 The model configuration in our paper includes Deepseek-V3 (LLM API) + InternVL2.5 26B (VLM) + Multilingual-E5-Large-Instruct (Embedding Model). This configuration requires a total of approximately 160GB of GPU memory. You can replace the model according to the hardware situation or change it to use APIs.
 
-[Download InternVL2.5](https://huggingface.co/OpenGVLab/InternVL2_5-26B) [Download Multilingual-E5](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
-
-You need to set model configuration in /utils/constnts.py
+You need to set model configuration in ```./utils/constnts.py```
 
 ```python
-# Set your LLM api
-API_URL = "YOUR_LLM_API_URL"
-API_KEY = "YOUR_LLM_API_KEY"
+"""Change this for requesting LLM"""
+LLM_API_URL = "YOUR_LLM_API_URL"
+LLM_API_KEY = "YOUR_LLM_API_KEY"
+LLM_MODEL_TYPE = "YOUR_LLM_MODEL_TYPE" 
 
-# If you use local deployed LLM, set this
-LLM_PORT = YOUR_LLM_PORT
-LLM_MODEL_TYPE = YOUR_LLM_MODEL_NAME
+"""Change this for requesting VLM"""
+VLM_API_URL = "YOUR_VLM_API_URL"
+VLM_API_KEY = "YOUR_VLM_API_KEY"
+VLM_MODEL_TYPE = "YOUR_VLM_MODEL_TYPE"
 
-# Set your local deployed VLM api, we use vllm as default
-VLM_PORT = YOUR_VLM_PORT
-VLM_MODEL_TYPE = YOUR_VLM_MODEL_NAME
+"""Change this for requesting Embedding Model"""
+EMBEDDING_TYPE = "api" # api / local
 
-# Your model path to MUltilingual-E5 model
-MULTILINGUAL_E5_MODEL_PATH = "YOUR_MODEL_PATH"
+## If EMBEDDING_TYPE is local
+EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"
+
+## If EMBEDDING_TYPE is api
+EMBEDDING_API_URL = "YOUR_EMBEDDING_API_URL"
+EMBEDDING_API_KEY = "YOUR_EMBEDDING_API_KEY"
+EMBEDDING_MODEL_TYPE = "YOUR_EMBEDDING_MODEL_TYPE"
 ```
 
-If you want to use other format of apis, please revise the code in ./utils/api_utils.py
+If you want to use other format of APIs, please revise the code in ```./utils/api_utils.py```
 
-**InternVL2.5 Deployment**
+Use local deployment VLM and Embedding Model with LLM API as an example.
 
-We use vLLM to deploy InternVL2.5 as an example.
+First to [Download InternVL2.5](https://huggingface.co/OpenGVLab/InternVL2_5-26B) and [Download Multilingual-E5](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
 
 1. Install the vllm package.
 
@@ -171,6 +208,7 @@ pip install vllm
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m vllm.entrypoints.openai.api_server \
 --model=PATH_TO_INTERNVL \
+--served-model-name internvl
 --port 8138 \
 --trust-remote-code \
 --max-num-batched-tokens 8192 \
@@ -178,13 +216,47 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m vllm.entrypoints.openai.api_server \
 --tensor-parallel-size 4
 ```
 
+3. Set API configs in ```./utils/constnts.py```
+
+```python
+"""Change this for requesting LLM"""
+LLM_API_URL = "YOUR_LLM_API_URL"        # [Change This]
+LLM_API_KEY = "YOUR_LLM_API_KEY"        # [Change This]
+LLM_MODEL_TYPE = "YOUR_LLM_MODEL_TYPE"  # [Change This]
+
+"""Change this for requesting VLM"""
+VLM_API_URL = "http://localhost:8000/v1/"
+VLM_API_KEY = "Empty"
+VLM_MODEL_TYPE = "internvl"
+
+"""Change this for requesting Embedding Model"""
+EMBEDDING_TYPE = "local" # api / local
+
+## If EMBEDDING_TYPE is local
+EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"  # [Change This]
+```
+
 #### Question Answering !
 
-If you have completed all the above settings, use the following command to start execution
+If you have completed all the above settings, use the following command to start execution.
 
 ```shell
 python ./main.py
 ```
+#### Visualization Platform
+
+If you want to use the visualization platform, you can run the following code to generate the page:
+
+```shell
+python ./gradio_app.py
+```
+If the service starts correctly, you will be able to open an interface like this in your browser:
+
+<p align="center">
+  <img src="./assets/gradio.png" width = "800" alt="" align="center" />
+</p>
+
+On this interface, you can upload a table, view the structure of the H-O Tree generated from the table, and ask our model questions about it!
 
 ## 💡 Semi-Structured Table QA Examples
 
@@ -227,19 +299,18 @@ python ./main.py
 
 The full result please refer to the file: [baseline_output.jsonl](./static/baseline_output.jsonl)
 
-## ⏰ TODO
+# 📍 Citation
 
-**External Support**
+If you like this project, please cite our paper [link](https://arxiv.org/abs/2508.18190):
 
-- [x] Support Excel table input.
-- [ ] Support HTML / CSV / JSON / Markdown ... table input.
-- [ ] Provide web demo and API access
-
-**Framework Extentions**
-
-- [ ] Expand the table extraction module to support table types beyond problem definition.
-
-
+```
+@article{tang2026straptor,
+  author       = {Zirui Tang and Boyu Niu and Xuanhe Zhou and Boxiu Li and Wei Zhou and Jiannan Wang and Guoliang Li and Xinyi Zhang and Fan Wu},
+  title        = {ST-Raptor: LLM-Powered Semi-Structured Table Question Answering},
+  journal      = {Proc. {ACM} Manag. Data},
+  year         = {2026}
+}
+```
 
 # 👨‍🏫 Join us !
 
@@ -250,7 +321,6 @@ ST-Raptor@复杂半结构表格分析社区 (微信群)
 <p align="center">
   <img src="./assets/vx.jpg" width = "300" alt="" align="center" />
 </p>
-
 
 
 ## 📝 License

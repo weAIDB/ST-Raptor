@@ -1,11 +1,11 @@
+import time
 import pickle
+from loguru import logger
 
 from utils.sheet_utils import delete_dict_none_none
 from utils.constants import *
-from table2tree.extract_excel import process_xlsx_vlm, get_xlsx_sheet
+from table2tree.extract_excel import process_table_vlm, get_xlsx_sheet, get_structured_xlsx_sheet
 from table2tree.tree_partition import *
-
-
 
 def serial(level_list):
     s = ""
@@ -401,7 +401,7 @@ def construct_index_tree(schema_sheet):
         x1, y1, x2, y2 = get_merge_cell_size(schema_sheet, cell.coordinate)
 
         if not single_cell(schema_sheet, x1, y1, nrows, y2):
-            sub_schema_sheet = get_sub_sheet(schema_sheet, x2 + 1, y1, nrows, y2).active
+            sub_schema_sheet = get_sub_sheet(schema_sheet, x2 + 1, y1, nrows, y2)
             sub_index_tree = construct_index_tree(sub_schema_sheet)
             index_node = sub_index_tree.root
             index_node.value = schema_sheet.cell(row=x1, column=y1).value
@@ -505,14 +505,16 @@ def construct_sheet(sheet):
     return FeatureTree(index_tree=index_tree, body_tree=body_tree)
 
 
-def construct_feature_tree(json_dict):
+def construct_feature_tree(tree_dict):
+
+    logger.info(f"construct_feature_tree() Start to Process!")
+    start_time = time.time()
 
     try:
-
         index_tree = IndexTree()
         body_tree = BodyTree()
 
-        for index, body in json_dict.items():
+        for index, body in tree_dict.items():
             if isinstance(body, dict):  # dict -> FeatureTree
                 body_node = BodyNode(construct_feature_tree(body))
             elif isinstance(body, (str, int, float, list)) or body is None:  # string
@@ -532,9 +534,13 @@ def construct_feature_tree(json_dict):
     except Exception as e:
         import traceback
         traceback.print_exc()
-        print(e, json_dict)
+        print(e, tree_dict)
 
     f_tree = FeatureTree(index_tree=index_tree, body_tree=body_tree)
+
+    end_time = time.time()
+    logger.info(f"construct_feature_tree() Process File Successfully!")
+    logger.info(f"Cost time: {end_time - start_time} ")
 
     return f_tree
 
@@ -614,18 +620,64 @@ def tag_feature_tree(f_tree: FeatureTree):
     return f_tree
 
 
-def get_excel_feature_tree(file, structured=False, log=False, vlm_cache=False):
+def get_excel_feature_tree(file: str,                   # 输入表格文件路径
+                           structured: bool = False,    # 输入的表格是否是结构化表格
+                           log_dir: str = LOG_DIR,      # LOG 日志记录路径
+                           vlm_cache: bool = False      # 是否保存转图片的中间结果
+                           ):
+    ##### 创建 log_file 文件
+    log_file = os.path.join(log_dir, f"{os.path.basename(file)}.log")
+    log_file_handler = logger.add(log_file)
 
-    if not structured:  # 如果是半结构化表格，则使用vlm识别构建json
-        # Step 1. VLM + Rule 提取表格为类JSON格式
-        json_dict = process_xlsx_vlm(file, get_json=False, log=log, cache=vlm_cache)
-    else:  # 是结构化表格，直接构建即可
-        json_dict = {DEFAULT_TABLE_NAME: get_xlsx_sheet(file)}
+    ##### Step 1. VLM + Rule 提取表格为类JSON格式
+    logger.info(f"process_table_vlm() Start to Process File: {file}")
+    start_time = time.time()
 
-    # Step 2. 将提取出的结构构件为FeatureTree
-    f_tree = construct_feature_tree(json_dict)
+    try:    # 防止表格出现结构不符合规定的情况
+        if structured:  # 是结构化表格，直接构建即可
+            tree_dict = {DEFAULT_TABLE_NAME: get_xlsx_sheet(file)}
+        else:  # 如果是半结构化表格，则使用vlm识别构建json
+            tree_dict = process_table_vlm(file, get_json=False, cache=vlm_cache)
 
-    # Step 3. 为数据的每一列打上标签
-    f_tree = tag_feature_tree(f_tree)
+        end_time = time.time()
+        logger.info(f"process_table_vlm() Process File Successfully: {file} ")
+        logger.info(tree_dict)
+        logger.info(f"Cost time: {end_time - start_time}")
 
-    return f_tree
+        ##### Step 2. 将提取出的结构构件为FeatureTree
+        logger.info(f"construct_feature_tree() Start to Process File: {file}")
+        start_time = time.time()
+
+        ho_tree = construct_feature_tree(tree_dict)
+        
+        end_time = time.time()
+        logger.info(f"construct_feature_tree() Process File Successfully: {file} ")
+        logger.info(f"Cost time: {end_time - start_time}")
+
+        ##### Step 3. 为数据的每一列打上标签
+        logger.info(f"tag_feature_tree() Start to Process File: {file}")
+        start_time = time.time()
+        
+        ho_tree = tag_feature_tree(ho_tree)
+        
+    except Exception as e:  # 表格不符合规范，使用结构化建树
+        import traceback; traceback.print_exc()
+        logger.error(f"Fail to convert {file}! Try to construct through structured method.")
+        
+        tree_dict = {DEFAULT_TABLE_NAME: get_structured_xlsx_sheet(file)}
+        ho_tree = construct_feature_tree(tree_dict)
+        ho_tree = tag_feature_tree(ho_tree)
+
+    end_time = time.time()
+    logger.info(f"tag_feature_tree() Process File Successfully: {file} ")
+    logger.info(f"Cost time: {end_time - start_time}")
+
+    ##### 输出字符串和 JSON 格式
+    logger.info(f"HO-Tree JSON:")
+    logger.info(f"{ho_tree.__json__()}")
+    logger.info(f"HO-Tree String:")
+    logger.info(f"{ho_tree.__str__([1])}")
+
+    logger.remove(log_file_handler)
+
+    return ho_tree
