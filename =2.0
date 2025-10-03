@@ -1,0 +1,5 @@
+Collecting xlrd
+  Downloading xlrd-2.0.2-py2.py3-none-any.whl.metadata (3.5 kB)
+Downloading xlrd-2.0.2-py2.py3-none-any.whl (96 kB)
+Installing collected packages: xlrd
+Successfully installed xlrd-2.0.2

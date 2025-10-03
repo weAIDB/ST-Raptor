@@ -319,7 +319,7 @@ ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
 ST-Raptor@复杂半结构表格分析社区 (微信群)
 
 <p align="center">
-  <img src="./assets/vx.jpg" width = "300" alt="" align="center" />
+  <img src="./assets/vx.png" width = "300" alt="" align="center" />
 </p>
 
 
