@@ -98,6 +98,9 @@ class IndexTree:
 
     def add_leaf_body_node_by_pos(self, body_node, pos):
         try:
+            # 检查索引是否越界
+            if pos < 0 or pos >= len(self.leaf_nodes):
+                return  # 索引越界，直接返回
             leaf : IndexNode = self.leaf_nodes[pos]
             leaf.add_body_node(body_node)
         except Exception as e:
@@ -470,6 +473,10 @@ def construct_body_tree(index_tree: IndexTree, data_sheet):
         get_merge_cell_value,
         get_sub_sheet,
     )
+
+    # 检查data_sheet是否为None
+    if data_sheet is None:
+        return None, None
 
     nrows = data_sheet.max_row
     ncols = data_sheet.max_column
