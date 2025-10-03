@@ -14,6 +14,24 @@
   </p>
 </div>
 
+
+## ✨ Project Introduction
+
+**ST-Raptor** is a tool for answering questions over tables with diverse semi-structured layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
+
+Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
+
+<p align="center">
+  <img src="./assets/frontend.png" width = "800" alt="" align="center" />
+</p>
+
+
+## ❓ What Tables Can ST-Raptor Handle?
+
+<p align="center">
+  <img src="./assets/examples.png" width = "800" alt="" align="center" />
+</p>
+
 ## 📣 Updates
 
 - [ ] Main functionss
@@ -31,18 +49,6 @@
   - [ ] Support hyper-parameter settings through Gradio. 
   - [x] Support the visualization of HO-Tree structure.
   - [ ] Support the HO-Tree manual correction function.
-
-## ✨ Project Introduction
-
-**ST-Raptor** is a tool for answering questions over tables with diverse semi-structured layouts. It takes only an Excel-formatted table and a natural language question as input, and produces precise answers.
-
-Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
-
-## ❓ What Tables Can ST-Raptor Handle?
-
-<p align="center">
-  <img src="./assets/examples.png" width = "800" alt="" align="center" />
-</p>
 
 **Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
@@ -247,7 +253,7 @@ python ./gradio_app.py
 If the service starts correctly, you will be able to open an interface like this in your browser:
 
 <p align="center">
-  <img src="./assets/gradio.png" width = "800" alt="" align="center" />
+  <img src="./assets/frontend.png" width = "800" alt="" align="center" />
 </p>
 
 On this interface, you can upload a table, view the structure of the H-O Tree generated from the table, and ask our model questions about it!
