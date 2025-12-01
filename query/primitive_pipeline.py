@@ -83,11 +83,12 @@ def semantic_reason(evidence, query, temperature=0.5, max_tokens=8192):
     return res
 
 
-def calc_math(f_tree: FeatureTree, query):
+def calc_math(f_tree: FeatureTree, query, temperature=0.5):
 
     math_prompt = primitive_prompt_math.format(query=query, table=f_tree.__json__())
 
     retry_cnt = 1
+    args = None  # 初始化args变量
     while retry_cnt < MAX_RETRY_PRIMITIVE:
         try:
             primitive_seq = llm_generate(prompt=math_prompt, temperature=temperature)
@@ -113,6 +114,11 @@ def calc_math(f_tree: FeatureTree, query):
             retry_cnt += 1
     
     try:
+        # 检查args是否被成功定义
+        if args is None:
+            logger.error("Failed to generate valid MATH operation after maximum retries")
+            return f_tree
+            
         type = args[2]
         for item in f_tree.index_tree.leaf_nodes:
                 if args[1] in item.value:  # 在标签中
@@ -155,6 +161,8 @@ def dfs_reasoning(
     depth=1,
     enable_embedding_match=False,
     embedding_cache_file=None,
+    temperature=0.5,
+    max_tokens=2048,
 ):
     """Reasoning in a depth-first search manner"""
     if depth > MAX_ITER_PRIMITIVE:
@@ -204,7 +212,7 @@ def dfs_reasoning(
         logger.info(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}")
         
         ### Math based on the f_tree
-        res = calc_math(f_tree, query)
+        res = calc_math(f_tree, query, temperature=temperature)
         if isinstance(res, FeatureTree):
             pass
         else:
@@ -450,7 +458,7 @@ def dfs_reasoning(
         logger.info(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}")
 
         ### Math based on the f_tree
-        res = calc_math(f_tree, query)
+        res = calc_math(f_tree, query, temperature=0.5)  # 使用默认值，因为调用此函数的地方没有temperature参数
         r_data.append(res)
         # if isinstance(res, FeatureTree):
             # pass
@@ -486,6 +494,7 @@ def bottom_up_reasoning(
     query: str,
     f_tree: FeatureTree,
     embedding_cache_file=None,
+    temperature=0.5,
 ):
     """
     return: FeatureTree / String
@@ -574,6 +583,8 @@ def qa_RWP(query: str,
                     depth=1,
                     enable_embedding_match=enable_emebdding,
                     embedding_cache_file=embedding_cache_file,
+                    temperature=temperature,
+                    max_tokens=max_tokens,
                 )
 
                 retrieved_data = flatten_nested_list(retrieved_data)
@@ -598,7 +609,7 @@ def qa_RWP(query: str,
 
                 if check_res is False:
                     st = tm.perf_counter()
-                    retrieved_data = bottom_up_reasoning(query, ho_tree, embedding_cache_file)
+                    retrieved_data = bottom_up_reasoning(query, ho_tree, embedding_cache_file, temperature=temperature)
                     et = tm.perf_counter()
                     retrieved_data = flatten_nested_list(retrieved_data)
                     for index, data in enumerate(retrieved_data):

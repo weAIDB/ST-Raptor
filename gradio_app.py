@@ -32,7 +32,7 @@ def answer_question(
     enable_emebdding: bool = True,          # 是否启用 Embedding 机制
     log_dir: str = LOG_DIR,                 # Log 日志目录
     temperature: float = 0.5,               # LLM/VLM temperature
-    max_tokens: int = 1024                  # LLM/VLM max_tokens
+    max_tokens: int = 2048                  # LLM/VLM max_tokens
 ):
     
     query = qa_pair["query"]
@@ -130,7 +130,7 @@ def process_table_for_tree(file):
         return None
     
         
-def process_question_only(question, temperature=0.5, max_tokens=1024):
+def process_question_only(question, temperature=0.5, max_tokens=2048):
     """专门处理问题，返回答案"""
     table_file = "data/SSTQA/temp_tables/temp.xlsx"
     if not os.path.exists(table_file):
@@ -328,16 +328,16 @@ def create_interface():
                     interactive=False,
                     elem_classes="question-output"
                 )
-                # 日志输出框（直接放在问题回答下方，不折叠）
-                gr.Markdown("### 📜 实时日志",open=False)
-                log_output = gr.Textbox(
-                    label="终端日志",
-                    lines=18,
-                    interactive=False,
-                    show_copy_button=True,
-                    value=read_all_logs(),
-                    elem_id="log-output-box"
-                )
+                # 日志输出框（放在可折叠面板中，默认隐藏）
+                with gr.Accordion("📜 实时日志", open=False):
+                    log_output = gr.Textbox(
+                        label="终端日志",
+                        lines=18,
+                        interactive=False,
+                        show_copy_button=True,
+                        value=read_all_logs(),
+                        elem_id="log-output-box"
+                    )
                 # 注入 JS 使其每次内容变化时自动滚动到底部
                 gr.HTML(
                     """
