@@ -634,6 +634,8 @@ def qa_RWP(query: str,
         final_answer = qa_pair[-1]["answer"]
 
     except Exception as e:
+        import traceback; 
+        traceback.print_exc()
         table_str = get_xlsx_table_string(table_file)
 
         logger.error(f"{DELIMITER} DFS Reasoning Fail! Try to Reason from Scratch! {DELIMITER}")

@@ -30,7 +30,9 @@ def answer_question(
     cache_dir: str,                           # 存储 HO-Tree 中间结果的路径
     enable_query_decompose: bool = True,    # 是否启用 Query Decomposition 机制
     enable_emebdding: bool = True,          # 是否启用 Embedding 机制
-    log_dir: str = LOG_DIR                  # Log 日志目录
+    log_dir: str = LOG_DIR,                 # Log 日志目录
+    temperature: float = 0.5,               # LLM/VLM temperature
+    max_tokens: int = 1024                  # LLM/VLM max_tokens
 ):
     
     query = qa_pair["query"]
@@ -45,7 +47,10 @@ def answer_question(
 
     logger.info(f"Question ID: temp")
     logger.info(f"Table ID: temp")
+
     logger.info(f"Question: {query}")
+    logger.info(f"Temperature: {temperature}")
+    logger.info(f"Max tokens: {max_tokens}")
 
     ##### 加载 ho_tree
     pkl_file = os.path.join(cache_dir, f'temp.pkl')
@@ -63,6 +68,8 @@ def answer_question(
         embedding_cache_file=embedding_cache_file,
         enable_emebdding=enable_emebdding,
         enable_query_decompose=enable_query_decompose,
+        temperature=temperature,
+        max_tokens=max_tokens
     )
     qa_pair["reliability"] = reliability
     qa_pair["model_output"] = final_answer
@@ -123,7 +130,7 @@ def process_table_for_tree(file):
         return None
     
         
-def process_question_only(question):
+def process_question_only(question, temperature=0.5, max_tokens=1024):
     """专门处理问题，返回答案"""
     table_file = "data/SSTQA/temp_tables/temp.xlsx"
     if not os.path.exists(table_file):
@@ -133,19 +140,29 @@ def process_question_only(question):
         gr.Warning("请输入问题")
         return "请输入问题"
     try:
+        # 记录参数变更日志（使用 loguru 格式：时间 | 级别 | 内容）
+        param_log_file = os.path.join("log", "param_change.log")
+        os.makedirs("log", exist_ok=True)
+        from datetime import datetime
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+        msg = f"{timestamp} | PARAM_CHANGE | temperature={temperature}, max_tokens={max_tokens}\n"
+        with open(param_log_file, "a", encoding="utf-8") as f:
+            f.write(msg)
         qa_pair = {
-           "id": "temp",
-           "table_id": "temp",
-        "query": question.strip()
+            "id": "temp",
+            "table_id": "temp",
+            "query": question.strip()
         }
         cache_dir = "cache"
         result=answer_question(
-           qa_pair=qa_pair,
-           table_file=table_file,
-           cache_dir=cache_dir,
-           enable_emebdding=True,
-           enable_query_decompose=True,
-           log_dir="log"
+            qa_pair=qa_pair,
+            table_file=table_file,
+            cache_dir=cache_dir,
+            enable_emebdding=True,
+            enable_query_decompose=True,
+            log_dir="log",
+            temperature=temperature,
+            max_tokens=max_tokens
         )
         if result :
             gr.Info("✅ 答案生成成功！")
@@ -188,6 +205,34 @@ def clear_all():
                 shutil.rmtree(item_path)  # 递归删除子目录
     
     return None, "", "", {}  # 清空所有界面组件
+def read_all_logs(log_dir="log", max_lines=200):
+    """合并读取所有日志文件（temp.xlsx.log, param_change.log, temp.log），按时间顺序显示"""
+    all_lines = []
+    
+    log_files = [
+        os.path.join(log_dir, "temp.xlsx.log"),
+        os.path.join(log_dir, "param_change.log"),
+        os.path.join(log_dir, "temp.log"),
+    ]
+    
+    for log_path in log_files:
+        if os.path.exists(log_path):
+            try:
+                with open(log_path, "r", encoding="utf-8", errors="ignore") as f:
+                    lines = f.readlines()
+                    all_lines.extend(lines)
+            except Exception as e:
+                all_lines.append(f"[ERROR] 读取 {log_path} 失败: {e}\n")
+    
+    # 按时间戳排序（loguru 格式：时间 | 级别 | ...）
+    try:
+        all_lines.sort(key=lambda x: x.split("|")[0].strip() if "|" in x else "")
+    except Exception:
+        pass
+    
+    # 取最后 max_lines 行
+    return "".join(all_lines[-max_lines:]) if all_lines else "暂无日志"
+
 def create_interface():
     with gr.Blocks(
         title="ST-Raptor 表格问答系统",
@@ -209,6 +254,7 @@ def create_interface():
         .H-OTree-output .json-container {
             max-height: 580px !important;
             overflow-y: auto !important;
+            interactive: true;
         }
         .question-output {
             max-height: 300px !important;
@@ -257,14 +303,21 @@ def create_interface():
                     placeholder="例如：销售总额是多少？哪个产品销量最高？",
                     show_copy_button=True
                 )
-                
+                temperature_slider = gr.Slider(
+                    minimum=0.0, maximum=1.0, value=0.5, step=0.01,
+                    label="Temperature (采样多样性)",
+                    info="越大越随机，越小越确定"
+                )
+                max_tokens_box = gr.Number(
+                    value=1024, precision=0, label="Max Tokens (最大生成长度)",
+                    info="生成答案的最大 token 数"
+                )
                 # 提交问题按钮
                 submit_question_btn = gr.Button(
                     "🚀 提交问题", 
                     variant="primary",
                     size="lg"
                 )
-                
                 # 问题输出框
                 gr.Markdown("### 💬 问题回答")
                 answer_output = gr.Textbox(
@@ -274,6 +327,36 @@ def create_interface():
                     placeholder="AI的回答将在此显示...",
                     interactive=False,
                     elem_classes="question-output"
+                )
+                # 日志输出框（直接放在问题回答下方，不折叠）
+                gr.Markdown("### 📜 实时日志",open=False)
+                log_output = gr.Textbox(
+                    label="终端日志",
+                    lines=18,
+                    interactive=False,
+                    show_copy_button=True,
+                    value=read_all_logs(),
+                    elem_id="log-output-box"
+                )
+                # 注入 JS 使其每次内容变化时自动滚动到底部
+                gr.HTML(
+                    """
+<script>
+function scrollLogToBottom() {
+    var box = document.querySelector('#log-output-box textarea');
+    if (box) {
+        box.scrollTop = box.scrollHeight;
+    }
+}
+const observer = new MutationObserver(scrollLogToBottom);
+setTimeout(function() {
+    var box = document.querySelector('#log-output-box textarea');
+    if (box) {
+        observer.observe(box, { childList: true, subtree: true, characterData: true });
+    }
+}, 1000);
+</script>
+"""
                 )
         
         # 示例问题
@@ -298,11 +381,34 @@ def create_interface():
         # 提交问题按钮点击事件 - 处理问题
         submit_question_btn.click(
             fn=process_question_only,
-            inputs=[question_input],
+            inputs=[question_input, temperature_slider, max_tokens_box],
             outputs=[answer_output]
         )
         
-        # 清除按钮点击事件
+        # 定时刷新日志窗口（每3秒自动更新）- 使用 Gradio 的 every 参数和 Timer
+        def refresh_all_logs_fn():
+            return read_all_logs(log_dir="log", max_lines=200)
+        
+        # 创建隐藏的 Timer 触发器，定时刷新日志
+        demo.load(
+            fn=refresh_all_logs_fn,
+            inputs=[],
+            outputs=[log_output],
+            every=3
+        )
+        
+        # 清除按钮点击时也清空日志窗口
+        def clear_log():
+            return ""
+        
+        # 清除按钮绑定两个事件：清空日志 + 清空所有内容
+        clear_top_btn.click(
+            fn=clear_log,
+            inputs=[],
+            outputs=[log_output],
+            queue=False
+        )
+        
         clear_top_btn.click(
             fn=clear_all,
             inputs=[],
@@ -312,6 +418,22 @@ def create_interface():
     return demo
 
 def main():
+    # 启动时仅清理日志文件（保留 cache/temp 等），避免残留旧日志干扰
+    def clean_logs(log_dir="log"):
+        try:
+            if os.path.exists(log_dir):
+                for root, dirs, files in os.walk(log_dir):
+                    for fname in files:
+                        fpath = os.path.join(root, fname)
+                        try:
+                            os.remove(fpath)
+                        except Exception as e:
+                            print(f"[WARN] 无法删除日志文件 {fpath}: {e}")
+        except Exception as e:
+            print(f"[WARN] 清理日志失败: {e}")
+
+    clean_logs("log")
+
     print("🚀 启动 ST-Raptor Gradio 界面...")
     print("📋 访问地址: http://localhost:7860")
     print("⏹️  按 Ctrl+C 停止服务")
@@ -329,13 +451,14 @@ def main():
     
     demo = create_interface()
     demo.close(cleanup)
+    demo.queue()  # 启用队列模式
     try:
         demo.launch(
            server_name="0.0.0.0",  # 允许外部访问
            server_port=7860,       
            share=False,            # 不生成公开链接
            debug=True,             
-           show_error=True        
+           show_error=True
         )
     except KeyboardInterrupt:
         print("🛑 服务已停止，正在清理缓存...")

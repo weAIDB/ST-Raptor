@@ -201,6 +201,23 @@ def main():
     output_jsonl = "SSTQA-zh/output.jsonl"
     log_dir = "data/SSTQA-zh/log"
 
+    # 启动时清理所有日志文件（仅删除文件，保留目录结构）
+    def clean_logs(log_dir_path: str):
+        try:
+            if os.path.exists(log_dir_path):
+                for root, dirs, files in os.walk(log_dir_path):
+                    for fname in files:
+                        fpath = os.path.join(root, fname)
+                        try:
+                            os.remove(fpath)
+                        except Exception as e:
+                            # 使用 print 因为 logger 可能尚未初始化
+                            print(f"[WARN] 无法删除日志文件 {fpath}: {e}")
+        except Exception as e:
+            print(f"[WARN] 清理日志失败: {e}")
+
+    clean_logs(log_dir)
+
     benchmark(
         table_dir=table_dir,
         input_jsonl=input_jsonl,
