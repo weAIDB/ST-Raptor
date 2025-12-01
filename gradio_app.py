@@ -10,14 +10,19 @@ import glob
 import pickle
 import io
 import sys
+import time
 
 from tqdm import tqdm
 from loguru import logger
+from embedding import EmbeddingModel
+from utils.api_utils import vlm_generate
+from table2tree.feature_tree import construct_feature_tree
+import re
 
 from query.primitive_pipeline import *
 from table2tree.extract_excel import *
 from table2tree.feature_tree import *
-from utils.constants import DELIMITER
+from utils.constants import DELIMITER, LOG_DIR
 
 def answer_question(
     qa_pair: dict,                          # 一条问答对

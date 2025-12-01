@@ -792,6 +792,8 @@ def schema_pos_match(sheet, schema_list, ngram=3, enable_embedding=False):
         value_list = [x for x in value_list if x is not None and x != ""]
 
         schema_list = [str(x).strip() for x in schema_list]
+        # 延迟导入以避免循环依赖（embedding.py 可能会导入使用本模块的其他内容）
+        from embedding import EmbeddingModel
         schema = EmbeddingModel().top1_match(schema_list, value_list)
 
         for row in range(1, nrows + 1):

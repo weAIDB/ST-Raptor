@@ -39,22 +39,23 @@ MAX_RETRY_HOTREE = 3  # 表格转换HO-Tree的最大尝试次数
 MAX_RETRY_PRIMITIVE = 5  # 前向验证时重新生成原语句的次数
 
 #################### Change The Directory Path ####################
-BASE_DIR = ''            # The Project Directory
+BASE_DIR = 'c:\\Users\\ASUS\\Desktop\\workworkwork\\zu\\ST-Raptor-master\\ST-Raptor'            # The Project Directory
 CACHE_DIR = os.path.join(BASE_DIR, 'cache')     # The Cache Directory
 LOG_DIR = os.path.join(BASE_DIR, 'log')
-#################### Change The Directory Path ####################
+#################### Change The Directory Path ####################“
 
 
 #################### Change The Model Information ####################
 """Change this for requesting LLM"""
-LLM_API_URL = ""
-LLM_API_KEY = ""
-LLM_MODEL_TYPE = "" 
+#LLM_API_URL = "https://api.deepseek.com/v1/chat/completions"
+LLM_API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+LLM_API_KEY = "sk-688ce40ae16043098f76092545736391"
+LLM_MODEL_TYPE = "deepseek-v3.1"
 
 """Change this for requesting VLM"""
-VLM_API_URL = ""
-VLM_API_KEY = ""
-VLM_MODEL_TYPE = ""
+VLM_API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+VLM_API_KEY = "sk-688ce40ae16043098f76092545736391"
+VLM_MODEL_TYPE = "qwen3-vl-plus"
 
 """Change this for requesting Embedding Model"""
 EMBEDDING_TYPE = "api" # api / local
@@ -63,9 +64,10 @@ EMBEDDING_TYPE = "api" # api / local
 EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"
 
 ## If EMBEDDING_TYPE is api
-EMBEDDING_API_URL = ""
-EMBEDDING_API_KEY = ""
-EMBEDDING_MODEL_TYPE = ""
+#EMBEDDING_API_URL = "https://api.deepseek.com/v1/embeddings"
+EMBEDDING_API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+EMBEDDING_API_KEY = "sk-688ce40ae16043098f76092545736391"
+EMBEDDING_MODEL_TYPE = "text-embedding-v1"
 
 #################### Change The Model Information ####################
 
@@ -76,3 +78,6 @@ EXCEL_CACHE_DIR = os.path.join(CACHE_DIR, "excel")
 SCHEMA_CACHE_DIR = os.path.join(CACHE_DIR, "schema")
 JSON_CACHE_DIR = os.path.join(CACHE_DIR, "json")
 OUTPUT_JSON_CACHE_DIR = os.path.join(CACHE_DIR, "output_json")
+
+# 如果你希望显式指定 wkhtmltoimage 的路径，可通过环境变量 `WKHTMLTOIMAGE_PATH` 或在此处修改默认值
+WKHTMLTOIMAGE_PATH = os.getenv("WKHTMLTOIMAGE_PATH", r"C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe")

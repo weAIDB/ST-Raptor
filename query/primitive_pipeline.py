@@ -33,10 +33,10 @@ def bool_string(s):
     return False
 
 
-def query_decompose(f_tree: FeatureTree, query: str):
+def query_decompose(f_tree: FeatureTree, query: str, temperature=0.5):
     prompt = query_decompose_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = llm_generate(prompt)
+    res = llm_generate(prompt, temperature=temperature)
 
     queries = []
     retrieve_flags = []
@@ -59,10 +59,10 @@ def query_decompose(f_tree: FeatureTree, query: str):
     return queries, retrieve_flags
 
 
-def entity_extractor(f_tree: FeatureTree, query: str):
+def entity_extractor(f_tree: FeatureTree, query: str, temperature=0.5):
     prompt = entity_extract_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = llm_generate(prompt, temperature=0.5)
+    res = llm_generate(prompt, temperature=temperature)
 
     # pattern = r"```python\n(.*?)```"
     # matches = re.findall(pattern, res, re.DOTALL)
@@ -73,12 +73,12 @@ def entity_extractor(f_tree: FeatureTree, query: str):
     return eval(res)
 
 
-def semantic_reason(evidence, query):
+def semantic_reason(evidence, query, temperature=0.5, max_tokens=8192):
     if isinstance(evidence, FeatureTree):
         evidence = evidence.__json__()
     prompt = semantic_reasoning_prompt.format(evidence=evidence, query=query)
 
-    res = llm_generate(prompt, temperature=0.5)
+    res = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
 
     return res
 
@@ -90,7 +90,7 @@ def calc_math(f_tree: FeatureTree, query):
     retry_cnt = 1
     while retry_cnt < MAX_RETRY_PRIMITIVE:
         try:
-            primitive_seq = llm_generate(prompt=math_prompt, temperature = 0.5)
+            primitive_seq = llm_generate(prompt=math_prompt, temperature=temperature)
 
             operation = primitive_seq.splitlines()[0].strip()
             if operation == "None":
@@ -241,7 +241,7 @@ def dfs_reasoning(
     while retry_cnt < MAX_RETRY_PRIMITIVE:
 
         # Generate primitive
-        primitive_seq = llm_generate(prompt=prompt)
+        primitive_seq = llm_generate(prompt=prompt, temperature=temperature, max_tokens=max_tokens)
         operation = primitive_seq.splitlines()[0].strip()
 
         print(operation)
@@ -490,7 +490,7 @@ def bottom_up_reasoning(
     """
     return: FeatureTree / String
     """
-    entities = entity_extractor(f_tree, query)
+    entities = entity_extractor(f_tree, query, temperature=temperature)
     start_from = EmbeddingModel().top1_match(
         entities, f_tree.all_value_list(), embedding_cache_file
     )
@@ -536,14 +536,16 @@ def qa_RWP(query: str,
            table_file: str,
            embedding_cache_file=None, 
            enable_emebdding=False, 
-           enable_query_decompose=True):
+           enable_query_decompose=True,
+           temperature=0.5,
+           max_tokens=8192):
     """Reason-while-Planning"""
 
     try:
         ##### Step 1. 问题分解
         raw_query = query
         if enable_query_decompose:
-            decomposed_queries, retrieve_flag = query_decompose(f_tree=ho_tree, query=query)
+            decomposed_queries, retrieve_flag = query_decompose(f_tree=ho_tree, query=query, temperature=temperature)
         else:
             decomposed_queries = [query]
             retrieve_flag = [True]
@@ -582,9 +584,9 @@ def qa_RWP(query: str,
                 retrieved_data = delete_list_empty_elem(retrieved_data)
                 if len(retrieved_data) == 0:
                     prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
-                    answer = llm_generate(prompt)
+                    answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
                 else:
-                    answer = semantic_reason(retrieved_data, query)
+                    answer = semantic_reason(retrieved_data, query, temperature=temperature, max_tokens=max_tokens)
                 check_res = Verifier().check_answer(query, answer)
 
                 logger.info(f"{DELIMITER} Final Retrieved Data for Subquery {subquery_index} {DELIMITER}")
@@ -607,19 +609,19 @@ def qa_RWP(query: str,
                     if len(retrieved_data) == 0:
                         # Direct Reasoning
                         prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
-                        answer = llm_generate(prompt)
+                        answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
 
                         logger.info(f"{DELIMITER} Bottom Up Reaoning Failed, Direct Reasoning {subquery_index} {DELIMITER}")
                         
                     else:
-                        answer = semantic_reason(retrieved_data, query)
+                        answer = semantic_reason(retrieved_data, query, temperature=temperature, max_tokens=max_tokens)
                         
                         logger.info(f"{DELIMITER} Bottom Up Reaoning Answer for Query {subquery_index} {DELIMITER}")
                     logger.info(f"{answer}")
                     logger.info(f"Time: {et - st}")
 
             else:  # Do not need retrieval, directly Semantic Reasoning
-                answer = semantic_reason(qa_pair, query)
+                answer = semantic_reason(qa_pair, query, temperature=temperature, max_tokens=max_tokens)
 
                 logger.info(f"{DELIMITER} Answer for Subquery {subquery_index} {DELIMITER}")
                 logger.info(f"{answer}")
@@ -635,8 +637,8 @@ def qa_RWP(query: str,
         table_str = get_xlsx_table_string(table_file)
 
         logger.error(f"{DELIMITER} DFS Reasoning Fail! Try to Reason from Scratch! {DELIMITER}")
-        direct_table_reasoning_prompt(table=table_str, query=raw_query)
-        final_answer = llm_generate(prompt)
+        prompt = direct_table_reasoning_prompt.format(table=table_str, query=raw_query)
+        final_answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
         logger.info(f"{final_answer}")
     
     ##### Final Check
@@ -648,7 +650,7 @@ def qa_RWP(query: str,
         logger.info(f"{final_answer}")
     else:
         prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=raw_query)
-        final_answer = llm_generate(prompt)
+        final_answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
         logger.info(f"{DELIMITER} Final Answer for Whole Table Reasoning {DELIMITER}")
         logger.info(f"{final_answer}")
     

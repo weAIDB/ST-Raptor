@@ -149,7 +149,8 @@ def resize_to_target_size(input_path, output_path, target_kb, quality=90, enable
             if os.path.getsize(temp_path) <= target_kb * 1024:
                 break
         
-        os.rename(temp_path, output_path)
+        # 使用os.replace替代os.rename，确保在Windows系统上可以覆盖已存在的文件
+        os.replace(temp_path, output_path)
         logger.info(f'Scaled size {os.path.getsize(output_path) // 1024} KB')
 
 

@@ -62,8 +62,9 @@ class EmbeddingModel:
         return embedding_dict
 
     def save_embedding_dict(self, embedding_dict, output_file):  
-        with open(output_file, "w") as f:
-            json.dump(embedding_dict, f, ensure_ascii=False)
+        # 显式指定utf-8编码，确保在Windows系统上能正确处理非ASCII字符
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(embedding_dict, f, ensure_ascii=False)    
 
     def load_embedding_dict(self, input_file):
         # 从 JSON 文件加载
