@@ -33,9 +33,9 @@ def get_llm_generate():
             prompt=prompt,
             temperature=temperature,
             max_tokens=max_tokens,
-            api_key=config.get("llm_api_key", LLM_API_KEY),
-            api_url=config.get("llm_api_url", LLM_API_URL),
-            model_type=config.get("llm_model", LLM_MODEL_TYPE)
+            key=config.get("llm_api_key", LLM_API_KEY),
+            url=config.get("llm_api_url", LLM_API_URL),
+            model=config.get("llm_model", LLM_MODEL_TYPE)
         )
     return configured_llm_generate
 
