@@ -15,14 +15,94 @@ import time
 from tqdm import tqdm
 from loguru import logger
 from embedding import EmbeddingModel
-from utils.api_utils import vlm_generate
+from utils.api_utils import vlm_generate, llm_generate, embedding_generate
 from table2tree.feature_tree import construct_feature_tree
 import re
 
 from query.primitive_pipeline import *
 from table2tree.extract_excel import *
 from table2tree.feature_tree import *
-from utils.constants import DELIMITER, LOG_DIR
+from utils.constants import DELIMITER, LOG_DIR, LLM_API_URL, LLM_API_KEY, LLM_MODEL_TYPE, VLM_API_URL, VLM_API_KEY, VLM_MODEL_TYPE, EMBEDDING_API_URL, EMBEDDING_API_KEY, EMBEDDING_MODEL_TYPE
+
+# 全局配置字典，用于存储用户设置的API配置
+api_config = {
+    "llm_api_key": LLM_API_KEY,
+    "llm_api_url": LLM_API_URL,
+    "llm_model": LLM_MODEL_TYPE,
+    "vlm_api_key": VLM_API_KEY,
+    "vlm_api_url": VLM_API_URL,
+    "vlm_model": VLM_MODEL_TYPE,
+    "embedding_api_key": EMBEDDING_API_KEY,
+    "embedding_api_url": EMBEDDING_API_URL,
+    "embedding_model": EMBEDDING_MODEL_TYPE
+}
+
+# 配置文件路径
+CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "api_config.json")
+
+# 从文件加载配置
+def load_api_config():
+    global api_config
+    if os.path.exists(CONFIG_FILE):
+        try:
+            with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
+                loaded_config = json.load(f)
+                api_config.update(loaded_config)
+        except Exception as e:
+            print(f"加载API配置文件失败: {e}")
+
+# 保存配置到文件
+def save_api_config(config):
+    try:
+        with open(CONFIG_FILE, 'w', encoding='utf-8') as f:
+            json.dump(config, f, indent=4, ensure_ascii=False)
+        global api_config
+        api_config.update(config)
+        gr.Info("✅ API配置已保存")
+        return """<div style='color: green; padding: 10px; border-radius: 5px; background: #f0f9f0;'>配置保存成功！</div>"""
+    except Exception as e:
+        error_msg = f"❌ 保存配置失败: {str(e)}"
+        gr.Warning(error_msg)
+        return f"""<div style='color: red; padding: 10px; border-radius: 5px; background: #fff0f0;'>{error_msg}</div>"""
+
+# 初始化时加载配置
+load_api_config()
+
+# 修改后的API调用函数，使用全局配置
+def get_llm_generate(prompt, max_tokens=8192, temperature=0.5):
+    return llm_generate(
+        prompt=prompt,
+        key=api_config["llm_api_key"],
+        url=api_config["llm_api_url"],
+        model=api_config["llm_model"],
+        max_tokens=max_tokens,
+        temperature=temperature
+    )
+
+def get_vlm_generate():
+    # 返回一个已经配置好API参数的vlm_generate函数
+    def configured_vlm_generate(prompt, image, temperature=0.5):
+        return vlm_generate(
+            prompt=prompt,
+            image=image,
+            key=api_config["vlm_api_key"],
+            url=api_config["vlm_api_url"],
+            model=api_config["vlm_model"],
+            temperature=temperature
+        )
+    return configured_vlm_generate
+
+def get_embedding_generate():
+    # 返回一个已经配置好API参数的embedding_generate函数
+    def configured_embedding_generate(input_texts, dimensions=1024):
+        return embedding_generate(
+            input_texts=input_texts,
+            key=api_config["embedding_api_key"],
+            url=api_config["embedding_api_url"],
+            model=api_config["embedding_model"],
+            dimensions=dimensions
+        )
+    return configured_embedding_generate
 
 def answer_question(
     qa_pair: dict,                          # 一条问答对
@@ -206,7 +286,7 @@ def clear_all():
     
     return None, "", "", {}  # 清空所有界面组件
 def read_all_logs(log_dir="log", max_lines=200):
-    """合并读取所有日志文件（temp.xlsx.log, param_change.log, temp.log），按时间顺序显示"""
+    """合并读取所有日志文件（temp.xlsx.log, param_change.log, temp.log），按时间顺序显示，并添加颜色美化"""
     all_lines = []
     
     log_files = [
@@ -231,7 +311,26 @@ def read_all_logs(log_dir="log", max_lines=200):
         pass
     
     # 取最后 max_lines 行
-    return "".join(all_lines[-max_lines:]) if all_lines else "暂无日志"
+    log_content = "".join(all_lines[-max_lines:]) if all_lines else "暂无日志"
+    
+    # 添加颜色美化 - 将日志转换为HTML格式
+    # 支持 loguru 格式: 时间 | 级别 | 内容
+    html_lines = []
+    for line in log_content.split("\n"):
+        if "|" in line and len(line.split("|")) >= 3:
+            parts = line.split("|", 2)
+            timestamp = parts[0].strip()
+            level = parts[1].strip()
+            content = parts[2].strip()
+            # 为时间戳添加蓝色，为日志级别添加绿色
+            html_line = f"<span style='color: blue'>{timestamp}</span> | <span style='color: green'>{level}</span> | {content}<br>"
+        else:
+            # 非标准格式行保持原样
+            html_line = line + "<br>"
+        html_lines.append(html_line)
+    
+    # 包装在<pre>标签中以保留格式，但使用HTML允许颜色显示
+    return f"<pre style='font-family: monospace; white-space: pre-wrap; word-wrap: break-word;'>{' '.join(html_lines)}</pre>"
 
 def create_interface():
     with gr.Blocks(
@@ -245,7 +344,7 @@ def create_interface():
         .H-OTree-output {
             height:600px !important;
             max-height: 600px !important;
-            overflow-y: hidden !important;
+            overflow-y: auto !important;
             font-size: 13px;
             padding:10px;
             border: 1px solid #e0e0e0;
@@ -260,6 +359,15 @@ def create_interface():
             max-height: 300px !important;
             overflow-y: auto !important;
         }
+        #log-output-box {
+            height: 400px !important;
+            max-height: 400px !important;
+            overflow-y: auto !important;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
         """
     ) as demo:
         
@@ -269,6 +377,99 @@ def create_interface():
             <p>上传 Excel 表格并使用自然语言提问，获取智能答案</p>
         </div>
         """)
+        
+        # 顶部：API配置面板
+        with gr.Accordion("⚙️ API配置", open=False):
+            with gr.Tabs():
+                # LLM配置标签页
+                with gr.TabItem("📝 LLM配置"):
+                    with gr.Row():
+                        llm_api_key = gr.Textbox(
+                            label="LLM API Key", 
+                            value=api_config["llm_api_key"],
+                            placeholder="请输入LLM API密钥",
+                            type="password",
+                            scale=2
+                        )
+                        llm_model = gr.Dropdown(
+                            choices=["deepseek-v3.1", "gpt-4-turbo", "claude-3-opus-20240229", "qwen-max"],
+                            value=api_config["llm_model"],
+                            label="LLM 模型",
+                            scale=1
+                        )
+                    llm_api_url = gr.Textbox(
+                        label="LLM API URL", 
+                        value=api_config["llm_api_url"],
+                        placeholder="请输入LLM API地址",
+                        lines=1
+                    )
+                
+                # VLM配置标签页
+                with gr.TabItem("🖼️ VLM配置"):
+                    with gr.Row():
+                        vlm_api_key = gr.Textbox(
+                            label="VLM API Key", 
+                            value=api_config["vlm_api_key"],
+                            placeholder="请输入VLM API密钥",
+                            type="password",
+                            scale=2
+                        )
+                        vlm_model = gr.Dropdown(
+                            choices=["qwen3-vl-plus", "gpt-4-vision-preview", "claude-3-opus-20240229"],
+                            value=api_config["vlm_model"],
+                            label="VLM 模型",
+                            scale=1
+                        )
+                    vlm_api_url = gr.Textbox(
+                        label="VLM API URL", 
+                        value=api_config["vlm_api_url"],
+                        placeholder="请输入VLM API地址",
+                        lines=1
+                    )
+                
+                # Embedding配置标签页
+                with gr.TabItem("📊 Embedding配置"):
+                    with gr.Row():
+                        embedding_api_key = gr.Textbox(
+                            label="Embedding API Key", 
+                            value=api_config["embedding_api_key"],
+                            placeholder="请输入Embedding API密钥",
+                            type="password",
+                            scale=2
+                        )
+                        embedding_model = gr.Dropdown(
+                            choices=["text-embedding-v1", "text-embedding-ada-002", "text-embedding-3-large"],
+                            value=api_config["embedding_model"],
+                            label="Embedding 模型",
+                            scale=1
+                        )
+                    embedding_api_url = gr.Textbox(
+                        label="Embedding API URL", 
+                        value=api_config["embedding_api_url"],
+                        placeholder="请输入Embedding API地址",
+                        lines=1
+                    )
+                
+                # 保存按钮和状态显示
+                save_config_btn = gr.Button("💾 保存配置", variant="primary")
+                config_status = gr.HTML("", label="配置状态")
+                
+                # 绑定保存配置按钮事件
+                save_config_btn.click(
+                    fn=lambda llm_key, llm_url, llm_m, vlm_key, vlm_url, vlm_m, emb_key, emb_url, emb_m: save_api_config({
+                        "llm_api_key": llm_key,
+                        "llm_api_url": llm_url,
+                        "llm_model": llm_m,
+                        "vlm_api_key": vlm_key,
+                        "vlm_api_url": vlm_url,
+                        "vlm_model": vlm_m,
+                        "embedding_api_key": emb_key,
+                        "embedding_api_url": emb_url,
+                        "embedding_model": emb_m
+                    }),
+                    inputs=[llm_api_key, llm_api_url, llm_model, vlm_api_key, vlm_api_url, vlm_model, embedding_api_key, embedding_api_url, embedding_model],
+                    outputs=[config_status]
+                )
         
         # 顶部：扁扁的输入框 + 上传和清除按钮
         with gr.Row():
@@ -303,15 +504,18 @@ def create_interface():
                     placeholder="例如：销售总额是多少？哪个产品销量最高？",
                     show_copy_button=True
                 )
-                temperature_slider = gr.Slider(
-                    minimum=0.0, maximum=1.0, value=0.5, step=0.01,
-                    label="Temperature (采样多样性)",
-                    info="越大越随机，越小越确定"
-                )
-                max_tokens_box = gr.Number(
-                    value=1024, precision=0, label="Max Tokens (最大生成长度)",
-                    info="生成答案的最大 token 数"
-                )
+                with gr.Row():
+                    temperature_slider = gr.Slider(
+                        minimum=0.0, maximum=1.0, value=0.5, step=0.01,
+                        label="Temperature (采样多样性)",
+                        info="越大越随机，越小越确定",
+                        scale=1
+                    )
+                    max_tokens_box = gr.Number(
+                        value=1024, precision=0, label="Max Tokens (最大生成长度)",
+                        info="生成答案的最大 token 数",
+                        scale=1
+                    )
                 # 提交问题按钮
                 submit_question_btn = gr.Button(
                     "🚀 提交问题", 
@@ -330,11 +534,8 @@ def create_interface():
                 )
                 # 日志输出框（放在可折叠面板中，默认隐藏）
                 with gr.Accordion("📜 实时日志", open=False):
-                    log_output = gr.Textbox(
+                    log_output = gr.HTML(
                         label="终端日志",
-                        lines=18,
-                        interactive=False,
-                        show_copy_button=True,
                         value=read_all_logs(),
                         elem_id="log-output-box"
                     )
@@ -343,21 +544,20 @@ def create_interface():
                     """
 <script>
 function scrollLogToBottom() {
-    var box = document.querySelector('#log-output-box textarea');
+    var box = document.querySelector('#log-output-box');
     if (box) {
         box.scrollTop = box.scrollHeight;
     }
 }
 const observer = new MutationObserver(scrollLogToBottom);
 setTimeout(function() {
-    var box = document.querySelector('#log-output-box textarea');
+    var box = document.querySelector('#log-output-box');
     if (box) {
         observer.observe(box, { childList: true, subtree: true, characterData: true });
     }
 }, 1000);
 </script>
-"""
-                )
+""")
         
         # 示例问题
         gr.Markdown("### 💡 示例问题")

@@ -16,6 +16,29 @@ from utils.constants import *
 from utils.prompt_template import *
 from utils.sheet_utils import get_xlsx_table_string
 
+# 尝试导入API配置
+def get_api_config():
+    """获取API配置，如果不可用则返回默认值"""
+    try:
+        from gradio_app import api_config
+        return api_config
+    except ImportError:
+        return {}
+
+def get_llm_generate():
+    """获取配置的llm_generate函数"""
+    config = get_api_config()
+    def configured_llm_generate(prompt, temperature=0.5, max_tokens=2048):
+        return llm_generate(
+            prompt=prompt,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            api_key=config.get("llm_api_key", LLM_API_KEY),
+            api_url=config.get("llm_api_url", LLM_API_URL),
+            model_type=config.get("llm_model", LLM_MODEL_TYPE)
+        )
+    return configured_llm_generate
+
 def flatten_nested_list(value):
     res = []
     for x in value:
@@ -36,7 +59,8 @@ def bool_string(s):
 def query_decompose(f_tree: FeatureTree, query: str, temperature=0.5):
     prompt = query_decompose_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = llm_generate(prompt, temperature=temperature)
+    configured_llm_generate = get_llm_generate()
+    res = configured_llm_generate(prompt, temperature=temperature)
 
     queries = []
     retrieve_flags = []
@@ -62,7 +86,8 @@ def query_decompose(f_tree: FeatureTree, query: str, temperature=0.5):
 def entity_extractor(f_tree: FeatureTree, query: str, temperature=0.5):
     prompt = entity_extract_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = llm_generate(prompt, temperature=temperature)
+    configured_llm_generate = get_llm_generate()
+    res = configured_llm_generate(prompt, temperature=temperature)
 
     # pattern = r"```python\n(.*?)```"
     # matches = re.findall(pattern, res, re.DOTALL)
@@ -78,7 +103,8 @@ def semantic_reason(evidence, query, temperature=0.5, max_tokens=8192):
         evidence = evidence.__json__()
     prompt = semantic_reasoning_prompt.format(evidence=evidence, query=query)
 
-    res = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
+    configured_llm_generate = get_llm_generate()
+    res = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
 
     return res
 
@@ -91,7 +117,8 @@ def calc_math(f_tree: FeatureTree, query, temperature=0.5):
     args = None  # 初始化args变量
     while retry_cnt < MAX_RETRY_PRIMITIVE:
         try:
-            primitive_seq = llm_generate(prompt=math_prompt, temperature=temperature)
+            configured_llm_generate = get_llm_generate()
+            primitive_seq = configured_llm_generate(prompt=math_prompt, temperature=temperature)
 
             operation = primitive_seq.splitlines()[0].strip()
             if operation == "None":
@@ -189,7 +216,8 @@ def dfs_reasoning(
         
         logger.info(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}")
         
-        operation = llm_generate(cond_prompt).strip()
+        configured_llm_generate = get_llm_generate()
+        operation = configured_llm_generate(cond_prompt).strip()
         
         if "None" in operation:
             logger.info(f"{DELIMITER} 检测不使用COND操作 {DELIMITER}")
@@ -595,7 +623,8 @@ def qa_RWP(query: str,
                 retrieved_data = delete_list_empty_elem(retrieved_data)
                 if len(retrieved_data) == 0:
                     prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
-                    answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
+                    configured_llm_generate = get_llm_generate()
+                    answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
                 else:
                     answer = semantic_reason(retrieved_data, query, temperature=temperature, max_tokens=max_tokens)
                 check_res = Verifier().check_answer(query, answer)
@@ -620,7 +649,8 @@ def qa_RWP(query: str,
                     if len(retrieved_data) == 0:
                         # Direct Reasoning
                         prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
-                        answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
+                        configured_llm_generate = get_llm_generate()
+                        answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
 
                         logger.info(f"{DELIMITER} Bottom Up Reaoning Failed, Direct Reasoning {subquery_index} {DELIMITER}")
                         
@@ -651,7 +681,8 @@ def qa_RWP(query: str,
 
         logger.error(f"{DELIMITER} DFS Reasoning Fail! Try to Reason from Scratch! {DELIMITER}")
         prompt = direct_table_reasoning_prompt.format(table=table_str, query=raw_query)
-        final_answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
+        configured_llm_generate = get_llm_generate()
+        final_answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
         logger.info(f"{final_answer}")
     
     ##### Final Check
@@ -663,7 +694,8 @@ def qa_RWP(query: str,
         logger.info(f"{final_answer}")
     else:
         prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=raw_query)
-        final_answer = llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
+        configured_llm_generate = get_llm_generate()
+        final_answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
         logger.info(f"{DELIMITER} Final Answer for Whole Table Reasoning {DELIMITER}")
         logger.info(f"{final_answer}")
     

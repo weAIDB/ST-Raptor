@@ -50,7 +50,20 @@ class EmbeddingModel:
         if EMBEDDING_TYPE == 'local':
             embeddings = self.model.encode(entity_list)
         else:
-            embeddings = embedding_generate(input_texts=entity_list)
+            # 尝试从全局配置获取API设置，如果不可用则使用默认值
+            try:
+                # 导入全局API配置
+                from gradio_app import api_config
+                # 使用配置的API参数
+                embeddings = embedding_generate(
+                    input_texts=entity_list,
+                    key=api_config.get("embedding_api_key", EMBEDDING_API_KEY),
+                    url=api_config.get("embedding_api_url", EMBEDDING_API_URL),
+                    model=api_config.get("embedding_model", EMBEDDING_TYPE)
+                )
+            except ImportError:
+                # 如果无法导入配置，使用默认参数
+                embeddings = embedding_generate(input_texts=entity_list)
         return embeddings
 
     def get_embedding_dict(self, entity_list):
