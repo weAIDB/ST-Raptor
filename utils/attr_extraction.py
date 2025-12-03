@@ -197,6 +197,14 @@ def get_keys(d, keys=None):
 
 
 def vlm_get_direction(sheet, model="internvl", save=False):
+    # 导入get_vlm_generate函数，使用全局API配置
+    try:
+        from gradio_app import get_vlm_generate
+        vlm_generate = get_vlm_generate()
+    except ImportError:
+        # 如果无法导入，使用默认的vlm_generate函数
+        from utils.api_utils import vlm_generate
+        
     image_file = sheet_to_image(sheet)
     prompt = """
     请告诉我当前表的表头行或者表头列在表格的上部还是左侧，如果表头在上部，则输出“上部”，如果表头在左侧，则输出“左侧”。
@@ -219,7 +227,7 @@ def vlm_get_schema(sheet,                   # 需要获取 schema 的 sheet
         vlm_generate = get_vlm_generate()
     except ImportError:
         # 如果无法导入，使用默认的vlm_generate函数
-        pass
+        from utils.api_utils import vlm_generate
         
     image_file = sheet_to_image(sheet)
     prompt = """请将给定的表格图片转换为JSON格式，并且只需要直接返回转化JSON中所有键的内容。请使用python的列表格式返回键的列表！返回的Python列表语法需要准确！不要使用任何Markdown格式，不要修改表格内容。"""
@@ -299,7 +307,7 @@ def get_schema_direction_by_vlm(sheet, image_file=None):
         vlm_generate = get_vlm_generate()
     except ImportError:
         # 如果无法导入，使用默认的vlm_generate函数
-        pass
+        from utils.api_utils import vlm_generate
         
     prompt = "表格的Schema是可以总结表格某一列或某一行的单元格，请判断该表格最外层的 SCHEMA 是表格的上部还是表格的左侧，如果是上部，请输出true，如果是左侧，请输出false。注意，你只需要输出true或false，不要有任何其他格式。"
 
@@ -317,7 +325,7 @@ def vlm_get_json(sheet, save=False, enable_crop=False):
         vlm_generate = get_vlm_generate()
     except ImportError:
         # 如果无法导入，使用默认的vlm_generate函数
-        pass
+        from utils.api_utils import vlm_generate
         
     image_file = sheet_to_image(sheet, enable_crop=enable_crop)
     prompt = "请将给定的表格图片转换为JSON格式，注意，JSON的键与值都必须直接是表格的内容，请直接返回转化后的标准格式的JSON，不要使用任何Markdown格式，不要修改表格内容。"
