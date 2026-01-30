@@ -37,7 +37,7 @@ Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. I
 - [ ] Main functionss
   - [x] Support both local deployment or API calls for LLM, VLM, and Embedding models.
   - [x] Support diverse input formats: HTML, CSV, MARKDOWN, ...
-  - [ ] Support Image input.
+  - [x] Support Image input.
   - [ ] Expand the table extraction module to support table types beyond problem definition.
 
 - [ ] Benchmark
@@ -46,9 +46,9 @@ Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. I
 
 - [ ] Visualization
   - [x] Support web visualization platform (FastAPI + HTML).
-  - [ ] Support hyper-parameter settings (WIP).
+  - [x] Support hyper-parameter settings (WIP).
   - [x] Support the visualization of HO-Tree structure.
-  - [ ] Support the HO-Tree manual correction function.
+  - [x] Support the HO-Tree manual correction function.
 
 **Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
@@ -315,9 +315,7 @@ If you like this project, please cite our paper [link](https://arxiv.org/abs/250
 
 # 👨‍🏫 Join us !
 
-ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
-
-ST-Raptor@复杂半结构表格分析社区 (微信群)
+ST-Raptor@Complex Semi-Structured Table Analysis Community  (Please contact the following WeChat account)
 
 <p align="center">
   <img src="./assets/vx.jpg" width = "300" alt="" align="center" />

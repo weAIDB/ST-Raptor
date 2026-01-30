@@ -19,7 +19,7 @@
 - [ ] 主要功能
   - [x] 支持LLM、VLM及嵌入模型的本地部署与API调用
   - [x] 支持多样化输入格式：HTML、CSV、MARKDOWN等
-  - [ ] 支持图像输入
+  - [x] 支持图像输入
   - [ ] 扩展表格提取模块，支持问题定义之外的表格类型
 
 - [ ] 基准测试数据集
@@ -28,9 +28,9 @@
 
 - [ ] 可视化功能
   - [x] 支持基于Web的可视化平台（FastAPI + HTML）
-  - [ ] 支持超参数设置（WIP）
+  - [x] 支持超参数设置（WIP）
   - [x] 支持HO-Tree结构可视化
-  - [ ] 支持HO-Tree人工修正功能
+  - [x] 支持HO-Tree人工修正功能
 
 ## ✨ 项目介绍
 
@@ -310,9 +310,7 @@ python ./start_web.py
 
 # 👨‍🏫 加入我们 !
 
-ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
-
-ST-Raptor@复杂半结构表格分析社区 (微信群)
+ST-Raptor@复杂半结构化表格分析社区（请通过以下微信号联系我们）
 
 <p align="center">
   <img src="./assets/vx.jpg" width = "300" alt="" align="center" />
