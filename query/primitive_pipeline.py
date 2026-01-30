@@ -1,6 +1,6 @@
 import re
 import os
-import time as tm
+import time
 import glob
 import pickle
 import traceback
@@ -15,6 +15,38 @@ from verifier.verifier import *
 from utils.constants import *
 from utils.prompt_template import *
 from utils.sheet_utils import get_xlsx_table_string
+
+# 尝试导入API配置
+def get_api_config():
+    """获取API配置，如果不可用则返回默认值"""
+    try:
+        from config import api_config
+        return api_config
+    except ImportError:
+        try:
+            # 如果config模块不可用，尝试从constants获取默认值
+            from utils.constants import LLM_API_KEY, LLM_API_URL, LLM_MODEL_TYPE
+            return {
+                "llm_api_key": LLM_API_KEY,
+                "llm_api_url": LLM_API_URL,
+                "llm_model": LLM_MODEL_TYPE
+            }
+        except ImportError:
+            return {}
+
+def get_llm_generate():
+    """获取配置的llm_generate函数"""
+    config = get_api_config()
+    def configured_llm_generate(prompt, temperature=0.5, max_tokens=2048):
+        return llm_generate(
+            prompt=prompt,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            key=config.get("llm_api_key", LLM_API_KEY),
+            url=config.get("llm_api_url", LLM_API_URL),
+            model=config.get("llm_model", LLM_MODEL_TYPE)
+        )
+    return configured_llm_generate
 
 def flatten_nested_list(value):
     res = []
@@ -33,10 +65,11 @@ def bool_string(s):
     return False
 
 
-def query_decompose(f_tree: FeatureTree, query: str):
+def query_decompose(f_tree: FeatureTree, query: str, temperature=0.5):
     prompt = query_decompose_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = llm_generate(prompt)
+    configured_llm_generate = get_llm_generate()
+    res = configured_llm_generate(prompt, temperature=temperature)
 
     queries = []
     retrieve_flags = []
@@ -59,10 +92,11 @@ def query_decompose(f_tree: FeatureTree, query: str):
     return queries, retrieve_flags
 
 
-def entity_extractor(f_tree: FeatureTree, query: str):
+def entity_extractor(f_tree: FeatureTree, query: str, temperature=0.5):
     prompt = entity_extract_prompt.format(query=query, schema=f_tree.__index__())
 
-    res = llm_generate(prompt, temperature=0.5)
+    configured_llm_generate = get_llm_generate()
+    res = configured_llm_generate(prompt, temperature=temperature)
 
     # pattern = r"```python\n(.*?)```"
     # matches = re.findall(pattern, res, re.DOTALL)
@@ -73,24 +107,27 @@ def entity_extractor(f_tree: FeatureTree, query: str):
     return eval(res)
 
 
-def semantic_reason(evidence, query):
+def semantic_reason(evidence, query, temperature=0.5, max_tokens=8192):
     if isinstance(evidence, FeatureTree):
         evidence = evidence.__json__()
     prompt = semantic_reasoning_prompt.format(evidence=evidence, query=query)
 
-    res = llm_generate(prompt, temperature=0.5)
+    configured_llm_generate = get_llm_generate()
+    res = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
 
     return res
 
 
-def calc_math(f_tree: FeatureTree, query):
+def calc_math(f_tree: FeatureTree, query, temperature=0.5):
 
     math_prompt = primitive_prompt_math.format(query=query, table=f_tree.__json__())
 
     retry_cnt = 1
+    args = None  # 初始化args变量
     while retry_cnt < MAX_RETRY_PRIMITIVE:
         try:
-            primitive_seq = llm_generate(prompt=math_prompt, temperature = 0.5)
+            configured_llm_generate = get_llm_generate()
+            primitive_seq = configured_llm_generate(prompt=math_prompt, temperature=temperature)
 
             operation = primitive_seq.splitlines()[0].strip()
             if operation == "None":
@@ -113,6 +150,11 @@ def calc_math(f_tree: FeatureTree, query):
             retry_cnt += 1
     
     try:
+        # 检查args是否被成功定义
+        if args is None:
+            logger.error("Failed to generate valid MATH operation after maximum retries")
+            return f_tree
+            
         type = args[2]
         for item in f_tree.index_tree.leaf_nodes:
                 if args[1] in item.value:  # 在标签中
@@ -155,6 +197,8 @@ def dfs_reasoning(
     depth=1,
     enable_embedding_match=False,
     embedding_cache_file=None,
+    temperature=0.5,
+    max_tokens=2048,
 ):
     """Reasoning in a depth-first search manner"""
     if depth > MAX_ITER_PRIMITIVE:
@@ -181,7 +225,8 @@ def dfs_reasoning(
         
         logger.info(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}")
         
-        operation = llm_generate(cond_prompt).strip()
+        configured_llm_generate = get_llm_generate()
+        operation = configured_llm_generate(cond_prompt).strip()
         
         if "None" in operation:
             logger.info(f"{DELIMITER} 检测不使用COND操作 {DELIMITER}")
@@ -204,7 +249,7 @@ def dfs_reasoning(
         logger.info(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}")
         
         ### Math based on the f_tree
-        res = calc_math(f_tree, query)
+        res = calc_math(f_tree, query, temperature=temperature)
         if isinstance(res, FeatureTree):
             pass
         else:
@@ -238,11 +283,16 @@ def dfs_reasoning(
     logger.info(f"### Query\n{query}\n### Table\n{table_string}\n###Query History\n{query_history}")
 
     retry_cnt = 1
+    reasoning_path = []  # 创建列表保存所有生成的原语句
     while retry_cnt < MAX_RETRY_PRIMITIVE:
 
-        # Generate primitive
-        primitive_seq = llm_generate(prompt=prompt)
+        # Generate primitive - 使用配置的API
+        configured_llm_generate = get_llm_generate()
+        primitive_seq = configured_llm_generate(prompt=prompt, temperature=temperature, max_tokens=max_tokens)
         operation = primitive_seq.splitlines()[0].strip()
+        
+        # 将生成的原语句添加到列表中
+        reasoning_path.append(operation)
 
         print(operation)
         logger.info(f"{DELIMITER} Generated Primitive of {LLM_MODEL_TYPE} Try {retry_cnt} {DELIMITER}")
@@ -350,7 +400,7 @@ def dfs_reasoning(
                 data_cnt = 1
                 for subdata in op_res:
                     if isinstance(subdata, FeatureTree):
-                        sub_answer, _ = dfs_reasoning(
+                        sub_answer, sub_reasoning_path = dfs_reasoning(
                             query=query,
                             f_tree=subdata,
                             query_history=query_history,
@@ -360,6 +410,8 @@ def dfs_reasoning(
                             depth=depth + 1,
                             embedding_cache_file=embedding_cache_file,
                         )
+                        # 合并子调用返回的原语句列表
+                        reasoning_path.extend(sub_reasoning_path)
                         if sub_answer is not None and len(sub_answer) > 0:
                             step_info += f"Retrieve Subtree Schema {tree_cnt}: {subdata.__index__()}\n"
                             step_info += f"Data Retrieved from Subtree{tree_cnt}: {sub_answer[0]}\n"
@@ -415,7 +467,8 @@ def dfs_reasoning(
     # if len(retrieved_data) == 1 and isinstance(retrieved_data[0], FeatureTree):
     r_data = []
     for item in retrieved_data:
-        if isinstance(item, list) and len(item) >= 1 and isinstance(item[0], FeatureTree):    item=item[0]
+        if isinstance(item, list) and len(item) >= 1 and isinstance(item[0], FeatureTree):
+            item = item[0]
         f_tree = item
         if not isinstance(f_tree, FeatureTree): 
             r_data.append(f_tree)
@@ -427,7 +480,8 @@ def dfs_reasoning(
         
         logger.info(f"{DELIMITER} 没有嵌套，尝试使用COND操作 {DELIMITER}")
         
-        operation = llm_generate(cond_prompt).strip()
+        configured_llm_generate = get_llm_generate()
+        operation = configured_llm_generate(cond_prompt).strip()
         
         if "None" in operation:
             logger.info(f"{DELIMITER} 检测不使用COND操作 {DELIMITER}")
@@ -450,14 +504,15 @@ def dfs_reasoning(
         logger.info(f"{DELIMITER} 没有嵌套，尝试使用MATH操作 {DELIMITER}")
 
         ### Math based on the f_tree
-        res = calc_math(f_tree, query)
+        res = calc_math(f_tree, query, temperature=0.5)  # 使用默认值，因为调用此函数的地方没有temperature参数
         r_data.append(res)
         # if isinstance(res, FeatureTree):
             # pass
         # else:
             # return [res], ""
     
-    return r_data, prompt
+    # 返回r_data和生成的原语句列表
+    return r_data, reasoning_path
     # return retrieved_data, prompt
 
 
@@ -486,11 +541,12 @@ def bottom_up_reasoning(
     query: str,
     f_tree: FeatureTree,
     embedding_cache_file=None,
+    temperature=0.5,
 ):
     """
     return: FeatureTree / String
     """
-    entities = entity_extractor(f_tree, query)
+    entities = entity_extractor(f_tree, query, temperature=temperature)
     start_from = EmbeddingModel().top1_match(
         entities, f_tree.all_value_list(), embedding_cache_file
     )
@@ -536,17 +592,35 @@ def qa_RWP(query: str,
            table_file: str,
            embedding_cache_file=None, 
            enable_emebdding=False, 
-           enable_query_decompose=True):
+           enable_query_decompose=True,
+           temperature=0.5,
+           max_tokens=8192):
     """Reason-while-Planning"""
 
     try:
+        # 动态导入thinking_chain_data以避免循环导入
+        from core_functions import thinking_chain_data
+        
+        # 初始化问答部分的数据
+        thinking_chain_data["question_answering"] = {
+            "raw_query": query,
+            "enable_query_decompose": enable_query_decompose,
+            "enable_embedding": enable_emebdding
+        }
+        
         ##### Step 1. 问题分解
         raw_query = query
         if enable_query_decompose:
-            decomposed_queries, retrieve_flag = query_decompose(f_tree=ho_tree, query=query)
+            decomposed_queries, retrieve_flag = query_decompose(f_tree=ho_tree, query=query, temperature=temperature)
         else:
             decomposed_queries = [query]
             retrieve_flag = [True]
+        
+        # 保存问题分解结果
+        thinking_chain_data["question_answering"]["query_decomposition"] = {
+            "decomposed_queries": decomposed_queries,
+            "retrieve_flag": retrieve_flag
+        }
 
         logger.info(f"{DELIMITER} Query Decompose {DELIMITER}")
         logger.info(f"{decomposed_queries}")
@@ -558,9 +632,20 @@ def qa_RWP(query: str,
         ##### 依次遍历每一个子问题
         qa_pair = []
         subquery_index = 1
+        
+        # 初始化子问题列表
+        thinking_chain_data["question_answering"]["subqueries"] = []
+        
         for query, flag in zip(decomposed_queries, retrieve_flag):
             logger.info(f"{DELIMITER} Answering Subquery {subquery_index} {DELIMITER}")
             logger.info(f"{query}")
+            
+            # 创建子问题数据记录
+            subquery_data = {
+                "index": subquery_index,
+                "query": query,
+                "need_retrieval": flag
+            }
 
             answer = None
             if flag:  # Need Retrieval
@@ -572,6 +657,8 @@ def qa_RWP(query: str,
                     depth=1,
                     enable_embedding_match=enable_emebdding,
                     embedding_cache_file=embedding_cache_file,
+                    temperature=temperature,
+                    max_tokens=max_tokens,
                 )
 
                 retrieved_data = flatten_nested_list(retrieved_data)
@@ -580,12 +667,62 @@ def qa_RWP(query: str,
                         retrieved_data[index] = data.__json__()
 
                 retrieved_data = delete_list_empty_elem(retrieved_data)
+                
+                # 保存检索数据
+                subquery_data["retrieved_data"] = retrieved_data
+                
+                # 处理reasoning_path，只保留针对当前查询生成的原始语句部分
+                if isinstance(reasoning_path, str):
+                    # 过滤掉固定的模板内容，只保留### Query之后的部分
+                    # 找到### Query的位置
+                    query_pos = reasoning_path.find("### Query")
+                    if query_pos != -1:
+                        # 提取### Query之后的内容
+                        filtered_path = reasoning_path[query_pos:]
+                        # 进一步过滤，只保留生成的原始语句部分
+                        lines = filtered_path.splitlines()
+                        # 寻找以[开头的行，这通常是生成的原始语句
+                        primitive_lines = [line.strip() for line in lines if line.strip().startswith("[")]
+                        if primitive_lines:
+                            # 如果找到原始语句，只保留这些语句
+                            subquery_data["reasoning_path"] = primitive_lines[-1]  # 只保留最后一个原始语句
+                        else:
+                            # 否则保留过滤后的内容
+                            subquery_data["reasoning_path"] = filtered_path
+                    else:
+                        # 如果没有找到### Query，保留原始内容
+                        subquery_data["reasoning_path"] = reasoning_path
+                elif isinstance(reasoning_path, list):
+                    # 过滤掉非字符串元素和空字符串
+                    filtered_path = [item for item in reasoning_path if isinstance(item, str) and item.strip()]
+                    # 只保留以[开头的原始语句
+                    primitive_path = [item for item in filtered_path if item.strip().startswith("[")]
+                    if primitive_path:
+                        # 去重处理
+                        seen = set()
+                        unique_path = []
+                        for item in primitive_path:
+                            if item not in seen:
+                                seen.add(item)
+                                unique_path.append(item)
+                        subquery_data["reasoning_path"] = unique_path
+                    else:
+                        # 如果没有找到原始语句，保留过滤后的内容
+                        subquery_data["reasoning_path"] = filtered_path
+                else:
+                    subquery_data["reasoning_path"] = reasoning_path
+                
                 if len(retrieved_data) == 0:
                     prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
-                    answer = llm_generate(prompt)
+                    configured_llm_generate = get_llm_generate()
+                    answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
+                    subquery_data["reasoning_type"] = "direct_reasoning"
                 else:
-                    answer = semantic_reason(retrieved_data, query)
+                    answer = semantic_reason(retrieved_data, query, temperature=temperature, max_tokens=max_tokens)
+                    subquery_data["reasoning_type"] = "semantic_reasoning"
+                
                 check_res = Verifier().check_answer(query, answer)
+                subquery_data["verifier_check"] = check_res
 
                 logger.info(f"{DELIMITER} Final Retrieved Data for Subquery {subquery_index} {DELIMITER}")
                 logger.info(f"{retrieved_data}")
@@ -595,67 +732,118 @@ def qa_RWP(query: str,
                 logger.info(f"{check_res}")
 
                 if check_res is False:
-                    st = tm.perf_counter()
-                    retrieved_data = bottom_up_reasoning(query, ho_tree, embedding_cache_file)
-                    et = tm.perf_counter()
+                    st = time.perf_counter()
+                    retrieved_data = bottom_up_reasoning(query, ho_tree, embedding_cache_file, temperature=temperature)
+                    et = time.perf_counter()
                     retrieved_data = flatten_nested_list(retrieved_data)
                     for index, data in enumerate(retrieved_data):
                         if isinstance(data, FeatureTree):
                             retrieved_data[index] = data.__json__()
                     
                     retrieved_data = delete_list_empty_elem(retrieved_data)
+                    
+                    # 保存bottom-up推理数据
+                    subquery_data["bottom_up_reasoning"] = {
+                        "time": et - st,
+                        "retrieved_data": retrieved_data
+                    }
+                    
                     if len(retrieved_data) == 0:
                         # Direct Reasoning
                         prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=query)
-                        answer = llm_generate(prompt)
+                        configured_llm_generate = get_llm_generate()
+                        answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
+                        subquery_data["bottom_up_reasoning"]["reasoning_type"] = "direct_reasoning"
 
                         logger.info(f"{DELIMITER} Bottom Up Reaoning Failed, Direct Reasoning {subquery_index} {DELIMITER}")
                         
                     else:
-                        answer = semantic_reason(retrieved_data, query)
+                        answer = semantic_reason(retrieved_data, query, temperature=temperature, max_tokens=max_tokens)
+                        subquery_data["bottom_up_reasoning"]["reasoning_type"] = "semantic_reasoning"
                         
                         logger.info(f"{DELIMITER} Bottom Up Reaoning Answer for Query {subquery_index} {DELIMITER}")
                     logger.info(f"{answer}")
                     logger.info(f"Time: {et - st}")
 
             else:  # Do not need retrieval, directly Semantic Reasoning
-                answer = semantic_reason(qa_pair, query)
+                answer = semantic_reason(qa_pair, query, temperature=temperature, max_tokens=max_tokens)
+                subquery_data["reasoning_type"] = "direct_semantic_reasoning"
 
                 logger.info(f"{DELIMITER} Answer for Subquery {subquery_index} {DELIMITER}")
                 logger.info(f"{answer}")
+            
+            # 完成子问题处理，保存结果
+            subquery_data["answer"] = answer
+            
+            # 将子问题数据添加到思维链条
+            thinking_chain_data["question_answering"]["subqueries"].append(subquery_data)
 
             qa_pair.append({"query": query, "answer": answer})
-
             subquery_index += 1
 
         # final_answer = semantic_reason(qa_pair, query)
         final_answer = qa_pair[-1]["answer"]
+        
+        # 保存最终答案
+        thinking_chain_data["question_answering"]["final_answer"] = final_answer
+        thinking_chain_data["question_answering"]["qa_pair"] = qa_pair
 
     except Exception as e:
+        import traceback; 
+        error_traceback = traceback.format_exc()
+        traceback.print_exc()
+        
+        # 保存错误信息到思维链条
+        thinking_chain_data["question_answering"]["error"] = {
+            "error_type": type(e).__name__,
+            "error_message": str(e),
+            "traceback": error_traceback
+        }
+        
         table_str = get_xlsx_table_string(table_file)
 
         logger.error(f"{DELIMITER} DFS Reasoning Fail! Try to Reason from Scratch! {DELIMITER}")
-        direct_table_reasoning_prompt(table=table_str, query=raw_query)
-        final_answer = llm_generate(prompt)
+        prompt = direct_table_reasoning_prompt.format(table=table_str, query=raw_query)
+        configured_llm_generate = get_llm_generate()
+        final_answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
         logger.info(f"{final_answer}")
-    
+        
+        # 保存最终的直接推理结果
+        thinking_chain_data["question_answering"]["final_answer"] = final_answer
+        thinking_chain_data["question_answering"]["fallback_reasoning"] = "direct_table_reasoning"
+        
     ##### Final Check
     logger.info(f"{DELIMITER} Final Check for Query {DELIMITER}")
     final_check = Verifier().check_answer(query=raw_query, answer=final_answer)
     logger.info(f"{final_check}")
+    
+    # 保存最终检查结果
+    thinking_chain_data["question_answering"]["final_check"] = final_check
+    
     if final_check:
         logger.info(f"{DELIMITER} Final Check Passed and Final Answer{DELIMITER}")
         logger.info(f"{final_answer}")
     else:
         prompt = direct_table_reasoning_prompt.format(table=ho_tree.__json__(), query=raw_query)
-        final_answer = llm_generate(prompt)
+        configured_llm_generate = get_llm_generate()
+        final_answer = configured_llm_generate(prompt, temperature=temperature, max_tokens=max_tokens)
         logger.info(f"{DELIMITER} Final Answer for Whole Table Reasoning {DELIMITER}")
         logger.info(f"{final_answer}")
+        
+        # 保存重新生成的答案
+        thinking_chain_data["question_answering"]["final_answer"] = final_answer
+        thinking_chain_data["question_answering"]["re_generated"] = True
     
     ##### Back Verification
     reliability, query_list = Verifier().back_verify(f_tree=ho_tree, query=raw_query, answer=final_answer)
     logger.info(f"{DELIMITER} Back Verification {DELIMITER}")
     logger.info(f"Query List: {query_list}")
     logger.info(f"Reliabillity: {reliability}")
+    
+    # 保存可靠性检查结果
+    thinking_chain_data["question_answering"]["reliability"] = reliability
+    thinking_chain_data["question_answering"]["verification_queries"] = query_list
+    
+    # 移除时间相关字段，根据用户要求不输出时间信息
 
     return final_answer, qa_pair, reliability

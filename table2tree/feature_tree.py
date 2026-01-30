@@ -2,7 +2,7 @@ import time
 import pickle
 from loguru import logger
 
-from utils.sheet_utils import delete_dict_none_none
+from utils.constants import delete_dict_none_none
 from utils.constants import *
 from table2tree.extract_excel import process_table_vlm, get_xlsx_sheet, get_structured_xlsx_sheet
 from table2tree.tree_partition import *
@@ -152,7 +152,7 @@ class BodyTree:
 
     def add_deep(self, node: BodyNode):
         t = self.root
-        while len(t.children) > 0:
+        while len(t.children) > 0:#这种情况下只要有一个child就会一直往下走，直到没有child为止 是一个链表结构
             t = t.children[0]
         t.add_child(node)
         node.add_father(t)
@@ -175,7 +175,8 @@ class FeatureTree:
 
     def __init__(self, index_tree: IndexTree = None, body_tree: BodyTree = None):
         self.index_tree = index_tree
-        self.body_tree = body_tree
+        # 确保body_tree不为None
+        self.body_tree = body_tree if body_tree is not None else BodyTree()
 
     def load_from_pkl(self, pkl_file):
         try:
@@ -508,6 +509,10 @@ def construct_sheet(sheet):
 
     # TODO construct tree body, link index tree and body tree [Need Test]
     body_tree, _ = construct_body_tree(index_tree, data_sheet)
+    
+    # 确保body_tree不为None
+    if body_tree is None:
+        body_tree = BodyTree()
 
     return FeatureTree(index_tree=index_tree, body_tree=body_tree)
 
@@ -515,33 +520,43 @@ def construct_sheet(sheet):
 def construct_feature_tree(tree_dict):
 
     logger.info(f"construct_feature_tree() Start to Process!")
+    try:
+        logger.info(f"[debug] construct_feature_tree input type: {type(tree_dict)}")
+        if isinstance(tree_dict, dict):
+            logger.info(f"[debug] construct_feature_tree keys: {list(tree_dict.keys())}")
+        else:
+            logger.info(f"[debug] construct_feature_tree sample: {tree_dict}")
+    except Exception:
+        pass
     start_time = time.time()
 
-    try:
-        index_tree = IndexTree()
-        body_tree = BodyTree()
+    # 初始化变量，确保即使发生异常也能正确创建FeatureTree
+    index_tree = IndexTree()
+    body_tree = BodyTree()
 
+    try:
         for index, body in tree_dict.items():
             if isinstance(body, dict):  # dict -> FeatureTree
                 body_node = BodyNode(construct_feature_tree(body))
             elif isinstance(body, (str, int, float, list)) or body is None:  # string
                 body_node = BodyNode(body)
             else:  # sheet -> FeatureTree
-                body_node = BodyNode(construct_sheet(body))
+                body_node = BodyNode(construct_sheet(body))#这里返回的feature tree作为body 里面包含body tree和index tree
 
             # link body tree and index tree
-            index_node = IndexNode(value=index)
-            index_node.body = [body_node]
+            index_node = IndexNode(value=index)#小表的表头作为indexnode里面的value
+            index_node.body = [body_node]#小表的body是feature tree，里面包含body tree和index tree
 
             # construct index tree
-            index_tree.add_index(index_node)
+            index_tree.add_index(index_node)#将indexnode添加到index tree中，而且直接添加到根节点下面
             # construct body tree
-            body_tree.add_deep(body_node)
+            body_tree.add_deep(body_node)#将bodynode添加到body tree中，但是添加到最下面的一层
             
     except Exception as e:
         import traceback
         traceback.print_exc()
-        print(e, tree_dict)
+        logger.error(f"construct_feature_tree() Error: {e}")
+        logger.error(f"Error tree_dict: {tree_dict}")
 
     f_tree = FeatureTree(index_tree=index_tree, body_tree=body_tree)
 
@@ -634,7 +649,12 @@ def get_excel_feature_tree(file: str,                   # 输入表格文件路�
                            ):
     ##### 创建 log_file 文件
     log_file = os.path.join(log_dir, f"{os.path.basename(file)}.log")
-    log_file_handler = logger.add(log_file)
+    log_file_handler = logger.add(
+        log_file,
+        enqueue=False,  # 不使用队列，立即写入，避免缓冲
+        backtrace=False,
+        diagnose=False
+    )
 
     ##### Step 1. VLM + Rule 提取表格为类JSON格式
     logger.info(f"process_table_vlm() Start to Process File: {file}")
@@ -645,10 +665,10 @@ def get_excel_feature_tree(file: str,                   # 输入表格文件路�
             tree_dict = {DEFAULT_TABLE_NAME: get_xlsx_sheet(file)}
         else:  # 如果是半结构化表格，则使用vlm识别构建json
             tree_dict = process_table_vlm(file, get_json=False, cache=vlm_cache)
-
+         
         end_time = time.time()
         logger.info(f"process_table_vlm() Process File Successfully: {file} ")
-        logger.info(tree_dict)
+        logger.info(f"[debug] parsed tree_dict: {tree_dict}")
         logger.info(f"Cost time: {end_time - start_time}")
 
         ##### Step 2. 将提取出的结构构件为FeatureTree

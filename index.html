@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ST-Raptor - Semi-Structured Table QA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    .gradient-text {
+      background: conic-gradient(
+        from 90deg,
+        rgba(173, 96, 202, 0.97) 0deg,
+        rgba(246, 158, 170, 1) 40deg,
+        rgba(240, 217, 69, 1) 133deg,
+        rgba(129, 183, 161, 1) 182deg,
+        rgba(48, 159, 228, 1) 216deg,
+        rgba(88, 23, 239, 0.93) 314deg,
+        rgba(173, 96, 202, 0.97) 360deg
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-box {
+      background: conic-gradient(
+        from 90deg,
+        rgba(173, 96, 202, 0.97) 0deg,
+        rgba(246, 158, 170, 1) 40deg,
+        rgba(240, 217, 69, 1) 133deg,
+        rgba(129, 183, 161, 1) 182deg,
+        rgba(48, 159, 228, 1) 216deg,
+        rgba(88, 23, 239, 0.93) 314deg,
+        rgba(173, 96, 202, 0.97) 360deg
+      );
+    }
+    .sidebar-gradient {
+      background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#272727] text-white min-h-screen">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-72 sidebar-gradient p-8 flex flex-col justify-between fixed h-full">
+      <div>
+        <!-- Logo -->
+        <div class="mb-16">
+          <h1 class="text-4xl font-black tracking-wider">ST-Raptor</h1>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="space-y-6">
+          <a href="/index.html" class="block text-lg font-medium hover:text-gray-300 transition">Introduction</a>
+          <a href="/" class="block text-lg font-medium hover:text-gray-300 transition">Quick Start</a>
+        </nav>
+      </div>
+      
+      <!-- Contact Info -->
+      <div class="space-y-4 text-sm text-gray-400">
+        <p>weaidb@example.com</p>
+        <p>Join our community</p>
+        <div class="flex gap-4 pt-4">
+          <a href="#" class="hover:text-white transition">GitHub</a>
+          <a href="#" class="hover:text-white transition">WeChat</a>
+          <a href="#" class="hover:text-white transition">arXiv</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-72 flex-1 p-12">
+      <!-- Hero Section -->
+      <section class="mb-20">
+        <div class="flex items-start justify-between mb-12">
+          <div class="max-w-2xl">
+            <h2 class="text-6xl font-black leading-tight mb-6">
+              ST-Raptor<br>
+              <span class="gradient-text">Semi-Structured Table</span> QA Tool
+            </h2>
+            <p class="text-xl text-gray-400 leading-relaxed">
+              A tool designed for question answering on diverse semi-structured layout tables. Combining Vision-Language Models (VLM) with a tree-building algorithm (HO-Tree), it generates precise answers from tables and natural language questions.
+            </p>
+          </div>
+          <div class="w-32 h-32 rounded-full overflow-hidden bg-white/10 flex items-center justify-center">
+            <span class="text-4xl font-black">ST</span>
+          </div>
+        </div>
+        
+        <!-- Gradient Banner -->
+        <div class="gradient-box rounded-3xl p-12 relative overflow-hidden">
+          <div class="relative z-10">
+            <p class="text-5xl font-black text-white/90 italic">
+              "LLM-Powered Table QA"
+            </p>
+            <p class="text-2xl mt-4 text-white/80">— Empowering complex table data interaction</p>
+          </div>
+          <div class="absolute right-8 bottom-8 w-40 h-40 rounded-2xl overflow-hidden bg-black/20 flex items-center justify-center p-4">
+             <img src="./assets/header.png" alt="ST-Raptor" class="w-full h-auto object-contain">
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Features Section -->
+      <section class="mb-20">
+        <h3 class="text-3xl font-bold mb-8">Core Features</h3>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="bg-[#333] rounded-2xl p-6 hover:bg-[#3a3a3a] transition">
+            <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-purple-500 rounded-xl mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Diverse Input Support</h4>
+            <p class="text-gray-400">Supports parsing of semi-structured tables in various formats including HTML, CSV, Markdown, and Excel.</p>
+          </div>
+          
+          <div class="bg-[#333] rounded-2xl p-6 hover:bg-[#3a3a3a] transition">
+            <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold mb-2">HO-Tree Algorithm</h4>
+            <p class="text-gray-400">Original tree-building algorithm that perfectly reconstructs complex nested cells and multi-level header structures.</p>
+          </div>
+          
+          <div class="bg-[#333] rounded-2xl p-6 hover:bg-[#3a3a3a] transition">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Two-Stage Verification</h4>
+            <p class="text-gray-400">Employs a unique verification mechanism to cross-check model outputs, ensuring every answer is accurate and reliable.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="mb-20">
+        <div class="bg-[#1a1a1a] rounded-3xl p-12 flex gap-12 items-center">
+          <div class="flex-1">
+            <h3 class="text-3xl font-bold mb-6">About Project</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              ST-Raptor is a tool specifically designed for QA on diverse semi-structured tables. We found that many existing methods perform poorly when faced with complex structures like nested cells and multi-level headers, leading us to develop an innovative architecture combining VLM and HO-Tree.
+            </p>
+            <p class="text-gray-400 leading-relaxed mb-8">
+              Developed by the weAIDB team, ST-Raptor has achieved leading results in multiple benchmarks like SSTQA. We are committed to open source and community collaboration to advance table QA technology.
+            </p>
+            <button class="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition">
+              Read Paper
+            </button>
+          </div>
+          <div class="w-80 h-80 rounded-2xl overflow-hidden bg-[#333] flex items-center justify-center p-8">
+            <img src="./assets/vx.jpg" alt="WeChat Community" class="w-full h-full object-contain">
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact CTA -->
+      <section>
+        <div class="text-center py-20">
+          <h3 class="text-5xl font-black mb-6">Want to use ST-Raptor in your project?</h3>
+          <p class="text-xl text-gray-400 mb-8">Visit GitHub for source code or join our developer group.</p>
+          <div class="flex gap-4 justify-center">
+            <button class="gradient-box text-white px-12 py-4 rounded-full font-bold text-lg hover:opacity-90 transition">
+              GitHub Repository
+            </button>
+            <button class="bg-white text-black px-12 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition">
+              Join Community
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

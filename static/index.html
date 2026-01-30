@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ST-Raptor | Intelligent Table Q&A System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Edu+NSW+ACT+Foundation:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        sidebar: '#111111',
+                        border: 'rgba(255, 255, 255, 0.1)',
+                        input: '#1a1a1a',
+                        'muted-foreground': '#a1a1aa',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        handwriting: ['"Edu NSW ACT Foundation"', 'cursive'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles and Gradients */
+        .sidebar-gradient {
+            background: linear-gradient(180deg, rgba(173, 96, 202, 0.4) 0%, rgba(246, 158, 170, 0.3) 25%, rgba(240, 217, 69, 0.3) 50%, rgba(129, 183, 161, 0.3) 75%, rgba(48, 159, 228, 0.4) 100%);
+        }
+        
+        .conic-gradient-btn {
+            background: conic-gradient(
+                from 180deg at 50% 50%,
+                rgba(200, 80, 220, 1) 0deg,
+                rgba(255, 130, 160, 1) 60deg,
+                rgba(255, 220, 80, 1) 120deg,
+                rgba(100, 220, 160, 1) 180deg,
+                rgba(60, 180, 255, 1) 240deg,
+                rgba(130, 80, 255, 1) 300deg,
+                rgba(200, 80, 220, 1) 360deg
+            );
+        }
+
+        .conic-gradient-icon {
+            background: conic-gradient(
+                from 180deg at 50% 50%,
+                rgba(255, 130, 160, 1) 0deg,
+                rgba(255, 220, 80, 1) 120deg,
+                rgba(100, 220, 160, 1) 240deg,
+                rgba(255, 130, 160, 1) 360deg
+            );
+        }
+
+        .input-gradient-border {
+            background: linear-gradient(to right, #a855f7, #f472b6, #fbbf24, #4ade80, #22d3ee);
+        }
+
+        /* Holographic Tree Styles */
+        .tree-node-card {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(20, 40, 80, 0.9));
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            transition: transform 0.2s;
+        }
+        .tree-node-card:hover {
+            transform: scale(1.02);
+        }
+        .tree-node-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px);
+            pointer-events: none;
+            opacity: 0.2;
+        }
+        .node-connector {
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.8), rgba(138, 43, 226, 0.8));
+            box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+        }
+        #tree-container {
+            background: radial-gradient(circle at 30% 30%, rgba(106, 125, 240, 0.35), transparent 50%), linear-gradient(180deg, rgba(10, 10, 20, 0.95), rgba(6, 6, 12, 0.95));
+            border-radius: 28px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                inset 0 0 80px rgba(255, 255, 255, 0.02),
+                0 30px 60px rgba(0, 0, 0, 0.45);
+        }
+        #tree-content {
+            min-height: 400px;
+            width: 100%;
+            min-width: 900px;
+        }
+        #tree-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 24px;
+            background: transparent;
+            box-shadow: 
+                inset 0 0 20px rgba(255, 255, 255, 0.06),
+                0 18px 40px rgba(0, 0, 0, 0.45);
+        }
+        #tree-container {
+            background: linear-gradient(180deg, rgba(8, 8, 12, 0.95), rgba(16, 16, 20, 0.9));
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                inset 0 0 40px rgba(255, 255, 255, 0.02),
+                0 30px 60px rgba(0, 0, 0, 0.35);
+        }
+        #tree-container .tree-node-card {
+            border-radius: 1.25rem;
+        }
+        .table-preview-card {
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(180deg, rgba(7, 9, 16, 0.95), rgba(12, 16, 26, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                inset 0 0 30px rgba(255, 255, 255, 0.03),
+                0 25px 55px rgba(0, 0, 0, 0.45);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .table-preview-card .preview-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .table-preview-card .preview-header span {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .table-preview-card .preview-header strong {
+            font-size: 1rem;
+            color: #8cc3ff;
+        }
+        .table-preview-card .table-wrapper {
+            overflow: auto;
+            max-height: 260px;
+        }
+        .table-preview-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        .table-preview-card th,
+        .table-preview-card td {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.45rem 0.65rem;
+            text-align: left;
+        }
+        .table-preview-card thead th {
+            background: rgba(255, 255, 255, 0.05);
+            color: #a5f3fc;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .table-preview-card tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Sidebar Collapse Utilities */
+        #sidebar-wrapper.collapsed {
+            width: 80px !important;
+        }
+        #sidebar-wrapper.collapsed .hide-on-collapse {
+            display: none !important;
+        }
+        #sidebar-wrapper.collapsed aside {
+            align-items: center;
+        }
+        #sidebar-wrapper.collapsed .nav-item {
+            justify-content: center;
+            padding: 12px;
+        }
+        #sidebar-wrapper.collapsed .nav-item i:last-child {
+            display: none;
+        }
+        #sidebar-wrapper.collapsed .new-chat-btn {
+            justify-content: center;
+            padding: 16px;
+        }
+        #sidebar-wrapper.collapsed .upload-btn-inner {
+            justify-content: center;
+            padding: 0;
+        }
+        #sidebar-wrapper.collapsed .upload-btn-inner div:last-child {
+            display: none;
+        }
+        #sidebar-wrapper.collapsed #history-section {
+            display: none;
+        }
+        .upload-collapse-button {
+            display: none;
+        }
+        #sidebar-wrapper.collapsed .upload-collapse-button {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            bottom: 120px;
+            transform: translateX(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: conic-gradient(from 180deg at 50% 50%, #F79FAA 0deg, #F0D945 133deg, #81B8A1 184deg, #5918EF 314deg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+        }
+        .upload-area {
+            display: block;
+        }
+        #sidebar-wrapper.collapsed .upload-area {
+            display: none;
+        }
+        #sidebar-wrapper.collapsed ~ main #center-upload-wrapper {
+            display: flex;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .log-line {
+            font-family: 'Consolas', 'Monaco', monospace;
+            padding: 2px 4px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .log-timestamp { color: #888; margin-right: 8px; }
+        .log-level { font-weight: bold; margin-right: 8px; }
+        .log-info { color: #4ade80; }
+        .log-error { color: #f87171; }
+        .log-warning { color: #fbbf24; }
+        .log-debug { color: #60a5fa; }
+    </style>
+</head>
+<body class="bg-background text-white flex h-screen overflow-hidden">
+
+    <!-- Sidebar Wrapper -->
+    <div id="sidebar-wrapper" class="sidebar-gradient p-[1px] h-full transition-all duration-300 w-96">
+        <aside id="sidebar" class="w-full h-full bg-sidebar flex flex-col relative transition-all duration-300">
+            <!-- Toggle Button -->
+            <button id="sidebar-toggle" class="absolute -right-4 top-6 w-8 h-8 rounded-full conic-gradient-btn flex items-center justify-center z-50 hover:scale-110 transition-transform shadow-lg">
+                <i data-lucide="chevron-left" class="w-5 h-5 text-black"></i>
+            </button>
+
+            <!-- Logo -->
+            <div class="p-8 pb-4 hide-on-collapse overflow-hidden">
+                <h1 class="text-4xl font-extrabold tracking-tight font-sans text-white">ST-RAPTOR</h1>
+                <div class="mt-2 w-40 h-4 rounded-full opacity-50 blur-sm bg-[radial-gradient(ellipse_at_center,_rgba(100,100,100,0.6)_0%,_transparent_70%)]"></div>
+            </div>
+            
+            <!-- New Chat Button -->
+            <div class="px-5 py-4">
+                <button onclick="app.startNewChat()" class="new-chat-btn w-full flex items-center gap-4 px-5 py-5 rounded-2xl bg-white/10 hover:bg-white/15 transition-all group">
+                    <i data-lucide="plus" class="w-6 h-6 text-white group-hover:rotate-90 transition-transform flex-shrink-0"></i>
+                    <span class="text-lg font-medium hide-on-collapse">New Chat</span>
+                </button>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="px-5 space-y-2 mb-6">
+                <button onclick="app.setView('chat')" class="nav-item w-full flex items-center justify-between px-5 py-4 rounded-xl transition-all text-left bg-white/5 hover:bg-white/10 active-nav" data-view="chat">
+                    <span class="text-lg font-bold hide-on-collapse">Introduction</span>
+                    <i data-lucide="chevron-right" class="w-5 h-5 opacity-50"></i>
+                </button>
+                <button onclick="app.setView('spanning-tree')" class="nav-item w-full flex items-center justify-between px-5 py-4 rounded-xl transition-all text-left hover:bg-white/5 text-muted-foreground" data-view="spanning-tree">
+                    <span class="text-lg font-bold hide-on-collapse">Spanning Tree</span>
+                    <i data-lucide="chevron-right" class="w-5 h-5 opacity-50"></i>
+                </button>
+                <button onclick="app.setView('logging')" class="nav-item w-full flex items-center justify-between px-5 py-4 rounded-xl transition-all text-left hover:bg-white/5 text-muted-foreground" data-view="logging">
+                    <span class="text-lg font-bold hide-on-collapse">Logging</span>
+                    <i data-lucide="chevron-right" class="w-5 h-5 opacity-50"></i>
+                </button>
+                <button onclick="app.setView('chain-of-thought')" class="nav-item w-full flex items-center justify-between px-5 py-4 rounded-xl transition-all text-left hover:bg-white/5 text-muted-foreground" data-view="chain-of-thought">
+                    <span class="text-lg font-bold hide-on-collapse">Chain-of-Thought</span>
+                    <i data-lucide="chevron-right" class="w-5 h-5 opacity-50"></i>
+                </button>
+            </nav>
+
+            <!-- History Section -->
+            <div id="history-section" class="flex-1 overflow-y-auto px-5 scroll-area hide-on-collapse">
+                <p class="text-xs text-muted-foreground uppercase tracking-widest px-3 py-2 font-bold opacity-50">History</p>
+                <div id="history-list" class="space-y-1">
+                    <!-- History items injected here -->
+                </div>
+            </div>
+
+            <!-- Settings Button -->
+            <div class="px-5 mb-4">
+                <button onclick="app.openSettings()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all text-left">
+                    <i data-lucide="settings" class="w-5 h-5 text-white/80"></i>
+                    <span class="text-base font-semibold hide-on-collapse">Settings</span>
+                </button>
+            </div>
+            
+            <!-- Upload Area Button -->
+            <div class="p-5 mt-auto relative upload-area">
+                <input type="file" id="file-upload" multiple class="hidden" onchange="app.handleFileUpload(event)">
+                <button onclick="document.getElementById('file-upload').click()" class="w-full h-24 rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform relative conic-gradient-btn shadow-xl group">
+                    <div class="upload-btn-inner absolute inset-0 flex items-center px-6">
+                        <div class="w-14 h-14 rounded-full conic-gradient-icon flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform">
+                            <i data-lucide="upload-cloud" class="w-7 h-7 text-black/80"></i>
+                </div>
+                        <div class="flex-1 flex justify-center font-handwriting pl-[10%] hide-on-collapse">
+                            <span class="text-white text-xl font-bold tracking-wide drop-shadow-md">Upload Your File</span>
+                    </div>
+                    </div>
+                </button>
+                <button class="upload-collapse-button" onclick="document.getElementById('file-upload').click()" aria-label="Upload">
+                    <i data-lucide="upload-cloud" class="w-5 h-5 text-white"></i>
+                </button>
+                    </div>
+
+            <!-- Footer -->
+            <div class="p-6 border-t border-white/5 hide-on-collapse">
+                <p class="text-sm text-muted-foreground">
+                    Contact us<br />
+                    <span class="text-white text-lg font-medium">hello@studio.ai</span>
+                </p>
+                    </div>
+        </aside>
+                    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col relative overflow-hidden h-full">
+        <!-- View Title (Optional) -->
+        <div id="view-header" class="flex items-center justify-center gap-2 px-6 py-4 border-b border-white/5 hidden">
+            <span id="active-conversation-title" class="text-white/80 italic font-sans text-sm tracking-wide">New Conversation</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-white/40"></i>
+                    </div>
+
+        <!-- Scrollable Content Area -->
+        <div id="main-scroll-area" class="flex-1 overflow-y-auto relative p-6">
+            <!-- Chat View -->
+            <div id="chat-view" class="h-full flex flex-col max-w-4xl mx-auto w-full">
+                <!-- Welcome/Initial View -->
+                <div id="welcome-view" class="flex-1 flex flex-col items-center justify-center py-12">
+                    <div class="w-28 h-28 rounded-full overflow-hidden mb-8 shadow-2xl shadow-purple-500/20 ring-4 ring-purple-500/30">
+                        <img src="/static/images/image.png" alt="ST-Raptor" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/112?text=ST'">
+                    </div>
+                    <div class="text-center mb-12 font-handwriting">
+                        <h2 class="text-4xl font-bold text-white mb-2">
+                            HI<span class="text-muted-foreground">,</span> I am <span class="text-[#7B8CDE]">ST-Raptor</span><span class="text-muted-foreground">.</span>
+                        </h2>
+                        <p class="text-xl text-muted-foreground">How can I assist you with your tables today?</p>
+                        <div class="mt-6 flex justify-center gap-4">
+                            <a href="/index.html" class="px-6 py-3 rounded-full bg-gradient-to-r from-[#6c63ff] to-[#4dd2ff] text-white font-semibold shadow-lg hover:brightness-110 transition-all">
+                                See Project Intro
+                            </a>
+                    </div>
+                    </div>
+                    <div class="w-full max-w-2xl">
+                        <div id="center-upload-wrapper" class="hidden">
+                            <button onclick="document.getElementById('file-upload').click()" class="w-full h-24 rounded-2xl overflow-hidden transition-transform relative conic-gradient-btn shadow-xl group">
+                                <div class="upload-btn-inner absolute inset-0 flex items-center px-6">
+                                    <div class="w-14 h-14 rounded-full conic-gradient-icon flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform">
+                                        <i data-lucide="upload-cloud" class="w-7 h-7 text-black/80"></i>
+                    </div>
+                                    <div class="flex-1 flex justify-center font-handwriting pl-[10%]">
+                                        <span class="text-white text-xl font-bold tracking-wide drop-shadow-md">Upload Your File</span>
+                    </div>
+                </div>
+                            </button>
+            </div>
+                </div>
+            </div>
+            
+                <!-- Messages Area -->
+                <div id="messages-container" class="flex-1 space-y-6 pb-24 hidden">
+                    <!-- Messages will be injected here -->
+                </div>
+            </div>
+            
+            <!-- Spanning Tree View -->
+            <div id="spanning-tree-view" class="h-full hidden flex flex-col">
+                <div class="flex-1 bg-[#0a0a12] rounded-3xl overflow-hidden relative shadow-2xl border border-white/5">
+                <div id="tree-container" class="w-full max-h-[420px] overflow-auto p-12 flex flex-col items-center">
+                        <!-- Tree structure injected here -->
+                        <div id="tree-content" class="min-w-full flex flex-col items-center"></div>
+                    </div>
+                <div id="uploaded-files-section" class="px-10 pb-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="section-title">Uploaded Tables</h3>
+                        <span class="text-xs text-white/50">Live preview for the current conversation</span>
+                    </div>
+                    <div id="current-table-preview" class="table-preview-card mt-4">
+                        <div class="preview-header">
+                            <span>Current Table</span>
+                            <strong>Waiting for a conversation to start</strong>
+                        </div>
+                        <p class="text-sm text-white/60">Once your file is processed, the first few rows will display here.</p>
+                    </div>
+                </div>
+                    <div class="absolute bottom-0 left-0 right-0 h-4 bg-black/40 backdrop-blur-md px-10 flex items-center">
+                        <div class="h-1.5 w-1/3 rounded-full bg-white/10"></div>
+                    </div>
+                </div>
+                <div class="mt-8 flex justify-end">
+                    <button onclick="app.saveTree()" class="conic-gradient-btn h-16 w-80 rounded-2xl flex items-center px-4 hover:scale-105 transition-transform shadow-2xl group">
+                        <div class="w-12 h-12 rounded-full conic-gradient-icon flex items-center justify-center shadow-inner group-hover:rotate-12 transition-transform">
+                            <i data-lucide="save" class="w-6 h-6 text-black/80"></i>
+                    </div>
+                        <span class="flex-1 text-center font-handwriting text-white text-xl font-bold drop-shadow-lg">Save Your Tree</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Logging View -->
+            <div id="logging-view" class="h-full hidden flex flex-col">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-bold">System Logs</h3>
+                    <button onclick="app.clearLogs()" class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-all border border-white/10 flex items-center gap-2">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i> Clear Logs
+                    </button>
+                </div>
+                <div id="logs-area" class="flex-1 bg-black/60 rounded-2xl p-6 font-mono text-sm overflow-y-auto border border-white/5 scroll-area">
+                    <!-- Logs injected here -->
+                </div>
+            </div>
+            
+            <!-- Chain of Thought View -->
+            <div id="chain-of-thought-view" class="h-full hidden flex flex-col">
+                <h3 class="text-2xl font-bold mb-4">Chain of Thought</h3>
+                <div id="chain-area" class="flex-1 bg-black/40 rounded-2xl p-8 overflow-y-auto border border-white/5 scroll-area">
+                    <pre id="chain-content" class="text-blue-400 font-mono text-sm leading-relaxed"></pre>
+                </div>
+                    </div>
+                    </div>
+
+        <!-- Chat Input Area -->
+        <div id="input-container" class="p-6 max-w-4xl mx-auto w-full absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/90 to-transparent">
+            <div class="relative p-[2px] rounded-full input-gradient-border shadow-2xl group focus-within:scale-[1.01] transition-all">
+                <div class="bg-input rounded-full flex items-center px-6 py-4 gap-4">
+                    <button class="text-muted-foreground hover:text-white transition-colors">
+                        <i data-lucide="paperclip" class="w-6 h-6"></i>
+                    </button>
+                    <input type="text" id="chat-input" placeholder="Ask ST-Raptor anything..." class="flex-1 bg-transparent border-none focus:outline-none text-lg placeholder:text-muted-foreground/50" onkeydown="if(event.key==='Enter') app.sendMessage()">
+                    <button class="text-muted-foreground hover:text-white transition-colors">
+                        <i data-lucide="mic" class="w-6 h-6"></i>
+                    </button>
+                    <button onclick="app.sendMessage()" class="conic-gradient-icon w-10 h-10 rounded-full flex items-center justify-center text-black/80 hover:scale-110 transition-all shadow-lg">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+    </div>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60" onclick="app.closeSettings()"></div>
+        <div class="relative max-w-2xl w-[90%] mx-auto mt-16 bg-[#111111] border border-white/10 rounded-2xl shadow-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold">API Settings</h3>
+                <button onclick="app.closeSettings()" class="text-white/60 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 max-h-[70vh] overflow-y-auto pr-1">
+                <div>
+                    <p class="text-sm font-semibold text-white/80 mb-2">LLM</p>
+                    <div class="space-y-2">
+                        <input id="settings-llm-api-key" type="password" placeholder="LLM API Key" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                        <input id="settings-llm-api-url" type="text" placeholder="LLM API URL" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                        <input id="settings-llm-model" type="text" placeholder="LLM Model" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-sm font-semibold text-white/80 mb-2">VLM</p>
+                    <div class="space-y-2">
+                        <input id="settings-vlm-api-key" type="password" placeholder="VLM API Key" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                        <input id="settings-vlm-api-url" type="text" placeholder="VLM API URL" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                        <input id="settings-vlm-model" type="text" placeholder="VLM Model" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-sm font-semibold text-white/80 mb-2">Embedding</p>
+                    <div class="space-y-2">
+                        <input id="settings-embedding-api-key" type="password" placeholder="Embedding API Key" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                        <input id="settings-embedding-api-url" type="text" placeholder="Embedding API URL" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                        <input id="settings-embedding-model" type="text" placeholder="Embedding Model" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <p class="text-sm font-semibold text-white/80 mb-2">Temperature</p>
+                        <input id="settings-temperature" type="number" step="0.01" min="0" max="1" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-white/80 mb-2">Max Tokens</p>
+                        <input id="settings-max-tokens" type="number" min="1" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 flex justify-end gap-3">
+                <button onclick="app.closeSettings()" class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm">Cancel</button>
+                <button onclick="app.saveConfig()" class="px-4 py-2 rounded-lg bg-white text-black text-sm font-semibold">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App State and Logic
+        const app = {
+            state: {
+                view: 'chat',
+                isSidebarCollapsed: false,
+                conversations: [],
+                activeId: null,
+                isSending: false,
+                logs: [],
+                chain: null,
+                polling: null,
+                historyMap: {}
+            },
+
+            init() {
+                lucide.createIcons();
+                this.loadHistory();
+                this.startPolling();
+                this.setView('chat');
+                this.setupEventListeners();
+                this.updateCenterUploadVisibility();
+            },
+
+            setupEventListeners() {
+                const toggle = document.getElementById('sidebar-toggle');
+                toggle.addEventListener('click', () => {
+                    this.state.isSidebarCollapsed = !this.state.isSidebarCollapsed;
+                    const wrapper = document.getElementById('sidebar-wrapper');
+                    const icon = toggle.querySelector('i');
+                    
+                    if (this.state.isSidebarCollapsed) {
+                        wrapper.classList.add('collapsed');
+                        icon.setAttribute('data-lucide', 'chevron-right');
+                } else {
+                        wrapper.classList.remove('collapsed');
+                        icon.setAttribute('data-lucide', 'chevron-left');
+                    }
+                    lucide.createIcons();
+                    this.updateCenterUploadVisibility();
+                });
+            },
+
+            updateCenterUploadVisibility() {
+                const wrapper = document.getElementById('center-upload-wrapper');
+                if (wrapper) {
+                    wrapper.classList.toggle('hidden', !this.state.isSidebarCollapsed);
+                }
+            },
+
+            async setView(viewName) {
+                this.state.view = viewName;
+                
+                // Update UI visibility
+                ['chat', 'spanning-tree', 'logging', 'chain-of-thought'].forEach(v => {
+                    const el = document.getElementById(`${v}-view`);
+                    if (el) el.classList.add('hidden');
+                });
+                document.getElementById(`${viewName}-view`).classList.remove('hidden');
+
+                // Update Nav Active State
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    if (item.getAttribute('data-view') === viewName) {
+                        item.classList.add('bg-white/10', 'text-white');
+                        item.classList.remove('text-muted-foreground');
+                    } else {
+                        item.classList.remove('bg-white/10', 'text-white');
+                        item.classList.add('text-muted-foreground');
+                    }
+                });
+
+                // Special handling for views
+                if (viewName === 'chat') {
+                    document.getElementById('input-container').classList.remove('hidden');
+                    document.getElementById('view-header').classList.toggle('hidden', !this.state.activeId);
+                } else {
+                    document.getElementById('input-container').classList.add('hidden');
+                    document.getElementById('view-header').classList.remove('hidden');
+                    if (viewName === 'spanning-tree') {
+                        this.loadTree();
+                        this.renderTablePreview();
+                    }
+                }
+                if (viewName === 'logging') this.refreshLogs();
+                if (viewName === 'chain-of-thought') this.refreshChain();
+            },
+
+            startNewChat() {
+                this.state.activeId = null;
+                document.getElementById('messages-container').innerHTML = '';
+                document.getElementById('messages-container').classList.add('hidden');
+                document.getElementById('welcome-view').classList.remove('hidden');
+                document.getElementById('view-header').classList.add('hidden');
+                this.setView('chat');
+                this.updateActiveConversationTitle(null);
+            },
+
+            async sendMessage() {
+                const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+                if (!message || this.state.isSending) return;
+            
+            input.value = '';
+                this.addMessage('user', message);
+                this.state.isSending = true;
+
+                // Show messages area
+                document.getElementById('welcome-view').classList.add('hidden');
+                document.getElementById('messages-container').classList.remove('hidden');
+
+                const formData = new FormData();
+                formData.append('message', message);
+                formData.append('conversation_id', this.state.activeId || '');
+
+                try {
+                    const response = await fetch('/api/chat', { method: 'POST', body: formData });
+                    const data = await response.json();
+                
+                if (data.success) {
+                        if (!this.state.activeId) {
+                            this.state.activeId = data.conversation_id;
+                            await this.loadHistory();
+                            document.getElementById('view-header').classList.remove('hidden');
+                } else {
+                            await this.loadHistory();
+                        }
+                        this.updateActiveConversationTitle(this.state.activeId);
+                        this.addMessage('assistant', data.message);
+                        this.setView('chat');
+            } else {
+                        this.addMessage('assistant', 'Error: ' + data.error);
+                    }
+                } catch (err) {
+                    this.addMessage('assistant', 'Error connecting to server.');
+                } finally {
+                    this.state.isSending = false;
+                }
+            },
+
+            sendSuggestion(text) {
+                document.getElementById('chat-input').value = text;
+                this.sendMessage();
+            },
+
+            addMessage(role, content) {
+                const container = document.getElementById('messages-container');
+                const isUser = role === 'user';
+                
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `flex gap-4 ${isUser ? 'flex-row-reverse' : 'flex-row'} animate-in slide-in-from-bottom-2 fade-in duration-300`;
+                
+                // Avatar container
+                const avatarDiv = document.createElement('div');
+                avatarDiv.className = `w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden ${isUser ? 'bg-white/10' : 'conic-gradient-btn'}`;
+                const avatarImg = document.createElement('img');
+                avatarImg.className = 'w-full h-full object-cover';
+                avatarImg.src = isUser ? '/static/diverse-user-avatars.png' : '/static/images/image.png';
+                avatarImg.onerror = () => { avatarImg.src = `https://via.placeholder.com/40?text=${isUser ? 'U' : 'AI'}`; };
+                avatarDiv.appendChild(avatarImg);
+
+                // Bubble
+                const bubble = document.createElement('div');
+                bubble.className = `max-w-[70%] px-5 py-4 rounded-2xl ${isUser ? 'text-white rounded-tr-sm' : 'bg-white/5 border border-white/10 text-white rounded-tl-sm'}`;
+                
+                if (isUser) {
+                    bubble.style.background = 'linear-gradient(90deg, #F80E68 13%, #FC4E6F 45%, #FD6D72 80%, #FE7D74 90%, #FF8D76 100%)';
+                }
+
+                bubble.innerHTML = `<div class="prose prose-invert prose-sm leading-relaxed">${this.formatContent(content)}</div>`;
+                
+                msgDiv.appendChild(avatarDiv);
+                msgDiv.appendChild(bubble);
+                
+                container.appendChild(msgDiv);
+                document.getElementById('main-scroll-area').scrollTop = document.getElementById('main-scroll-area').scrollHeight;
+            },
+
+            formatContent(text) {
+                // Simple markdown-to-html (could use marked.js for better results)
+                return text.replace(/\n/g, '<br>')
+                           .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                           .replace(/\*(.*?)\*/g, '<em>$1</em>');
+            },
+
+            async handleFileUpload(event) {
+                const files = event.target.files;
+                if (!files.length) return;
+
+                const formData = new FormData();
+                for (let file of files) {
+                    formData.append('files', file);
+                }
+
+                this.showChatAfterUpload();
+
+                this.addMessage('assistant', 'Uploading and processing your files...');
+                try {
+                    const response = await fetch('/api/upload', { method: 'POST', body: formData });
+                    const data = await response.json();
+                    if (data.success) {
+                        this.state.activeId = data.conversation_id || this.state.activeId;
+                        this.showChatAfterUpload();
+                        await this.loadHistory();
+                        this.addMessage('assistant', '✅ Files uploaded successfully! ' + data.message);
+                    } else {
+                        this.addMessage('assistant', '❌ Upload failed: ' + data.error);
+                    }
+                } catch (err) {
+                    this.addMessage('assistant', '❌ Connection error.');
+                }
+            },
+
+            async loadHistory() {
+                try {
+                    const res = await fetch('/api/history');
+                    const data = await res.json();
+                if (data.success) {
+                        this.state.conversations = data.records || [];
+                        this.state.historyMap = {};
+                        this.state.conversations.forEach(conv => {
+                            this.state.historyMap[conv[0]] = {
+                                summary: conv[3],
+                                files: conv[1],
+                                uploadTime: conv[2]
+                            };
+                        });
+                        this.renderHistory();
+                        this.updateActiveConversationTitle(this.state.activeId);
+                    }
+                } catch (err) {}
+            },
+
+            renderHistory() {
+                const list = document.getElementById('history-list');
+                list.innerHTML = this.state.conversations.map(conv => {
+                    const summary = this.state.historyMap[conv[0]]?.summary || conv[3] || 'New Chat';
+                    const metaParts = [];
+                    if (conv[1]) metaParts.push(conv[1]);
+                    if (conv[2]) metaParts.push(conv[2]);
+                    const meta = metaParts.join(' · ');
+                    return `
+                        <button onclick="app.loadConversation('${conv[0]}')" class="w-full flex flex-col gap-1 px-3 py-3 rounded-xl transition-all text-left ${this.state.activeId === conv[0] ? 'bg-white/10 text-white' : 'text-muted-foreground hover:bg-white/5'}">
+                            <span class="text-sm font-semibold text-white truncate">${summary}</span>
+                            ${meta ? `<span class="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground/60">${meta}</span>` : ''}
+                        </button>
+                    `;
+                }).join('');
+                lucide.createIcons();
+                if (this.state.view === 'spanning-tree') {
+                    this.renderTablePreview();
+                }
+            },
+
+            async renderTablePreview() {
+                const preview = document.getElementById('current-table-preview');
+                if (!preview) return;
+                if (this.state.view !== 'spanning-tree') return;
+
+                if (!this.state.activeId) {
+                    preview.innerHTML = `
+                        <div class="preview-header">
+                            <span>Current Table</span>
+                            <strong>Waiting for a conversation to start</strong>
+                        </div>
+                        <p class="text-sm text-white/60">Once your file is processed, the first few rows will display here.</p>
+                    `;
+                    return;
+                }
+
+                preview.innerHTML = `
+                    <div class="preview-header">
+                        <span>Current Table</span>
+                        <strong>Loading preview...</strong>
+                    </div>
+                    <p class="text-sm text-white/60">Fetching the latest file from history.</p>
+                `;
+
+                try {
+                    const res = await fetch(`/api/history/${this.state.activeId}/table`);
+                    const data = await res.json();
+                    if (!data.success || !data.tables?.length) {
+                        preview.innerHTML = `
+                            <div class="preview-header">
+                                <span>Current Table</span>
+                                <strong>No preview available</strong>
+                            </div>
+                            <p class="text-sm text-white/60">${data.error || 'The conversation does not have a readable Excel yet.'}</p>
+                        `;
+                        return;
+                    }
+
+                    preview.innerHTML = data.tables.map(table => {
+                        const rows = table.rows || [];
+                        if (!rows.length) return '';
+                        const columnCount = rows.reduce((max, row) => Math.max(max, row.length), 0);
+                        const headerRow = rows[0] || Array(columnCount).fill('');
+                        const bodyRows = rows.slice(1);
+                        return `
+                            <div class="preview-header">
+                                <span>${this.escapeHtml(table.file)} · ${this.escapeHtml(table.sheet)}</span>
+                                <strong>Recent snippet</strong>
+                            </div>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            ${headerRow.slice(0, columnCount).map(cell => `<th>${this.escapeHtml(cell)}</th>`).join('')}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${bodyRows.map(row => `<tr>${row.slice(0, columnCount).map(cell => `<td>${this.escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        `;
+                    }).join('');
+
+                    if (!preview.innerHTML.trim()) {
+                        preview.innerHTML = `
+                            <div class="preview-header">
+                                <span>Current Table</span>
+                                <strong>No preview rows</strong>
+                            </div>
+                            <p class="text-sm text-white/60">The Excel exists but contains only empty rows.</p>
+                        `;
+                    }
+                } catch (err) {
+                    preview.innerHTML = `
+                        <div class="preview-header">
+                            <span>Current Table</span>
+                            <strong>Preview failed</strong>
+                        </div>
+                        <p class="text-sm text-white/60">Unable to load table data right now.</p>
+                    `;
+                }
+            },
+
+            updateActiveConversationTitle(conversationId) {
+                const titleEl = document.getElementById('active-conversation-title');
+                if (!titleEl) return;
+                if (!conversationId) {
+                    titleEl.textContent = 'New Conversation';
+                    return;
+                }
+                const record = this.state.historyMap[conversationId];
+                titleEl.textContent = record?.summary || 'New Conversation';
+            },
+
+            showChatAfterUpload() {
+                const welcome = document.getElementById('welcome-view');
+                const messages = document.getElementById('messages-container');
+                if (welcome) welcome.classList.add('hidden');
+                if (messages) messages.classList.remove('hidden');
+                this.setView('chat');
+                document.getElementById('view-header')?.classList.toggle('hidden', !this.state.activeId);
+            },
+
+            async loadConversation(id) {
+                this.state.activeId = id;
+                this.setView('chat');
+                document.getElementById('messages-container').innerHTML = '';
+                document.getElementById('messages-container').classList.remove('hidden');
+                document.getElementById('welcome-view').classList.add('hidden');
+                document.getElementById('view-header').classList.remove('hidden');
+
+                try {
+                    const res = await fetch(`/api/history/${id}`);
+                    const data = await res.json();
+                    if (data.success && data.history) {
+                        data.history.forEach(m => this.addMessage(m.role, m.content));
+                        await this.loadHistory();
+                        this.updateActiveConversationTitle(id);
+                        if (this.state.view === 'spanning-tree') {
+                            await this.renderTablePreview();
+                        }
+                    }
+                } catch (err) {}
+            },
+
+            async loadTree() {
+                const res = await fetch('/api/tree');
+                const data = await res.json();
+                if (data.success) {
+                    // Reusing the existing iframe strategy or rendering custom nodes
+                    // For now, let's try to parse the HTML and inject into tree-content
+                    // Or just use an iframe for simplicity if data.html is a full page
+                    const treeContent = document.getElementById('tree-content');
+                    treeContent.innerHTML = data.html; 
+                }
+            },
+
+            async saveTree() {
+                // Similar to old logic: find iframe and call save
+                const iframe = document.querySelector('#tree-content iframe');
+                if (iframe && iframe.contentWindow.saveToServer) {
+                    await iframe.contentWindow.saveToServer();
+                    this.addMessage('assistant', '✅ Tree structure saved successfully.');
+                }
+            },
+
+            async startPolling() {
+                this.state.polling = setInterval(async () => {
+                    if (this.state.view === 'logging') this.refreshLogs();
+                    if (this.state.view === 'chain-of-thought') this.refreshChain();
+                }, 3000);
+            },
+
+            async refreshLogs() {
+                const res = await fetch('/api/logs');
+                const data = await res.json();
+                if (data.success && data.logs) {
+                    const area = document.getElementById('logs-area');
+                    // Simple parsing for display
+                    area.innerHTML = data.logs.split('\n').map(line => {
+                        const level = line.includes('| INFO') ? 'log-info' : 
+                                     line.includes('| ERROR') ? 'log-error' :
+                                     line.includes('| WARNING') ? 'log-warning' : 'log-debug';
+                        return `<div class="log-line ${level}">${this.escapeHtml(line)}</div>`;
+                    }).join('');
+                    area.scrollTop = area.scrollHeight;
+                }
+            },
+
+            async refreshChain() {
+                const res = await fetch('/api/chain');
+                const data = await res.json();
+                if (data.success && data.chain) {
+                    document.getElementById('chain-content').textContent = JSON.stringify(data.chain, null, 2);
+                }
+            },
+
+            async clearLogs() {
+                await fetch('/api/clear-logs', { method: 'POST' });
+                this.refreshLogs();
+            },
+
+            async openSettings() {
+                const modal = document.getElementById('settings-modal');
+                if (!modal) return;
+                modal.classList.remove('hidden');
+                lucide.createIcons();
+                await this.loadConfig();
+            },
+
+            closeSettings() {
+                const modal = document.getElementById('settings-modal');
+                if (modal) modal.classList.add('hidden');
+            },
+
+            async loadConfig() {
+                try {
+                    const res = await fetch('/api/config');
+                    const data = await res.json();
+                    if (!data.success) return;
+                    const cfg = data.config || {};
+                    document.getElementById('settings-llm-api-key').value = cfg.llm_api_key || '';
+                    document.getElementById('settings-llm-api-url').value = cfg.llm_api_url || '';
+                    document.getElementById('settings-llm-model').value = cfg.llm_model || '';
+                    document.getElementById('settings-vlm-api-key').value = cfg.vlm_api_key || '';
+                    document.getElementById('settings-vlm-api-url').value = cfg.vlm_api_url || '';
+                    document.getElementById('settings-vlm-model').value = cfg.vlm_model || '';
+                    document.getElementById('settings-embedding-api-key').value = cfg.embedding_api_key || '';
+                    document.getElementById('settings-embedding-api-url').value = cfg.embedding_api_url || '';
+                    document.getElementById('settings-embedding-model').value = cfg.embedding_model || '';
+                    document.getElementById('settings-temperature').value = cfg.temperature ?? 0.5;
+                    document.getElementById('settings-max-tokens').value = cfg.max_tokens ?? 1024;
+                } catch (err) {}
+            },
+
+            async saveConfig() {
+                const payload = {
+                    llm_api_key: document.getElementById('settings-llm-api-key').value,
+                    llm_api_url: document.getElementById('settings-llm-api-url').value,
+                    llm_model: document.getElementById('settings-llm-model').value,
+                    vlm_api_key: document.getElementById('settings-vlm-api-key').value,
+                    vlm_api_url: document.getElementById('settings-vlm-api-url').value,
+                    vlm_model: document.getElementById('settings-vlm-model').value,
+                    embedding_api_key: document.getElementById('settings-embedding-api-key').value,
+                    embedding_api_url: document.getElementById('settings-embedding-api-url').value,
+                    embedding_model: document.getElementById('settings-embedding-model').value,
+                    temperature: parseFloat(document.getElementById('settings-temperature').value || '0.5'),
+                    max_tokens: parseInt(document.getElementById('settings-max-tokens').value || '1024', 10)
+                };
+                try {
+                    const res = await fetch('/api/config', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        this.addMessage('assistant', '✅ Settings saved.');
+                        this.closeSettings();
+                    } else {
+                        this.addMessage('assistant', '❌ Save failed: ' + (data.error || 'unknown error'));
+                    }
+                } catch (err) {
+                    this.addMessage('assistant', '❌ Save failed: network error.');
+                }
+            },
+
+            escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        };
+
+        // Initialize App
+        app.init();
+    </script>
+</body>
+</html>
+           

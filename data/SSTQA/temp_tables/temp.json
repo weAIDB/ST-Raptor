@@ -1,0 +1,2229 @@
+[
+  {
+    "name": "All_Documents",
+    "children": [
+      {
+        "name": "tmpha42ylfn",
+        "children": [
+          {
+            "name": "Sheet",
+            "children": [
+              {
+                "name": "Service Continuity and Availability Management Process - Role Setup Table",
+                "children": [
+                  {
+                    "name": "Process Role",
+                    "children": [
+                      {
+                        "name": "Continuity and Availability Planner"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Main Responsibilities",
+                    "children": [
+                      {
+                        "name": "Responsible for managing availability to ensure IT services meet the service objectives of planned business goals;\nResponsible for maintaining the availability and reliability of IT services and reviewing relevant changes;\nResponsible for evaluating availability metrics and reviewing availability plans;\nResponsible for optimizing and improving availability management processes and availability metrics;\nResponsible for reviewing the adaptability of graded judgments in the \"Service Level Objectives\" and the content of the \"IT Service Continuity Plan\" (emergency response plan) formulated by each maintenance group;\nResponsible for submitting the \"IT Service Continuity Plan\" through preliminary review to the IT Service Management Committee for formal approval."
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Character Matching",
+                    "children": [
+                      {
+                        "name": "System Application Manager"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tmpajxh8o6g",
+        "children": [
+          {
+            "name": "Sheet",
+            "children": [
+              {
+                "name": "Performance Evaluation Indicators for Document Clerks",
+                "children": [
+                  {
+                    "name": "subtable1",
+                    "children": [
+                      {
+                        "name": "[0]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "1. Key Performance Indicator (Total Score 10)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Attitude"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Whether tasks within the scope of responsibilities are completed proactively and positively, ensuring smooth progress of work. Lack of proactiveness or positivity will result in a deduction of 1 point each time, with no lower limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[1]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "1. Key Performance Indicator (Total Score 10)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Attitude"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Whether one dares to take responsibility and does not shirk work. One point will be deducted each time shirking occurs, with no lower limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[2]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "1. Key Performance Indicator (Total Score 10)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Obey the discipline"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Whether strictly abide by the company's labor discipline management system. Deduct 0.50 points for each violation, with no lower limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[3]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "1. Key Performance Indicator (Total Score 10)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Business Acumen"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Thought awareness, willingness to work diligently and conscientiously, and dedication to the job. Any irresponsible remarks or actions will result in a deduction of 1 point each time, with no lower limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[4]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "1. Key Performance Indicator (Total Score 10)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Business Acumen"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "The learning of professional knowledge and the improvement of business capabilities. For consecutive occurrences of the same type of mistake, 1 point will be deducted for each occurrence after the first one, with no lower limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[5]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "1. Key Performance Indicator (Total Score 10)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Implementation System"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Principled errors in the implementation of regulations result in a deduction of 2 points each time; inadequate enforcement of regulations results in a deduction of 0.50 points each time, with no minimum limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[6]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "1. Key Performance Indicator (Total Score 10)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Coordination"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Collaborate with other departments to complete tasks and fulfill temporary assignments assigned by superiors on time. Failure to be proactive and initiative in completing tasks will result in a deduction of 1 point each time, with no lower limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "2"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[7]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Safety"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Each safety incident results in a deduction of 0.5 points, a较大 safety incident results in a deduction of 1 point, and a major personnel casualty incident results in a performance score of 0 points. \n\n（注：此处“较大”未直接翻译，因为需要具体上下文来确定其准确含义。如果需要进一步修正，请提供更多信息。） \n\nEach safety incident results in a deduction of 0.50 points, a major safety incident results in a deduction of 1.00 points, and a significant personnel casualty incident results in a performance score of 0 points."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "5"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[8]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Safety"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Safety without accidents for the month, add 1 point."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "5"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[9]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Progress"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Incomplete work plan, with 1 point deducted for each day delayed due to personal reasons, and points deducted at discretion for other reasons."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "20"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[10]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Progress"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Inappropriate work plan formulation, deduct 2 points each time."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "20"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[11]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Work Progress"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Inadequate measures taken in coordinating external relations, resulting in unfavorable progress in work or other adverse impacts, will result in a deduction of 3 points each time, with no lower limit."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "20"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[12]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Incomplete or untimely整理of documentation for sub-item and sub-divisional engineering inspections will result in a deduction of 1 to 5 points."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[13]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Deduction of 1 to 5 points for untimely filing of project completion documentation."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[14]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Incomplete整理of archival资料after project completion will result in a deduction of 1 to 5 points. Late submission will result in a deduction of 1 to 5 points."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[15]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Receive various management documents from the company and manage, register, and label them in a timely manner. A deduction of 1 point will be applied each time for untimely registration or missing labels."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[16]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Received supervision, construction, and other unit documents should be promptly registered, organized, and archived. Late registration, organization, or archiving of received documents will result in a deduction of 1 point per occurrence."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[17]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Identification, acquisition, and updating of relevant laws, regulations, standards, and specifications required for related projects should be timely, and distribution records should be maintained. A deduction of 0.50 points will be made for each instance found not to comply with the standard requirements."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[18]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "Internal administrative tasks assigned by superiors. A deduction of 1 point for each late completion."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[19]",
+                        "children": [
+                          {
+                            "name": "Please provide the content you want to translate.",
+                            "children": [
+                              {
+                                "name": "2. Key Performance Evaluation Indicators (Total Score 90)"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Items",
+                            "children": [
+                              {
+                                "name": "Data Control"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Evaluation Content and Methods",
+                            "children": [
+                              {
+                                "name": "After the project engineering is completed, promptly handle the document transfer procedures with the company. Deduct 1 to 10 points for untimely, incomplete transfer,整理, and filing of documents to the company."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Standard Score",
+                            "children": [
+                              {
+                                "name": "65"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Total",
+                    "children": [
+                      {
+                        "name": "100"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tmpczyfmrn0",
+        "children": [
+          {
+            "name": "Sheet",
+            "children": [
+              {
+                "name": "2020 Project Application Form",
+                "children": [
+                  {
+                    "name": "Project Name",
+                    "children": [
+                      {
+                        "name": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Special Fund",
+                    "children": [
+                      {
+                        "name": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Code",
+                    "children": [
+                      {
+                        "name": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project",
+                    "children": [
+                      {
+                        "name": "Wuhan Human Resources and Social Security Bureau East Lake High-tech Development Zone Branch"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Supervising Authority",
+                    "children": [
+                      {
+                        "name": "Project Implementation Unit"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Implementation Unit",
+                    "children": [
+                      {
+                        "name": "Wuhan Human Resources and Social Security Bureau, East Lake High-tech Development Zone Branch"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Leader",
+                    "children": [
+                      {
+                        "name": "Wu Weidong"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Contact Number",
+                    "children": [
+                      {
+                        "name": "67880231"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Type",
+                    "children": [
+                      {
+                        "name": "1. Department Project □          2. Public Project □√"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Reasons for Project Application",
+                    "children": [
+                      {
+                        "name": "1. Based on Wu Zheng Gui [2015] No. 15, Wu Zheng Gui [2018] No. 31, E Cai She [2017] No. 102, Wu Cai She [2018] No. 413; implement employment management laws and regulations, strictly enforce employment policies, and coordinate the use of employment subsidy funds; promote employment and entrepreneurship initiatives to advance the full employment goals of the High-Tech Zone.\n\n2. Based on the Social Insurance Law, the Work-related Injury Insurance Regulations, and the Notice on Extending Service Hours at Some Public Service Windows in the City by the Wuhan Municipal Government General Office (Wu Zheng Ban [2009] No. 109), undertake social insurance service operations in the East Lake New Technology Development Zone.\n\n3. Based on the Labor Contract Law, the Labor Dispute Mediation and Arbitration Law, and the Labor Inspection Regulations, undertake comprehensive labor administration work, including labor employment and labor inspection enforcement, in the East Lake New Technology Development Zone; investigate and handle wage arrears of migrant workers, safeguarding the legitimate rights and interests of vulnerable groups; maintain the rights of both labor and capital, standardize legitimate employment practices by employers, guide workers to protect their rights in accordance with the law, and construct a harmonious and stable labor-capital relationship in the region, which is of great significance."
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Main Contents of the Project",
+                    "children": [
+                      {
+                        "name": "Clarify the main directions and tasks of the budget funds applied for in the current year:\n\n1. Organize public recruitment activities to broaden channels for serving unemployed individuals and assist disadvantaged individuals in achieving employment; accept subsidy applications for job intermediary services from institutions within the jurisdiction; accept social insurance subsidy applications for flexible workers and enterprises that absorb disadvantaged individuals; accept applications for vocational skills training subsidies for individuals and entrepreneurship training subsidies from designated training schools within the jurisdiction; accept small-guaranteed loan applications from individuals and small and medium-sized enterprises; accept one-time entrepreneurship subsidy applications from residents within the jurisdiction; accept applications for vocational skills assessment subsidies; accept applications for employment incentive subsidies from enterprises that absorb registered poor laborers.\n\n2. Conduct social insurance registration, cancellation, annual inspection, changes, transfer, and other services within the jurisdiction, and be responsible for expanding social insurance coverage; provide business guidance and services to the Donghu Development Zone's industrial parks and administrative service centers; conduct social security card production and distribution, and ensure the normal operation of the insurance information system; provide extended services on Saturdays; optimize the service level at the social security window to improve service environment and quality.\n\n3. Review old-age insurance benefits and unemployment insurance benefits, and conduct preliminary reviews and approvals for early retirement of employees in special positions and early retirement due to illness.\n\n4. Review medical insurance benefits and maternity insurance benefits, conduct initial reviews of work-related injury incidents, on-site inspections of major work-related injury and fatal work-related injury incidents, and supervise designated medical institutions within the jurisdiction.\n\n5. Conduct on-site and written audits of participating enterprises within the jurisdiction; conduct annual inspections of labor employment, special inspections of migrant workers' wage payments and the cleanup and regulation of human resources markets, handle labor security inspection cases, and conduct two-network labor security inspections within the jurisdiction; promptly handle labor disputes within the jurisdiction, accept and handle labor dispute arbitration cases, and complete approvals for special working hours, human resources, and private vocational training schools within the legal time limit."
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Total Project Budget",
+                    "children": [
+                      {
+                        "name": "6730"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Budget for the Year",
+                    "children": [
+                      {
+                        "name": "6730"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Budget for the first two years and changes in the current year's budget",
+                    "children": [
+                      {
+                        "name": "1. Budget allocation for the previous two years: The budget amount for 2018 was 36,100,000 yuan, and for 2019 it was 54,400,000 yuan.\n2. Changes in the current year's budget and reasons: The budget amount for 2020 is 54,400,000 yuan, an increase of 1,290,000 yuan compared to 2019, mainly due to increased subsidies for the pension fund of government agencies and public institutions, management expenses for employment and social insurance, and expenditures for human resources and social security administration."
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Funding Sources",
+                    "children": [
+                      {
+                        "name": "Source of Funds Project",
+                        "children": [
+                          {
+                            "name": "Amount"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Total",
+                        "children": [
+                          {
+                            "name": "6730"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "1. General Public Budgetary Fiscal Appropriation Income",
+                        "children": [
+                          {
+                            "name": "6730"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Application for budget allocation in the application year",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "2. Government Fund Budget Revenue",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "3. Revenue from Operations",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "4. Subsidy Income from Superiors",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "5. Income from Subordinate Units",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "6. Operating Income of Public Institutions",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "7. Other Income",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "8. To cover the revenue-expenditure gap with the enterprise fund",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "9. Carryover from Previous Year",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Wherein: Use the carry-over surplus of the general public budget fiscal allocation from the previous year.",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Use the结余结转of government fund budget fiscal allocation from the previous year. \n\n注：结余结转没有直接对应的英文术语，可能需要根据上下文进一步明确。如果此处指的是“carryover and surplus”，则翻译如下：\n\nUse the carryover and surplus of government fund budget fiscal allocation from the previous year.",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Expenditure Detail Budget",
+                    "children": [
+                      {
+                        "name": "Project Expenditure Details",
+                        "children": [
+                          {
+                            "name": "Amount"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Total",
+                        "children": [
+                          {
+                            "name": "6730"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "1. Expenditure on Management of Employment and Social Insurance",
+                        "children": [
+                          {
+                            "name": "874.18"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "2. Subsidies for the Basic Old-Age Insurance Fund for Public Institutions and Government Agencies",
+                        "children": [
+                          {
+                            "name": "3080"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "3. Fiscal Subsidies for Basic Medical Insurance Funds",
+                        "children": [
+                          {
+                            "name": "1545"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "4. Employment Subsidy",
+                        "children": [
+                          {
+                            "name": "1195.82"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "5. Living Allowance Assistance for Other Cities",
+                        "children": [
+                          {
+                            "name": "10"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "6. Expenditure on Inclusive Finance Development",
+                        "children": [
+                          {
+                            "name": "25"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Expenditure Budget and Estimation Basis-Calculation Basis and Explanation",
+                    "children": [
+                      {
+                        "name": "1. Human Resources and Social Security Administration 874.18 million yuan, mainly used for labor inspection grid management and improving the service level of labor and social security windows;\n2. Subsidies for Public Institution and Government Employee Pension Fund 3080 million yuan, mainly used for expenditures related to the配套expenditures of public institution and government employee pension reform;\n3. Fiscal Subsidies for Basic Medical Insurance Fund 1545 million yuan, mainly used for the regional subsidy funds for urban and rural residents' basic medical insurance;\n4. Employment Subsidies 1195.82 million yuan, mainly used for subsidies for job introduction, entrepreneurship training, vocational training, social insurance, job-seeking and entrepreneurship, employment skills, new apprenticeship programs, and vocational skills assessment;\n5. Other Urban Living Assistance 10 million yuan, mainly used for subsidies to assist returning agricultural workers;\n6. Expenditure on Inclusive Finance Development 25 million yuan, mainly used for fiscal interest subsidies and guarantee fees for entrepreneurship guarantee loans.",
+                        "children": [
+                          {
+                            "name": "None"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Overall Project Performance Objective",
+                    "children": [
+                      {
+                        "name": "Complete all the goals and tasks assigned by the city and district for the year 2020."
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Project Annual Performance Metrics",
+                    "children": [
+                      {
+                        "name": "[0]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "New Urban Employment"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "25000 people"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[1]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Number of Unemployed and Employment-Seeking Individuals Reemployed"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "1600 people, 200 people"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[2]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Number of Supported Entrepreneurs and Number of Jobs Created"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "1000 people, 3000 people"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[3]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Number of Returnees Starting Businesses and the Number of Jobs Created"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "180 people, 650 people"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[4]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Employment Skills and Entrepreneurship Training Participants Data"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "900 people, 1500 people"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[5]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Net Increase in Five Insurances Enrollment"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "About 55,000人次"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[6]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Social Security Card Issuance Volume"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "70,000 sheets"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[7]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quantity Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Labor Inspection Grid Routine Patrol"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "Not less than 60 households/person.month"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[8]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Quality Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Training Personnel Qualification Rate"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "1"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[9]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Timeliness Metrics"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Arbitration Case Legal Deadline Resolution Rate"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "0.95"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[10]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Timeliness Metrics"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Labor Inspection Cooperates in Handling Reported Complaint Cases"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "The case closure rate within the specified time is 95%"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[11]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Output Indicators"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Cost Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[12]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Performance Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Economic Efficiency Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[13]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Performance Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Social Benefit Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Increase the Coverage of Universal Participation in Social Insurance"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "Complete on time"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[14]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Performance Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Environmental Benefit Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[15]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Performance Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Sustainable Impact Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "[16]",
+                        "children": [
+                          {
+                            "name": "Primary Indicator",
+                            "children": [
+                              {
+                                "name": "Performance Indicator"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Secondary Indicator",
+                            "children": [
+                              {
+                                "name": "Satisfaction indicators of the general public or service recipients"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Content",
+                            "children": [
+                              {
+                                "name": "Provide good service to satisfy the service recipients."
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indicator Value",
+                            "children": [
+                              {
+                                "name": "0.95"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Remarks",
+                            "children": [
+                              {
+                                "name": "None"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tmpdy30z2j9",
+        "children": [
+          {
+            "name": "Sheet",
+            "children": [
+              {
+                "name": "Methods for Determining the Cost of Work in Process at the End of the Period",
+                "children": [
+                  {
+                    "name": "[0]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Costing Method for Raw Materials"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "In product valuation, only the cost of raw materials consumed is considered, excluding wages and manufacturing overheads / the remaining costs are included in the cost of completed products."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "The proportion of raw materials is very large / The proportion of labor and manufacturing costs is very small."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "[1]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "2"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Equivalent Units Method"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "Allocate production costs based on the ratio of the number of completed products to the equivalent units of ending work in process to determine the costs for both."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "The quantity of work-in-progress varies significantly from period to period / a large quantity at the end of the period / the proportions of cost items are roughly equal."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "[2]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "3"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Quota Cost Pricing Method"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "The method for calculating the end-of-period work-in-progress cost based on the quantity of work-in-progress at each process and its cost item quota indicators."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "Production is stable / consumption quotas for each process are accurate / the quantity of work-in-progress at the end of the period is stable"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "[3]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "4"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Quota Proportion Method"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "A method for allocating and calculating the costs of completed products and end-of-period work-in-progress based on the proportions of quota consumption or quota cost."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "Accurate and Stable Consumption Quota / Products with Significant Fluctuations in the Quantity of Work-in-Progress at the End of Each Period"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "[4]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "5"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Fixed Number at the Beginning of the Year"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "1-By the end of November, the work-in-progress inventory is equal to the beginning-of-year figure. The work-in-progress inventory cost is recalculated and determined at the end of the year based on the physical inventory count and production expenses."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "Products with small fluctuations in the end-of-period work-in-progress amounts/stable end-of-period work-in-progress quantities"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "[5]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "6"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Cost Calculation Method upon Completion"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "Allocate raw material costs, labor costs, and manufacturing overhead to finished goods based on the ratio of the quantities of work-in-progress to finished goods."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "End-of-period work-in-progress is nearly completed/it is just未验收入库的部分在英文中需要更具体的商务或工业术语来表达，但根据上下文，可以翻译为 \"尚未正式入库\" 或 \"未正式完成最终检验\"。但是，为了保持翻译的简洁和直接，我将这部分翻译为 \"尚未正式入库\"。请看完整的翻译：End-of-period work-in-progress is nearly completed and is treated as finished goods since it has not yet been formally warehoused."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "[6]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "7"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Not considering cost method"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "Although there are work-in-progress at the end of each period, the costs are not calculated / all production costs incurred during the period are borne by the finished products of the period."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "Whether to calculate the end-of-period work-in-progress is insignificant for finished goods due to the small and stable quantity."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "[7]",
+                    "children": [
+                      {
+                        "name": "Serial Number",
+                        "children": [
+                          {
+                            "name": "8"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Method",
+                        "children": [
+                          {
+                            "name": "Step-by-step measurement method"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Operation Instructions",
+                        "children": [
+                          {
+                            "name": "Determine the cost of work in process inventory based on the end-of-period physical counts of work in process in each production stage, separately measuring material costs, and assessing the degree of completion."
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Applicable Scenarios",
+                        "children": [
+                          {
+                            "name": "Few varieties and uncomplicated processes / Quotas for cost items in each process are easy to determine"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

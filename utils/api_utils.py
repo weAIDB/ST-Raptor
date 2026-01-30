@@ -7,6 +7,7 @@ import json
 
 import numpy as np
 from openai import OpenAI
+from openai import AuthenticationError
 
 from utils.constants import *
 
@@ -79,7 +80,13 @@ def llm_generate(
             )
             res = response.choices[0].message.content
             break
+        except AuthenticationError as e:
+            # 对于认证错误（401），立即失败，不重试
+            print(f"LLM API Authentication Failed! Invalid API key.")
+            print(f"Error: {str(e)}")
+            break
         except Exception as e:
+            # 对于其他错误，可以重试
             print(f"LLM API Request Failed! Retry {cnt}!")
             traceback.print_exc()
             import time; time.sleep(0.1)
@@ -113,7 +120,13 @@ def embedding_generate(
 
                 embeddings.extend([x["embedding"] for x in res])
                 break
+            except AuthenticationError as e:
+                # 对于认证错误（401），立即失败，不重试
+                print(f"EMBEDDING API Authentication Failed! Invalid API key.")
+                print(f"Error: {str(e)}")
+                break
             except Exception as e:
+                # 对于其他错误，可以重试
                 print(f"EMBEDDING API Request Failed! Retry {cnt}!")
                 traceback.print_exc()
                 import time; time.sleep(0.1)
