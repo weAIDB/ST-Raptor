@@ -19,7 +19,7 @@
 - [ ] 主要功能
   - [x] 支持LLM、VLM及嵌入模型的本地部署与API调用
   - [x] 支持多样化输入格式：HTML、CSV、MARKDOWN等
-  - [ ] 支持图像输入
+  - [x] 支持图像输入
   - [ ] 扩展表格提取模块，支持问题定义之外的表格类型
 
 - [ ] 基准测试数据集
@@ -27,10 +27,10 @@
   - [ ] SSTQAv2版本即将发布！
 
 - [ ] 可视化功能
-  - [x] 支持基于Gradio的可视化平台
-  - [ ] 支持通过Gradio进行超参数设置
+  - [x] 支持基于Web的可视化平台（FastAPI + HTML）
+  - [x] 支持超参数设置（WIP）
   - [x] 支持HO-Tree结构可视化
-  - [ ] 支持HO-Tree人工修正功能
+  - [x] 支持HO-Tree人工修正功能
 
 ## ✨ 项目介绍
 
@@ -240,18 +240,19 @@ python ./main.py
 
 #### 使用可视化平台
 
-如果您想要使用我们搭建的可视化平台，则可以运行以下代码生成页面
+使用统一入口启动前端：
 
 ```shell
-python ./gradio_app.py
+python ./start_web.py
 ```
-如果服务正常启动，您可以在浏览器中打开这样的界面
+
+浏览器访问：`http://localhost:7860/`
 
 <p align="center">
-  <img src="./assets/gradio.png" width = "800" alt="" align="center" />
+  <img src="./assets/frontend.jpg" width = "800" alt="" align="center" />
 </p>
 
-您可以在这个界面中上传表格，查看该表格生成的H-O Tree的结构，并针对这个表格向我们的模型提问！
+在该界面中，您可以上传表格、查看生成的 HO-Tree 结构，并针对该表格向模型提问。
 
 ## 💡 半结构化表格 QA 示例
 
@@ -309,9 +310,7 @@ python ./gradio_app.py
 
 # 👨‍🏫 加入我们 !
 
-ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
-
-ST-Raptor@复杂半结构表格分析社区 (微信群)
+ST-Raptor@复杂半结构化表格分析社区（请通过以下微信号联系我们）
 
 <p align="center">
   <img src="./assets/vx.jpg" width = "300" alt="" align="center" />

@@ -37,7 +37,11 @@ Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. I
 - [ ] Main functionss
   - [x] Support both local deployment or API calls for LLM, VLM, and Embedding models.
   - [x] Support diverse input formats: HTML, CSV, MARKDOWN, ...
+<<<<<<< HEAD
   - [ ] Support Image input.
+=======
+  - [x] Support Image input.
+>>>>>>> demo
   - [ ] Expand the table extraction module to support table types beyond problem definition.
 
 - [ ] Benchmark
@@ -45,10 +49,17 @@ Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. I
   - [ ] The SSTQAv2 is on the way!!!
 
 - [ ] Visualization
+<<<<<<< HEAD
   - [x] Support visualization platform based on Gradio.
   - [ ] Support hyper-parameter settings through Gradio. 
   - [x] Support the visualization of HO-Tree structure.
   - [ ] Support the HO-Tree manual correction function.
+=======
+  - [x] Support web visualization platform (FastAPI + HTML).
+  - [x] Support hyper-parameter settings (WIP).
+  - [x] Support the visualization of HO-Tree structure.
+  - [x] Support the HO-Tree manual correction function.
+>>>>>>> demo
 
 **Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
@@ -243,6 +254,7 @@ If you have completed all the above settings, use the following command to start
 ```shell
 python ./main.py
 ```
+<<<<<<< HEAD
 #### Visualization Platform
 
 If you want to use the visualization platform, you can run the following code to generate the page:
@@ -257,6 +269,23 @@ If the service starts correctly, you will be able to open an interface like this
 </p>
 
 On this interface, you can upload a table, view the structure of the H-O Tree generated from the table, and ask our model questions about it!
+=======
+#### Web Frontend 
+
+Use the unified web entry to start the frontend:
+
+```shell
+python ./start_web.py
+```
+
+Open in browser: `http://localhost:7860/`
+
+<p align="center">
+  <img src="./assets/frontend.jpg" width = "800" alt="" align="center" />
+</p>
+
+On this interface, you can upload a table, view the HO-Tree structure, and ask our model questions about it!
+>>>>>>> demo
 
 ## 💡 Semi-Structured Table QA Examples
 
@@ -314,9 +343,7 @@ If you like this project, please cite our paper [link](https://arxiv.org/abs/250
 
 # 👨‍🏫 Join us !
 
-ST-Raptor@Complex Semi-Structured Table Analysis Community  (WeChat)
-
-ST-Raptor@复杂半结构表格分析社区 (微信群)
+ST-Raptor@Complex Semi-Structured Table Analysis Community  (Please contact the following WeChat account)
 
 <p align="center">
   <img src="./assets/vx.jpg" width = "300" alt="" align="center" />

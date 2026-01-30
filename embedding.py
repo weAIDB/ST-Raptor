@@ -50,7 +50,19 @@ class EmbeddingModel:
         if EMBEDDING_TYPE == 'local':
             embeddings = self.model.encode(entity_list)
         else:
-            embeddings = embedding_generate(input_texts=entity_list)
+            # 尝试从全局配置获取API设置，如果不可用则使用默认值
+            try:
+                # 从统一配置读取（web/gradio共用）
+                from config import api_config
+                embeddings = embedding_generate(
+                    input_texts=entity_list,
+                    key=api_config.get("embedding_api_key", EMBEDDING_API_KEY),
+                    url=api_config.get("embedding_api_url", EMBEDDING_API_URL),
+                    model=api_config.get("embedding_model", EMBEDDING_TYPE)
+                )
+            except ImportError:
+                # 如果无法导入配置，使用默认参数
+                embeddings = embedding_generate(input_texts=entity_list)
         return embeddings
 
     def get_embedding_dict(self, entity_list):
@@ -62,12 +74,14 @@ class EmbeddingModel:
         return embedding_dict
 
     def save_embedding_dict(self, embedding_dict, output_file):  
-        with open(output_file, "w") as f:
-            json.dump(embedding_dict, f, ensure_ascii=False)
+        # 显式指定utf-8编码，确保在Windows系统上能正确处理非ASCII字符
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(embedding_dict, f, ensure_ascii=False)    
 
     def load_embedding_dict(self, input_file):
         # 从 JSON 文件加载
-        with open(input_file, "r") as f:
+        # 显式指定utf-8编码，确保在Windows系统上能正确处理非ASCII字符
+        with open(input_file, "r", encoding="utf-8") as f:
             loaded_embedding_dict = json.load(f)
 
         # 将列表转换回 NumPy 数组

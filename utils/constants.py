@@ -38,11 +38,34 @@ MAX_ITER_PRIMITIVE = 5  # 生成原语句的最多步骤次数
 MAX_RETRY_HOTREE = 3  # 表格转换HO-Tree的最大尝试次数
 MAX_RETRY_PRIMITIVE = 5  # 前向验证时重新生成原语句的次数
 
+def delete_dict_none_none(data : dict):
+    """将JSON中None:None的项去除"""
+    new_dict = {}
+    for k, v in data.items():
+        if (k is None or k == 'None') and (v is None or v == 'None'):
+            pass
+        else:
+            if isinstance(v, dict):
+                new_dict[k] = delete_dict_none_none(v)
+            elif isinstance(v, list):
+                new_v = []
+                for item in v:
+                    if isinstance(item, dict):
+                        new_v.append(delete_dict_none_none(item))
+                    else:
+                        new_v.append(item)
+                new_dict[k] = new_v
+            else:
+                new_dict[k] = v
+    return new_dict
+
 #################### Change The Directory Path ####################
-BASE_DIR = ''            # The Project Directory
-CACHE_DIR = os.path.join(BASE_DIR, 'cache')     # The Cache Directory
-LOG_DIR = os.path.join(BASE_DIR, 'log')
-#################### Change The Directory Path ####################
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+CACHE_DIR = os.path.join(BASE_DIR, "cache")
+LOG_DIR = os.path.join(BASE_DIR, "log")
+os.makedirs(CACHE_DIR, exist_ok=True)
+os.makedirs(LOG_DIR, exist_ok=True)
+#################### Change The Directory Path ####################“
 
 
 #################### Change The Model Information ####################

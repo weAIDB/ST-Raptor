@@ -120,15 +120,38 @@ def search_values(f_tree: FeatureTree, s1: str, s2=None):
     print(tree_dict)
     if DEFAULT_TABLE_NAME in tree_dict:
         tree_dict = tree_dict[DEFAULT_TABLE_NAME]
+    
     ans = ""
-    if s2 is None:
-        for item in tree_dict:
-            if s1 in item or s1 in item.values():
-                ans += str(item) + ","
-    else:
-        for item in tree_dict:
-            if s1 in item or s2 in item or s1 in item.values() or s2 in item.values():
-                ans += str(item) + ","
+    
+    def recursive_search(data):
+        nonlocal ans
+        if isinstance(data, dict):
+            # 搜索键和值
+            for k, v in data.items():
+                if s1 in str(k) or (s2 and s2 in str(k)):
+                    ans += str(k) + ":" + str(v) + ","
+                recursive_search(v)
+        elif isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict):
+                    # 处理列表中的字典（典型的表格行）
+                    found = False
+                    if s1 in str(item) or (s2 and s2 in str(item)):
+                        found = True
+                    else:
+                        for val in item.values():
+                            if s1 in str(val) or (s2 and s2 in str(val)):
+                                found = True
+                                break
+                    if found:
+                        ans += str(item) + ","
+                else:
+                    recursive_search(item)
+        elif isinstance(data, str):
+            if s1 in data or (s2 and s2 in data):
+                ans += data + ","
+
+    recursive_search(tree_dict)
     return [ans[:-1]]
 
 
