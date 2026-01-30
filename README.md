@@ -22,7 +22,7 @@
 Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. It combines a vision-language model (VLM) with a tree-construction algorithm (HO-Tree) and flexibly integrates with different LLMs. ST-Raptor employs a two-stage validation mechanism to ensure reliable results.
 
 <p align="center">
-  <img src="./assets/frontend.png" width = "800" alt="" align="center" />
+  <img src="./assets/frontend.jpg" width = "800" alt="" align="center" />
 </p>
 
 
@@ -37,11 +37,7 @@ Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. I
 - [ ] Main functionss
   - [x] Support both local deployment or API calls for LLM, VLM, and Embedding models.
   - [x] Support diverse input formats: HTML, CSV, MARKDOWN, ...
-<<<<<<< HEAD
-  - [ ] Support Image input.
-=======
   - [x] Support Image input.
->>>>>>> demo
   - [ ] Expand the table extraction module to support table types beyond problem definition.
 
 - [ ] Benchmark
@@ -49,17 +45,10 @@ Unlike many existing approaches, ST-Raptor requires no additional fine-tuning. I
   - [ ] The SSTQAv2 is on the way!!!
 
 - [ ] Visualization
-<<<<<<< HEAD
-  - [x] Support visualization platform based on Gradio.
-  - [ ] Support hyper-parameter settings through Gradio. 
-  - [x] Support the visualization of HO-Tree structure.
-  - [ ] Support the HO-Tree manual correction function.
-=======
   - [x] Support web visualization platform (FastAPI + HTML).
   - [x] Support hyper-parameter settings (WIP).
   - [x] Support the visualization of HO-Tree structure.
   - [x] Support the HO-Tree manual correction function.
->>>>>>> demo
 
 **Semi-structures tables like personal information form, academic tables, financial tables... from Excel, websites (HTML), Markdown, csv files...**
 
@@ -254,22 +243,6 @@ If you have completed all the above settings, use the following command to start
 ```shell
 python ./main.py
 ```
-<<<<<<< HEAD
-#### Visualization Platform
-
-If you want to use the visualization platform, you can run the following code to generate the page:
-
-```shell
-python ./gradio_app.py
-```
-If the service starts correctly, you will be able to open an interface like this in your browser:
-
-<p align="center">
-  <img src="./assets/frontend.png" width = "800" alt="" align="center" />
-</p>
-
-On this interface, you can upload a table, view the structure of the H-O Tree generated from the table, and ask our model questions about it!
-=======
 #### Web Frontend 
 
 Use the unified web entry to start the frontend:
@@ -285,7 +258,6 @@ Open in browser: `http://localhost:7860/`
 </p>
 
 On this interface, you can upload a table, view the HO-Tree structure, and ask our model questions about it!
->>>>>>> demo
 
 ## 💡 Semi-Structured Table QA Examples
 
