@@ -1,0 +1,764 @@
+{"id": 1, "table_id": 1, "query": "What is the proposed funding for the social insurance gap and living allowance for college graduates under the \"Three Supports and One Assistance\" program?", "label": "587.81 million yuan"}
+{"id": 2, "table_id": 1, "query": "What is the proposed funding for the special funds for promoting employment?", "label": "11.40 million yuan"}
+{"id": 3, "table_id": 1, "query": "What is the target value for the number of new urban employment in the 2024 Municipal Department Overall Budget Performance Target Table?", "label": "50000 people"}
+{"id": 4, "table_id": 1, "query": "What is the target value for employment service satisfaction under the service recipient satisfaction indicators in the 2024 City-level Department Overall Budget Performance Target Table?", "label": "≥90%"}
+{"id": 5, "table_id": 1, "query": "How many first-level indicators are there in the performance metrics?", "label": "3"}
+{"id": 6, "table_id": 1, "query": "How many secondary indicators are there in the output indicators of the performance metrics?", "label": "4"}
+{"id": 7, "table_id": 1, "query": "How many secondary indicators are there in the effectiveness indicators of the performance metrics?", "label": "4"}
+{"id": 8, "table_id": 1, "query": "How many third-level indicators are there in the quantity indicators of the performance metrics?", "label": "4"}
+{"id": 9, "table_id": 1, "query": "What are the third-level indicators of economic efficiency indicators?", "label": "Solve Employment for Difficult-to-Employ Population (Persons), Re-employment for Unemployed Population (Persons)"}
+{"id": 10, "table_id": 1, "query": "What is the indicator value for the coverage of grassroots services?", "label": "Zhanjiang Grassroots"}
+{"id": 11, "table_id": 2, "query": "Which project has the highest standard score in the basic performance evaluation indicators?", "label": "Work Attitude"}
+{"id": 12, "table_id": 2, "query": "How many points are deducted each time for disciplinary violations?", "label": "0.50"}
+{"id": 13, "table_id": 2, "query": "Which projects can have bonus points?", "label": "Work Safety, Quality Control, Project Progress"}
+{"id": 14, "table_id": 2, "query": "How many performance evaluation items are there for project progress in the key performance evaluation indicators?", "label": "5"}
+{"id": 15, "table_id": 2, "query": "How many evaluation items are there for technical management in the key performance review indicators?", "label": "9"}
+{"id": 16, "table_id": 2, "query": "How many quality control assessment items are there in the key performance evaluation indicators?", "label": "5"}
+{"id": 17, "table_id": 2, "query": "How many evaluation items have a standard score of 2?", "label": "3"}
+{"id": 18, "table_id": 2, "query": "How many evaluation items have a standard score of 5?", "label": "3"}
+{"id": 19, "table_id": 2, "query": "How many performance evaluation items are there in the basic performance appraisal indicators?", "label": "5"}
+{"id": 20, "table_id": 2, "query": "How many performance evaluation items are there in the key performance indicators?", "label": "6"}
+{"id": 21, "table_id": 3, "query": "What is the original value of the computer's asset?", "label": "196690"}
+{"id": 22, "table_id": 3, "query": "What is the total depreciation amount of the computer?", "label": "186855.50"}
+{"id": 23, "table_id": 3, "query": "What is the activation date of the computer?", "label": "2006-05-200:00:00"}
+{"id": 24, "table_id": 4, "query": "Has the fire safety approval process been completed for the area covered by this tender?", "label": "Already registered, provided"}
+{"id": 25, "table_id": 4, "query": "How many responsible departments are involved at the construction site?", "label": "1"}
+{"id": 26, "table_id": 4, "query": "How many responsible departments are involved in the tender documents?", "label": "3"}
+{"id": 27, "table_id": 4, "query": "How many responsible departments are involved in the scope of the project?", "label": "2"}
+{"id": 28, "table_id": 4, "query": "How many items are there in the tender document?", "label": "8"}
+{"id": 29, "table_id": 4, "query": "How many items are there in the drawing specifications?", "label": "15"}
+{"id": 30, "table_id": 4, "query": "How many items are there in the construction site?", "label": "9"}
+{"id": 31, "table_id": 4, "query": "How many items are there in the scope of the engineering project?", "label": "20"}
+{"id": 32, "table_id": 4, "query": "What is the level of this project?", "label": "Ordinary Residential Project"}
+{"id": 33, "table_id": 4, "query": "Who is responsible for sealing the reserved holes and sleeves of fire protection facilities and equipment?", "label": "winning bidder"}
+{"id": 34, "table_id": 4, "query": "What parts does the construction scope of this tender include?", "label": "The unbuilt portions of the first and second phase reconstruction housing"}
+{"id": 35, "table_id": 4, "query": "Are the fire equipment monitoring system, electrical fire monitoring system, and fire shutter system within the scope of this tender?", "label": "The main parts of these three systems have been completed, and the extensions to the pending basement construction will be handled by the winning bidder."}
+{"id": 36, "table_id": 4, "query": "How many times is the fire inspection conducted?", "label": "One acceptance"}
+{"id": 37, "table_id": 4, "query": "Who is responsible for the firestop within the fire protection sleeves and fire protection raceways?", "label": "Winning Bidder"}
+{"id": 38, "table_id": 4, "query": "Is it necessary to pay for the general contractor coordination fee and construction water and electricity fees in this tender?", "label": "No cooperation fee is required, but construction water and electricity fees are required."}
+{"id": 39, "table_id": 5, "query": "How many times did Wang Linlin reimburse her travel expenses?", "label": "5"}
+{"id": 40, "table_id": 5, "query": "Which entry in Wang Linlin's reimbursement record has the highest amount of expenses?", "label": "Guangzhou Exhibition Travel Expenses"}
+{"id": 41, "table_id": 5, "query": "Summarize Xiaohong Tian's reimbursement activities.", "label": "Tian Xiaohong reimbursed four times for office supplies in November 2020, with a total cost of 1987 yuan. Three of the reimbursements have been processed, and one is pending."}
+{"id": 42, "table_id": 5, "query": "Which department has the most reimbursement records?", "label": "Human Resources, Sales Department"}
+{"id": 43, "table_id": 5, "query": "What is the lowest amount of expenses among all reimbursement records?", "label": "124"}
+{"id": 44, "table_id": 6, "query": "How much did the profit of product A decrease in June compared to May?", "label": "61974"}
+{"id": 45, "table_id": 6, "query": "Which month in the second quarter had the lowest sales revenue for product A?", "label": "June"}
+{"id": 46, "table_id": 7, "query": "What is the total main business profit for the first three months?", "label": "4262"}
+{"id": 47, "table_id": 7, "query": "What is the total financial expense for all months?", "label": "1412"}
+{"id": 48, "table_id": 8, "query": "What are the specific contents for determining the cost calculation object?", "label": "A product semi-finished product/batch order product, a production line and its products, a certain unit/a certain branch factory and its products, a workshop and products, a production step of a product."}
+{"id": 49, "table_id": 8, "query": "What are the methods for cost calculation?", "label": "Process Costing, Job Order Costing, Step Method, Classification Method, Quota Method."}
+{"id": 50, "table_id": 8, "query": "What does the confirmation of measurement and valuation of assets include?", "label": "Composition of Property Costs, Legal Accuracy, Depreciation Policy for Fixed Assets, Amortization Policy for Low-Value Consumables, Consistency in Material Valuation Methods, Consistency in Financial Measurement Units."}
+{"id": 51, "table_id": 8, "query": "How to allocate material costs?", "label": "Purchasing Raw Material Cost Determination, Issued Material Cost Pricing Method, Product Material Consumption Quota Setting, Principles and Methods of Material Cost Allocation, Material Cost Allocation Table."}
+{"id": 52, "table_id": 8, "query": "What are the steps involved in the labor cost accounting process?", "label": "Establish a sound foundation for manufacturing labor wage accounting, including job hour statistics by batch, product, and process, as well as the collection and allocation of wage costs across various departments in the manufacturing division."}
+{"id": 53, "table_id": 8, "query": "How many items are there in the overall project?", "label": "7"}
+{"id": 54, "table_id": 8, "query": "How many items are there in the specific project?", "label": "10"}
+{"id": 55, "table_id": 9, "query": "What was the sales volume of soy milk in June?", "label": "5000"}
+{"id": 56, "table_id": 9, "query": "Which month has the highest sales volume of nutritious oat cereal?", "label": "June"}
+{"id": 57, "table_id": 9, "query": "How many fries were sold in the first half of the year?", "label": "6590"}
+{"id": 58, "table_id": 9, "query": "How much did the sales volume of glucose increase in February compared to January?", "label": "350"}
+{"id": 59, "table_id": 9, "query": "How many times is the sales volume of soy milk in May compared to the sales volume of potato chips in May?", "label": "1.32"}
+{"id": 60, "table_id": 9, "query": "Which two products had sales exceeding 3800 in June?", "label": "Potato chips, Soy milk"}
+{"id": 61, "table_id": 9, "query": "How much less is the sales volume of potato chips in June compared to XX soy milk in June?", "label": "1100"}
+{"id": 62, "table_id": 9, "query": "What was the sales volume of glucose in March?", "label": "1150"}
+{"id": 63, "table_id": 9, "query": "Which products have an average sales volume above 3000?", "label": "Nutritious cereal, potato chips."}
+{"id": 64, "table_id": 9, "query": "How many types of products does the company have?", "label": "5"}
+{"id": 65, "table_id": 9, "query": "How many months of sales data were counted?", "label": "6"}
+{"id": 66, "table_id": 10, "query": "What is the instruction for changing the template?", "label": "Select Change Model"}
+{"id": 67, "table_id": 10, "query": "What is the description of the change implementation phase in the change phase code table?", "label": "Change Implementation"}
+{"id": 68, "table_id": 10, "query": "What is the description related to information security requirements in the table of change reasons?", "label": "Information security related management is required"}
+{"id": 69, "table_id": 10, "query": "How many information items in the information item comparison table involve risk assessment definitions", "label": "6"}
+{"id": 70, "table_id": 10, "query": "What is the description for the \"Reported\" status in the status code table?", "label": "Change coordination, review feasibility by the Change Advisory Board."}
+{"id": 71, "table_id": 10, "query": "How many entries in the change rationale table are generally not related to the project?", "label": "2"}
+{"id": 72, "table_id": 10, "query": "How many entries in the information item mapping table are related to the shared event and service request management grading definitions?", "label": "3"}
+{"id": 73, "table_id": 10, "query": "What is the description of the change closure phase in the change phase code table?", "label": "Change closed and archived"}
+{"id": 74, "table_id": 10, "query": "What is the description for third-party upgrade updates in the change reason table?", "label": "Supplier optimization, upgrade, and patch will initiate changes."}
+{"id": 75, "table_id": 10, "query": "How many phases are there in the change phase code table?", "label": "6"}
+{"id": 76, "table_id": 10, "query": "How many status codes are there in the status code table?", "label": "3"}
+{"id": 77, "table_id": 10, "query": "How many entries are in the information item comparison table?", "label": "30"}
+{"id": 78, "table_id": 10, "query": "How many entries are there in the table of reasons for change?", "label": "10"}
+{"id": 79, "table_id": 10, "query": "What are the reasons in the change justification table that are generally not related to the project?", "label": "Business continuity management requirements, reported, daily operational needs of the business department"}
+{"id": 80, "table_id": 11, "query": "What is the number of new urban employment positions?", "label": "12,790,000 people"}
+{"id": 81, "table_id": 11, "query": "What is the total number of participants in unemployment insurance and work-related injury insurance at the end of the period?", "label": "45,830.33 million people"}
+{"id": 82, "table_id": 11, "query": "What is the total sum of the fund revenues for the basic old-age insurance for enterprise employees and the basic old-age insurance for urban and rural residents?", "label": "49421.37 billion yuan"}
+{"id": 83, "table_id": 11, "query": "What is the total number of urban unemployed individuals who have found employment again and the number of individuals with employment difficulties who have found employment in employment and reemployment programs?", "label": "6,680,000 people"}
+{"id": 84, "table_id": 11, "query": "What is the difference between the income and expenditure of the work injury insurance fund?", "label": "1.98 billion yuan"}
+{"id": 85, "table_id": 11, "query": "What is the percentage of unemployment insurance fund expenditure out of its fund revenue?", "label": "96.53%"}
+{"id": 86, "table_id": 11, "query": "In the human resources and social security data for 2019, which items involve fund revenue?", "label": "Urban Employee Basic Old-Age Insurance, Rural and Urban Resident Basic Old-Age Insurance, Unemployment Insurance, Work-Related Injury Insurance"}
+{"id": 87, "table_id": 11, "query": "How many more participants are enrolled in the basic old-age insurance for urban and rural residents than in the basic old-age insurance for urban employees at the end of the period?", "label": "9745.25 million people"}
+{"id": 88, "table_id": 11, "query": "What are the statistical indicators for work injury insurance?", "label": "End-of-Period Insured Population, Fund Revenue, Fund Expenditure"}
+{"id": 89, "table_id": 11, "query": "What was the number of participants in the basic old-age insurance for urban and rural residents at the end of 2019? What were the fund revenues and expenditures?", "label": "53046.16 million people, fund revenue is 3510.75 billion yuan, fund expenditure is 2846.11 billion yuan"}
+{"id": 90, "table_id": 12, "query": "How many accounting vouchers of the silver receipt type are there in May?", "label": "10"}
+{"id": 91, "table_id": 12, "query": "How many times does the bank deposit appear in the general ledger accounts?", "label": "8"}
+{"id": 92, "table_id": 12, "query": "How many transfer-type bookkeeping vouchers are there on May 4?", "label": "4"}
+{"id": 93, "table_id": 12, "query": "What is the largest amount among the bookkeeping vouchers of silver payment type in May?", "label": "220000"}
+{"id": 94, "table_id": 12, "query": "What is the smallest amount in the bookkeeping voucher on May 1?", "label": "8000"}
+{"id": 95, "table_id": 12, "query": "What is the total amount of cash receipts in the bookkeeping vouchers for May?", "label": "128000"}
+{"id": 96, "table_id": 12, "query": "How many cash payment journal entries were there on May 7?", "label": "2"}
+{"id": 97, "table_id": 12, "query": "What is the total amount of cash receipts in the bookkeeping vouchers for May?", "label": "881000"}
+{"id": 98, "table_id": 12, "query": "What is the amount of the cash payment type in the bookkeeping voucher on May 15?", "label": "76000"}
+{"id": 99, "table_id": 12, "query": "What is the total amount of transfer type transactions in the bookkeeping vouchers of May?", "label": "273000"}
+{"id": 100, "table_id": 12, "query": "Which item has the highest debit amount?", "label": "01, Selling Product A."}
+{"id": 101, "table_id": 13, "query": "What was the amount of office expenses支出 should be expenditure for the administrative department on January 1, 2013?", "label": "1200"}
+{"id": 102, "table_id": 13, "query": "Which item has the highest expenditure amount in Wang Xiaohang's expenditure records?", "label": "Business Development Expense"}
+{"id": 103, "table_id": 13, "query": "What was the total expenditure of the Personnel Department in January 2013?", "label": "3270"}
+{"id": 104, "table_id": 13, "query": "Which departments' expense categories involve \"Communication Fees\"?", "label": "Sales Department, Administrative Department, Planning Department"}
+{"id": 105, "table_id": 13, "query": "What was the total expenditure on equipment repair costs in February 2013?", "label": "6280"}
+{"id": 106, "table_id": 13, "query": "How many expenditure records have an empty abstract?", "label": "26"}
+{"id": 107, "table_id": 13, "query": "What was the total amount spent on business expansion expenses by the Planning Department in January and February 2013?", "label": "15380"}
+{"id": 108, "table_id": 13, "query": "Which two managers have the most expenditure records?", "label": "Wang Xiaohang, Zhang Hua"}
+{"id": 109, "table_id": 13, "query": "How many records are associated with Zhang Hua, the person in charge?", "label": "7"}
+{"id": 110, "table_id": 13, "query": "What was the amount of travel expenses incurred by the sales department on January 23, 2013?", "label": "700"}
+{"id": 111, "table_id": 13, "query": "How many records are there in total?", "label": "46"}
+{"id": 112, "table_id": 13, "query": "What was the total amount of welfare expenditure in January 2013?", "label": "4800"}
+{"id": 113, "table_id": 14, "query": "What is the original value of the assets for the centrifugal fan?", "label": "3960"}
+{"id": 114, "table_id": 14, "query": "What is the service life of a centrifugal fan in years?", "label": "14"}
+{"id": 115, "table_id": 14, "query": "What is the monthly depreciation rate of the centrifugal fan in the 12th year?", "label": "0.23%"}
+{"id": 116, "table_id": 14, "query": "What is the net residual value of the centrifugal fan?", "label": "198"}
+{"id": 117, "table_id": 14, "query": "What is the asset status of the centrifugal fan?", "label": "Scrap"}
+{"id": 118, "table_id": 15, "query": "What are the main responsibilities of a Continuity and Availability Planner?", "label": "Responsible for managing availability to ensure IT services meet the planned business objectives; responsible for maintaining the availability and reliability of IT services and reviewing relevant changes; responsible for evaluating availability metrics and reviewing availability plans; responsible for optimizing and improving the availability management process and availability metrics; responsible for reviewing the adaptability of the graded judgment in the \"Service Level Objectives\" and the content of the \"IT Service Continuity Plan\" (emergency response plan) formulated by each maintenance team; responsible for submitting the IT Service Continuity Plan, which has passed the preliminary review, to the IT Service Management Committee for formal approval."}
+{"id": 119, "table_id": 15, "query": "Who is the role match for the Continuity and Availability Planner?", "label": "System Application Manager"}
+{"id": 120, "table_id": 15, "query": "Do continuity and availability planners need to review changes?", "label": "Yes"}
+{"id": 121, "table_id": 15, "query": "What aspects of process optimization are covered by the Continuity and Availability Planner?", "label": "Availability Management Process and Availability Indicators"}
+{"id": 122, "table_id": 15, "query": "What documents should the Continuity and Availability Planner submit to the IT Service Management Committee?", "label": "IT Service Continuity Plan"}
+{"id": 123, "table_id": 16, "query": "What is the total score of the basic performance evaluation indicators?", "label": "10"}
+{"id": 124, "table_id": 16, "query": "What is the deduction standard for workplace safety in the key performance evaluation indicators?", "label": "Each safety incident results in a deduction of 0.5 points, a significant safety incident results in a deduction of 1 point, and a major personnel casualty incident results in a performance score of 0 points."}
+{"id": 125, "table_id": 16, "query": "How many points will be deducted if the clerk fails to complete the work plan and delays it by 1 day due to personal reasons?", "label": "1"}
+{"id": 126, "table_id": 16, "query": "What is the deduction standard for work attitude in the basic performance evaluation indicators?", "label": "Whether tasks within the scope of responsibilities are completed proactively and positively, ensuring smooth operation of work. Lack of proactiveness or positivity will result in a deduction of 1 point each time, with no lower limit."}
+{"id": 127, "table_id": 16, "query": "What is the deduction standard for disciplinary violations in the basic performance evaluation indicators?", "label": "Whether strictly遵守company labor discipline management rules or not. A violation will result in a deduction of 0.50 points, with no lower limit."}
+{"id": 128, "table_id": 16, "query": "Which assessment item has the highest proportion of standard scores?", "label": "Data Control"}
+{"id": 129, "table_id": 17, "query": "What is the total number of returnee entrepreneurs and re-employed individuals?", "label": "1780 people"}
+{"id": 130, "table_id": 17, "query": "What are the indicator values for public or service recipient satisfaction and the rate of arbitration cases concluded within the statutory period?", "label": "95%, 95%"}
+{"id": 131, "table_id": 17, "query": "What is the total budget for the years 2019 and 2020?", "label": "121,700,000 yuan"}
+{"id": 132, "table_id": 17, "query": "What is the total budget amount for the project?", "label": "6730 million yuan"}
+{"id": 133, "table_id": 17, "query": "What is the contact telephone number of the project leader?", "label": "67880231"}
+{"id": 134, "table_id": 17, "query": "How much did the budget increase in 2020 compared to 2019?", "label": "12.90 million yuan"}
+{"id": 135, "table_id": 17, "query": "What Are the Main Contents of the Project?", "label": "Organize public recruitment events, handle social insurance registration, cancellation, annual inspection, changes, and transfer services within the jurisdiction, conduct reviews of old-age insurance benefits and unemployment insurance benefits, conduct reviews of medical insurance benefits and maternity insurance benefits, and carry out on-site and written audits for insured enterprises within the jurisdiction."}
+{"id": 136, "table_id": 17, "query": "What is the amount of general public budget fiscal allocation income in the project funding sources?", "label": "6730 million yuan"}
+{"id": 137, "table_id": 17, "query": "What is the target issuance volume for social security cards?", "label": "70000 sheets"}
+{"id": 138, "table_id": 17, "query": "What is the subsidy amount for the basic old-age insurance fund of public institutions in the project expenditure detail budget?", "label": "3080 million yuan"}
+{"id": 139, "table_id": 17, "query": "What are the legal bases mentioned in the project application rationale?", "label": "Wu Zheng Gui [2015] No. 15, Wu Zheng Gui [2018] No. 31, E Cai She [2017] No. 102, Wu Cai She [2018] No. 413, The Social Insurance Law, The Work-related Injury Insurance Regulations, Notice of the Wuhan Municipal Government General Office on Extending Service Hours at Some Public Service Windows Throughout the City (Wu Zheng Ban [2009] No. 109), The Labor Contract Law, The Law on Mediation and Arbitration of Labor Disputes, The Regulations on Labor Security Supervision"}
+{"id": 140, "table_id": 17, "query": "What is the subsidy amount for the pension fund of public institutions and government agencies?", "label": "3080 million yuan"}
+{"id": 141, "table_id": 17, "query": "What was the main purpose of the employment subsidy in the 2020 project?", "label": "Mainly used for subsidies in vocational introduction, entrepreneurship training, vocational training, social insurance, job-seeking and entrepreneurship, employment skills, and new apprenticeship programs, as well as occupational skills appraisal subsidies."}
+{"id": 142, "table_id": 17, "query": "What is the minimum standard for routine inspections of labor inspection grids in the 2020 project?", "label": "Not less than 60 households/person.month"}
+{"id": 143, "table_id": 17, "query": "What is the target for the rate of arbitration cases concluded within the statutory time limit in the 2020 project?", "label": "95%"}
+{"id": 144, "table_id": 17, "query": "What was the amount spent on the development of inclusive finance in the 2020 project?", "label": "250,000 yuan"}
+{"id": 145, "table_id": 17, "query": "What are the project supervising department and the project type?", "label": "Wuhan Human Resources and Social Security Bureau, East Lake High-Tech Development Zone Branch, Public Projects"}
+{"id": 146, "table_id": 17, "query": "What is the main use of fiscal subsidies to the basic medical insurance fund?", "label": "Expenditure on Upward Transfer of District-Level Subsidy Funds for Basic Medical Insurance for Urban and Rural Residents"}
+{"id": 147, "table_id": 18, "query": "What are the applicable scenarios for the quota proportion method?", "label": "Consumption Quota Accurate and Stable / Products with Significant Fluctuations in the Quantity of Work-in-Progress at the End of Each Period"}
+{"id": 148, "table_id": 19, "query": "What is the total cost of R&D expenses?", "label": "745111"}
+{"id": 149, "table_id": 19, "query": "What is the total cost of the basic expenses?", "label": "78225"}
+{"id": 150, "table_id": 19, "query": "What are the cost amounts for employee bonus commissions and benefits?", "label": "183049, 102739"}
+{"id": 151, "table_id": 19, "query": "Which project costs in R&D expenses exceed 150000?", "label": "R&D Expenses, Patent Licensing Fees"}
+{"id": 152, "table_id": 19, "query": "What is the cost proportion of employee compensation, R&D costs, and basic expenses?", "label": "0.58, 0.38, 0.04"}
+{"id": 153, "table_id": 19, "query": "What are the components of employee compensation?", "label": "Employee Salary, Employee Bonus Commission, Benefits"}
+{"id": 154, "table_id": 19, "query": "Which part of the R&D cost is the highest?", "label": "R&D Expenses"}
+{"id": 155, "table_id": 19, "query": "How much more is the cost of employee compensation than the basic expenses?", "label": "1,046,772.00"}
+{"id": 156, "table_id": 19, "query": "How many categories are there?", "label": "3"}
+{"id": 157, "table_id": 20, "query": "What is the total annual cost of indirect labor in the variable manufacturing overhead?", "label": "13648.50"}
+{"id": 158, "table_id": 20, "query": "What is the total annual amount of variable manufacturing overhead?", "label": "45037"}
+{"id": 159, "table_id": 20, "query": "What is the annual property tax cost in the fixed expenses?", "label": "480"}
+{"id": 160, "table_id": 20, "query": "What are the categories of variable manufacturing overhead?", "label": "Indirect Labor, Indirect Materials, Repair Costs, Utilities"}
+{"id": 161, "table_id": 20, "query": "What is the total amount of fixed costs for the whole year?", "label": "65547"}
+{"id": 162, "table_id": 20, "query": "Which quarter had the highest fixed repair cost?", "label": "First Quarter"}
+{"id": 163, "table_id": 20, "query": "How many items are there in the variable manufacturing overhead?", "label": "4"}
+{"id": 164, "table_id": 20, "query": "How many items are there for fixed costs?", "label": "9"}
+{"id": 165, "table_id": 20, "query": "What is the change in variable manufacturing costs in the second quarter compared to the first quarter?", "label": "Reduced by 3340 yuan"}
+{"id": 166, "table_id": 21, "query": "What are the quantities for the two purchases of rubber gloves?", "label": "30, 30"}
+{"id": 167, "table_id": 21, "query": "How many types of products does the customer service department have?", "label": "8"}
+{"id": 168, "table_id": 21, "query": "How many types of products does the production department have?", "label": "10"}
+{"id": 169, "table_id": 21, "query": "Which departments have products in the office supplies category?", "label": "Customer Service, Sales, Finance"}
+{"id": 170, "table_id": 21, "query": "What is the requirement specification for rubber gloves?", "label": "2 pairs/person/day * 25 people"}
+{"id": 171, "table_id": 21, "query": "What are the specifications of the printer paper?", "label": "500 sheets per pack"}
+{"id": 172, "table_id": 22, "query": "What was the total credit occurrence of Sanhuan Electronics in June 2012?", "label": "80960"}
+{"id": 173, "table_id": 22, "query": "How many settlement records does Xindaye Electronics have in June 2012?", "label": "3"}
+{"id": 174, "table_id": 22, "query": "What was the minimum credit entry amount for Hengjie Group in June 2012?", "label": "498"}
+{"id": 175, "table_id": 22, "query": "In June 2012, which suppliers conducted material procurement?", "label": "Sanhuan Electronics, Hengjie Group, Rovvay, Jinyiya, Times Pioneer, Jinyuantong, Huasheng, Huaxing"}
+{"id": 176, "table_id": 22, "query": "What was the total debit amount for Wuding Group in June 2012?", "label": "16800"}
+{"id": 177, "table_id": 22, "query": "In June 2012, which supplier had the highest credit entry?", "label": "Three-ring Electronic"}
+{"id": 178, "table_id": 22, "query": "What was the total credit entry for Jin Ya in June 2012?", "label": "12998"}
+{"id": 179, "table_id": 22, "query": "In June 2012, how many suppliers conducted settlement material operations?", "label": "2"}
+{"id": 180, "table_id": 22, "query": "Which suppliers are there before June 16?", "label": "Sanhuan Electronics, Hengjie Group, Xinda Electronics, Wuding Group, Rowai, Jinyiya"}
+{"id": 181, "table_id": 22, "query": "What is the total credit occurrence for material procurement?", "label": "141232"}
+{"id": 182, "table_id": 22, "query": "How much was spent on materials purchased from Sanhuan Electronics?", "label": "80960.00"}
+{"id": 183, "table_id": 22, "query": "In which company is the debit occurrence of settlement materials the highest?", "label": "New Da Electronics"}
+{"id": 184, "table_id": 22, "query": "How many entries does supplier GY01 have?", "label": "7"}
+{"id": 185, "table_id": 22, "query": "How many items does supplier GY02 have in total?", "label": "3"}
+{"id": 186, "table_id": 23, "query": "How many students are enrolled in the Legal Profession (non-law) program admitted by the Graduate School?", "label": "91"}
+{"id": 187, "table_id": 23, "query": "Who is the teacher in charge of the legal affairs major at the Civil and Commercial Law School?", "label": "Li Mingming"}
+{"id": 188, "table_id": 23, "query": "How many students are there in the Specialized Program of Administrative Management in the School of Public Management?", "label": "98"}
+{"id": 189, "table_id": 23, "query": "How many students are there in the Department of Civil and Commercial Law?", "label": "305"}
+{"id": 190, "table_id": 23, "query": "How many majors does the Business School offer?", "label": "7"}
+{"id": 191, "table_id": 23, "query": "How many responsible teachers are there in the School of Criminal Justice?", "label": "2"}
+{"id": 192, "table_id": 23, "query": "How many faculty advisors are there in the Business School?", "label": "4"}
+{"id": 193, "table_id": 23, "query": "How many responsible teachers are there in the School of Foreign Languages?", "label": "1"}
+{"id": 194, "table_id": 23, "query": "How many majors does the School of Cybersecurity have?", "label": "3"}
+{"id": 195, "table_id": 24, "query": "Which day had the highest procurement amount between September 1, 2017 and September 12, 2017?", "label": "2017-09-09"}
+{"id": 196, "table_id": 24, "query": "What is the total procurement volume of motherboards provided by Huafeng supplier?", "label": "27"}
+{"id": 197, "table_id": 24, "query": "Which suppliers are involved in the procurement of monitors?", "label": "Huafeng, Changsheng"}
+{"id": 198, "table_id": 24, "query": "What is the total amount for the motherboards purchased on 2017-09-05 and 2017-09-10?", "label": "12050"}
+{"id": 199, "table_id": 24, "query": "What is the average purchase unit price of the computer case?", "label": "2416.67"}
+{"id": 200, "table_id": 24, "query": "How many monitors were purchased on 2017-09-07?", "label": "15"}
+{"id": 201, "table_id": 24, "query": "Which supplier provides the most varieties of goods?", "label": "Immortality"}
+{"id": 202, "table_id": 24, "query": "How many goods were purchased from September 1 to September 7?", "label": "70"}
+{"id": 203, "table_id": 24, "query": "What is the product with the highest unit price?", "label": "Case"}
+{"id": 204, "table_id": 24, "query": "How many items are there in total?", "label": "12"}
+{"id": 205, "table_id": 24, "query": "Which day had the most purchases?", "label": "2017-9-7"}
+{"id": 206, "table_id": 25, "query": "What is the amount excluding tax for the invoice with invoice number 7894561?", "label": "3846.15"}
+{"id": 207, "table_id": 25, "query": "How many invoices are there in total?", "label": "6"}
+{"id": 208, "table_id": 25, "query": "What is the tax rate for the invoice with the issuance date of April 16, 2020?", "label": "0.03"}
+{"id": 209, "table_id": 25, "query": "What is the taxpayer identification number of the Red Panda Co., Ltd.?", "label": "9133010015306234567"}
+{"id": 210, "table_id": 25, "query": "What is the total invoicing amount for invoices issued in April 2020?", "label": "10500"}
+{"id": 211, "table_id": 25, "query": "What are the invoice numbers for invoices with an invoice type of electronic invoice?", "label": "1894563,1894566"}
+{"id": 212, "table_id": 25, "query": "What is the total amount excluding tax of the invoices issued by Hangzhou Dahua Electronics Co., Ltd. in May 2020?", "label": "3846.15"}
+{"id": 213, "table_id": 25, "query": "What is the amount of the invoice with the highest tax rate?", "label": "5000, 4500"}
+{"id": 214, "table_id": 25, "query": "How many invoices have blank remarks?", "label": "6"}
+{"id": 215, "table_id": 25, "query": "What is the lowest tax amount on the invoices of Flowers Co., Ltd.?", "label": "174.76"}
+{"id": 216, "table_id": 25, "query": "What is the highest tax-excluded amount in the invoices issued in June 2020?", "label": "5825.24"}
+{"id": 217, "table_id": 25, "query": "What is the taxpayer identification number of Hangzhou Dahua Electronics Co., Ltd.?", "label": "913301001530621847"}
+{"id": 218, "table_id": 25, "query": "What is the highest tax rate?", "label": "13%"}
+{"id": 219, "table_id": 26, "query": "During the Tmall event, can the store specify the courier?", "label": "Cannot specify express delivery, the store will make a selection based on actual situation or region"}
+{"id": 220, "table_id": 26, "query": "What are the shipping time regulations during Tmall's promotional period?", "label": "Do not commit to a shipment time and comply with the official activity requirement of shipment within 7 days."}
+{"id": 221, "table_id": 26, "query": "When should buyers request an invoice if they need one?", "label": "Customers need to request this themselves and specify it when placing the order."}
+{"id": 222, "table_id": 26, "query": "What specific sizing recommendations does the shop provide?", "label": "For reference only, no guarantee of suitability. It is recommended that buyers purchase return and transportation insurance to reduce losses."}
+{"id": 223, "table_id": 26, "query": "What does the content of the waiting speech include?", "label": "Need to wait+apology, the relevant content has already been mentioned in the welcome message. Here it mainly refers to waiting in chat conversations."}
+{"id": 224, "table_id": 27, "query": "What is the project with the highest proportion of costs?", "label": "Entertainment and Hospitality Expenses"}
+{"id": 225, "table_id": 27, "query": "What is the difference in total expenses between Sales Department 2 and Sales Department 3?", "label": "591.54"}
+{"id": 226, "table_id": 28, "query": "What is the location of the meeting?", "label": "Meeting Room on the Second Floor"}
+{"id": 227, "table_id": 29, "query": "Which types of items is the Department of Education responsible for purchasing?", "label": "Teaching Equipment (Outside the Centralized Procurement Catalog), Teaching Supplies, Books (Fiscal Subsidy Funds)"}
+{"id": 228, "table_id": 29, "query": "Which procurement projects in the Provincial Health Department are related to healthcare?", "label": "Medical equipment and devices (projects outside the centralized procurement directory standards), medical consumables, drugs (incorporated into government procurement supervision on the basis of current centralized bidding)"}
+{"id": 229, "table_id": 29, "query": "Which departments' projects involve vehicle procurement?", "label": "Provincial Fire Brigade, Provincial Public Security Department"}
+{"id": 230, "table_id": 30, "query": "What are the sub-items of the service category 'Business Application System'?", "label": "Account Creation, Account Closure, Password Reset, Permission Modification, Account Information Update, Organizational Structure Adjustment, Organizational Information Modification, Information Inquiry"}
+{"id": 231, "table_id": 30, "query": "How many categories does service sub-item 'XX-R-I-4' have?", "label": "8"}
+{"id": 232, "table_id": 30, "query": "Which service sub-items have a service number of XX-R-I-2, a request category of 'Host Operations', and a remark of 'Non-Production Environment'?", "label": "Server Configuration Management, Server Location Management, Server Capacity Performance Management, Server Network Management, Server Migration, Operating System Upgrade, Management Platform Setup"}
+{"id": 233, "table_id": 30, "query": "What is the remark for the network equipment management service with service number 'XX-T-DW-4'?", "label": "Non-production environment"}
+{"id": 234, "table_id": 30, "query": "What are the sub-items under the request catalog 'Storage Operations' for the service catalog 'Infrastructure Services' with the number XX-R-I-3?", "label": "Storage Hardware Management, Storage Platform Setup, Storage Resource Allocation, Storage Permission Management, Storage Location Management, Storage Network Management"}
+{"id": 235, "table_id": 30, "query": "Which service sub-items under the service category 'Infrastructure Services' and request category 'Network Operations' are related to VPN management?", "label": "VPN Management"}
+{"id": 236, "table_id": 30, "query": "How many service notes are for non-production environments?", "label": "36"}
+{"id": 237, "table_id": 30, "query": "How many service notes are for the production environment?", "label": "4"}
+{"id": 238, "table_id": 30, "query": "How many service notes indicate low risk and low impact?", "label": "6"}
+{"id": 239, "table_id": 30, "query": "How many different service sub-items are there in the host operation and maintenance request catalog for infrastructure services?", "label": "11"}
+{"id": 240, "table_id": 30, "query": "How many different service sub-items are there in the network operation and maintenance request catalog for infrastructure services?", "label": "8"}
+{"id": 241, "table_id": 31, "query": "What is the total production quantity of women's T-shirts?", "label": "240000"}
+{"id": 242, "table_id": 31, "query": "What is the maximum gross profit for ladies' dresses?", "label": "900000"}
+{"id": 243, "table_id": 31, "query": "What is the total gross margin for ladies' skirts in size M?", "label": "1480000"}
+{"id": 244, "table_id": 31, "query": "Which product has the highest production quantity?", "label": "Ladies' Dress"}
+{"id": 245, "table_id": 31, "query": "What is the maximum manufacturing cost for women's T-shirts?", "label": "49000"}
+{"id": 246, "table_id": 31, "query": "What is the total material cost for the lady's short skirt?", "label": "6325000"}
+{"id": 247, "table_id": 31, "query": "What is the total production quantity of ladies' dresses with size S?", "label": "130000"}
+{"id": 248, "table_id": 31, "query": "What is the total gross profit of women's T-shirts and women's skirts?", "label": "7770000"}
+{"id": 249, "table_id": 31, "query": "What is the model number of the lady's dress?", "label": "B-0001(Level 1)"}
+{"id": 250, "table_id": 31, "query": "What are the specifications for ladies' skirts?", "label": "S, M, L"}
+{"id": 251, "table_id": 32, "query": "Module 1: In the Quality and Environmental Management System control, what are the sub-projects related to training?", "label": "Training System Establishment (onboarding training, departmental training, in-service training, job transition training, and post-training effectiveness evaluation); Definition of special and critical positions, and their training and assessment; Comprehensive Quality Basics Training for All Employees (planning, implementation, achievement); Specialized Training on SPC, Environmental Protection, ESD, etc. (planning, implementation, achievement); Training and Qualification Assessment for Internal Auditors, Instrument Calibration Personnel, etc.; New Product Introduction Training (planning, implementation, achievement)"}
+{"id": 252, "table_id": 32, "query": "Module 3: In R&D and engineering management, what are the sub-projects involving environmental protection design?", "label": "Green and environmentally friendly product design (such as EU RoHS, WEEE, EUP directives, energy consumption standards, etc.), how to meet customers' environmental protection requirements (such as providing guarantees that raw materials do not use prohibited substances, test reports, MSDS, etc.)"}
+{"id": 253, "table_id": 32, "query": "Module 5: Equipment and Instrument Control, what are the sub-projects involved in equipment maintenance and upkeep?", "label": "Maintenance and Management of Production Equipment (Planning and Implementation), Maintenance and Management of Testing Equipment (Planning and Implementation), Maintenance and Management of Fixtures and Jigs (Planning and Implementation)"}
+{"id": 254, "table_id": 32, "query": "In Module 6: Supplier Management, which sub-projects are involved in environmental protection assessments?", "label": "Supplier risk assessment management (including environmental risks), introduction and review process for new suppliers (including environmental aspects), supplier performance evaluation management (including incentives, elimination management, and environmental assessments), supplier agreement management (quality and environmental agreements, commitment letters, framework agreements, etc.), environmental raw material list and investigation of hazardous substance information for materials, and management of hazardous substance test reports."}
+{"id": 255, "table_id": 32, "query": "Module 7: In Warehouse Management, which sub-projects involve the management of ESD sensitive components?", "label": "Management of ESD Sensitive Components (Storage, Shipment, etc.)"}
+{"id": 256, "table_id": 32, "query": "Module 8: In the incoming quality control, which sub-items are involved in environmental protection inspection?", "label": "Incoming Material Inspection Area Temperature and Humidity Control (Environmental Protection Inspection Area, and when there are dust-free and ESD requirements), Environmental Protection Inspection Management (inspection frequency, split standards, records)"}
+{"id": 257, "table_id": 32, "query": "Module 9: In Process Quality Control, which sub-projects are involved in environmental monitoring?", "label": "IPQC Patrol Inspection System (Standards, Implementation, Environmental Monitoring), Production Line Maintenance Management (Maintenance Area, Rework Area, SOP, Reports, Including Division of Environmental and Non-Environmental Areas)"}
+{"id": 258, "table_id": 32, "query": "In Module 10: Final Product Control, which sub-projects are related to product traceability?", "label": "Can the product be traced back to its raw materials after shipment?"}
+{"id": 259, "table_id": 32, "query": "In Module 11: Customer Complaints and Satisfaction Management, what are the sub-projects involved in handling customer complaints?", "label": "Customer Complaint List Management, Corrective and Preventive Actions for Customer Complaints (8D Report), Timely and Effective Handling of Customer Complaints (Response Time, Resolution Cycle), Customer Return and Repair Management (Process, Record)"}
+{"id": 260, "table_id": 32, "query": "Which module has the most review items?", "label": "Module 9: Process Quality Control"}
+{"id": 261, "table_id": 32, "query": "How many evaluation items are there in Module Ten?", "label": "10"}
+{"id": 262, "table_id": 32, "query": "Please list all the review items for Module 11.", "label": "Customer Complaint List Management, Corrective and Preventive Actions for Customer Complaints (8D Report), Timely and Effective Handling of Customer Complaints (Response Time, Resolution Cycle), Customer Return and Rework Management (Process, Records), Customer Satisfaction Survey Management (Process, Records), Communication Mechanism for Customer Quality Issues, Rework Data Statistics (Monthly Report, Weekly Report, Analysis and Handling)"}
+{"id": 263, "table_id": 32, "query": "Please list all the review items for Module 5.", "label": "Equipment Management (Procurement, Acceptance, Numbering, Inventory, and Equipment Status Identification), Equipment Maintenance Management (Planning, Implementation), Equipment Repair Management (Procedure, Implementation), Equipment Disposal Management (Regulations, Implementation), Test Equipment Management (Procurement, Acceptance, Numbering, Inventory, and Test Equipment Status Identification), Test Equipment Maintenance Management (Planning, Implementation), Test Equipment Repair Management (Procedure, Implementation), Test Equipment Calibration Management (Planning, Implementation, Internal Calibration Standards, Calibration Identification), Test Equipment Disposal Management (Regulations, Implementation), Tooling Management (Procurement or Production, Acceptance, Numbering, Inventory), Tooling Maintenance Management (Planning, Implementation), Tooling Repair Management (Procedure, Implementation), Tooling Disposal Management (Regulations, Implementation), Environmental Protection Testing Equipment and Tooling Management (Record Keeping, Maintenance, Storage Area Allocation)"}
+{"id": 264, "table_id": 33, "query": "What is the ending balance of cash on hand?", "label": "610"}
+{"id": 265, "table_id": 33, "query": "What are the initial debit and credit amounts of the bank deposit?", "label": "834450.00"}
+{"id": 266, "table_id": 33, "query": "What is the ending balance of accounts receivable?", "label": "308750"}
+{"id": 267, "table_id": 33, "query": "What is the difference between the ending balance and the beginning balance of raw materials?", "label": "38300"}
+{"id": 268, "table_id": 33, "query": "What is the ending balance of fixed assets?", "label": "2114500"}
+{"id": 269, "table_id": 33, "query": "What is the total amount of short-term borrowings?", "label": "2100000"}
+{"id": 270, "table_id": 33, "query": "What is the ending balance of salaries and wages payable?", "label": "59828.40"}
+{"id": 271, "table_id": 34, "query": "What is the increase in accounts payable?", "label": "-17834868.30"}
+{"id": 272, "table_id": 34, "query": "What is the total of the beginning balances of unearned revenue and inventory?", "label": "724948978.24"}
+{"id": 273, "table_id": 34, "query": "Which project has the highest end-of-period figure?", "label": "Inventory"}
+{"id": 274, "table_id": 34, "query": "Which projects have a negative growth rate?", "label": "Accounts Payable, Other Receivables"}
+{"id": 275, "table_id": 34, "query": "What is the numerical relationship between the increase in advance receipts and its growth rate?", "label": "Growth Rate = Growth Amount / Initial Number"}
+{"id": 276, "table_id": 34, "query": "What is the difference between the beginning and ending inventory?", "label": "631893884.25"}
+{"id": 277, "table_id": 35, "query": "What is the invoice number issued on September 1, 2021?", "label": "35734919"}
+{"id": 278, "table_id": 35, "query": "What is the tax amount for the laptop?", "label": "152.20"}
+{"id": 279, "table_id": 35, "query": "What is the total amount paid by Guangzhou Xinnan Company for the calculators?", "label": "14186"}
+{"id": 280, "table_id": 35, "query": "What is the total tax amount for the motherboard purchased by Qing Tian Design Rice Husk 1?", "label": "674.95"}
+{"id": 281, "table_id": 35, "query": "What is the name of the goods on the invoice issued on September 8, 2021?", "label": "Motherboard"}
+{"id": 282, "table_id": 35, "query": "Which goods in all invoices are measured in 'sets'?", "label": "Laptop, Motherboard"}
+{"id": 283, "table_id": 35, "query": "How many invoices involve motherboards?", "label": "4"}
+{"id": 284, "table_id": 36, "query": "Which project has the highest end-of-period figure?", "label": "Inventory"}
+{"id": 285, "table_id": 36, "query": "What is the opening balance of accounts receivable for Hua Yun Information Co., Ltd?", "label": "2622583.58"}
+{"id": 286, "table_id": 36, "query": "Which project has a negative growth amount?", "label": "Accounts Receivable, Other Receivables"}
+{"id": 287, "table_id": 36, "query": "What is the increase in inventory?", "label": "631893884.25"}
+{"id": 288, "table_id": 36, "query": "Which project has the highest growth rate in the financial condition analysis of Hua Yun Information Co., Ltd?", "label": "Inventory"}
+{"id": 289, "table_id": 37, "query": "What was the total accounts receivable of Bill Tech on April 20, 2020?", "label": "14000"}
+{"id": 290, "table_id": 37, "query": "Which transaction has an ending balance of -1800?", "label": "Transaction number 2"}
+{"id": 291, "table_id": 37, "query": "What is the total amount of actual receipts in all transactions handled by Yu Lele?", "label": "12200"}
+{"id": 292, "table_id": 37, "query": "Are there any outstanding balances in all transactions?", "label": "Yes"}
+{"id": 293, "table_id": 37, "query": "Which settlement method was used by the Purchasing Department in the transaction on April 20, 2020?", "label": "Bank Transfer"}
+{"id": 294, "table_id": 37, "query": "What is the difference between the receivable amount and the actual amount received for all transactions?", "label": "1800"}
+{"id": 295, "table_id": 37, "query": "Which transaction on April 20, 2020 had the highest receivable amount for Bill Tech?", "label": "Transaction with serial number 1"}
+{"id": 296, "table_id": 37, "query": "How many transactions have an ending balance of 0?", "label": "2"}
+{"id": 297, "table_id": 38, "query": "What are the main benefits?", "label": "1. Private Customization\n2. Free Trial\n3. Exclusive Flash Sale\n4. Free Shipping for Two Items\n5. Five New Arrivals"}
+{"id": 298, "table_id": 38, "query": "Who is the target group for the September Member Exclusive Day's main promotion of private customization?", "label": "Advanced Member, VIP, and Supreme VIP Member, with M >= 500 and F >= 5"}
+{"id": 299, "table_id": 38, "query": "Which title of the new EDM releases on September 23 mentions Miss Maimaie?", "label": "Don't want to go to work, but if it's unavoidable, let Miss Maimai help you."}
+{"id": 300, "table_id": 38, "query": "Which new products were mentioned in the new SMS copy launched on September 23?", "label": "Woven Bag, Woven Wallet"}
+{"id": 301, "table_id": 38, "query": "What is the ratio of the number of returning customers to the number of customers sent in the expected target?", "label": "0.01"}
+{"id": 302, "table_id": 38, "query": "What are the objects for free trial and flash sale during the September Member Exclusive Day?", "label": "Those who have made purchases in the past month or participated in store anniversary and other major promotions."}
+{"id": 303, "table_id": 39, "query": "What was the total transportation fee for selling a unit in January 2012?", "label": "13078.80"}
+{"id": 304, "table_id": 39, "query": "What were the expense categories for Sales Department Two on January 31, 2012?", "label": "Rental Fee"}
+{"id": 305, "table_id": 39, "query": "Summarize the advertising expenses of Sales Department Three in January 2012.", "label": "The advertising expenses incurred by Sales Department Three in January 2012 include 12540 yuan, 71250 yuan, 2100 yuan, and 3256.50 yuan."}
+{"id": 306, "table_id": 39, "query": "What was the exhibition fee of Department One from January 1, 2012 to January 5, 2012?", "label": "5200"}
+{"id": 307, "table_id": 39, "query": "What was the total rental fee for Sales Department Two in January 2012?", "label": "51039.50"}
+{"id": 308, "table_id": 39, "query": "In January 2012, which department had the highest advertising expenditure?", "label": "Sales Department Three"}
+{"id": 309, "table_id": 39, "query": "What was the exhibition fee of Sales Department One on January 20, 2012?", "label": "500"}
+{"id": 310, "table_id": 39, "query": "What was the total transportation cost for Sales Department Three in January 2012?", "label": "11000"}
+{"id": 311, "table_id": 39, "query": "In January 2012, on which dates were advertising expenses incurred by Sales Department One?", "label": "2012-01-02, 2012-01-30"}
+{"id": 312, "table_id": 40, "query": "What is the number of finance-supported personnel in the Zhanjiang Human Resources and Social Security Bureau?", "label": "750"}
+{"id": 313, "table_id": 40, "query": "What is the expected goal of the interest subsidy funds for start-up guarantee loans?", "label": "Effectively implement the entrepreneurship guarantee loan policy, complete the annual任务 of issuing new entrepreneurship guarantee loans, pay the loan interest subsidy funds as prescribed, and promote employment through entrepreneurship."}
+{"id": 314, "table_id": 40, "query": "What are the requirements for the number of participants and the distribution of pension funds in the overall performance objectives of the basic old-age insurance for urban and rural residents?", "label": "The number of participants in the basic old-age insurance for urban and rural residents has reached the planned target. All eligible urban and rural residents should receive their pensions, and all缴费补贴应补尽补。 \n\n(Note: The last part of the sentence seems to be incomplete or unclear in the original Chinese text, so it's directly translated without modification.)"}
+{"id": 315, "table_id": 40, "query": "What are the main objectives of the \"Smart HRSS\" construction?", "label": "First, integrate disparate business information system data, achieve business collaboration, and connect them into \"a whole\". Second, promote the full online processing of business procedures. Third, promote the balanced development of human resources and social security informatization infrastructure at the county (city, district) level. Fourth, strengthen the application of the social security card as a \"one-card-for-all\" solution."}
+{"id": 316, "table_id": 40, "query": "What is the standard for the basic pension for urban and rural residents?", "label": "≥200 RMB per person per month"}
+{"id": 317, "table_id": 40, "query": "What is the proposed funding for the special funds to promote employment?", "label": "5 million yuan"}
+{"id": 318, "table_id": 40, "query": "What is the project expenditure budget amount of Zhanjiang City Human Resources and Social Security Bureau in 2023?", "label": "72,204.57 million yuan"}
+{"id": 319, "table_id": 40, "query": "What are the basic expenditures and project expenditures in the 2023 budget of Zhanjiang Human Resources and Social Security Bureau?", "label": "Basic expenditure is 10596.35 million yuan, and project expenditure is 72204.57 million yuan."}
+{"id": 320, "table_id": 40, "query": "What are the sources of revenue for the agency in 2023? What percentage does each source represent?", "label": "The fiscal allocation is 82800.92 million yuan, and other funds are 0 million yuan."}
+{"id": 321, "table_id": 40, "query": "What are the number of financially supported personnel and the number of subordinate units of Zhanjiang Human Resources and Social Security Bureau in 2023?", "label": "The number of fiscal dependents is 750, and the number of secondary units is 10."}
+{"id": 322, "table_id": 40, "query": "How many secondary indicators are there in the performance metrics?", "label": "9"}
+{"id": 323, "table_id": 40, "query": "How many third-level indicators are there in the performance metrics?", "label": "16"}
+{"id": 324, "table_id": 41, "query": "What is the debit amount for the record with voucher number 1?", "label": "264810"}
+{"id": 325, "table_id": 41, "query": "What is the secondary name of voucher number 2?", "label": "Renminbi"}
+{"id": 326, "table_id": 41, "query": "How many records are there on July 15, 2007?", "label": "4"}
+{"id": 327, "table_id": 41, "query": "How many records have negative amounts in the entries where the subject name is \"Cash/RMB\"?", "label": "4"}
+{"id": 328, "table_id": 41, "query": "What is the summary of voucher number 6?", "label": "RMB"}
+{"id": 329, "table_id": 41, "query": "What is the total sum of all recorded debit amounts?", "label": "675810"}
+{"id": 330, "table_id": 41, "query": "What is the credit amount for voucher number 5?", "label": "407800"}
+{"id": 331, "table_id": 41, "query": "What are the voucher numbers on July 16, 2007?", "label": "7, 8"}
+{"id": 332, "table_id": 41, "query": "What is the amount of the record with the account name \"Administrative Expenses/Office Expenses\"?", "label": "-1000"}
+{"id": 333, "table_id": 42, "query": "What is the total income in May?", "label": "235459"}
+{"id": 334, "table_id": 42, "query": "Which items in the income details for May have amounts exceeding 30000?", "label": "Project Name 2, Project Name 5, Project Name 6, Project Name 7"}
+{"id": 335, "table_id": 42, "query": "What is the average amount of income in the May income details?", "label": "26162.11"}
+{"id": 336, "table_id": 42, "query": "Is the total sum of income amounts in the May income details equal to the total income for May?", "label": "Yes"}
+{"id": 337, "table_id": 42, "query": "What is the median of the income amounts in the May income statement?", "label": "23588"}
+{"id": 338, "table_id": 42, "query": "What is the standard deviation of the income amounts in the May income details?", "label": "7238.55"}
+{"id": 339, "table_id": 42, "query": "What is the distribution of income amounts in the May income details?", "label": "The income amounts are mainly distributed between 18000 and 37000, with most income amounts concentrated between 20000 and 35000."}
+{"id": 340, "table_id": 43, "query": "What is the highest price of the women's T-shirts produced by Sunny Clothing?", "label": "48"}
+{"id": 341, "table_id": 43, "query": "What is the highest estimated annual sales volume for the ladies' skirts produced by Blue Sky Clothing?", "label": "80000"}
+{"id": 342, "table_id": 43, "query": "What is the price of second-grade quality ladies' knitted sweaters produced by Nishang?", "label": "38"}
+{"id": 343, "table_id": 43, "query": "What is the estimated annual sales volume of the best-selling ladies' dress produced by Romantic Style?", "label": "90000"}
+{"id": 344, "table_id": 43, "query": "What are the selling prices of first-grade quality ladies' dresses produced by Sunny Clothing and Blue Sky Clothing?", "label": "42, 44"}
+{"id": 345, "table_id": 43, "query": "What is the estimated annual sales volume of second-grade quality women's T-shirts produced by Nishang?", "label": "80000"}
+{"id": 346, "table_id": 43, "query": "What are the selling prices of grade one and grade two quality ladies' shorts produced by Romantic Charm?", "label": "40, 38"}
+{"id": 347, "table_id": 43, "query": "What is the price range of first-grade women's knitted sweaters produced by all companies?", "label": "38-42"}
+{"id": 348, "table_id": 43, "query": "What is the estimated annual sales volume of first-grade quality ladies' dresses and ladies' skirts produced by Nishang?", "label": "140000"}
+{"id": 349, "table_id": 43, "query": "What is the price of grade three quality ladies' dresses produced by Romantic Charm?", "label": "38"}
+{"id": 350, "table_id": 44, "query": "Who has the highest reported amount?", "label": "Shajianqin"}
+{"id": 351, "table_id": 44, "query": "What is Gong Ruiping's remaining balance?", "label": "69.10"}
+{"id": 352, "table_id": 44, "query": "Who are the people with reported amounts exceeding 10000?", "label": "Qian Bingyan, Ma Jingjing, Lin Zufang, Sha Yaqin, Xu Xiu lan, Cheng Hanchong, Gu Yaqun, Wu Chengyao, Shi Hui"}
+{"id": 353, "table_id": 44, "query": "Who has the lowest remaining balance?", "label": "Ji Suoping"}
+{"id": 354, "table_id": 44, "query": "Who has the highest ratio of reported amount to remaining balance?", "label": "Gu Yaqun"}
+{"id": 355, "table_id": 44, "query": "Calculate the total sum of all reported amounts.", "label": "269,345.36"}
+{"id": 356, "table_id": 44, "query": "Who has a remaining balance exceeding 50% of the reported amount?", "label": "Xu XiuLAN, Song Yahong, Wu Xiulan, Shi Hui, Dai Xijin, Lu Jianshan, Cai Lei, Sha Yaqin, Zhang Juying"}
+{"id": 357, "table_id": 44, "query": "Summarize the distribution of the remaining balance.", "label": "The remaining amounts range from 36.30 to 19558.21, with most people having less than 2000 remaining. However, a few individuals, such as Shayaqin and Xuxiulan, have significantly higher remaining amounts than others."}
+{"id": 358, "table_id": 45, "query": "What is the average value of Xiao Qiu Yu?", "label": "2000"}
+{"id": 359, "table_id": 45, "query": "What is the variance of Liu SuiFeng?", "label": "610520"}
+{"id": 360, "table_id": 45, "query": "What is the total sum of the observation numbers of Jin Sunpan and Murong Fu?", "label": "10"}
+{"id": 361, "table_id": 45, "query": "Among all individuals, who has the largest sum value?", "label": "Nangong Yan"}
+{"id": 362, "table_id": 45, "query": "How much do the confidence levels of Xiao Qiu Yu and Liu Sui Feng differ? (95.00%)", "label": "692.54"}
+{"id": 363, "table_id": 45, "query": "What is the area of MuRenFu?", "label": "2050"}
+{"id": 364, "table_id": 46, "query": "Which account was used for the expenditure on November 5, 2020?", "label": "WeChat"}
+{"id": 365, "table_id": 46, "query": "Which account had the most number of expenditures from November 1 to 5, 2020?", "label": "WeChat"}
+{"id": 366, "table_id": 46, "query": "From November 1 to 5, 2020, what were the sources of income?", "label": "Fund Returns, Salary"}
+{"id": 367, "table_id": 47, "query": "What is the product sales volume in January?", "label": "31730"}
+{"id": 368, "table_id": 47, "query": "What is the value of the exponential smoothing forecast in March?", "label": "33370"}
+{"id": 369, "table_id": 47, "query": "What was the standard error in June?", "label": "3220.82"}
+{"id": 370, "table_id": 47, "query": "What is the standard error between the predicted and actual sales volume of the product in December?", "label": "4753.82"}
+{"id": 371, "table_id": 47, "query": "Which month has the highest product sales?", "label": "18 months"}
+{"id": 372, "table_id": 47, "query": "What is the average standard error of product sales from January to August?", "label": "3685.45"}
+{"id": 373, "table_id": 47, "query": "In 18 months, which month has the largest standard error?", "label": "18 months"}
+{"id": 374, "table_id": 47, "query": "What trend did the product sales show over 18 months?", "label": "Shows an overall upward trend but with fluctuations."}
+{"id": 375, "table_id": 48, "query": "What is the total amount of invoices for Unit 1?", "label": "580091"}
+{"id": 376, "table_id": 48, "query": "What is the invoicing amount for invoice number 209946?", "label": "137795"}
+{"id": 377, "table_id": 48, "query": "What is the invoice number with the earliest receipt date for Unit 2?", "label": "11860110"}
+{"id": 378, "table_id": 48, "query": "What is the difference in the invoicing amount between Unit 1 and Unit 2?", "label": "112229"}
+{"id": 379, "table_id": 48, "query": "What is the voucher number for invoice number 13698788?", "label": "209952"}
+{"id": 380, "table_id": 48, "query": "What is the date of receipt for voucher number 209938?", "label": "2134-10-07 00:00:00"}
+{"id": 381, "table_id": 48, "query": "How many invoice quantities are there for Unit 1 and Unit 2?", "label": "Unit 1: 10, Unit 2: 10"}
+{"id": 382, "table_id": 49, "query": "What is the amount of carried-over material costs on May 1, 2020?", "label": "3000"}
+{"id": 383, "table_id": 49, "query": "How many cash-related transactions were there on May 6, 2020?", "label": "1"}
+{"id": 384, "table_id": 49, "query": "What was the total amount of wages payable on May 10, 2020?", "label": "8000"}
+{"id": 385, "table_id": 49, "query": "What was the withdrawal amount on May 15, 2020?", "label": "20000"}
+{"id": 386, "table_id": 49, "query": "Which transaction had the largest amount in the trades on May 21, 2020?", "label": "Sell 10 units of product N"}
+{"id": 387, "table_id": 49, "query": "What was the main business income on May 25, 2020?", "label": "16000"}
+{"id": 388, "table_id": 49, "query": "What was the amount of the payment compensation on May 31, 2020?", "label": "400"}
+{"id": 389, "table_id": 49, "query": "What was the total main business revenue in May 2020?", "label": "96500"}
+{"id": 390, "table_id": 49, "query": "Which day in May 2020 had the highest total expenditure in the bank deposit account?", "label": "May 22"}
+{"id": 391, "table_id": 49, "query": "What is the total amount of wages payable?", "label": "20000"}
+{"id": 392, "table_id": 49, "query": "What are the items in accounting vouchers that involve bank deposits?", "label": "Material Procurement, Cash, Accounts Payable, Main Business Income, Non-operating Expenses, Accrued Expenses, Prepaid Expenses"}
+{"id": 393, "table_id": 49, "query": "What was the total amount of capital flow on May 31, 2016?", "label": "1000 yuan"}
+{"id": 394, "table_id": 49, "query": "How many entries are there in the accounting voucher?", "label": "59"}
+{"id": 395, "table_id": 49, "query": "How many entries are there on May 4?", "label": "3"}
+{"id": 396, "table_id": 50, "query": "What is the total number of graduates from Shandong Women's University in 2024?", "label": "5660"}
+{"id": 397, "table_id": 50, "query": "Which major has the highest number of undergraduate graduates in the Accounting School?", "label": "Accounting (Bachelor's Top-Up)"}
+{"id": 398, "table_id": 50, "query": "Who is the employment contact person in the School of Foreign Languages?", "label": "Mr. Song"}
+{"id": 399, "table_id": 50, "query": "Who are the employment contacts for the School of Education and the School of Accounting?", "label": "The contact person for the School of Education is Teacher Gong. The employment contact person for the School of Accounting is Teacher Shi."}
+{"id": 400, "table_id": 50, "query": "Which major at the专科level in the School of Data Science and Computer has the fewest students? How many students are there?", "label": "Computer Application Technology (School-Enterprise Cooperation), 36 people"}
+{"id": 401, "table_id": 50, "query": "How many undergraduate programs are there in the School of Economics?", "label": "5 apples"}
+{"id": 402, "table_id": 50, "query": "How many majors are there in the undergraduate program of the College of Education?", "label": "7"}
+{"id": 403, "table_id": 50, "query": "How many majors are there in the undergraduate program of the Academy of Arts?", "label": "9"}
+{"id": 404, "table_id": 50, "query": "How many responsible teachers are there in the Academy of Arts?", "label": "1"}
+{"id": 405, "table_id": 50, "query": "How many undergraduate programs are there in the School of Business Administration?", "label": "8"}
+{"id": 406, "table_id": 50, "query": "How many programs in the School of Business Administration are for students advancing from associate's to bachelor's degrees?", "label": "4"}
+{"id": 407, "table_id": 50, "query": "How many majors in the Tourism Institute are for associate to bachelor's programs?", "label": "2"}
+{"id": 408, "table_id": 50, "query": "How many programs in the School of Economics are in collaboration with enterprises?", "label": "3"}
+{"id": 409, "table_id": 51, "query": "What is the projected sales volume for the entire year?", "label": "4650"}
+{"id": 410, "table_id": 51, "query": "What is the sum of the expected sales volume and the expected ending inventory for the second quarter?", "label": "1240"}
+{"id": 411, "table_id": 52, "query": "What was the income amount on October 1, 2020?", "label": "28608"}
+{"id": 412, "table_id": 52, "query": "How many items exceed 30000 in the income details for October?", "label": "3"}
+{"id": 413, "table_id": 52, "query": "What is the revenue amount for Project Name 7?", "label": "38119"}
+{"id": 414, "table_id": 52, "query": "How many items in the income details for October have an income amount between 20000 and 30000?", "label": "4"}
+{"id": 415, "table_id": 52, "query": "Is the total sum of income amounts in the October income details consistent with the total income for October?", "label": "Yes"}
+{"id": 416, "table_id": 53, "query": "How much was spent in total on May 6, 2018?", "label": "331"}
+{"id": 417, "table_id": 53, "query": "What is the item with the highest expenditure amount in the table?", "label": "Color Printer"}
+{"id": 418, "table_id": 53, "query": "What is the total amount Manager Dun reimbursed?", "label": "325"}
+{"id": 419, "table_id": 53, "query": "Which payment methods were used in the table?", "label": "['WeChat Pay', 'Cash Advance', 'Alipay']"}
+{"id": 420, "table_id": 53, "query": "What is the total amount paid through Alipay on May 10?", "label": "1259"}
+{"id": 421, "table_id": 53, "query": "What is the total amount of loans taken by the workers mentioned in the table?", "label": "835"}
+{"id": 422, "table_id": 53, "query": "What is the total expenditure from May 6 to May 13, 2018?", "label": "8804.29"}
+{"id": 423, "table_id": 54, "query": "What is the estimated annual sales volume of the women's T-shirts produced by Nishang?", "label": "70000"}
+{"id": 424, "table_id": 54, "query": "What is the market share of the women's T-shirts produced by Blue Sky Clothing?", "label": "0.34"}
+{"id": 425, "table_id": 54, "query": "What is the profit of the product priced at 46 in the pricing analysis?", "label": "1678400"}
+{"id": 426, "table_id": 54, "query": "What is the estimated market share of a product priced at 48 in the pricing analysis?", "label": "0.24"}
+{"id": 427, "table_id": 54, "query": "What is the profit of the product priced at 47 in the pricing analysis?", "label": "1648500"}
+{"id": 428, "table_id": 55, "query": "What was the total income in January 2017?", "label": "70000"}
+{"id": 429, "table_id": 55, "query": "What was the total expenditure in March 2017?", "label": "4000"}
+{"id": 430, "table_id": 55, "query": "What were the sources of income in June 2017?", "label": "Fee Refund, Received Engineering Payment"}
+{"id": 431, "table_id": 55, "query": "What is the income summary for September 19, 2017?", "label": "Bad Debt Income"}
+{"id": 432, "table_id": 55, "query": "How many times was the total expenditure amount greater than 10000 in the year 2017?", "label": "3"}
+{"id": 433, "table_id": 55, "query": "What was the largest expenditure in December 2017?", "label": "Employee Salary, Payment for Cement Materials"}
+{"id": 434, "table_id": 55, "query": "What is the type of income on July 10, 2017?", "label": "Sale of Fixed Assets"}
+{"id": 435, "table_id": 55, "query": "What was the total revenue for the whole year of 2017?", "label": "559500"}
+{"id": 436, "table_id": 55, "query": "What was the income amount on May 16, 2017?", "label": "5000"}
+{"id": 437, "table_id": 56, "query": "What was the total revenue amount in 2020?", "label": "69100"}
+{"id": 438, "table_id": 56, "query": "What was the total expenditure amount in 2020?", "label": "29300"}
+{"id": 439, "table_id": 56, "query": "What was the year-end balance in 2020?", "label": "39800"}
+{"id": 440, "table_id": 56, "query": "Which month was the highest in terms of income amount in 2020?", "label": "December"}
+{"id": 441, "table_id": 56, "query": "Which month had the lowest expenditure in 2020?", "label": "February"}
+{"id": 442, "table_id": 56, "query": "Which account had the highest income amount in 2020?", "label": "Account 5"}
+{"id": 443, "table_id": 56, "query": "Which months in 2020 had a surplus amount exceeding 4000?", "label": "August, September, October, November, December"}
+{"id": 444, "table_id": 57, "query": "What is the projected sales revenue for next year?", "label": "982000"}
+{"id": 445, "table_id": 57, "query": "What is the net profit margin for sales this year?", "label": "0.05"}
+{"id": 446, "table_id": 57, "query": "What is the expected dividend payout ratio for next year?", "label": "0.25"}
+{"id": 447, "table_id": 57, "query": "What is the predicted funding requirement for next year?", "label": "421227.47"}
+{"id": 448, "table_id": 57, "query": "Which assets are sensitive items?", "label": "Monetary Funds, Accounts Receivable, Inventory, Fixed Assets"}
+{"id": 449, "table_id": 57, "query": "What is the percentage of total assets to sales revenue?", "label": "2.37"}
+{"id": 450, "table_id": 57, "query": "What is the projected value of next year's sporadic funding requirement?", "label": "52630"}
+{"id": 451, "table_id": 57, "query": "Is inventory a sensitive item?", "label": "Yes"}
+{"id": 452, "table_id": 58, "query": "What is the total amount of working capital loans from Industrial and Commercial Bank of China?", "label": "56000"}
+{"id": 453, "table_id": 58, "query": "Which loan from the Construction Bank has the longest loan term?", "label": "Project Loan (360 Days)"}
+{"id": 454, "table_id": 58, "query": "What is the total amount of interest payable on all loans from China Merchants Bank?", "label": "9234.00"}
+{"id": 455, "table_id": 58, "query": "How many loan entries are there for 'project loans'?", "label": "6"}
+{"id": 456, "table_id": 58, "query": "Which loan from China Merchants Bank has the highest annual interest rate?", "label": "Project Loan (0.06)"}
+{"id": 457, "table_id": 58, "query": "Which loan has the largest loan amount among all the loans?", "label": "Project loan from Industrial and Commercial Bank of China (260000)"}
+{"id": 458, "table_id": 58, "query": "What is the shortest loan term in days for loans from the Agricultural Bank?", "label": "90"}
+{"id": 459, "table_id": 58, "query": "Which loan has collateral asset number 'KBL-1S02419'?", "label": "Project Loan from Industrial and Commercial Bank of China"}
+{"id": 460, "table_id": 58, "query": "Which loan has the highest accrued interest among all loans?", "label": "Project loan from Bank of China (7157.10)"}
+{"id": 461, "table_id": 58, "query": "What is the loan amount for the借款额度 should be specified or replaced with a specific value to complete the translation accurately. However, based on the given instruction, here is the partial translation:\n\nWhat is the loan amount for the loan from the China Construction Bank?", "label": "65000"}
+{"id": 462, "table_id": 59, "query": "What is the total amount of the contract values for all contracts?", "label": "65000"}
+{"id": 463, "table_id": 59, "query": "Which contract has the highest payment rate?", "label": "Contract 8"}
+{"id": 464, "table_id": 59, "query": "What contracts have rice husk 1 as the customer name?", "label": "Contract 1, Contract 6"}
+{"id": 465, "table_id": 59, "query": "What is the average payment rate for all contracts?", "label": "0.35"}
+{"id": 466, "table_id": 60, "query": "What was the total expenditure amount in June 2019?", "label": "36200"}
+{"id": 467, "table_id": 60, "query": "Who processed the expenditure on June 10?", "label": "Li Si"}
+{"id": 468, "table_id": 60, "query": "What is the expense category on June 5?", "label": "Travel Expenses"}
+{"id": 469, "table_id": 60, "query": "What is the total amount spent on employee benefits?", "label": "3000"}
+{"id": 470, "table_id": 60, "query": "On which day was the expense summary 'Buy A4 printing paper'?", "label": "2019-06-10, 2018-06-15"}
+{"id": 471, "table_id": 60, "query": "What was the maximum amount of expenditure processed by Zhang San in June?", "label": "5400"}
+{"id": 472, "table_id": 60, "query": "How many times were travel expenses incurred in June?", "label": "3"}
+{"id": 473, "table_id": 60, "query": "Which types of expenses are handled by Li Si?", "label": "Office Supplies, Catering, Travel Expenses, Salary Management"}
+{"id": 474, "table_id": 61, "query": "How many students in the Graduate Program of the School of Civil Engineering are majoring in Civil Engineering?", "label": "41"}
+{"id": 475, "table_id": 61, "query": "What is the total number of undergraduate students in the School of Management Engineering?", "label": "608"}
+{"id": 476, "table_id": 61, "query": "How many students in the field of Heating, Gas Supply, Ventilation, and Air Conditioning Engineering from the Graduate School of Thermal Energy Engineering are in Rizhao?", "label": "1"}
+{"id": 477, "table_id": 61, "query": "How many students majoring in Environmental Engineering from the School of Municipal and Environmental Engineering are in Linyi?", "label": "11"}
+{"id": 478, "table_id": 61, "query": "How many students of the Architecture (Professional Master) program in the School of Architecture and Urban Planning are in Qingdao?", "label": "6"}
+{"id": 479, "table_id": 61, "query": "How many students majoring in Fine Arts are from Anhui among the postgraduate students in the Academy of Arts?", "label": "1"}
+{"id": 480, "table_id": 61, "query": "How many students majoring in Mechanical Engineering from the School of Electrical and Mechanical Engineering are in Jinan?", "label": "36"}
+{"id": 481, "table_id": 61, "query": "How many students from the Department of Control Science and Engineering in the Graduate School of Information and Electrical Engineering are in Heze?", "label": "5"}
+{"id": 482, "table_id": 61, "query": "How many students majoring in Accounting in the undergraduate program of the Business School are located in Weifang?", "label": "12"}
+{"id": 483, "table_id": 61, "query": "How many students majoring in Materials Science and Engineering from the Graduate School of the College of Materials Science and Engineering are in Linyi?", "label": "1"}
+{"id": 484, "table_id": 61, "query": "How many majors at Yantai campus are there for the graduating class of 2025 at Shandong Jianzhu University?", "label": "33 pieces"}
+{"id": 485, "table_id": 61, "query": "How many graduates will the School of Civil Engineering at Shandong Jianzhu University have in 2025?", "label": "653"}
+{"id": 486, "table_id": 61, "query": "What is the major of Shandong Jianzhu University's class of 2025 graduates that is supervised by Professor Wang Wenlong?", "label": "Heating, Ventilation, Air Conditioning and Gas Supply Engineering, Power Engineering and Engineering Thermophysics, Energy and Power, Civil Engineering and Water Resources"}
+{"id": 487, "table_id": 61, "query": "How many graduate programs are there in the Academy of Arts?", "label": "6"}
+{"id": 488, "table_id": 61, "query": "What is the most enrolled major in Jinan?", "label": "Mechanical Engineering"}
+{"id": 489, "table_id": 61, "query": "How many undergraduate majors are there in the Academy of Arts?", "label": "8"}
+{"id": 490, "table_id": 61, "query": "What are the undergraduate majors offered by the School of Electrical and Mechanical Engineering?", "label": "Mechanical Engineering, Mechatronics Engineering, Automotive Engineering"}
+{"id": 491, "table_id": 61, "query": "What are the postgraduate programs in the School of Information and Electrical Engineering?", "label": "Control Science and Engineering, Control Engineering"}
+{"id": 492, "table_id": 61, "query": "How many majors are there in the School of Foreign Languages?", "label": "3"}
+{"id": 493, "table_id": 61, "query": "What is the telephone number of the head of the Transportation Major in the School of Traffic Engineering?", "label": "0531-86361175"}
+{"id": 494, "table_id": 61, "query": "Who is the instructor in charge of the Photonic Information Science and Engineering major?", "label": "Liu Xia"}
+{"id": 495, "table_id": 61, "query": "How many programs is Ms. Liu Xia in charge of?", "label": "3"}
+{"id": 496, "table_id": 61, "query": "How many programs is Mr. Li Tao in charge of?", "label": "6"}
+{"id": 497, "table_id": 61, "query": "How many majors are there in the School of Computer Science and Technology at the Yantai campus?", "label": "2"}
+{"id": 498, "table_id": 62, "query": "What is the payback period in years for investing in Machine A?", "label": "5"}
+{"id": 499, "table_id": 62, "query": "What is the net present value of purchasing Machine A?", "label": "307252.28"}
+{"id": 500, "table_id": 62, "query": "What is the expected residual value of machine A at the end of the period?", "label": "18000"}
+{"id": 501, "table_id": 62, "query": "What is the annual operating cost of machine A?", "label": "80000"}
+{"id": 502, "table_id": 62, "query": "How is the net present value of purchasing Machine A calculated?", "label": "Based on the discount rate, annual operating costs, estimated terminal residual value, and payback period calculation"}
+{"id": 503, "table_id": 62, "query": "What is the relationship between the payback period and the net present value of investing in Machine A?", "label": "The payback period is an indicator measuring the time required to recover an investment, while the net present value is an indicator measuring the profitability of an investment."}
+{"id": 504, "table_id": 63, "query": "What was the actual expenditure on meeting fees in January?", "label": "7800"}
+{"id": 505, "table_id": 63, "query": "What is the variance rate between the budget and actual expenditure for January's benefits?", "label": "-2800"}
+{"id": 506, "table_id": 63, "query": "What was the actual expenditure on equipment repair in January?", "label": "0"}
+{"id": 507, "table_id": 63, "query": "Which expense categories in January exceeded the budget?", "label": "Dining Expenses, Conference Fees, Communication Expenses, Welfare, Outsourcing Processing Fees"}
+{"id": 508, "table_id": 63, "query": "What is the proportion of the actual expenditure on external processing fees in January to the total expenditure?", "label": "0.50"}
+{"id": 509, "table_id": 64, "query": "Which department is the tabulation department?", "label": "Finance Department"}
+{"id": 510, "table_id": 64, "query": "When is the time of tabulation?", "label": "2025-03-02"}
+{"id": 511, "table_id": 64, "query": "How many items are there in the list of fixed assets?", "label": "42"}
+{"id": 512, "table_id": 64, "query": "What is the format of the time for tabulation?", "label": "Year-Month-Day"}
+{"id": 513, "table_id": 65, "query": "What is the total score of the key performance evaluation indicators?", "label": "70"}
+{"id": 514, "table_id": 65, "query": "What is the standard score for safety production assessment?", "label": "12"}
+{"id": 515, "table_id": 65, "query": "If the project department fails to implement the performance appraisal system, how many points will be deducted each time?", "label": "4"}
+{"id": 516, "table_id": 65, "query": "How many points will be added if there are no safety incidents in the month?", "label": "5"}
+{"id": 517, "table_id": 65, "query": "If the project department fails to complete the monthly progress plan due to management reasons, how many points will be deducted for each delay of 1 day?", "label": "1"}
+{"id": 518, "table_id": 65, "query": "If the project department completes the progress plan ahead of schedule, how many points are added for every 10% advance?", "label": "2"}
+{"id": 519, "table_id": 65, "query": "What is the standard score for work attitude assessment in the basic performance evaluation indicators?", "label": "2"}
+{"id": 520, "table_id": 65, "query": "What is the standard score for material usage assessment in the key performance evaluation indicators?", "label": "12"}
+{"id": 521, "table_id": 65, "query": "How many points will be deducted each time if the project department fails to report the material consumption report to the company on time?", "label": "3"}
+{"id": 522, "table_id": 66, "query": "What is the sum of the moving average forecast and the standard error for June 2012?", "label": "50263.72"}
+{"id": 523, "table_id": 66, "query": "What is the total operating profit from March 2010 to June 2010?", "label": "133188.23"}
+{"id": 524, "table_id": 66, "query": "What is the average operating profit from January 2011 to June 2011?", "label": "38724.98"}
+{"id": 525, "table_id": 66, "query": "What was the standard error in April 2012?", "label": "3069.66"}
+{"id": 526, "table_id": 66, "query": "Summarize the trend of the main business profit from 2010 to 2012.", "label": "From 2010 to 2012, the main business profit showed an overall upward trend, but with fluctuations."}
+{"id": 527, "table_id": 67, "query": "What was the actual expenditure on travel expenses in February?", "label": "3180"}
+{"id": 528, "table_id": 67, "query": "What is the total expenditure in February?", "label": "36350"}
+{"id": 529, "table_id": 68, "query": "What is the total amount of the debit side for the \"Cash/RMB\" account in the voucher review form?", "label": "671810"}
+{"id": 530, "table_id": 68, "query": "What is the account with code \"34520\" in the voucher review form?", "label": "Bank deposit in Renminbi"}
+{"id": 531, "table_id": 68, "query": "What is the debit amount of the account \"Other Receivables, Zhou Zhou\" in the voucher review form?", "label": "3000"}
+{"id": 532, "table_id": 68, "query": "What is the total amount of the credit side for the subject \"Bank Deposit in RMB\" in the voucher review form?", "label": "672610"}
+{"id": 533, "table_id": 68, "query": "How many records in the \"Cash/RMB\" account have a credit amount of 0 in the voucher review form?", "label": "6"}
+{"id": 534, "table_id": 68, "query": "What is the debit amount of the subject \"Administrative Expenses/Office Expenses\" in the voucher review form?", "label": "1000"}
+{"id": 535, "table_id": 68, "query": "How many times does the subject \"Cash/RMB\" appear in the voucher review form?", "label": "7"}
+{"id": 536, "table_id": 68, "query": "What is the debit amount for the \"Bank Deposit in RMB\" account in the voucher review form?", "label": "0"}
+{"id": 537, "table_id": 69, "query": "Which calculation has the lowest sales profit in Product C?", "label": "C-c"}
+{"id": 538, "table_id": 69, "query": "What is the total sum of sales profit for all calculations in Product C?", "label": "1448897.80"}
+{"id": 539, "table_id": 69, "query": "How is the sales profit of Product C distributed?", "label": "C-a: 355386.20, C-b: 435755.50, C-c: 298670.60, C-d: 359085.50"}
+{"id": 540, "table_id": 69, "query": "What is the total sales profit of Product A and Product B?", "label": "2424094.10"}
+{"id": 541, "table_id": 70, "query": "Which month had the highest actual main business income?", "label": "June"}
+{"id": 542, "table_id": 70, "query": "What is the total actual main business income from January to June?", "label": "1778.22 million yuan"}
+{"id": 543, "table_id": 70, "query": "What is the trend of the main business revenue forecast between July and December?", "label": "Gradually Increase"}
+{"id": 544, "table_id": 71, "query": "How many types of products does Tengyuan Mingju have in total?", "label": "7 kinds"}
+{"id": 545, "table_id": 71, "query": "How many products are handled by salesperson Wu Yuanyuan?", "label": "6 kinds"}
+{"id": 546, "table_id": 71, "query": "How many types of products did Yongjia Home Appliances Co., Ltd. purchase?", "label": "14 types"}
+{"id": 547, "table_id": 71, "query": "How many records of IKEA brand products are there?", "label": "8"}
+{"id": 548, "table_id": 71, "query": "What is the total sales amount for June?", "label": "985045"}
+{"id": 549, "table_id": 71, "query": "How many products did廖可sell in total?", "label": "190"}
+{"id": 550, "table_id": 71, "query": "How many sales records does the brand \"Tengyuan Mingju\" have in June?", "label": "7"}
+{"id": 551, "table_id": 71, "query": "Which salespersons have sales records in June?", "label": "Liao Ke, Teng Nian, Peng Yu, Sun Feifei, Wu Yuanyuan"}
+{"id": 552, "table_id": 71, "query": "How many salespersons are there in total?", "label": "5"}
+{"id": 553, "table_id": 71, "query": "What is the highest sales figure for the \"Yidianjiaju\" brand?", "label": "54400"}
+{"id": 554, "table_id": 71, "query": "Which product had the highest sales in June?", "label": "Fashionable Office and Home Swivel Chair"}
+{"id": 555, "table_id": 71, "query": "What is the total consumption amount of customer \"Brock Home\" in June?", "label": "180900"}
+{"id": 556, "table_id": 71, "query": "What is the total sales volume of the \"Fengsui Furniture\" brand products?", "label": "119"}
+{"id": 557, "table_id": 71, "query": "Which products have multiple sales records in June?", "label": "Complete dining table and chairs, White Elephant CT703A long coffee table, White Elephant T705 casual coffee table, White Oak CT701C small square coffee table, Storage cabinet and bookshelf, Single folding extendable and widened lazy sofa, Children's bed, Antique solid wood hand-carved coffee table set, Korean-style carved dressing table, Korean-style minimalist closet, Korean-style shoe cabinet, Flower table/telephone table N-L-004, Imported Indonesian rattan chair, Pearwood-colored high-end and spacious coffee table, American country square 4-person table, European-American oval dining table, Outstretched legs champagne-colored oval side coffee table, Stylish office and home swivel chair, Stylish fabric corner sofa, Stylish metal glass coffee table, Country-style folding double-person lazy sofa bed"}
+{"id": 558, "table_id": 72, "query": "What is the target number of new urban employment in 2021?", "label": "39500 people"}
+{"id": 559, "table_id": 72, "query": "What was the actual number of new urban employment in 2021?", "label": "49358 people"}
+{"id": 560, "table_id": 72, "query": "What is the target level of satisfaction with public employment services?", "label": "≥90%"}
+{"id": 561, "table_id": 72, "query": "What is the target number of new district-level entrepreneurship incubation bases to be added in 2021?", "label": "≥1个"}
+{"id": 562, "table_id": 72, "query": "What is the target employment rate for graduating college students who were unemployed upon leaving school at the end of the year?", "label": "≥90%"}
+{"id": 563, "table_id": 72, "query": "Which item has a clear numerical indicator in the management category?", "label": "Budget Execution Rate"}
+{"id": 564, "table_id": 72, "query": "Among various indicators, which ones have a weight of 5?", "label": "Social Insurance Subsidy Distribution Accuracy Rate\nJob Internship Subsidy Distribution Accuracy Rate\nPublic Welfare Position Subsidy Distribution Accuracy Rate\nJob Internship Subsidy Timely Distribution Rate\nLow-income Employment Subsidy Timely Distribution Rate\nUrban New Employment Population\nZero Employment Family Assistance Rate\nYear-end Employment Rate of Unemployed College Graduates Who Have Left School"}
+{"id": 565, "table_id": 72, "query": "How many in total are there in the indicator name?", "label": "16"}
+{"id": 566, "table_id": 72, "query": "How many types of indicators are there?", "label": "4"}
+{"id": 567, "table_id": 72, "query": "How many indicators have a weight of 5?", "label": "8"}
+{"id": 568, "table_id": 73, "query": "What is the debit amount for voucher number N001?", "label": "100"}
+{"id": 569, "table_id": 73, "query": "Which vouchers involve transactions with Bank of China?", "label": "N001, N003, N006"}
+{"id": 570, "table_id": 73, "query": "What is the total debit amount for all management expense categories?", "label": "1700"}
+{"id": 571, "table_id": 73, "query": "What is the name of the credit account for voucher number N005?", "label": "Bank Deposit/RMB"}
+{"id": 572, "table_id": 73, "query": "In August 2007, what are all the voucher numbers involved with Company C?", "label": "N005, N002"}
+{"id": 573, "table_id": 73, "query": "What are the debit and credit amounts for voucher number N004?", "label": "Debit: 1500, Credit: 1720"}
+{"id": 574, "table_id": 73, "query": "What is the total credit amount for all deposit categories in the bank?", "label": "3100"}
+{"id": 575, "table_id": 73, "query": "What is the debit summary for voucher number N007?", "label": "Water and Electricity Bills"}
+{"id": 576, "table_id": 73, "query": "In August 2007, what are the voucher numbers involved in the KU loans?", "label": "N001, N003, N006, N007"}
+{"id": 577, "table_id": 74, "query": "Who was on duty on August 5, 2012?", "label": "Wang Rong"}
+{"id": 578, "table_id": 74, "query": "What is Zhou Guojú's email address?", "label": "CH2011@126.com"}
+{"id": 579, "table_id": 74, "query": "What is the telephone number of the on-duty person on August 10, 2012?", "label": "1324556974x"}
+{"id": 580, "table_id": 74, "query": "How many on-duty personnel use the 126.com email?", "label": "9"}
+{"id": 581, "table_id": 74, "query": "What is the QQ number of the on-duty person on August 15, 2012?", "label": "2568874xx"}
+{"id": 582, "table_id": 74, "query": "What is the email address of the person on duty on August 20, 2012?", "label": "HZY2011@126.com"}
+{"id": 583, "table_id": 74, "query": "Who was on duty on August 25, 2012?", "label": "Liu Yu"}
+{"id": 584, "table_id": 74, "query": "How many on-duty personnel use the 163.com email?", "label": "11"}
+{"id": 585, "table_id": 74, "query": "What is the phone number of the person on duty on August 12, 2012?", "label": "1347885474x"}
+{"id": 586, "table_id": 74, "query": "What is the proportion of people on duty using email addresses from 126.com and 163.com?", "label": "9:11"}
+{"id": 587, "table_id": 75, "query": "What is the cumulative actual production cost for this year?", "label": "58100"}
+{"id": 588, "table_id": 75, "query": "What is the difference between the actual total cost of the product from the previous year and the cumulative actual total cost from this year?", "label": "5230"}
+{"id": 589, "table_id": 75, "query": "Summarize the changes in the cumulative actual manufacturing overhead costs of this year compared to the actual costs of last year.", "label": "The cumulative actual manufacturing costs for this year are 15000, an increase of 2950 from last year's actual costs of 12050."}
+{"id": 590, "table_id": 76, "query": "How many course topics in the course are related to Mao Zedong?", "label": "3"}
+{"id": 591, "table_id": 76, "query": "How many items are there in the professional ethics course?", "label": "6"}
+{"id": 592, "table_id": 76, "query": "Which courses have more than 4 credits under professional competence?", "label": "Chinese Certified Public Accountant Audit Standards Latest Changes, Enterprise Accounting Standards Latest Changes and Key Difficulties Interpretation, Certified Public Accountant Industry Administrative Supervision Policy Interpretation, Latest Characteristics of Financial Fraud in Securities Market and Effective Identification (Part One): Latest Cases and Methods of Financial Fraud, Internal Control Risk Management System Construction and Optimization Under New Requirements of State-owned Assets Supervision, New Development of Management Accounting: Integration of Business and Finance."}
+{"id": 593, "table_id": 76, "query": "What is the average number of hours for the extended courses?", "label": "3.29"}
+{"id": 594, "table_id": 76, "query": "How many total learning hours are there for the \"Online Continuing Education\" system courses of CICPA in 2024?", "label": "260.70"}
+{"id": 595, "table_id": 76, "query": "How many courses are there with the category \"Professional Ethics\"?", "label": "6"}
+{"id": 596, "table_id": 76, "query": "How many credit hours is the course with the topic \"Latest Changes in Chinese Certified Public Accountant Audit Standards\"?", "label": "8"}
+{"id": 597, "table_id": 76, "query": "What courses have a category of \"Professional Competence\" and more than 5 hours of class time?", "label": "Latest Changes in Chinese Certified Public Accountant Auditing Standards, Latest Changes and Key Difficulties Interpretation in Enterprise Accounting Standards, Internal Control Risk Management System Construction and Optimization Under New State-owned Assets Supervision Requirements, New Developments in Management Accounting: Integration of Business and Finance"}
+{"id": 598, "table_id": 76, "query": "Which courses include \"Mao Zedong\" in their topics?", "label": "The Lecture Series on \"Mao Zedong's Ledger\": The Catchphrase \"Ledger\" of Mao Zedong\nThe Lecture Series on \"Mao Zedong's Ledger\": Accounting Terms in Mao Zedong's Works and His Art of Numerical Command\nThe Lecture Series on \"Mao Zedong's Ledger\": Accounting Tactics and Strategies of Mao Zedong During the Yan'an Period"}
+{"id": 599, "table_id": 76, "query": "Which courses have a category of \"Extension Courses\" and less than 2 hours of class time?", "label": "Latest Tax Preferential Policies Interpretation for 2023 (Income Tax Edition), Latest Tax Preferential Policies Interpretation for 2023 (VAT and Other Taxes Edition), Small Charts, Big Impact: Visualization of Statistical Data, The Art of War and Life Strategy II: Structural Analysis of The Art of War"}
+{"id": 600, "table_id": 76, "query": "What is the total number of class hours for the series of courses on \"The Art of War and Life Strategies\"?", "label": "11.70"}
+{"id": 601, "table_id": 76, "query": "Which courses have a category of \"Practical Operation\" and a duration between 3 and 4 hours?", "label": "Practical Operating Points and Risk Analysis of Financial Due Diligence for拟IPO Enterprises under Financial Standardization, Automation, and Intelligence Mode"}
+{"id": 602, "table_id": 77, "query": "What is the total amount of unpaid balances in the accounts payable record sheet?", "label": "11864"}
+{"id": 603, "table_id": 77, "query": "What is the payment due date for Supplier 5?", "label": "2020-12-24"}
+{"id": 604, "table_id": 77, "query": "Which suppliers have a paid amount of 0 in the accounts payable record?", "label": "Supplier2, Supplier4, Supplier5, Supplier6, Supplier8, Supplier9"}
+{"id": 605, "table_id": 77, "query": "What is the name of the supplier corresponding to the longest record of remaining days?", "label": "Supplier10"}
+{"id": 606, "table_id": 77, "query": "What is the average amount of accounts payable in the accounts payable record table?", "label": "1496.40"}
+{"id": 607, "table_id": 77, "query": "Who processed all the accounts payable records?", "label": "Processed by 1"}
+{"id": 608, "table_id": 77, "query": "Which suppliers have due dates in 2021 in the accounts payable record sheet?", "label": "Supplier 6, Supplier 8, Supplier 10"}
+{"id": 609, "table_id": 77, "query": "What is the outstanding amount for Supplier 3?", "label": "279"}
+{"id": 610, "table_id": 77, "query": "What is the total number of remaining days for all records in the accounts payable ledger?", "label": "16013"}
+{"id": 611, "table_id": 78, "query": "What is the amount of interest expense?", "label": "3020"}
+{"id": 612, "table_id": 79, "query": "What is the unit price of the product with code A-001?", "label": "4.80"}
+{"id": 613, "table_id": 79, "query": "What products have the variety of yogurt?", "label": "Sour Yogurt Sugar-Free, Original Flavor Sour Yogurt"}
+{"id": 614, "table_id": 79, "query": "What is the product with the highest unit price?", "label": "Sour Strawberries, High Calcium Sour, Original Flavor Sour"}
+{"id": 615, "table_id": 79, "query": "What is the average unit price of all products?", "label": "8.92"}
+{"id": 616, "table_id": 79, "query": "Which product with single berry variety has the lowest unit price?", "label": "Kiwi 125 grams"}
+{"id": 617, "table_id": 79, "query": "Are the unit prices of the products coded E-001 and E-002 the same?", "label": "Yes"}
+{"id": 618, "table_id": 79, "query": "Which products with the variety of regular cup have a specification of 125 grams?", "label": "Sugar-free 125 grams, Original flavor 125 grams"}
+{"id": 619, "table_id": 79, "query": "What are the products with the variety of fruits and vegetables?", "label": "Strawberries 125 grams, Yellow Peaches 125 grams, Original Flavor 125 grams, Kiwis 125 grams"}
+{"id": 620, "table_id": 80, "query": "What is the direct material expenditure for the first quarter?", "label": "37247"}
+{"id": 621, "table_id": 80, "query": "What was the ending cash balance for the second quarter?", "label": "4534.50"}
+{"id": 622, "table_id": 80, "query": "What is the total sum of all expenditures for the year?", "label": "265270.50"}
+{"id": 623, "table_id": 80, "query": "What is the excess or deficiency of cash in the third quarter?", "label": "133255.50"}
+{"id": 624, "table_id": 81, "query": "What was the cash expenditure for purchases in the first quarter?", "label": "49714"}
+{"id": 625, "table_id": 81, "query": "What is the total estimated amount for the entire year?", "label": "382360"}
+{"id": 626, "table_id": 81, "query": "What is the expected quantity of materials to be purchased in the third quarter?", "label": "5446.40"}
+{"id": 627, "table_id": 81, "query": "What is the amount of the initial accounts payable?", "label": "35000"}
+{"id": 628, "table_id": 82, "query": "How many subject codes are there in the detailed list?", "label": "9"}
+{"id": 629, "table_id": 82, "query": "What are the calculation contents for ordinary hardcover residential properties?", "label": "Luxury finished residential units of 144 square meters or less"}
+{"id": 630, "table_id": 82, "query": "What is the calculation method for garage parking spaces?", "label": "Sub-project Auxiliary Accounting"}
+{"id": 631, "table_id": 82, "query": "What are the main differences between non-ordinary residential properties and ordinary residential properties?", "label": "Non-standard residential properties refer to those with an area of over 144 square meters, while standard residential properties refer to those with an area of 144 square meters or less."}
+{"id": 632, "table_id": 82, "query": "What are the contents of the calculation for the shop?", "label": "Valuation of Street-Fronting Shops"}
+{"id": 633, "table_id": 82, "query": "How many product categories are there in the detailed list of developed products?", "label": "A total of 4 product categories."}
+{"id": 634, "table_id": 83, "query": "What is the planned amount for Supplier 1 in the second week according to the funding schedule?", "label": "87200"}
+{"id": 635, "table_id": 83, "query": "What is the planned amount for Supplier 11 in the fourth week according to the funding plan table?", "label": "456788"}
+{"id": 636, "table_id": 83, "query": "Which supplier has the highest planned amount for the third week in the funding plan?", "label": "Supplier 6"}
+{"id": 637, "table_id": 83, "query": "What is the total planned amount for all suppliers in the fourth week according to the funding plan table?", "label": "475788"}
+{"id": 638, "table_id": 83, "query": "What are the planned summary amounts for Supplier 5 and Supplier 12 in the funding plan table?", "label": "83632, 69700"}
+{"id": 639, "table_id": 83, "query": "Which suppliers have no planned amount for the first week in the funding schedule?", "label": "Supplier2, Supplier3, Supplier4, Supplier5, Supplier6, Supplier8, Supplier9, Supplier11, Supplier13, Supplier14"}
+{"id": 640, "table_id": 83, "query": "Which suppliers have a planned summary amount exceeding 100000 in the funding plan table?", "label": "Supplier11"}
+{"id": 641, "table_id": 83, "query": "What is the total planned amount summarized in the funding plan table?", "label": "1006151"}
+{"id": 642, "table_id": 84, "query": "What was the total water usage in August 2012?", "label": "678.56"}
+{"id": 643, "table_id": 84, "query": "What was the total electricity consumption in August 2012?", "label": "1733.32"}
+{"id": 644, "table_id": 84, "query": "What was the prepaid water fee amount on August 6, 2012?", "label": "500"}
+{"id": 645, "table_id": 84, "query": "What was the unit price of electricity in August 2012?", "label": "0.75"}
+{"id": 646, "table_id": 84, "query": "What was the average daily usage of water fees in August 2012?", "label": "11.40"}
+{"id": 647, "table_id": 84, "query": "What is the total number of days of electricity usage in August 2012?", "label": "54"}
+{"id": 648, "table_id": 84, "query": "What was the total prepaid amount for water and electricity fees in August 2012?", "label": "3200"}
+{"id": 649, "table_id": 84, "query": "What are the notes for water and electricity bills in August 2012?", "label": "Receipt"}
+{"id": 650, "table_id": 84, "query": "Summary of water and electricity consumption for August 2012.", "label": "Water usage in total is 678.56 M3, electricity usage in total is 1733.32 Kwh."}
+{"id": 651, "table_id": 85, "query": "What is the total amount of the planned unit cost and the actual unit cost?", "label": "617200"}
+{"id": 652, "table_id": 85, "query": "In the comparison of planned unit cost and actual unit cost, which percentage is the highest?", "label": "Fixed Cost of Actual Unit Cost"}
+{"id": 653, "table_id": 85, "query": "What is the lowest amount in the comparison between planned unit cost and actual unit cost?", "label": "294000"}
+{"id": 654, "table_id": 85, "query": "What is the lowest percentage in the comparison between the planned unit cost and the actual unit cost?", "label": "0.15"}
+{"id": 655, "table_id": 85, "query": "Summarize the comparison results between planned unit cost and actual unit cost", "label": "In the comparison, the actual unit cost is 109.93% of the planned unit cost. The actual unit cost is 323000, the planned unit cost is 294000, but the actual production volume is 120% of the planned production volume."}
+{"id": 656, "table_id": 86, "query": "What is the name of the subject with the code 1002?", "label": "Bank Deposit"}
+{"id": 657, "table_id": 86, "query": "How many accounts are there in the general ledger?", "label": "39"}
+{"id": 658, "table_id": 86, "query": "Which subjects are related to income?", "label": "Main Business Revenue, Other Business Revenue, Investment Income, Non-operating Income, Surplus Reserve, Current Year Profit, Paid-in Capital"}
+{"id": 659, "table_id": 86, "query": "List all cost-related accounts", "label": "Cost of Main Operations, Business Taxes and Surcharges, Selling Expenses, Administrative Expenses, Financial Expenses"}
+{"id": 660, "table_id": 86, "query": "Which subjects belong to the liability category?", "label": "Short-term Borrowings, Notes Payable, Accounts Payable, Employee Benefits Payable, Dividends Payable, Taxes Payable, Other Payables"}
+{"id": 661, "table_id": 86, "query": "List all subjects related to assets", "label": "Cash on Hand, Bank Deposits, Other Monetary Funds, Notes Receivable, Accounts Receivable, Other Receivables, Allowance for Doubtful Accounts, Materials Purchases, Inventory, Prepaid Expenses, Fixed Assets, Accumulated Depreciation, Property Loss Awaiting Disposal"}
+{"id": 662, "table_id": 87, "query": "What are the evaluation metrics for the training?", "label": "Completion Status of Planned Training"}
+{"id": 663, "table_id": 87, "query": "Which department signs off on the evaluation?", "label": "General Manager"}
+{"id": 664, "table_id": 87, "query": "What are the criteria for evaluating work attitude?", "label": "1 inactive instance results in a deduction of 1 point, 1 instance of bad attitude results in a deduction of 2 points, and each complaint about the same issue twice results in a deduction of 3 points per instance."}
+{"id": 665, "table_id": 87, "query": "What is the definition of a major accident in the scoring criteria for work safety incidents?", "label": "A major accident refers to an accident with losses between 1001 and 10000 yuan."}
+{"id": 666, "table_id": 87, "query": "In the scoring criteria for cost savings, what is the reward for every 0.5 percentage point reduction in actual usage?", "label": "Award 2 points"}
+{"id": 667, "table_id": 88, "query": "Calculate the direct labor cost per unit based on the information in the table.", "label": "19.76"}
+{"id": 668, "table_id": 88, "query": "Is the wage rate per unit of labor time higher than the standard labor time per unit of product?", "label": "Yes"}
+{"id": 669, "table_id": 88, "query": "What is the relationship between the standard hours per unit of product and the wage rate per hour mentioned in the table?", "label": "The standard hours per unit and the wage rate per hour are two elements in calculating direct labor cost."}
+{"id": 670, "table_id": 89, "query": "What is the amount of interest income in the projected financial expense details statement?", "label": "2950"}
+{"id": 671, "table_id": 89, "query": "What is the amount of foreign exchange loss in the estimated financial expenses detail statement?", "label": "3500"}
+{"id": 672, "table_id": 89, "query": "What is the amount of handling fees in the estimated financial expenses detail?", "label": "8000"}
+{"id": 673, "table_id": 89, "query": "What is the amount of other items in the estimated financial expenses detail statement?", "label": "15250"}
+{"id": 674, "table_id": 89, "query": "What is the total amount in the detailed financial expenses statement?", "label": "37220"}
+{"id": 675, "table_id": 89, "query": "What is the difference between interest expenses and interest income in the estimated statement of financial expenses?", "label": "70"}
+{"id": 676, "table_id": 89, "query": "What is the difference between exchange gains and exchange losses in the projected financial expenses detail statement?", "label": "1000"}
+{"id": 677, "table_id": 89, "query": "What is the largest item in terms of amount in the预计 should be replaced with expected financial expenses detail statement? \n\nCorrected version:\nWhat is the largest item in terms of amount in the expected financial expenses detail statement?", "label": "Others"}
+{"id": 678, "table_id": 89, "query": "What is the item with the smallest amount in the projected financial expenses detail table?", "label": "Interest Income"}
+{"id": 679, "table_id": 89, "query": "What is the total amount of all items in the estimated financial expenses detail statement?", "label": "37220"}
+{"id": 680, "table_id": 90, "query": "What is the total amount of debit balances in the accounts receivable balance statistics table?", "label": "1435120"}
+{"id": 681, "table_id": 90, "query": "What is the total amount of the credit entries in the accounts receivable balance statistics table?", "label": "73310"}
+{"id": 682, "table_id": 90, "query": "Which row has the highest credit amount in the accounts receivable balance statistics table?", "label": "Yongjia Home Decoration Co., Ltd."}
+{"id": 683, "table_id": 90, "query": "What is the difference between the debit amount and the credit amount in the accounts receivable balance statistics table?", "label": "1361810"}
+{"id": 684, "table_id": 90, "query": "Which row has the highest debit amount in the accounts receivable balance statistics table?", "label": "Baijiahui Home World"}
+{"id": 685, "table_id": 90, "query": "What is the ratio of the debit amount to the credit amount in the accounts receivable balance statistics table?", "label": "19.58"}
+{"id": 686, "table_id": 91, "query": "What are the beginning and ending balances of cash and cash equivalents?", "label": "1000000, 1000000"}
+{"id": 687, "table_id": 91, "query": "What is the ending balance of accounts receivable?", "label": "66965.66"}
+{"id": 688, "table_id": 91, "query": "What are the beginning and ending balances of long-term equity investments?", "label": "1508637.56, 1536435.66"}
+{"id": 689, "table_id": 91, "query": "What is the year-end figure for construction in progress?", "label": "3056435.66"}
+{"id": 690, "table_id": 91, "query": "What are the beginning and ending balances of total assets?", "label": "29178637.56, 29491676.70"}
+{"id": 691, "table_id": 91, "query": "What is the change in accounts receivable from the beginning to the end of the year?", "label": "10328.10"}
+{"id": 692, "table_id": 91, "query": "What is the total end-of-period amount for long-term equity investments and long-term debt investments?", "label": "1536435.66"}
+{"id": 693, "table_id": 91, "query": "Summarize the components of current assets.", "label": "Cash and Cash Equivalents, Short-term Investments, Notes Receivable, Dividends Receivable, Interest Receivable, Accounts Receivable, Other Receivables, Prepayments, Subsidy Receivable, Inventory, Accrued Expenses, Long-term Bond Investments Maturing within One Year, Other Current Assets"}
+{"id": 694, "table_id": 91, "query": "What are the opening and closing balances of intangible assets and other assets?", "label": "170000, 170000"}
+{"id": 695, "table_id": 92, "query": "What is the balance of the bank deposit?", "label": "5635559.66"}
+{"id": 696, "table_id": 92, "query": "What is the total of administrative expenses and financial expenses?", "label": "64800"}
+{"id": 697, "table_id": 92, "query": "Which subjects have balances exceeding 5,000,000?", "label": "Bank Deposit, Fixed Assets, Shareholder's Equity"}
+{"id": 698, "table_id": 92, "query": "What is the balance of the sales expenses?", "label": "6500"}
+{"id": 699, "table_id": 93, "query": "What is the payable amount of the contract with the largest payable amount?", "label": "20000"}
+{"id": 700, "table_id": 93, "query": "How many contracts have outstanding payments?", "label": "9"}
+{"id": 701, "table_id": 93, "query": "How many contracts have no outstanding payments?", "label": "1"}
+{"id": 702, "table_id": 93, "query": "How many contracts are there in total in the accounts payable detail list?", "label": "10"}
+{"id": 703, "table_id": 93, "query": "What is the contract number with the highest unpaid amount in the accounts payable detail list?", "label": "HT-008"}
+{"id": 704, "table_id": 93, "query": "What is the total amount of unpaid invoices for all contracts?", "label": "103000"}
+{"id": 705, "table_id": 93, "query": "What is the contact information for Unit 1?", "label": "158****4589"}
+{"id": 706, "table_id": 93, "query": "What is the duration in days of the contract with the contract number HT-010?", "label": "120"}
+{"id": 707, "table_id": 93, "query": "How many contracts have a paid amount of 1000?", "label": "7"}
+{"id": 708, "table_id": 93, "query": "Which contracts in the accounts payable detail have paid amounts equal to the unpaid amounts?", "label": "Contract number is HT-003"}
+{"id": 709, "table_id": 94, "query": "What was the beginning-of-year amount of total current assets?", "label": "14064131.22"}
+{"id": 710, "table_id": 94, "query": "What is the ending balance of total fixed assets?", "label": "14398198.89"}
+{"id": 711, "table_id": 94, "query": "What are the beginning and ending balances of total assets?", "label": "30657053.79 and 29600802.64"}
+{"id": 712, "table_id": 94, "query": "What is the percentage increase in the ending inventory compared to the beginning inventory?", "label": "24.02%"}
+{"id": 713, "table_id": 94, "query": "What is the ending balance of total liabilities and equity (or shareholders' equity)?", "label": "29600802.64"}
+{"id": 714, "table_id": 94, "query": "Summarize the main changes in the assets section of the balance sheet.", "label": "Total assets decreased from 30,657,053.79 at the beginning of the year to 29,600,802.64 at the end of the year, mainly due to a reduction in other receivables, a decrease in fixed assets, an increase in inventory, and other changes."}
+{"id": 715, "table_id": 95, "query": "Who is the employee with the longest length of service in the table?", "label": "Zhang Xuexing, Zhao Qing"}
+{"id": 716, "table_id": 95, "query": "What is the basic salary of employee number 015?", "label": "2000"}
+{"id": 717, "table_id": 95, "query": "How many salespersons are there in the sales department?", "label": "8"}
+{"id": 718, "table_id": 95, "query": "Which employees' seniority wages exceed 1800?", "label": "Wu Xiaohua, Zhang Xuexing, Wang Lei, Zhao Qing, Zhou Jiang"}
+{"id": 719, "table_id": 95, "query": "What is the average base salary of department managers?", "label": "2450"}
+{"id": 720, "table_id": 95, "query": "Which employee has the earliest start date?", "label": "Zhang Xuexing"}
+{"id": 721, "table_id": 95, "query": "What is the total length of service salary for the finance department employees?", "label": "5000"}
+{"id": 722, "table_id": 95, "query": "Which employees in the table have 18 years of service?", "label": "Chen Nan, Wang Qing, Yang Jing"}
+{"id": 723, "table_id": 95, "query": "What is the total salary of employee number 020?", "label": "3600"}
+{"id": 724, "table_id": 95, "query": "How many employees in the table have the position of Department Manager or Deputy Department Manager?", "label": "6"}
+{"id": 725, "table_id": 96, "query": "What was the total expense of the sales department in January?", "label": "12707.80"}
+{"id": 726, "table_id": 96, "query": "What was the business hospitality expense of the Comprehensive Management Office in February?", "label": "5106.36"}
+{"id": 727, "table_id": 96, "query": "What was the highest single expense of the Logistics Department in March?", "label": "632.46"}
+{"id": 728, "table_id": 96, "query": "What is the total meeting fee of the Finance Department in January and February?", "label": "6205.35"}
+{"id": 729, "table_id": 96, "query": "Which departments incurred utility bills in February?", "label": "Sales Department, Comprehensive Management Office"}
+{"id": 730, "table_id": 96, "query": "What was the total expenditure for Class A expenses in March?", "label": "26461.98"}
+{"id": 731, "table_id": 96, "query": "In January, which department had the highest business entertainment expenses?", "label": "Logistics Department"}
+{"id": 732, "table_id": 96, "query": "What was the amortization expense for low-value consumables in the finance department in February?", "label": "5130.68"}
+{"id": 733, "table_id": 96, "query": "In March, which types of expenses were recorded?", "label": "Class A Costs, Class B Costs, Class C Costs"}
+{"id": 734, "table_id": 96, "query": "What is the total office expense of the sales department in January and March?", "label": "2769.75"}
+{"id": 735, "table_id": 97, "query": "In the comprehensive analysis table of financial ratios, which financial ratios have importance coefficients exceeding 0.20?", "label": "Debt to Asset Ratio, Equity Ratio"}
+{"id": 736, "table_id": 97, "query": "How does the composite index of the current ratio affect the overall composite index?", "label": "The composite index of the current ratio is 0.35, and its contribution to the overall composite index is the second largest."}
+{"id": 737, "table_id": 98, "query": "How many types of payment methods are there in the table?", "label": "6"}
+{"id": 738, "table_id": 98, "query": "How many days is the shipping date overdue for cash on delivery?", "label": "3"}
+{"id": 739, "table_id": 98, "query": "Which payment methods in the table have shipping dates overdue by 30 days?", "label": "Monthly settlement, others"}
+{"id": 740, "table_id": 99, "query": "What types of event categories are included in the event management process?", "label": "Fault, Information Inquiry, Service Request"}
+{"id": 741, "table_id": 99, "query": "How is the priority order for event handling determined?", "label": "Temporal Order and Urgency"}
+{"id": 742, "table_id": 99, "query": "What are the conditions for event escalation?", "label": "Business Interruption Time Increase or Scope Expansion"}
+{"id": 743, "table_id": 99, "query": "What issues are there with the event record information in the event handling log?", "label": "Integrity and accuracy are insufficient."}
+{"id": 744, "table_id": 99, "query": "Major incident handling records include which contents?", "label": "Discovery, analysis, and handling processes shall be documented, (time, personnel, status, operations) as seen in the fault handling report"}
+{"id": 745, "table_id": 99, "query": "How to access CMDB in event handling?", "label": "You can query Tivoli Enterprise Portal on the process platform."}
+{"id": 746, "table_id": 100, "query": "What is the cash received from sales of goods and provision of services?", "label": "8,783,565,693.09"}
+{"id": 747, "table_id": 100, "query": "What is the net cash flow from operating activities?", "label": "1360955086.71"}
+{"id": 748, "table_id": 100, "query": "What is the net cash flow from investing activities?", "label": "464877486.42"}
+{"id": 749, "table_id": 100, "query": "What is the net cash flow from financing activities?", "label": "931936241.12"}
+{"id": 750, "table_id": 100, "query": "What is the net increase in cash and cash equivalents?", "label": "2757768814.25"}
+{"id": 751, "table_id": 100, "query": "What is the cash paid to employees and on behalf of employees?", "label": "421732641.31"}
+{"id": 752, "table_id": 100, "query": "What is the cash paid for the purchase and construction of fixed assets, intangible assets, and other long-term assets?", "label": "21413225.58"}
+{"id": 753, "table_id": 101, "query": "Is the percentage of return on capital higher than its reference value?", "label": "Yes"}
+{"id": 754, "table_id": 101, "query": "In profitability analysis, which indicators are considered normal in terms of percentage?", "label": "Main Business Profit Margin, Cost of Main Business Profit Margin, Profit Margin of Main Business Taxes and Surcharges, Return on Net Assets, Return on Capital"}
+{"id": 755, "table_id": 101, "query": "What is the percentage of the profit margin of main business tax and surcharge compared to the reference value?", "label": "Above the reference value"}
+{"id": 756, "table_id": 101, "query": "What is the percentage of return on equity?", "label": "0.28"}
+{"id": 757, "table_id": 101, "query": "Is the percentage of return on total assets normal?", "label": "Abnormal"}
+{"id": 758, "table_id": 102, "query": "What was the expenditure amount on December 7, 2019?", "label": "3200"}
+{"id": 759, "table_id": 102, "query": "What was the sales revenue amount on December 8, 2019?", "label": "4500"}
+{"id": 760, "table_id": 102, "query": "What was the total income amount in December 2019?", "label": "16300"}
+{"id": 761, "table_id": 102, "query": "What was the total expenditure amount in December 2019?", "label": "8240"}
+{"id": 762, "table_id": 102, "query": "What was the net income amount in December 2019?", "label": "8060"}
+{"id": 763, "table_id": 102, "query": "How much has the balance on December 8, 2019 increased compared to the balance on December 1, 2019?", "label": "8060"}
+{"id": 764, "table_id": 102, "query": "What types of income were there in December 2019?", "label": "Sales Revenue"}
