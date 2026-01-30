@@ -9,6 +9,7 @@ import numpy as np
 from openai import OpenAI
 from openai import AuthenticationError
 
+from config import api_config
 from utils.constants import *
 
 def encode_image(image_path):
@@ -96,12 +97,16 @@ def llm_generate(
 
 
 def embedding_generate(
-    input_texts: list, 
-    key=EMBEDDING_API_KEY,
-    url=EMBEDDING_API_URL, 
-    model=EMBEDDING_MODEL_TYPE, 
+    input_texts: list,
+    key=None,
+    url=None,
+    model=None,
     dimensions=1024,
 ):
+    key = key or api_config.get("embedding_api_key") or EMBEDDING_API_KEY
+    url = url or api_config.get("embedding_api_url") or EMBEDDING_API_URL
+    model = model or api_config.get("embedding_model") or EMBEDDING_MODEL_TYPE
+
     client = OpenAI(api_key=key, base_url=url)
 
     embeddings = []
