@@ -106,7 +106,7 @@ def benchmark(
         if table_file.endswith(".xlsx"):
             pass
         elif table_file.endswith(".csv"):
-            df = pd.read_csv(new_table_file)
+            df = pd.read_csv(table_file)
             df.to_excel(new_table_file, index=False, engine='openpyxl')
         elif table_file.endswith(".html"):
             html_content = open(table_file).read()
