@@ -70,14 +70,14 @@ os.makedirs(LOG_DIR, exist_ok=True)
 
 #################### Change The Model Information ####################
 """Change this for requesting LLM"""
-LLM_API_URL = ""
+LLM_API_URL = "https://api.deepseek.com"
 LLM_API_KEY = "YOUR_LLM_API_KEY"
-LLM_MODEL_TYPE = "" 
+LLM_MODEL_TYPE = "deepseek-chat" 
 
 """Change this for requesting VLM"""
-VLM_API_URL = ""
+VLM_API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 VLM_API_KEY = "YOUR_VLM_API_KEY"
-VLM_MODEL_TYPE = ""
+VLM_MODEL_TYPE = "qwen3-vl-plus"
 
 """Change this for requesting Embedding Model"""
 EMBEDDING_TYPE = "api" # api / local
@@ -86,9 +86,9 @@ EMBEDDING_TYPE = "api" # api / local
 EMBEDDING_MODE_PATH = "YOUR_PATH_TO_MULTILINGULE_E5"
 
 ## If EMBEDDING_TYPE is api
-EMBEDDING_API_URL = ""
+EMBEDDING_API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 EMBEDDING_API_KEY = "YOUR_EMBEDDING_API_KEY"
-EMBEDDING_MODEL_TYPE = ""
+EMBEDDING_MODEL_TYPE = "text-embedding-v1"
 
 #################### Change The Model Information ####################
 
