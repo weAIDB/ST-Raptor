@@ -4,7 +4,7 @@
 
 from collections import defaultdict
 import random
-from datetime import timedelta, date, time
+from datetime import timedelta, date, time as dt_time
 
 import numpy as np
 from sklearn.cluster import KMeans
@@ -226,7 +226,7 @@ def tag_one_list(value_list, classify_threshold=3, n_bins=3):
                         (x[0], x[1])
                         for x in split_datetime_intervals(value_array, n_bins)
                     ]
-                    t = time(0, 0, 0)
+                    t = dt_time(0, 0, 0)
                     bins = [
                         int(datetime.combine(x[0], t).timestamp()) for x in intervals
                     ]

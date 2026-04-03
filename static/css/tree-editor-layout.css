@@ -1,0 +1,67 @@
+.tree-workspace {
+    position: relative;
+    grid-column: 3;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+    contain: layout paint;
+    transition: transform .3s cubic-bezier(.22, .61, .36, 1), opacity .25s ease;
+}
+
+/* Only explicit nested-open state can trigger right-pane stretch/slide. */
+.tree-main-grid.is-nested-active .tree-workspace {
+    transform: translateX(10px) scaleX(.992);
+    transform-origin: left center;
+}
+
+/* Keep current canvas size, but nudge it left when trace card is hidden. */
+.tree-main-grid.is-trace-collapsed .tree-workspace {
+    transform: translateX(-14px);
+}
+
+#tree-container {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scrollbar-width: none;
+    background: transparent;
+    border-radius: 18px;
+    box-shadow: none;
+}
+
+#tree-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tree-table-drawer {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    z-index: 16;
+    border-radius: 16px;
+    background: rgba(4, 6, 16, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 10px 12px;
+    max-height: 58%;
+    overflow: hidden;
+    transition: transform .25s ease, opacity .25s ease;
+}
+
+.tree-table-collapsed {
+    transform: translateY(calc(100% + 18px));
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tree-table-collapsed #current-table-preview {
+    display: none;
+}

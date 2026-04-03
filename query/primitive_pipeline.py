@@ -4,6 +4,7 @@ import time
 import glob
 import pickle
 import traceback
+from typing import Any, Dict, List
 
 from tqdm import tqdm
 
@@ -15,6 +16,7 @@ from verifier.verifier import *
 from utils.constants import *
 from utils.prompt_template import *
 from utils.sheet_utils import get_xlsx_table_string
+from utils.tree_semantic_utils import build_typed_tree_v2, build_semantic_projection_bundle
 
 # 尝试导入API配置
 def get_api_config():
@@ -195,6 +197,7 @@ def dfs_reasoning(
     query_history: list = None,
     iter_history: str = "",
     depth=1,
+    subquery_index=0,
     enable_embedding_match=False,
     embedding_cache_file=None,
     temperature=0.5,
@@ -206,6 +209,8 @@ def dfs_reasoning(
             "生成的原语句步骤达到了最大次数，停止生成，使用当前获得的数据作为回答依据！"
         )
         return None, None
+
+    logger.info(f"TRACE_FRAME_START depth={depth} subquery={subquery_index}")
 
     # Step 1 设计Prompt，为当前子问题生成原语句，可能会有iter_history 记录之前的迭代结果
     # 需要判断，当前的f_tree 下面是否还嵌套有FeatureTree，如果没有嵌套，则使用Embedding匹配相似子子部分，如果有嵌套，则只给Schema
@@ -253,6 +258,7 @@ def dfs_reasoning(
         if isinstance(res, FeatureTree):
             pass
         else:
+            logger.info(f"TRACE_FRAME_END depth={depth} subquery={subquery_index}")
             return [res], ""
     
     ### Retrieval
@@ -290,6 +296,13 @@ def dfs_reasoning(
         configured_llm_generate = get_llm_generate()
         primitive_seq = configured_llm_generate(prompt=prompt, temperature=temperature, max_tokens=max_tokens)
         operation = primitive_seq.splitlines()[0].strip()
+        set_execution_trace_context(
+            query=query,
+            depth=depth,
+            subquery_index=subquery_index,
+            primitive_raw=operation,
+        )
+        record_execution_event("primitive_generated", "primitive", operation)
         
         # 将生成的原语句添加到列表中
         reasoning_path.append(operation)
@@ -325,6 +338,8 @@ def dfs_reasoning(
 
                     logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
                     logger.info(f"[CHL] + [{args[1]}]")
+                    set_execution_trace_context(primitive="CHL", primitive_args=[args[1]])
+                    record_execution_event("primitive_execute", "primitive", "CHL", {"args": [args[1]]})
 
                     op_res = meta_search(f_tree, [args[1], "n"])
 
@@ -338,6 +353,8 @@ def dfs_reasoning(
 
                     logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
                     logger.info(f"[FAT] + [{args[1]}]")
+                    set_execution_trace_context(primitive="FAT", primitive_args=[args[1]])
+                    record_execution_event("primitive_execute", "primitive", "FAT", {"args": [args[1]]})
 
                     op_res = meta_search(f_tree, ["n", args[1]])
 
@@ -353,6 +370,8 @@ def dfs_reasoning(
 
                     logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
                     logger.info(f"[EXT] + [{args[1]}] + [{args[2]}]")
+                    set_execution_trace_context(primitive="EXT", primitive_args=[args[1], args[2]])
+                    record_execution_event("primitive_execute", "primitive", "EXT", {"args": [args[1], args[2]]})
 
                     op_res = meta_search(f_tree, [args[1], "n", args[2]])
                     # step_info += f"Extract Result: {op_res}\n"
@@ -370,6 +389,8 @@ def dfs_reasoning(
 
                     logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
                     logger.info(f"[COND] + [{args[1]}] + [{args[2]}]")
+                    set_execution_trace_context(primitive="COND", primitive_args=[args[1], args[2]])
+                    record_execution_event("primitive_execute", "primitive", "COND", {"args": [args[1], args[2]]})
 
                     op_res = meta_search(f_tree, ["cond", args[1], args[2]])
 
@@ -383,18 +404,24 @@ def dfs_reasoning(
 
                     logger.info(f"{DELIMITER} Primitive After Embedding {DELIMITER}")
                     logger.info(f"[FOREACH] + [{args[1]}] + [{args[2]}]")
+                    set_execution_trace_context(primitive="FOREACH", primitive_args=[args[1], args[2]])
+                    record_execution_event("primitive_execute", "primitive", "FOREACH", {"args": [args[1], args[2]]})
 
                     op_res = meta_search(f_tree, ["foreach", args[1], args[2]])
 
                 logger.info(f"{DELIMITER} Retreval Result {DELIMITER}")
                 if len(op_res) == 0:
                     logger.info(f"Nothing Retrieved")
+                    record_execution_event("retrieval_result", "result", "empty", {"result_count": 0})
                 else:
+                    record_execution_event("retrieval_result", "result", "non_empty", {"result_count": len(op_res)})
                     for subdata in op_res:
                         if isinstance(subdata, FeatureTree):
                             logger.info(f"Retrieved Schema: {subdata.__index__()}")
+                            record_execution_event("retrieval_item", "feature_tree", subdata.__index__())
                         else:
                             logger.info(f"Retrieved Data: {subdata}")
+                            record_execution_event("retrieval_item", "data", subdata)
 
                 tree_cnt = 1
                 data_cnt = 1
@@ -408,6 +435,7 @@ def dfs_reasoning(
                             + step_info
                             + f"Retrieve Subtree Schema {tree_cnt}: {subdata.__index__()}\n",
                             depth=depth + 1,
+                            subquery_index=subquery_index,
                             embedding_cache_file=embedding_cache_file,
                         )
                         # 合并子调用返回的原语句列表
@@ -439,6 +467,8 @@ def dfs_reasoning(
                     f"{DELIMITER} Primitive After Embedding {DELIMITER}"
                 )
                 logger.info(f"[CMP] + [{args[1]}] + [{args[2]}] + [{args[3]}]")
+                set_execution_trace_context(primitive="CMP", primitive_args=[args[1], args[2], args[3]])
+                record_execution_event("primitive_execute", "primitive", "CMP", {"args": [args[1], args[2], args[3]]})
 
                 op_res = meta_search(f_tree, ["cmp", args[1], args[2], args[3]])
                 step_info += f"Compare Result: {op_res}\n"
@@ -512,6 +542,7 @@ def dfs_reasoning(
             # return [res], ""
     
     # 返回r_data和生成的原语句列表
+    logger.info(f"TRACE_FRAME_END depth={depth} subquery={subquery_index}")
     return r_data, reasoning_path
     # return retrieved_data, prompt
 
@@ -590,6 +621,7 @@ def delete_list_empty_elem(data: list):
 def qa_RWP(query: str, 
            ho_tree: FeatureTree, 
            table_file: str,
+           table_id: str = "",
            embedding_cache_file=None, 
            enable_emebdding=False, 
            enable_query_decompose=True,
@@ -597,15 +629,75 @@ def qa_RWP(query: str,
            max_tokens=8192):
     """Reason-while-Planning"""
 
+    table_scope = str(table_id or "").strip()
+
     try:
         # 动态导入thinking_chain_data以避免循环导入
         from core_functions import thinking_chain_data
+        reset_execution_trace()
+        try:
+            _typed_tree_payload, node_lookup = build_typed_tree_v2(
+                ho_tree,
+                root_name="HO_TREE",
+                file_scope=table_scope,
+            )
+            set_execution_node_id_lookup(node_lookup)
+            raw_row_payload = None
+            raw_column_payload = None
+            try:
+                raw_row_payload = ho_tree.__json__() if hasattr(ho_tree, "__json__") else None
+            except Exception:
+                raw_row_payload = None
+            try:
+                raw_column_payload = ho_tree.__json_column__() if hasattr(ho_tree, "__json_column__") else None
+            except Exception:
+                raw_column_payload = None
+            if table_scope:
+                # Keep semantic ids file-scoped: root -> file -> sheet -> table -> ...
+                # This aligns execution-trace semantic ids with /api/chain projection map ids.
+                if isinstance(raw_row_payload, dict) and table_scope not in raw_row_payload:
+                    raw_row_payload = {table_scope: raw_row_payload}
+                if isinstance(raw_column_payload, dict) and table_scope not in raw_column_payload:
+                    raw_column_payload = {table_scope: raw_column_payload}
+            semantic_bundle = build_semantic_projection_bundle(
+                raw_row_payload,
+                raw_column_payload,
+                typed_root_name="HO_TREE",
+            )
+            alias_target_map = (
+                semantic_bundle.get("alias_to_semantic", {})
+                if isinstance(semantic_bundle, dict)
+                else {}
+            )
+
+            node_trace_lookup: Dict[int, Dict[str, str]] = {}
+            for obj_id, typed_id in (node_lookup or {}).items():
+                target = alias_target_map.get(str(typed_id or "").strip(), {})
+                if not isinstance(target, dict):
+                    continue
+                canonical_id = str(target.get("canonical_id", "") or "").strip()
+                target_kind = str(target.get("target_kind", "") or "").strip()
+                if not canonical_id:
+                    continue
+                node_trace_lookup[int(obj_id)] = {
+                    "canonical_id": canonical_id,
+                    "target_kind": target_kind or ("group" if canonical_id.startswith("ct_tree_group_") or canonical_id.startswith("ct_semantic_group_") else "node"),
+                }
+            set_execution_node_trace_lookup(node_trace_lookup)
+        except Exception:
+            set_execution_node_id_lookup({})
+            set_execution_node_trace_lookup({})
         
         # 初始化问答部分的数据
         thinking_chain_data["question_answering"] = {
             "raw_query": query,
             "enable_query_decompose": enable_query_decompose,
-            "enable_embedding": enable_emebdding
+            "enable_embedding": enable_emebdding,
+            "table_scope": table_scope,
+            "log_window": {
+                "start_ts": time.time(),
+                "end_ts": None,
+            },
         }
         
         ##### Step 1. 问题分解
@@ -639,6 +731,8 @@ def qa_RWP(query: str,
         for query, flag in zip(decomposed_queries, retrieve_flag):
             logger.info(f"{DELIMITER} Answering Subquery {subquery_index} {DELIMITER}")
             logger.info(f"{query}")
+            set_execution_trace_context(subquery_index=subquery_index, query=query)
+            record_execution_event("subquery_start", "subquery", query, {"need_retrieval": bool(flag)})
             
             # 创建子问题数据记录
             subquery_data = {
@@ -655,6 +749,7 @@ def qa_RWP(query: str,
                     query_history=qa_pair,
                     iter_history="",
                     depth=1,
+                    subquery_index=subquery_index,
                     enable_embedding_match=enable_emebdding,
                     embedding_cache_file=embedding_cache_file,
                     temperature=temperature,
@@ -779,6 +874,7 @@ def qa_RWP(query: str,
             thinking_chain_data["question_answering"]["subqueries"].append(subquery_data)
 
             qa_pair.append({"query": query, "answer": answer})
+            record_execution_event("subquery_end", "subquery", query, {"answer": str(answer)})
             subquery_index += 1
 
         # final_answer = semantic_reason(qa_pair, query)
@@ -800,7 +896,10 @@ def qa_RWP(query: str,
             "traceback": error_traceback
         }
         
-        table_str = get_xlsx_table_string(table_file)
+        if table_file and os.path.exists(table_file):
+            table_str = get_xlsx_table_string(table_file)
+        else:
+            table_str = str(ho_tree.__json__())
 
         logger.error(f"{DELIMITER} DFS Reasoning Fail! Try to Reason from Scratch! {DELIMITER}")
         prompt = direct_table_reasoning_prompt.format(table=table_str, query=raw_query)
@@ -843,6 +942,44 @@ def qa_RWP(query: str,
     # 保存可靠性检查结果
     thinking_chain_data["question_answering"]["reliability"] = reliability
     thinking_chain_data["question_answering"]["verification_queries"] = query_list
+    execution_events = get_execution_trace_events()
+    thinking_chain_data["question_answering"]["execution_trace"] = execution_events
+
+    # v2 trace summary: group visit/retrieval by primitive execution step.
+    primitive_steps: List[Dict[str, Any]] = []
+    current_step: Dict[str, Any] = {}
+    for ev in execution_events:
+        et = str(ev.get("event_type", ""))
+        if et == "primitive_execute":
+            if current_step:
+                primitive_steps.append(current_step)
+            extra = ev.get("extra", {}) or {}
+            args = list(extra.get("args", [])) if isinstance(extra.get("args", []), list) else []
+            current_step = {
+                "step": int(ev.get("step", 0) or 0),
+                "type": str(ev.get("node_value", "") or "").strip(),
+                "args": args,
+                "visitedNodeIds": [],
+                "retrievalNodeIds": [],
+            }
+            continue
+        if not current_step:
+            continue
+        if et == "visit":
+            fid = str(ev.get("frontend_node_id", "") or "").strip()
+            if fid:
+                current_step["visitedNodeIds"].append(fid)
+        elif et == "retrieval_item":
+            fid = str(ev.get("frontend_node_id", "") or "").strip()
+            if fid:
+                current_step["retrievalNodeIds"].append(fid)
+
+    if current_step:
+        primitive_steps.append(current_step)
+    thinking_chain_data["question_answering"]["primitive_steps"] = primitive_steps
+    if "question_answering" in thinking_chain_data:
+        thinking_chain_data["question_answering"].setdefault("log_window", {})
+        thinking_chain_data["question_answering"]["log_window"]["end_ts"] = time.time()
     
     # 移除时间相关字段，根据用户要求不输出时间信息
 

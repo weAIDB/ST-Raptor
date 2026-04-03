@@ -6,13 +6,10 @@ import copy
 
 
 def persist_tree():
-    """将当前树数据写回 JSON 文件。"""
+    """将当前树数据写回前端专用树快照，不污染后端 canonical JSON。"""
     os.makedirs("cache", exist_ok=True)
-    os.makedirs("data/SSTQA/temp_tables", exist_ok=True)
     try:
-        with open("cache/temp.json", "w", encoding="utf-8") as f:
-            json.dump(editor.data, f, ensure_ascii=False, indent=2)
-        with open("data/SSTQA/temp_tables/temp.json", "w", encoding="utf-8") as f:
+        with open("cache/temp.ui.tree.json", "w", encoding="utf-8") as f:
             json.dump(editor.data, f, ensure_ascii=False, indent=2)
     except Exception as e:
         print(f"[WARN] 写入 JSON 失败: {e}")

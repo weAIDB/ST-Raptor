@@ -1,0 +1,163 @@
+.tree-side-chat-wrap {
+    position: absolute;
+    top: calc(var(--tree-topbar-space) + 6px);
+    right: 12px;
+    bottom: 14px;
+    width: 340px;
+    max-height: calc(100% - (var(--tree-topbar-space) + 20px));
+    min-height: 0;
+    /* Chat has to stay above save button and tree canvas overlays. */
+    z-index: 46;
+    overflow: visible;
+    transition: right .22s ease;
+}
+
+.tree-side-chat-wrap.collapsed {
+    right: -312px;
+}
+
+.tree-chat-toggle {
+    position: absolute;
+    top: 50%;
+    left: -26px;
+    transform: translateY(-50%);
+    z-index: 18;
+    width: 26px;
+    height: 64px;
+    border-radius: 12px 0 0 12px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-right: 0;
+    background: rgba(20, 20, 30, 0.95);
+    color: #d4d4d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tree-side-chat {
+    border-left: 0;
+    background: rgba(12, 12, 18, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    min-height: 0;
+    overflow: hidden;
+    height: 100%;
+    transition: transform .22s ease, opacity .22s ease;
+}
+
+.tree-side-chat.collapsed {
+    transform: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tree-chat-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scrollbar-width: none;
+}
+
+.tree-chat-list::-webkit-scrollbar {
+    display: none;
+}
+
+.tree-chat-input-wrap {
+    position: sticky;
+    bottom: 0;
+    /* Sticky input prevents long message history from pushing composer out. */
+    z-index: 3;
+    flex: 0 0 auto;
+    background: rgba(12, 12, 18, 0.98);
+}
+
+.tree-thinking-inline {
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.tree-thinking-inline summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    padding: 8px 10px;
+    font-size: 11px;
+    color: rgba(226, 232, 240, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tree-thinking-inline summary::-webkit-details-marker {
+    display: none;
+}
+
+.tree-thinking-inline pre,
+.tree-thinking-log-stream {
+    margin: 0;
+    padding: 8px 10px;
+    max-height: 160px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 11px;
+    line-height: 1.35;
+    color: rgba(229, 231, 235, 0.88);
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.tree-thinking-log-line {
+    animation: thinking-line-in .2s ease-out;
+    opacity: 1;
+}
+
+@keyframes thinking-line-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tree-chat-msg {
+    max-width: 92%;
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.tree-chat-msg.user {
+    margin-left: auto;
+    color: #fff;
+    background: linear-gradient(135deg, #f97066 0%, #ec4899 100%);
+    border-top-right-radius: 4px;
+}
+
+.tree-chat-msg.assistant {
+    margin-right: auto;
+    color: #f4f4f5;
+    background: rgba(255, 255, 255, 0.08);
+    border-top-left-radius: 4px;
+}
+
+.tree-save-floating {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    z-index: 38;
+}
+
+#spanning-tree-view.nested-readonly .tree-save-floating {
+    display: none !important;
+}
+
+.tree-side-chat-wrap.collapsed .tree-chat-toggle {
+    left: -10px;
+}

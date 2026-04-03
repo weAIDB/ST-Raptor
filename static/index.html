@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Edu+NSW+ACT+Foundation:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/static/css/nested-feature-viewer.css?v=20260321c" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -29,239 +30,13 @@
             }
         }
     </script>
-    <style>
-        /* Custom Styles and Gradients */
-        .sidebar-gradient {
-            background: linear-gradient(180deg, rgba(173, 96, 202, 0.4) 0%, rgba(246, 158, 170, 0.3) 25%, rgba(240, 217, 69, 0.3) 50%, rgba(129, 183, 161, 0.3) 75%, rgba(48, 159, 228, 0.4) 100%);
-        }
-        
-        .conic-gradient-btn {
-            background: conic-gradient(
-                from 180deg at 50% 50%,
-                rgba(200, 80, 220, 1) 0deg,
-                rgba(255, 130, 160, 1) 60deg,
-                rgba(255, 220, 80, 1) 120deg,
-                rgba(100, 220, 160, 1) 180deg,
-                rgba(60, 180, 255, 1) 240deg,
-                rgba(130, 80, 255, 1) 300deg,
-                rgba(200, 80, 220, 1) 360deg
-            );
-        }
-
-        .conic-gradient-icon {
-            background: conic-gradient(
-                from 180deg at 50% 50%,
-                rgba(255, 130, 160, 1) 0deg,
-                rgba(255, 220, 80, 1) 120deg,
-                rgba(100, 220, 160, 1) 240deg,
-                rgba(255, 130, 160, 1) 360deg
-            );
-        }
-
-        .input-gradient-border {
-            background: linear-gradient(to right, #a855f7, #f472b6, #fbbf24, #4ade80, #22d3ee);
-        }
-
-        /* Holographic Tree Styles */
-        .tree-node-card {
-            background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(20, 40, 80, 0.9));
-            border: 1px solid rgba(0, 212, 255, 0.5);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            transition: transform 0.2s;
-        }
-        .tree-node-card:hover {
-            transform: scale(1.02);
-        }
-        .tree-node-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px);
-            pointer-events: none;
-            opacity: 0.2;
-        }
-        .node-connector {
-            background: linear-gradient(180deg, rgba(0, 212, 255, 0.8), rgba(138, 43, 226, 0.8));
-            box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
-        }
-        #tree-container {
-            background: radial-gradient(circle at 30% 30%, rgba(106, 125, 240, 0.35), transparent 50%), linear-gradient(180deg, rgba(10, 10, 20, 0.95), rgba(6, 6, 12, 0.95));
-            border-radius: 28px;
-            padding: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 
-                inset 0 0 80px rgba(255, 255, 255, 0.02),
-                0 30px 60px rgba(0, 0, 0, 0.45);
-        }
-        #tree-content {
-            min-height: 400px;
-            width: 100%;
-            min-width: 900px;
-        }
-        #tree-content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 24px;
-            background: transparent;
-            box-shadow: 
-                inset 0 0 20px rgba(255, 255, 255, 0.06),
-                0 18px 40px rgba(0, 0, 0, 0.45);
-        }
-        #tree-container {
-            background: linear-gradient(180deg, rgba(8, 8, 12, 0.95), rgba(16, 16, 20, 0.9));
-            border-radius: 24px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 
-                inset 0 0 40px rgba(255, 255, 255, 0.02),
-                0 30px 60px rgba(0, 0, 0, 0.35);
-        }
-        #tree-container .tree-node-card {
-            border-radius: 1.25rem;
-        }
-        .table-preview-card {
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            background: linear-gradient(180deg, rgba(7, 9, 16, 0.95), rgba(12, 16, 26, 0.95));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                inset 0 0 30px rgba(255, 255, 255, 0.03),
-                0 25px 55px rgba(0, 0, 0, 0.45);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .table-preview-card .preview-header {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        .table-preview-card .preview-header span {
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .table-preview-card .preview-header strong {
-            font-size: 1rem;
-            color: #8cc3ff;
-        }
-        .table-preview-card .table-wrapper {
-            overflow: auto;
-            max-height: 260px;
-        }
-        .table-preview-card table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-        }
-        .table-preview-card th,
-        .table-preview-card td {
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0.45rem 0.65rem;
-            text-align: left;
-        }
-        .table-preview-card thead th {
-            background: rgba(255, 255, 255, 0.05);
-            color: #a5f3fc;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .table-preview-card tbody tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        /* Sidebar Collapse Utilities */
-        #sidebar-wrapper.collapsed {
-            width: 80px !important;
-        }
-        #sidebar-wrapper.collapsed .hide-on-collapse {
-            display: none !important;
-        }
-        #sidebar-wrapper.collapsed aside {
-            align-items: center;
-        }
-        #sidebar-wrapper.collapsed .nav-item {
-            justify-content: center;
-            padding: 12px;
-        }
-        #sidebar-wrapper.collapsed .nav-item i:last-child {
-            display: none;
-        }
-        #sidebar-wrapper.collapsed .new-chat-btn {
-            justify-content: center;
-            padding: 16px;
-        }
-        #sidebar-wrapper.collapsed .upload-btn-inner {
-            justify-content: center;
-            padding: 0;
-        }
-        #sidebar-wrapper.collapsed .upload-btn-inner div:last-child {
-            display: none;
-        }
-        #sidebar-wrapper.collapsed #history-section {
-            display: none;
-        }
-        .upload-collapse-button {
-            display: none;
-        }
-        #sidebar-wrapper.collapsed .upload-collapse-button {
-            display: flex;
-            position: absolute;
-            left: 50%;
-            bottom: 120px;
-            transform: translateX(-50%);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-            background: conic-gradient(from 180deg at 50% 50%, #F79FAA 0deg, #F0D945 133deg, #81B8A1 184deg, #5918EF 314deg);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-        }
-        .upload-area {
-            display: block;
-        }
-        #sidebar-wrapper.collapsed .upload-area {
-            display: none;
-        }
-        #sidebar-wrapper.collapsed ~ main #center-upload-wrapper {
-            display: flex;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .log-line {
-            font-family: 'Consolas', 'Monaco', monospace;
-            padding: 2px 4px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .log-timestamp { color: #888; margin-right: 8px; }
-        .log-level { font-weight: bold; margin-right: 8px; }
-        .log-info { color: #4ade80; }
-        .log-error { color: #f87171; }
-        .log-warning { color: #fbbf24; }
-        .log-debug { color: #60a5fa; }
-    </style>
+    <link href="/static/css/trace-stage-viewer.css?v=20260321c" rel="stylesheet">
+    <link href="/static/css/tree-editor-shell.css?v=20260321split11" rel="stylesheet">
+    <link href="/static/css/tree-editor-layout.css?v=20260321split11" rel="stylesheet">
+    <link href="/static/css/path-replay-card.css?v=20260321split7" rel="stylesheet">
+    <link href="/static/css/tree-chat-panel.css?v=20260321split6" rel="stylesheet">
+    <link href="/static/css/app-shell.css?v=20260321split2" rel="stylesheet">
+    <link href="/static/css/tree-canvas-skin.css?v=20260321split2" rel="stylesheet">
 </head>
 <body class="bg-background text-white flex h-screen overflow-hidden">
 
@@ -295,10 +70,6 @@
                 </button>
                 <button onclick="app.setView('spanning-tree')" class="nav-item w-full flex items-center justify-between px-5 py-4 rounded-xl transition-all text-left hover:bg-white/5 text-muted-foreground" data-view="spanning-tree">
                     <span class="text-lg font-bold hide-on-collapse">Spanning Tree</span>
-                    <i data-lucide="chevron-right" class="w-5 h-5 opacity-50"></i>
-                </button>
-                <button onclick="app.setView('logging')" class="nav-item w-full flex items-center justify-between px-5 py-4 rounded-xl transition-all text-left hover:bg-white/5 text-muted-foreground" data-view="logging">
-                    <span class="text-lg font-bold hide-on-collapse">Logging</span>
                     <i data-lucide="chevron-right" class="w-5 h-5 opacity-50"></i>
                 </button>
                 <button onclick="app.setView('chain-of-thought')" class="nav-item w-full flex items-center justify-between px-5 py-4 rounded-xl transition-all text-left hover:bg-white/5 text-muted-foreground" data-view="chain-of-thought">
@@ -362,119 +133,227 @@
         <!-- Scrollable Content Area -->
         <div id="main-scroll-area" class="flex-1 overflow-y-auto relative p-6">
             <!-- Chat View -->
-            <div id="chat-view" class="h-full flex flex-col max-w-4xl mx-auto w-full">
-                <!-- Welcome/Initial View -->
-                <div id="welcome-view" class="flex-1 flex flex-col items-center justify-center py-12">
-                    <div class="w-28 h-28 rounded-full overflow-hidden mb-8 shadow-2xl shadow-purple-500/20 ring-4 ring-purple-500/30">
-                        <img src="/static/images/image.png" alt="ST-Raptor" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/112?text=ST'">
+            <div id="chat-view" class="h-full">
+                <div class="dashboard-wrap">
+                    <div id="model-output-feed" class="model-output-feed"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-sm font-semibold text-zinc-100">History Tree Models</p>
+                            <button onclick="document.getElementById('file-upload').click()" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Upload New File</button>
+                        </div>
+                        <div id="history-tree-grid" class="history-tree-grid"></div>
                     </div>
-                    <div class="text-center mb-12 font-handwriting">
-                        <h2 class="text-4xl font-bold text-white mb-2">
-                            HI<span class="text-muted-foreground">,</span> I am <span class="text-[#7B8CDE]">ST-Raptor</span><span class="text-muted-foreground">.</span>
-                        </h2>
-                        <p class="text-xl text-muted-foreground">How can I assist you with your tables today?</p>
-                        <div class="mt-6 flex justify-center gap-4">
-                            <a href="/index.html" class="px-6 py-3 rounded-full bg-gradient-to-r from-[#6c63ff] to-[#4dd2ff] text-white font-semibold shadow-lg hover:brightness-110 transition-all">
-                                See Project Intro
-                            </a>
-                    </div>
-                    </div>
-                    <div class="w-full max-w-2xl">
-                        <div id="center-upload-wrapper" class="hidden">
-                            <button onclick="document.getElementById('file-upload').click()" class="w-full h-24 rounded-2xl overflow-hidden transition-transform relative conic-gradient-btn shadow-xl group">
-                                <div class="upload-btn-inner absolute inset-0 flex items-center px-6">
-                                    <div class="w-14 h-14 rounded-full conic-gradient-icon flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform">
-                                        <i data-lucide="upload-cloud" class="w-7 h-7 text-black/80"></i>
-                    </div>
-                                    <div class="flex-1 flex justify-center font-handwriting pl-[10%]">
-                                        <span class="text-white text-xl font-bold tracking-wide drop-shadow-md">Upload Your File</span>
-                    </div>
-                </div>
-                            </button>
-            </div>
-                </div>
-            </div>
-            
-                <!-- Messages Area -->
-                <div id="messages-container" class="flex-1 space-y-6 pb-24 hidden">
-                    <!-- Messages will be injected here -->
                 </div>
             </div>
             
             <!-- Spanning Tree View -->
-            <div id="spanning-tree-view" class="h-full hidden flex flex-col">
-                <div class="flex-1 bg-[#0a0a12] rounded-3xl overflow-hidden relative shadow-2xl border border-white/5">
-                <div id="tree-container" class="w-full max-h-[420px] overflow-auto p-12 flex flex-col items-center">
-                        <!-- Tree structure injected here -->
-                        <div id="tree-content" class="min-w-full flex flex-col items-center"></div>
-                    </div>
-                <div id="uploaded-files-section" class="px-10 pb-6">
-                    <div class="flex items-center justify-between">
-                        <h3 class="section-title">Uploaded Tables</h3>
-                        <span class="text-xs text-white/50">Live preview for the current conversation</span>
-                    </div>
-                    <div id="current-table-preview" class="table-preview-card mt-4">
-                        <div class="preview-header">
-                            <span>Current Table</span>
-                            <strong>Waiting for a conversation to start</strong>
+            <div id="spanning-tree-view" class="h-full hidden">
+                <div class="tree-editor-shell">
+                    <div class="tree-editor-topbar">
+                        <button id="tree-mode-scroll-prev" class="tree-mode-nav" type="button" aria-label="Previous">◀</button>
+                        <div id="tree-mode-scroll" class="tree-mode-scroll">
+                            <div class="tree-mode-scroll-inner">
+                                <button id="tree-back-btn" onclick="app.backFromTreeEditor()" class="conic-gradient-btn px-3 py-1.5 rounded-xl text-black font-semibold flex items-center gap-2 shadow-lg">
+                                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                                    Back
+                                </button>
+                                <button onclick="app.setView('chat')" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-sm">Chat</button>
+                                <button onclick="app.setView('chain-of-thought')" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-sm">Chain</button>
+                                <span class="text-[11px] text-white/55 ml-2">View Mode</span>
+                                <button id="tree-mode-nested-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/25 transition-colors">Nested View</button>
+                                <button id="tree-mode-flat-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Flat View</button>
+                                <div id="tree-flat-mode-group" class="hidden items-center gap-2 ml-2">
+                                    <span class="text-[11px] text-white/50">Flat Sub-Mode</span>
+                                    <button id="tree-flat-row-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/25 transition-colors">Row Mode</button>
+                                    <button id="tree-flat-column-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Column Mode</button>
+                                </div>
+                                <div id="tree-nested-nav-group" class="items-center gap-2 ml-2 hidden">
+                                    <button id="tree-nested-enter-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Enter Next Level</button>
+                                    <button id="tree-nested-back-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Back One Level</button>
+                                    <span id="tree-nested-path-label" class="text-[11px] text-cyan-200/80 px-2">Level: ROOT</span>
+                                </div>
+                                <span class="text-xs text-white/60 ml-3">Editor Mode</span>
+                                <button onclick="document.getElementById('file-upload').click()" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-sm flex items-center gap-1.5">
+                                    <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+                                    Upload
+                                </button>
+                                <button id="upload-tree-image-btn" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-sm flex items-center gap-1.5">
+                                    <i data-lucide="image-plus" class="w-4 h-4"></i>
+                                    Add Image
+                                </button>
+                                <input type="file" id="tree-image-upload" accept="image/*" class="hidden">
+                                <button onclick="app.zoomTree('out')" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-sm">-</button>
+                                <button onclick="app.zoomTree('in')" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-sm">+</button>
+                                <button id="play-trace-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Replay Path</button>
+                                <select id="trace-speed-select" class="text-xs px-2 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10">
+                                    <option value="0.5">0.5x</option>
+                                    <option value="1" selected>1x</option>
+                                    <option value="1.5">1.5x</option>
+                                    <option value="2">2x</option>
+                                </select>
+                                <button id="tree-batch-delete-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Batch Delete</button>
+                                <button id="tree-batch-collapse-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Batch Collapse</button>
+                                <button id="tree-clear-selection-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Clear Selection</button>
+                                <button id="tree-generate-chart-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Generate Chart</button>
+                                <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg border border-white/10 bg-white/5">
+                                    <input id="tree-search-input-top" type="text" placeholder="Search nodes" class="w-24 md:w-32 bg-transparent text-[11px] text-white/85 placeholder:text-white/45 outline-none">
+                                    <button id="tree-search-prev-top" class="text-[11px] px-1.5 py-0.5 rounded bg-white/10 hover:bg-white/15">↑</button>
+                                    <button id="tree-search-next-top" class="text-[11px] px-1.5 py-0.5 rounded bg-white/10 hover:bg-white/15">↓</button>
+                                    <span id="tree-search-meta-top" class="text-[10px] text-cyan-200/80 min-w-[34px] text-center">0/0</span>
+                                </div>
+                                <span id="strict-trace-warning" class="text-[11px] text-amber-300 hidden">Strict trace is unavailable; fallback to frontend inference.</span>
+                                <button id="toggle-table-preview-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Show Table Preview</button>
+                                <button id="toggle-tree-chat-btn" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">Hide Q&A</button>
+                            </div>
                         </div>
-                        <p class="text-sm text-white/60">Once your file is processed, the first few rows will display here.</p>
+                        <button id="tree-mode-scroll-next" class="tree-mode-nav" type="button" aria-label="Next">▶</button>
+                        <button id="tree-topbar-collapse-btn" class="tree-mode-nav tree-topbar-collapse-btn" type="button" aria-label="Collapse top bar" title="Collapse top bar">▴ Collapse</button>
                     </div>
-                </div>
-                    <div class="absolute bottom-0 left-0 right-0 h-4 bg-black/40 backdrop-blur-md px-10 flex items-center">
-                        <div class="h-1.5 w-1/3 rounded-full bg-white/10"></div>
+
+                    <div id="tree-main-grid" class="tree-main-grid flex-1 min-h-0">
+                        <div id="nested-side-pane" class="tree-nested-side-pane hidden">
+                            <button id="nested-side-close-floating" class="nested-side-close-floating" type="button" title="Close nested view" aria-label="Close nested view">×</button>
+                            <div class="tree-nested-side-panel">
+                                <div class="trace-stage-head">
+                                    <span>Nested View</span>
+                                    <div class="flex items-center gap-1">
+                                        <button id="nested-side-clear" class="trace-stage-close" title="Clear">🗑</button>
+                                        <button id="nested-side-close" class="trace-stage-close" title="Close">×</button>
+                                    </div>
+                                </div>
+                                <div id="nested-side-content" class="tree-nested-side-content">
+                                    <div class="trace-empty-state">Click a \"Subtree\" action in trace to locate and display the corresponding nested level here.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="trace-stage-drawer" class="trace-stage-drawer hidden collapsed">
+                            <div class="trace-stage-panel">
+                                <div class="trace-stage-head">
+                                    <span>Path Cards</span>
+                                    <button id="trace-stage-close" class="trace-stage-close" title="Close">×</button>
+                                </div>
+                                <div id="trace-stage-list" class="trace-stage-list">
+                                    <div class="trace-empty-state">No stage results yet.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tree-workspace">
+                            <div id="tree-container">
+                                <div id="tree-content" class="min-w-full flex flex-col items-center"></div>
+                            </div>
+                            <div id="uploaded-files-section" class="tree-table-drawer tree-table-collapsed">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-sm font-semibold text-white/80">Uploaded Tables</h3>
+                                    <span class="text-[11px] text-white/40">Live preview</span>
+                                </div>
+                                <div id="current-table-preview" class="table-preview-card mt-3">
+                                    <div class="preview-header">
+                                        <span>Current Table</span>
+                                        <strong>Waiting for a conversation to start</strong>
+                                    </div>
+                                    <p class="text-sm text-white/60">Once your file is processed, the first few rows will display here.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tree-side-chat-wrap">
+                            <button id="tree-chat-edge-toggle" class="tree-chat-toggle" title="Toggle chat">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                            <div id="tree-side-chat" class="tree-side-chat">
+                                <div class="px-4 py-3 border-b border-white/10">
+                                    <p class="text-sm font-semibold text-zinc-100">Q&A Chat</p>
+                                    <p class="text-[11px] text-zinc-500">Ask anything about this tree</p>
+                                </div>
+                                <div id="tree-chat-list" class="tree-chat-list">
+                                    <p class="text-xs text-white/40 text-center mt-6">No messages yet. Ask a question to start.</p>
+                                </div>
+                                <div class="tree-chat-input-wrap p-3 border-t border-white/10">
+                                    <div class="flex items-end gap-2 rounded-xl border border-white/10 bg-black/25 px-3 py-2">
+                                        <textarea id="tree-chat-input" rows="1" placeholder="Ask about the tree..." class="flex-1 bg-transparent text-sm outline-none resize-none text-white/90 placeholder:text-white/40" style="max-height:100px;" onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();app.sendTreeMessage();}"></textarea>
+                                        <button onclick="app.sendTreeMessage()" class="conic-gradient-icon w-9 h-9 rounded-lg flex items-center justify-center text-black/80 hover:scale-105 transition-transform">
+                                            <i data-lucide="send" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="mt-8 flex justify-end">
-                    <button onclick="app.saveTree()" class="conic-gradient-btn h-16 w-80 rounded-2xl flex items-center px-4 hover:scale-105 transition-transform shadow-2xl group">
-                        <div class="w-12 h-12 rounded-full conic-gradient-icon flex items-center justify-center shadow-inner group-hover:rotate-12 transition-transform">
-                            <i data-lucide="save" class="w-6 h-6 text-black/80"></i>
+
+                    <div id="trace-debug-overlay" class="trace-debug-overlay hidden">
+                        <pre id="trace-debug-content"></pre>
                     </div>
-                        <span class="flex-1 text-center font-handwriting text-white text-xl font-bold drop-shadow-lg">Save Your Tree</span>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Logging View -->
-            <div id="logging-view" class="h-full hidden flex flex-col">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-2xl font-bold">System Logs</h3>
-                    <button onclick="app.clearLogs()" class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm transition-all border border-white/10 flex items-center gap-2">
-                        <i data-lucide="trash-2" class="w-4 h-4"></i> Clear Logs
-                    </button>
-                </div>
-                <div id="logs-area" class="flex-1 bg-black/60 rounded-2xl p-6 font-mono text-sm overflow-y-auto border border-white/5 scroll-area">
-                    <!-- Logs injected here -->
+
+                    <div class="tree-save-floating">
+                        <button onclick="app.saveTree()" class="conic-gradient-btn h-14 w-72 rounded-2xl flex items-center px-4 hover:scale-105 transition-transform shadow-2xl group">
+                            <div class="w-10 h-10 rounded-full conic-gradient-icon flex items-center justify-center shadow-inner group-hover:rotate-12 transition-transform">
+                                <i data-lucide="save" class="w-5 h-5 text-black/80"></i>
+                            </div>
+                            <span class="flex-1 text-center font-handwriting text-white text-lg font-bold drop-shadow-lg">Save Your Tree</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             
             <!-- Chain of Thought View -->
             <div id="chain-of-thought-view" class="h-full hidden flex flex-col">
                 <h3 class="text-2xl font-bold mb-4">Chain of Thought</h3>
-                <div id="chain-area" class="flex-1 bg-black/40 rounded-2xl p-8 overflow-y-auto border border-white/5 scroll-area">
-                    <pre id="chain-content" class="text-blue-400 font-mono text-sm leading-relaxed"></pre>
+                <div id="chain-area" class="flex-1 bg-black/40 rounded-2xl p-3 overflow-y-auto border border-white/5 scroll-area">
+                    <div class="cot-dual-grid">
+                        <div class="cot-panel">
+                            <div class="cot-panel-head">Reasoning Hierarchy</div>
+                            <div id="thought-hierarchy" class="cot-panel-body"></div>
+                        </div>
+                        <div class="cot-panel">
+                            <div class="cot-panel-head">Node Visit Replay (Real Event Stream)</div>
+                            <div id="execution-trace-panel" class="cot-panel-body"></div>
+                        </div>
+                    </div>
+                    <details class="mt-3">
+                        <summary class="text-xs text-white/60 cursor-pointer">View Raw Chain JSON</summary>
+                        <pre id="chain-content" class="text-blue-400 font-mono text-xs leading-relaxed mt-2"></pre>
+                    </details>
                 </div>
                     </div>
                     </div>
 
-        <!-- Chat Input Area -->
-        <div id="input-container" class="p-6 max-w-4xl mx-auto w-full absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/90 to-transparent">
-            <div class="relative p-[2px] rounded-full input-gradient-border shadow-2xl group focus-within:scale-[1.01] transition-all">
-                <div class="bg-input rounded-full flex items-center px-6 py-4 gap-4">
-                    <button class="text-muted-foreground hover:text-white transition-colors">
-                        <i data-lucide="paperclip" class="w-6 h-6"></i>
-                    </button>
-                    <input type="text" id="chat-input" placeholder="Ask ST-Raptor anything..." class="flex-1 bg-transparent border-none focus:outline-none text-lg placeholder:text-muted-foreground/50" onkeydown="if(event.key==='Enter') app.sendMessage()">
-                    <button class="text-muted-foreground hover:text-white transition-colors">
-                        <i data-lucide="mic" class="w-6 h-6"></i>
-                    </button>
-                    <button onclick="app.sendMessage()" class="conic-gradient-icon w-10 h-10 rounded-full flex items-center justify-center text-black/80 hover:scale-110 transition-all shadow-lg">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                    </button>
+    </main>
+
+    <div id="tree-chart-modal" class="fixed inset-0 z-[70] hidden">
+        <div id="tree-chart-modal-overlay" class="absolute inset-0 bg-black/85"></div>
+        <div class="relative h-full w-full flex items-center justify-center p-2 md:p-4">
+            <div id="tree-chart-modal-card" class="w-full max-w-7xl max-h-[94vh] overflow-y-auto bg-[#070b12] border border-white/10 rounded-2xl shadow-2xl transition-all duration-150">
+                <div class="flex items-center justify-between px-5 py-4 border-b border-white/10">
+                    <h3 class="text-base md:text-lg font-semibold text-white/90">Line Chart Preview</h3>
+                    <div class="flex items-center gap-2">
+                        <button id="tree-chart-fullscreen-btn" class="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white/80 text-sm">Fullscreen</button>
+                        <button id="tree-chart-modal-close" class="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white/80 text-sm">Close</button>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div id="tree-chart-error" class="hidden text-sm text-rose-300 bg-rose-500/10 border border-rose-500/40 rounded-lg px-3 py-2 mb-3"></div>
+                    <div id="tree-chart-canvas-wrap" class="w-full min-w-0 overflow-x-auto overflow-y-visible rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+                        <canvas id="tree-chart-canvas" class="block mx-auto"></canvas>
+                    </div>
+                    <div id="tree-chart-total-confirm" class="hidden fixed inset-0 z-[72] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-black/50"></div>
+                        <div class="relative w-[92%] max-w-sm rounded-xl border border-white/15 bg-[#0f172a] p-4 shadow-2xl">
+                            <p id="tree-chart-total-confirm-text" class="text-sm text-white/90 leading-relaxed">Detected a Total-like column. Include it in the chart?</p>
+                            <div class="mt-4 flex justify-end gap-2">
+                                <button id="tree-chart-total-no" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white/85 text-sm">No</button>
+                                <button id="tree-chart-total-yes" class="px-3 py-1.5 rounded-lg bg-white text-black text-sm font-semibold">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-5 py-4 border-t border-white/10 flex items-center justify-end gap-2">
+                    <button id="tree-chart-save-btn" class="px-3 py-1.5 rounded-lg bg-white text-black text-sm font-semibold">Save</button>
                 </div>
             </div>
+        </div>
     </div>
-    </main>
 
     <!-- Settings Modal -->
     <div id="settings-modal" class="fixed inset-0 z-50 hidden">
@@ -534,20 +413,21 @@
         </div>
     </div>
 
+    <!-- Module load order matters; see docs/frontend-module-contract.md -->
+    <script src="/static/js/nested-feature-viewer.js?v=20260321c"></script>
+    <script src="/static/js/trace-stage-viewer.js?v=20260323tracefix6"></script>
+    <script src="/static/js/app-state.js?v=20260321split10"></script>
+    <script src="/static/js/app-main-chat.js?v=20260321split3"></script>
+    <script src="/static/js/app-history-tree.js?v=20260321split3"></script>
+    <script src="/static/js/app-view-router.js?v=20260321split4"></script>
+    <script src="/static/js/app-tree-editor-ui.js?v=20260321split15"></script>
+    <script src="/static/js/app-tree-chat.js?v=20260321split2"></script>
+    <script src="/static/js/app-trace-sync.js?v=20260323tracefix4"></script>
+    <script src="/static/js/tree-chart-modal.js?v=20260322rowchart1"></script>
     <script>
         // App State and Logic
         const app = {
-            state: {
-                view: 'chat',
-                isSidebarCollapsed: false,
-                conversations: [],
-                activeId: null,
-                isSending: false,
-                logs: [],
-                chain: null,
-                polling: null,
-                historyMap: {}
-            },
+            state: window.createAppState ? window.createAppState() : {},
 
             init() {
                 lucide.createIcons();
@@ -555,7 +435,10 @@
                 this.startPolling();
                 this.setView('chat');
                 this.setupEventListeners();
+                this.setupTreeEditorControls();
+                this.setupTreeChartControls();
                 this.updateCenterUploadVisibility();
+                this.pushModelOutput('Hello, welcome to ST-Raptor. Select a history tree model or upload a new file.');
             },
 
             setupEventListeners() {
@@ -577,18 +460,366 @@
                 });
             },
 
-            updateCenterUploadVisibility() {
-                const wrapper = document.getElementById('center-upload-wrapper');
-                if (wrapper) {
-                    wrapper.classList.toggle('hidden', !this.state.isSidebarCollapsed);
+            setupTreeEditorControls() {
+                const toggleBtn = document.getElementById('toggle-table-preview-btn');
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', () => this.toggleTablePreview());
+                }
+                const chatToggleBtn = document.getElementById('toggle-tree-chat-btn');
+                const chatEdgeToggle = document.getElementById('tree-chat-edge-toggle');
+                const playbackBtn = document.getElementById('play-trace-btn');
+                const speedSel = document.getElementById('trace-speed-select');
+                const treeImageBtn = document.getElementById('upload-tree-image-btn');
+                const treeImageInput = document.getElementById('tree-image-upload');
+                const batchDeleteBtn = document.getElementById('tree-batch-delete-btn');
+                const batchCollapseBtn = document.getElementById('tree-batch-collapse-btn');
+                const clearSelectionBtn = document.getElementById('tree-clear-selection-btn');
+                const nestedModeBtn = document.getElementById('tree-mode-nested-btn');
+                const flatModeBtn = document.getElementById('tree-mode-flat-btn');
+                const flatRowBtn = document.getElementById('tree-flat-row-btn');
+                const flatColumnBtn = document.getElementById('tree-flat-column-btn');
+                const nestedEnterBtn = document.getElementById('tree-nested-enter-btn');
+                const nestedBackBtn = document.getElementById('tree-nested-back-btn');
+                const topbarCollapseBtn = document.getElementById('tree-topbar-collapse-btn');
+                const treeSearchInputTop = document.getElementById('tree-search-input-top');
+                const treeSearchPrevTop = document.getElementById('tree-search-prev-top');
+                const treeSearchNextTop = document.getElementById('tree-search-next-top');
+                const treeSearchMetaTop = document.getElementById('tree-search-meta-top');
+                if (chatToggleBtn) {
+                    chatToggleBtn.addEventListener('click', () => this.toggleTreeChat());
+                }
+                if (chatEdgeToggle) {
+                    chatEdgeToggle.addEventListener('click', () => this.toggleTreeChat());
+                }
+                if (playbackBtn) {
+                    playbackBtn.addEventListener('click', () => this.toggleTracePlayback());
+                }
+                if (speedSel) {
+                    speedSel.addEventListener('change', () => this.setTracePlaybackSpeed(speedSel.value));
+                }
+                if (batchDeleteBtn) {
+                    batchDeleteBtn.addEventListener('click', () => {
+                        const win = this.getTreeIframeWindow();
+                        if (!win) return;
+                        try {
+                            if (typeof win.batchDeleteSelection === 'function') {
+                                win.batchDeleteSelection();
+                            } else {
+                                win.document?.getElementById('nt-batch-delete')?.click();
+                            }
+                        } catch (e) {}
+                    });
+                }
+                if (batchCollapseBtn) {
+                    batchCollapseBtn.addEventListener('click', () => {
+                        const win = this.getTreeIframeWindow();
+                        if (!win) return;
+                        try {
+                            if (typeof win.batchCollapseSelection === 'function') {
+                                win.batchCollapseSelection();
+                            } else {
+                                win.document?.getElementById('nt-batch-collapse')?.click();
+                            }
+                        } catch (e) {}
+                    });
+                }
+                if (clearSelectionBtn) {
+                    clearSelectionBtn.addEventListener('click', () => {
+                        const win = this.getTreeIframeWindow();
+                        if (!win) return;
+                        try {
+                            if (typeof win.clearTreeSelection === 'function') {
+                                win.clearTreeSelection();
+                            } else {
+                                win.document?.getElementById('nt-clear-selection')?.click();
+                            }
+                        } catch (e) {}
+                    });
+                }
+                if (nestedModeBtn) nestedModeBtn.addEventListener('click', () => this.setTreeViewMode('nested'));
+                if (flatModeBtn) flatModeBtn.addEventListener('click', () => this.setTreeViewMode('flat'));
+                if (flatRowBtn) flatRowBtn.addEventListener('click', () => this.setFlatSubMode('row'));
+                if (flatColumnBtn) flatColumnBtn.addEventListener('click', () => this.setFlatSubMode('column'));
+                if (nestedEnterBtn) nestedEnterBtn.addEventListener('click', () => this.enterNestedLevel());
+                if (nestedBackBtn) nestedBackBtn.addEventListener('click', () => this.backNestedLevel());
+                if (topbarCollapseBtn) {
+                    topbarCollapseBtn.addEventListener('click', () => this.toggleTreeTopbar());
+                }
+                const updateSearchMetaTop = (searchState = null) => {
+                    if (!treeSearchMetaTop) return;
+                    const total = Number(searchState?.total || 0);
+                    const current = Number(searchState?.current || 0);
+                    treeSearchMetaTop.textContent = total > 0 ? `${current}/${total}` : '0/0';
+                };
+                const setTopSearch = (query = '', opts = {}) => {
+                    const win = this.getTreeIframeWindow();
+                    if (!win) return;
+                    try {
+                        if (typeof win.setTreeSearchQuery === 'function') {
+                            const res = win.setTreeSearchQuery(query, opts || {});
+                            updateSearchMetaTop(res || null);
+                            return;
+                        }
+                        // fallback for older iframe versions
+                        const doc = win.document;
+                        const input = doc?.getElementById('nt-search-input');
+                        if (input) {
+                            input.value = String(query || '');
+                            input.dispatchEvent(new Event('input', { bubbles: true }));
+                        }
+                    } catch (e) {
+                        // ignore
+                    }
+                };
+                if (treeSearchInputTop) {
+                    treeSearchInputTop.addEventListener('input', () => {
+                        setTopSearch(treeSearchInputTop.value || '', { autoFocus: false });
+                    });
+                    treeSearchInputTop.addEventListener('keydown', (e) => {
+                        const win = this.getTreeIframeWindow();
+                        if (!win) return;
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            try {
+                                let res = null;
+                                if (e.shiftKey && typeof win.prevTreeSearchResult === 'function') res = win.prevTreeSearchResult();
+                                else if (typeof win.nextTreeSearchResult === 'function') res = win.nextTreeSearchResult();
+                                updateSearchMetaTop(res || null);
+                            } catch (err) {}
+                        } else if (e.key === 'Escape') {
+                            treeSearchInputTop.value = '';
+                            setTopSearch('', { autoFocus: false });
+                        }
+                    });
+                }
+                if (treeSearchPrevTop) {
+                    treeSearchPrevTop.addEventListener('click', () => {
+                        const win = this.getTreeIframeWindow();
+                        if (!win) return;
+                        try {
+                            if (typeof win.prevTreeSearchResult === 'function') {
+                                updateSearchMetaTop(win.prevTreeSearchResult());
+                            } else {
+                                const btn = win.document?.getElementById('nt-search-prev');
+                                btn?.click();
+                            }
+                        } catch (e) {}
+                    });
+                }
+                if (treeSearchNextTop) {
+                    treeSearchNextTop.addEventListener('click', () => {
+                        const win = this.getTreeIframeWindow();
+                        if (!win) return;
+                        try {
+                            if (typeof win.nextTreeSearchResult === 'function') {
+                                updateSearchMetaTop(win.nextTreeSearchResult());
+                            } else {
+                                const btn = win.document?.getElementById('nt-search-next');
+                                btn?.click();
+                            }
+                        } catch (e) {}
+                    });
+                }
+                if (treeImageBtn && treeImageInput) {
+                    treeImageBtn.addEventListener('click', () => treeImageInput.click());
+                    treeImageInput.addEventListener('change', async (e) => {
+                        const f = e?.target?.files?.[0];
+                        if (!f) return;
+                        await this.uploadTreeImageFile(f);
+                        treeImageInput.value = '';
+                    });
+                }
+                const stageClose = document.getElementById('trace-stage-close');
+                if (stageClose) {
+                    stageClose.addEventListener('click', () => this.toggleTraceStageDrawer(false));
+                }
+                document.querySelectorAll('#nested-side-close, #nested-side-close-floating').forEach((closeBtn) => {
+                    closeBtn.addEventListener('click', () => this.setNestedDockVisible(false));
+                });
+                const nestedDockClear = document.getElementById('nested-side-clear');
+                if (nestedDockClear) {
+                    nestedDockClear.addEventListener('click', () => this.clearNestedDockState());
+                }
+                const subtreeClose = document.getElementById('trace-subtree-close');
+                if (subtreeClose) {
+                    subtreeClose.addEventListener('click', () => this.closeTraceSubtreePreview());
+                }
+                this.updateTreeViewModeButtons();
+                this.setupTreeModeScroller();
+                this.toggleTreeTopbar(false);
+            },
+
+            async uploadTreeImageFile(file) {
+                const convId = this.state.activeId;
+                if (!convId || !file) return;
+                try {
+                    const fd = new FormData();
+                    fd.append('file', file);
+                    const res = await fetch(`/api/history/${encodeURIComponent(convId)}/tree-images/upload`, {
+                        method: 'POST',
+                        body: fd
+                    });
+                    const data = await res.json();
+                    if (!data?.success || !data?.image) return;
+                    const win = this.getTreeIframeWindow();
+                    if (win && typeof win.addOverlayImage === 'function') {
+                        win.addOverlayImage(data.image);
+                    }
+                } catch (e) {
+                    // ignore
                 }
             },
 
+            async restoreTreeOverlayImages(conversationId) {
+                const convId = String(conversationId || '').trim();
+                if (!convId) return;
+                try {
+                    const res = await fetch(`/api/history/${encodeURIComponent(convId)}/tree-images`);
+                    const data = await res.json();
+                    if (!data?.success) return;
+                    const win = this.getTreeIframeWindow();
+                    if (win && typeof win.setOverlayImages === 'function') {
+                        win.setOverlayImages(Array.isArray(data.images) ? data.images : []);
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            },
+
+            closeTraceSubtreePreview() {
+                this.state.subtreePreviewState = { open: false, title: '', data: null };
+                this.renderTraceSubtreePreview();
+            },
+
+            openTraceSubtreePreview(previewData, title = 'Subtree Preview') {
+                if (!previewData || typeof previewData !== 'object') {
+                    this.closeTraceSubtreePreview();
+                    return;
+                }
+                this.state.subtreePreviewState = {
+                    open: true,
+                    title: String(title || 'Subtree Preview'),
+                    data: previewData
+                };
+                this.renderTraceSubtreePreview();
+            },
+
+            renderTraceSubtreePreview() {
+                const wrap = document.getElementById('trace-subtree-preview');
+                const body = document.getElementById('trace-subtree-body');
+                const title = document.getElementById('trace-subtree-title');
+                if (!wrap || !body || !title) return;
+                const preview = this.state.subtreePreviewState || {};
+                const isOpen = !!preview.open && preview.data && this.state.traceStageDrawerOpen;
+                wrap.classList.toggle('hidden', !isOpen);
+                if (!isOpen) {
+                    body.innerHTML = '<div class="trace-empty-state">No subtree preview is available for this step.</div>';
+                    title.textContent = 'Subtree Preview';
+                    return;
+                }
+                title.textContent = String(preview.title || 'Subtree Preview');
+                body.innerHTML = `<div class="trace-subtree-root">${this.renderTraceSubtreeNode(preview.data, 'ROOT', 0)}</div>`;
+            },
+
+            renderTraceSubtreeNode(value, label = 'ROOT', depth = 0) {
+                const safeLabel = this.escapeHtml(String(label || 'ROOT'));
+                if (depth >= 5) {
+                    return `<div class="trace-subtree-branch"><div class="trace-subtree-branch-label">${safeLabel}</div><div class="trace-subtree-leaf">...</div></div>`;
+                }
+                if (Array.isArray(value)) {
+                    const children = value.slice(0, 8).map((item, index) => this.renderTraceSubtreeNode(item, `[${index}]`, depth + 1)).join('');
+                    return `<div class="trace-subtree-branch"><div class="trace-subtree-branch-label">${safeLabel}</div><div class="trace-subtree-children">${children || '<div class="trace-subtree-leaf">[]</div>'}</div></div>`;
+                }
+                if (value && typeof value === 'object') {
+                    const entries = Object.entries(value).slice(0, 10);
+                    const children = entries.map(([key, item]) => this.renderTraceSubtreeNode(item, key, depth + 1)).join('');
+                    return `<div class="trace-subtree-branch"><div class="trace-subtree-branch-label">${safeLabel}</div><div class="trace-subtree-children">${children || '<div class="trace-subtree-leaf">{}</div>'}</div></div>`;
+                }
+                return `<div class="trace-subtree-branch"><div class="trace-subtree-branch-label">${safeLabel}</div><div class="trace-subtree-leaf">${this.escapeHtml(String(value ?? ''))}</div></div>`;
+            },
+
+            getTraceV3Subqueries(traceV3 = null) {
+                const source = traceV3 || this.state.lastTraceV3;
+                return Array.isArray(source?.subqueries) ? source.subqueries : [];
+            },
+
+            ensureTraceStageSelection(traceV3 = null) {
+                const subqueries = this.getTraceV3Subqueries(traceV3);
+                if (!subqueries.length) {
+                    this.state.selectedTraceSubquery = null;
+                    this.state.selectedTraceFrame = null;
+                    this.state.selectedTraceOperation = null;
+                    return;
+                }
+                let selectedSubquery = subqueries.find((item) => Number(item?.index) === Number(this.state.selectedTraceSubquery));
+                if (!selectedSubquery) {
+                    selectedSubquery = subqueries[0];
+                    this.state.selectedTraceSubquery = Number(selectedSubquery?.index || 0);
+                }
+                const frames = Array.isArray(selectedSubquery?.frames) ? selectedSubquery.frames : [];
+                let selectedFrame = frames.find((item) => String(item?.frameId || '') === String(this.state.selectedTraceFrame || ''));
+                if (!selectedFrame) {
+                    selectedFrame = frames[0] || null;
+                    this.state.selectedTraceFrame = selectedFrame?.frameId || null;
+                }
+                const operations = Array.isArray(selectedFrame?.operations) ? selectedFrame.operations : [];
+                let selectedOperation = operations.find((item) => String(item?.operationId || '') === String(this.state.selectedTraceOperation || ''));
+                if (!selectedOperation) {
+                    selectedOperation = operations[0] || null;
+                    this.state.selectedTraceOperation = selectedOperation?.operationId || null;
+                }
+            },
+
+            getSelectedTraceSubquery(traceV3 = null) {
+                this.ensureTraceStageSelection(traceV3);
+                return this.getTraceV3Subqueries(traceV3).find((item) => Number(item?.index) === Number(this.state.selectedTraceSubquery)) || null;
+            },
+
+            getSelectedTraceFrame(traceV3 = null) {
+                const subquery = this.getSelectedTraceSubquery(traceV3);
+                const frames = Array.isArray(subquery?.frames) ? subquery.frames : [];
+                return frames.find((item) => String(item?.frameId || '') === String(this.state.selectedTraceFrame || '')) || null;
+            },
+
+            getSelectedTraceOperation(traceV3 = null) {
+                const frame = this.getSelectedTraceFrame(traceV3);
+                const operations = Array.isArray(frame?.operations) ? frame.operations : [];
+                return operations.find((item) => String(item?.operationId || '') === String(this.state.selectedTraceOperation || '')) || null;
+            },
+
+            stopOperationPlayback() {
+                if (this.state.operationPlaybackTimer) {
+                    clearTimeout(this.state.operationPlaybackTimer);
+                    this.state.operationPlaybackTimer = null;
+                }
+                this.state.currentPlaybackQueue = [];
+                this.state.currentPlaybackIndex = -1;
+                const win = this.getTreeIframeWindow();
+                if (win && typeof win.stopTracePlayback === 'function') {
+                    try {
+                        win.stopTracePlayback();
+                    } catch (e) {
+                        // ignore
+                    }
+                }
+                this.state.isTracePlaying = false;
+                this.updateTracePlaybackButton();
+            },
+
             async setView(viewName) {
+                if (this.state.view === 'spanning-tree' && viewName !== 'spanning-tree') {
+                    this.persistCurrentTreeChat(true);
+                }
                 this.state.view = viewName;
+                const isTreeView = viewName === 'spanning-tree';
+                document.body.classList.toggle('tree-editor-mode', isTreeView);
+                document.getElementById('main-scroll-area')?.classList.toggle('tree-view', isTreeView);
+                if (!isTreeView) {
+                    this.setNestedDockVisible(false);
+                }
                 
                 // Update UI visibility
-                ['chat', 'spanning-tree', 'logging', 'chain-of-thought'].forEach(v => {
+                ['chat', 'spanning-tree', 'chain-of-thought'].forEach(v => {
                     const el = document.getElementById(`${v}-view`);
                     if (el) el.classList.add('hidden');
                 });
@@ -607,35 +838,38 @@
 
                 // Special handling for views
                 if (viewName === 'chat') {
-                    document.getElementById('input-container').classList.remove('hidden');
                     document.getElementById('view-header').classList.toggle('hidden', !this.state.activeId);
                 } else {
-                    document.getElementById('input-container').classList.add('hidden');
-                    document.getElementById('view-header').classList.remove('hidden');
+                    document.getElementById('view-header').classList.toggle('hidden', viewName === 'spanning-tree');
                     if (viewName === 'spanning-tree') {
+                        await this.restoreTreeChatForConversation(this.state.activeId);
+                        this.state.tablePreviewExpanded = false;
+                        this.toggleTablePreview(false);
+                        this.toggleTreeChat(true);
+                        this.state.isTracePlaying = false;
+                        this.updateTracePlaybackButton();
+                        this.updateStrictTraceWarning(true);
+                        this.updateTraceDebugOverlay(null, null);
+                        this.toggleTraceStageDrawer(false);
+                        this.toggleTreeTopbar(false);
                         this.loadTree();
-                        this.renderTablePreview();
                     }
                 }
-                if (viewName === 'logging') this.refreshLogs();
                 if (viewName === 'chain-of-thought') this.refreshChain();
-            },
-
-            startNewChat() {
-                this.state.activeId = null;
-                document.getElementById('messages-container').innerHTML = '';
-                document.getElementById('messages-container').classList.add('hidden');
-                document.getElementById('welcome-view').classList.remove('hidden');
-                document.getElementById('view-header').classList.add('hidden');
-                this.setView('chat');
-                this.updateActiveConversationTitle(null);
+                lucide.createIcons();
             },
 
             async sendMessage() {
                 const input = document.getElementById('chat-input');
+                if (!input) {
+                    this.pushModelOutput('Main chat is disabled. Ask questions in the tree panel on the right.');
+                    return;
+                }
             const message = input.value.trim();
                 if (!message || this.state.isSending) return;
-            
+
+                // Clear previous trace before each new turn
+                this.clearQaTrace();
             input.value = '';
                 this.addMessage('user', message);
                 this.state.isSending = true;
@@ -661,7 +895,13 @@
                             await this.loadHistory();
                         }
                         this.updateActiveConversationTitle(this.state.activeId);
-                        this.addMessage('assistant', data.message);
+                        const traceInfo = await this.syncQaTrace(data.message || "");
+                        this.addMessage(
+                            'assistant',
+                            data.message,
+                            traceInfo?.answerNodeId || this.state.lastQaTrace?.answerNodeId || null,
+                            traceInfo?.answerNodeName || this.state.lastQaTrace?.answerNodeName || ""
+                        );
                         this.setView('chat');
             } else {
                         this.addMessage('assistant', 'Error: ' + data.error);
@@ -671,51 +911,6 @@
                 } finally {
                     this.state.isSending = false;
                 }
-            },
-
-            sendSuggestion(text) {
-                document.getElementById('chat-input').value = text;
-                this.sendMessage();
-            },
-
-            addMessage(role, content) {
-                const container = document.getElementById('messages-container');
-                const isUser = role === 'user';
-                
-                const msgDiv = document.createElement('div');
-                msgDiv.className = `flex gap-4 ${isUser ? 'flex-row-reverse' : 'flex-row'} animate-in slide-in-from-bottom-2 fade-in duration-300`;
-                
-                // Avatar container
-                const avatarDiv = document.createElement('div');
-                avatarDiv.className = `w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden ${isUser ? 'bg-white/10' : 'conic-gradient-btn'}`;
-                const avatarImg = document.createElement('img');
-                avatarImg.className = 'w-full h-full object-cover';
-                avatarImg.src = isUser ? '/static/diverse-user-avatars.png' : '/static/images/image.png';
-                avatarImg.onerror = () => { avatarImg.src = `https://via.placeholder.com/40?text=${isUser ? 'U' : 'AI'}`; };
-                avatarDiv.appendChild(avatarImg);
-
-                // Bubble
-                const bubble = document.createElement('div');
-                bubble.className = `max-w-[70%] px-5 py-4 rounded-2xl ${isUser ? 'text-white rounded-tr-sm' : 'bg-white/5 border border-white/10 text-white rounded-tl-sm'}`;
-                
-                if (isUser) {
-                    bubble.style.background = 'linear-gradient(90deg, #F80E68 13%, #FC4E6F 45%, #FD6D72 80%, #FE7D74 90%, #FF8D76 100%)';
-                }
-
-                bubble.innerHTML = `<div class="prose prose-invert prose-sm leading-relaxed">${this.formatContent(content)}</div>`;
-                
-                msgDiv.appendChild(avatarDiv);
-                msgDiv.appendChild(bubble);
-                
-                container.appendChild(msgDiv);
-                document.getElementById('main-scroll-area').scrollTop = document.getElementById('main-scroll-area').scrollHeight;
-            },
-
-            formatContent(text) {
-                // Simple markdown-to-html (could use marked.js for better results)
-                return text.replace(/\n/g, '<br>')
-                           .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                           .replace(/\*(.*?)\*/g, '<em>$1</em>');
             },
 
             async handleFileUpload(event) {
@@ -775,15 +970,16 @@
                     if (conv[2]) metaParts.push(conv[2]);
                     const meta = metaParts.join(' · ');
                     return `
-                        <button onclick="app.loadConversation('${conv[0]}')" class="w-full flex flex-col gap-1 px-3 py-3 rounded-xl transition-all text-left ${this.state.activeId === conv[0] ? 'bg-white/10 text-white' : 'text-muted-foreground hover:bg-white/5'}">
+                        <button onclick="app.openHistoryTree('${conv[0]}')" class="w-full flex flex-col gap-1 px-3 py-3 rounded-xl transition-all text-left ${this.state.activeId === conv[0] ? 'bg-white/10 text-white' : 'text-muted-foreground hover:bg-white/5'}">
                             <span class="text-sm font-semibold text-white truncate">${summary}</span>
                             ${meta ? `<span class="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground/60">${meta}</span>` : ''}
                         </button>
                     `;
                 }).join('');
                 lucide.createIcons();
+                this.renderHistoryTreeGrid();
                 if (this.state.view === 'spanning-tree') {
-                    this.renderTablePreview();
+                    if (this.state.tablePreviewExpanded) this.renderTablePreview();
                 }
             },
 
@@ -824,10 +1020,20 @@
                         `;
                         return;
                     }
+                    const validTables = (data.tables || []).filter(table => Array.isArray(table?.rows) && table.rows.length > 0);
+                    if (!validTables.length) {
+                        preview.innerHTML = `
+                            <div class="preview-header">
+                                <span>Current Table</span>
+                                <strong>No preview rows</strong>
+                            </div>
+                            <p class="text-sm text-white/60">The Excel exists but contains only empty rows.</p>
+                        `;
+                        return;
+                    }
 
-                    preview.innerHTML = data.tables.map(table => {
+                    const renderSingleTable = (table) => {
                         const rows = table.rows || [];
-                        if (!rows.length) return '';
                         const columnCount = rows.reduce((max, row) => Math.max(max, row.length), 0);
                         const headerRow = rows[0] || Array(columnCount).fill('');
                         const bodyRows = rows.slice(1);
@@ -849,17 +1055,34 @@
                                 </table>
                             </div>
                         `;
-                    }).join('');
+                    };
 
-                    if (!preview.innerHTML.trim()) {
-                        preview.innerHTML = `
-                            <div class="preview-header">
-                                <span>Current Table</span>
-                                <strong>No preview rows</strong>
-                            </div>
-                            <p class="text-sm text-white/60">The Excel exists but contains only empty rows.</p>
-                        `;
-                    }
+                    const tabLabel = (fileName = '', idx = 0) => {
+                        const safe = String(fileName || '').trim() || `Table ${idx + 1}`;
+                        return safe.length > 18 ? `${safe.slice(0, 18)}…` : safe;
+                    };
+
+                    const tabsHtml = validTables.map((table, idx) => `
+                        <button class="preview-tab ${idx === 0 ? 'active' : ''}" data-preview-idx="${idx}" title="${this.escapeHtml(table.file || '')}">
+                            ${this.escapeHtml(tabLabel(table.file, idx))}
+                        </button>
+                    `).join('');
+
+                    preview.innerHTML = `
+                        <div class="preview-tabs">${tabsHtml}</div>
+                        <div id="table-preview-body">${renderSingleTable(validTables[0])}</div>
+                    `;
+
+                    const bodyEl = preview.querySelector('#table-preview-body');
+                    const tabEls = preview.querySelectorAll('.preview-tab');
+                    const setActiveTab = (idx) => {
+                        const safeIdx = Math.max(0, Math.min(validTables.length - 1, Number(idx) || 0));
+                        tabEls.forEach((el, i) => el.classList.toggle('active', i === safeIdx));
+                        if (bodyEl) bodyEl.innerHTML = renderSingleTable(validTables[safeIdx]);
+                    };
+                    tabEls.forEach((btn) => {
+                        btn.addEventListener('click', () => setActiveTab(btn.getAttribute('data-preview-idx')));
+                    });
                 } catch (err) {
                     preview.innerHTML = `
                         <div class="preview-header">
@@ -871,57 +1094,181 @@
                 }
             },
 
-            updateActiveConversationTitle(conversationId) {
-                const titleEl = document.getElementById('active-conversation-title');
-                if (!titleEl) return;
-                if (!conversationId) {
-                    titleEl.textContent = 'New Conversation';
-                    return;
-                }
-                const record = this.state.historyMap[conversationId];
-                titleEl.textContent = record?.summary || 'New Conversation';
+            backFromTreeEditor() {
+                this.setView('chat');
             },
 
-            showChatAfterUpload() {
-                const welcome = document.getElementById('welcome-view');
-                const messages = document.getElementById('messages-container');
-                if (welcome) welcome.classList.add('hidden');
-                if (messages) messages.classList.remove('hidden');
-                this.setView('chat');
-                document.getElementById('view-header')?.classList.toggle('hidden', !this.state.activeId);
+            updateTreeSaveVisibility() {
+                const saveWrap = document.querySelector('.tree-save-floating');
+                if (!saveWrap) return;
+                const isTreeView = this.state.view === 'spanning-tree';
+                const isNestedReadOnly = isTreeView && (this.state.treeViewMode || 'nested') === 'nested';
+                saveWrap.style.display = isNestedReadOnly ? 'none' : '';
             },
+
+            updateNestedReadonlyState() {
+                const treeView = document.getElementById('spanning-tree-view');
+                if (!treeView) return;
+                const isReadonly = this.state.view === 'spanning-tree' && (this.state.treeViewMode || 'nested') === 'nested';
+                treeView.classList.toggle('nested-readonly', isReadonly);
+                this.updateTreeSaveVisibility();
+            },
+
+            updateTreeViewModeButtons() {
+                const nestedBtn = document.getElementById('tree-mode-nested-btn');
+                const flatBtn = document.getElementById('tree-mode-flat-btn');
+                const flatRowBtn = document.getElementById('tree-flat-row-btn');
+                const flatColumnBtn = document.getElementById('tree-flat-column-btn');
+                const flatGroup = document.getElementById('tree-flat-mode-group');
+                const nestedNav = document.getElementById('tree-nested-nav-group');
+                const nestedPathLabel = document.getElementById('tree-nested-path-label');
+
+                const viewMode = this.state.treeViewMode || 'nested';
+                const flatMode = this.state.flatSubMode || 'column';
+                const active = ['bg-white/20', 'hover:bg-white/25'];
+                const idle = ['bg-white/10', 'hover:bg-white/15'];
+
+                if (nestedBtn) {
+                    nestedBtn.classList.remove(...active, ...idle);
+                    nestedBtn.classList.add(...(viewMode === 'nested' ? active : idle));
+                }
+                if (flatBtn) {
+                    flatBtn.classList.remove(...active, ...idle);
+                    flatBtn.classList.add(...(viewMode === 'flat' ? active : idle));
+                }
+                if (flatRowBtn) {
+                    flatRowBtn.classList.remove(...active, ...idle);
+                    flatRowBtn.classList.add(...(flatMode === 'row' ? active : idle));
+                }
+                if (flatColumnBtn) {
+                    flatColumnBtn.classList.remove(...active, ...idle);
+                    flatColumnBtn.classList.add(...(flatMode === 'column' ? active : idle));
+                }
+                if (flatGroup) {
+                    flatGroup.classList.toggle('hidden', viewMode !== 'flat');
+                    flatGroup.classList.toggle('flex', viewMode === 'flat');
+                }
+                if (nestedNav) {
+                    nestedNav.classList.toggle('hidden', viewMode !== 'nested');
+                    nestedNav.classList.toggle('flex', viewMode === 'nested');
+                }
+                if (nestedPathLabel) {
+                    const pathParts = ['ROOT', ...(Array.isArray(this.state.nestedFocusPath) ? this.state.nestedFocusPath : [])];
+                    nestedPathLabel.textContent = `Level: ${pathParts.join(' > ')}`;
+                }
+                this.updateNestedReadonlyState();
+                this.setupTreeModeScroller();
+            },
+
+            async setTreeViewMode(mode) {
+                const normalized = mode === 'flat' ? 'flat' : 'nested';
+                if (this.state.treeViewMode === normalized) return;
+                this.state.treeViewMode = normalized;
+                if (normalized === 'nested') {
+                    this.setNestedDockVisible(false);
+                    this.state.nestedFocusPath = [];
+                    this.state.nestedPathStack = [];
+                    this.state.nestedNodeOffsets = {};
+                    this.state.nestedViewportZoom = 1;
+                    this.state.nestedViewportScroll = null;
+                    this.state.nestedFeatureStackOffset = { x: 0, y: 0 };
+                    this.state.nestedExpandState = { index: false, body: false };
+                    this.state.nestedSemanticFocus = null;
+                }
+                this.updateTreeViewModeButtons();
+                if (this.state.view === 'spanning-tree') await this.loadTree();
+            },
+
+            async setFlatSubMode(mode) {
+                const normalized = mode === 'column' ? 'column' : 'row';
+                if (this.state.flatSubMode === normalized) return;
+                this.state.flatSubMode = normalized;
+                this.updateTreeViewModeButtons();
+                if (this.state.view === 'spanning-tree' && this.state.treeViewMode === 'flat') {
+                    await this.loadTree();
+                }
+            },
+            // nested feature viewer methods are installed from /static/js/nested-feature-viewer.js
 
             async loadConversation(id) {
-                this.state.activeId = id;
-                this.setView('chat');
-                document.getElementById('messages-container').innerHTML = '';
-                document.getElementById('messages-container').classList.remove('hidden');
-                document.getElementById('welcome-view').classList.add('hidden');
-                document.getElementById('view-header').classList.remove('hidden');
-
-                try {
-                    const res = await fetch(`/api/history/${id}`);
-                    const data = await res.json();
-                    if (data.success && data.history) {
-                        data.history.forEach(m => this.addMessage(m.role, m.content));
-                        await this.loadHistory();
-                        this.updateActiveConversationTitle(id);
-                        if (this.state.view === 'spanning-tree') {
-                            await this.renderTablePreview();
-                        }
-                    }
-                } catch (err) {}
+                this.openHistoryTree(id);
             },
 
             async loadTree() {
-                const res = await fetch('/api/tree');
+                if (this.state.treeViewMode === 'nested') {
+                    await this.loadNestedFeatureData();
+                    return;
+                }
+                const query = this.state.activeId ? `?conversation_id=${encodeURIComponent(this.state.activeId)}` : '';
+                let endpoint = '/api/tree';
+                if (this.state.flatSubMode === 'column') {
+                    endpoint = '/api/tree-flat-column';
+                } else {
+                    endpoint = '/api/tree-flat-row';
+                }
+                const res = await fetch(`${endpoint}${query}`);
                 const data = await res.json();
                 if (data.success) {
                     // Reusing the existing iframe strategy or rendering custom nodes
                     // For now, let's try to parse the HTML and inject into tree-content
                     // Or just use an iframe for simplicity if data.html is a full page
                     const treeContent = document.getElementById('tree-content');
-                    treeContent.innerHTML = data.html; 
+                    treeContent.innerHTML = data.html;
+                    const iframe = treeContent.querySelector('iframe');
+                    if (iframe) {
+                        iframe.addEventListener('load', () => {
+                            this.setTracePlaybackSpeed(this.state.tracePlaybackSpeed);
+                            this.syncTreeIframeUi();
+                            try {
+                                if (iframe.contentWindow && typeof iframe.contentWindow.setEditorConversationId === 'function') {
+                                    iframe.contentWindow.setEditorConversationId(this.state.activeId || '');
+                                }
+                            } catch (e) {}
+                            this.restoreTreeOverlayImages(this.state.activeId);
+                            this.applyPendingQaTrace();
+                        }, { once: true });
+                        // 某些浏览器在缓存命中时不会触发 load，兜底触发一次
+                        setTimeout(() => {
+                            this.setTracePlaybackSpeed(this.state.tracePlaybackSpeed);
+                            this.syncTreeIframeUi();
+                            try {
+                                if (iframe.contentWindow && typeof iframe.contentWindow.setEditorConversationId === 'function') {
+                                    iframe.contentWindow.setEditorConversationId(this.state.activeId || '');
+                                }
+                            } catch (e) {}
+                            this.restoreTreeOverlayImages(this.state.activeId);
+                            this.applyPendingQaTrace();
+                        }, 180);
+                    }
+                }
+            },
+
+            syncTreeIframeUi() {
+                const iframe = document.querySelector('#tree-content iframe');
+                if (!iframe || !iframe.contentDocument) return;
+                try {
+                    const doc = iframe.contentDocument;
+                    const minimap = doc.getElementById('nt-minimap');
+                    if (minimap) {
+                        minimap.style.left = '14px';
+                        minimap.style.right = 'auto';
+                        minimap.style.bottom = '14px';
+                    }
+                    // 旧版 iframe 内工具栏会被外层 topbar 覆盖，统一下移
+                    const tools = doc.querySelector('.nt-tools');
+                    const history = doc.querySelector('.nt-history');
+                    if (history) {
+                        history.style.top = '60px';
+                    }
+                    if (tools) {
+                        tools.style.display = 'none';
+                    }
+                    const search = doc.querySelector('.nt-search-bar');
+                    if (search) {
+                        search.style.display = 'none';
+                    }
+                } catch (e) {
+                    // ignore
                 }
             },
 
@@ -934,9 +1281,56 @@
                 }
             },
 
+            zoomTree(direction) {
+                const iframe = document.querySelector('#tree-content iframe');
+                if (!iframe || !iframe.contentWindow) return;
+                if (typeof iframe.contentWindow.zoomTree === 'function') {
+                    iframe.contentWindow.zoomTree(direction);
+                }
+            },
+
+            focusAnswerNode(nodeId) {
+                if (!nodeId) return;
+                const textId = String(nodeId || '').trim();
+                if (textId.startsWith('ct_') && typeof this.debugHighlightExact === 'function') {
+                    this.debugHighlightExact(textId);
+                    return;
+                }
+                const win = this.getTreeIframeWindow();
+                if (!win) return;
+                try {
+                    // nodeId 可能是 canonical id（ct_*），不能直接当作前端 DOM id 使用。
+                    // 统一走 trace segment 解析链路，让 iframe 内部完成 canonical -> frontend id 映射。
+                    if (typeof win.previewTraceSegment === 'function') {
+                        const res = win.previewTraceSegment({
+                            nodeIds: [nodeId],
+                            edgeIds: [],
+                            answerNodeId: nodeId,
+                            focusNodeId: nodeId,
+                            resetTraceHits: true
+                        });
+                        if (res && res.applied) return;
+                    }
+                    if (typeof win.playTraceSegment === 'function') {
+                        win.playTraceSegment({
+                            nodeIds: [nodeId],
+                            edgeIds: [],
+                            answerNodeId: nodeId,
+                            focusNodeId: nodeId,
+                            resetTraceHits: true
+                        });
+                        return;
+                    }
+                    if (typeof win.focusNodeById === 'function') {
+                        win.focusNodeById(nodeId);
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            },
+
             async startPolling() {
                 this.state.polling = setInterval(async () => {
-                    if (this.state.view === 'logging') this.refreshLogs();
                     if (this.state.view === 'chain-of-thought') this.refreshChain();
                 }, 3000);
             },
@@ -954,14 +1348,6 @@
                         return `<div class="log-line ${level}">${this.escapeHtml(line)}</div>`;
                     }).join('');
                     area.scrollTop = area.scrollHeight;
-                }
-            },
-
-            async refreshChain() {
-                const res = await fetch('/api/chain');
-                const data = await res.json();
-                if (data.success && data.chain) {
-                    document.getElementById('chain-content').textContent = JSON.stringify(data.chain, null, 2);
                 }
             },
 
@@ -1035,14 +1421,23 @@
                 }
             },
 
-            escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
         };
 
+        // Compose feature modules onto the stable window.app surface.
+        Object.assign(
+            app,
+            window.AppMainChatMethods || {},
+            window.AppHistoryTreeMethods || {},
+            window.AppViewRouterMethods || {},
+            window.AppTreeEditorUiMethods || {},
+            window.AppTreeChatMethods || {},
+            window.AppTraceSyncMethods || {}
+        );
+
         // Initialize App
+        installNestedFeatureViewer(app);
+        installTraceStageViewer(app);
+        installTreeChartModal(app);
         app.init();
     </script>
 </body>

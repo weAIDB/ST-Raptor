@@ -55,6 +55,7 @@ def answer_question(
         query=query,
         ho_tree=ho_tree,
         table_file=table_file,
+        table_id=tid,
         embedding_cache_file=embedding_cache_file,
         enable_emebdding=enable_emebdding,
         enable_query_decompose=enable_query_decompose,
@@ -196,7 +197,7 @@ def benchmark(
 def main():
     ##### You need to change this
     input_jsonl ="data/SSTQA-zh/test.jsonl"
-    table_dir = "data/SSTQA-zh/table"
+    table_dir = "data/SSTQA"
     pkl_dir = "data/SSTQA-zh/pkl"
     output_jsonl = "SSTQA-zh/output.jsonl"
     log_dir = "data/SSTQA-zh/log"

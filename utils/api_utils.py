@@ -12,6 +12,15 @@ from openai import AuthenticationError
 from config import api_config
 from utils.constants import *
 
+
+def _normalize_base_url(raw_url: str, default_url: str, service_name: str) -> str:
+    url = (raw_url or "").strip() or default_url
+    if not url:
+        raise ValueError(f"{service_name} API URL 为空，请在 Settings 中配置。")
+    if not url.startswith(("http://", "https://")):
+        url = "https://" + url
+    return url
+
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
@@ -24,6 +33,10 @@ def vlm_generate(
     model=VLM_MODEL_TYPE,
     temperature=0.5,
 ):
+    key = (key or "").strip() or VLM_API_KEY
+    model = (model or "").strip() or VLM_MODEL_TYPE
+    url = _normalize_base_url(url, VLM_API_URL, "VLM")
+
     if os.path.exists(image):
         image = f"data:image/jpeg;base64,{encode_image(image)}"
 
@@ -63,6 +76,10 @@ def llm_generate(
     max_tokens=8192, 
     temperature=0.5
 ):
+    key = (key or "").strip() or LLM_API_KEY
+    model = (model or "").strip() or LLM_MODEL_TYPE
+    url = _normalize_base_url(url, LLM_API_URL, "LLM")
+
     client = OpenAI(api_key=key, base_url=url)
 
     res = "None"
@@ -104,7 +121,8 @@ def embedding_generate(
     dimensions=1024,
 ):
     key = key or api_config.get("embedding_api_key") or EMBEDDING_API_KEY
-    url = url or api_config.get("embedding_api_url") or EMBEDDING_API_URL
+    raw_url = url or api_config.get("embedding_api_url") or EMBEDDING_API_URL
+    url = _normalize_base_url(raw_url, EMBEDDING_API_URL, "Embedding")
     model = model or api_config.get("embedding_model") or EMBEDDING_MODEL_TYPE
 
     client = OpenAI(api_key=key, base_url=url)

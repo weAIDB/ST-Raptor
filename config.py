@@ -25,14 +25,21 @@ def load_api_config():
         try:
             with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
                 loaded_config = json.load(f)
-                api_config.update(loaded_config)
+                for k, v in loaded_config.items():
+                    # 空字符串不覆盖默认配置，避免把默认 URL/模型清空
+                    if isinstance(v, str) and not v.strip():
+                        continue
+                    api_config[k] = v
         except Exception as e:
             print(f"加载API配置失败: {e}")
 
 # 保存配置到文件
 def save_api_config(config):
     global api_config
-    api_config.update(config)
+    for k, v in config.items():
+        if isinstance(v, str) and not v.strip():
+            continue
+        api_config[k] = v
     try:
         with open(CONFIG_FILE, 'w', encoding='utf-8') as f:
             json.dump(api_config, f, ensure_ascii=False, indent=2)

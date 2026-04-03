@@ -5,7 +5,7 @@ from datetime import datetime
 from tree_editor import editor, default_data
 from tree_utils import json_to_tree_data
 from new_tree_ui import build_new_tree_iframe_html
-from core_functions import process_table_for_tree, clear_all, read_all_logs
+from core_functions import process_table_for_tree, clear_all, read_all_logs, build_and_save_tree_id_mappings
 from utils.constants import LOG_DIR
 
 
@@ -42,6 +42,9 @@ def generate_keywords_summary(text_content, max_tokens=200, temperature=0.3):
 def merge_multiple_tables_to_tree(file_list, conversation_id=None):
     """将多个表格文件和文本文件的数据合并到一个根节点下"""
     merged_data = {}
+    merged_column_data = {}
+    merged_row_data = {}
+    merged_artifact_manifest = {}
     processed_files = []  # 记录成功处理的文件
     failed_files = []     # 记录处理失败的文件
     
@@ -69,6 +72,68 @@ def merge_multiple_tables_to_tree(file_list, conversation_id=None):
                     
                     # 将当前表格数据添加到合并数据中
                     merged_data[file_name] = data
+
+                    # 收集每个文件对应的 column 视图（显式两层循环：文件 -> sheet）
+                    try:
+                        if conversation_id:
+                            column_path = os.path.join("history", conversation_id, "temp.column.json")
+                            if os.path.exists(column_path):
+                                import json
+                                with open(column_path, "r", encoding="utf-8") as cf:
+                                    column_payload = json.load(cf)
+                                if isinstance(column_payload, dict):
+                                    merged_column_data[file_name] = {}
+                                    for sheet_name, sheet_body in column_payload.items():
+                                        merged_column_data[file_name][str(sheet_name)] = sheet_body
+                                    print(
+                                        f"[DEBUG] 列视图聚合 file={file_name}, sheets={list(merged_column_data[file_name].keys())}"
+                                    )
+                                else:
+                                    # 防御：非 dict 形态时按原样挂到文件下
+                                    merged_column_data[file_name] = column_payload
+                    except Exception as e:
+                        print(f"[WARN] 读取列视图失败 {f.name}: {e}")
+
+                    # 收集每个文件对应的 row 视图（显式两层循环：文件 -> sheet）
+                    try:
+                        if conversation_id:
+                            row_path = os.path.join("history", conversation_id, "temp1.json")
+                            if os.path.exists(row_path):
+                                import json
+                                with open(row_path, "r", encoding="utf-8") as rf:
+                                    row_payload = json.load(rf)
+                                if isinstance(row_payload, dict):
+                                    merged_row_data[file_name] = {}
+                                    for sheet_name, sheet_body in row_payload.items():
+                                        merged_row_data[file_name][str(sheet_name)] = sheet_body
+                                    print(
+                                        f"[DEBUG] 行视图聚合 file={file_name}, sheets={list(merged_row_data[file_name].keys())}"
+                                    )
+                                else:
+                                    merged_row_data[file_name] = row_payload
+                    except Exception as e:
+                        print(f"[WARN] 读取行视图失败 {f.name}: {e}")
+
+                    # 收集每个文件对应的 artifact manifest，避免被后续文件覆盖
+                    try:
+                        if conversation_id:
+                            manifest_path = os.path.join("history", conversation_id, "temp.artifacts.json")
+                            if os.path.exists(manifest_path):
+                                import json
+                                with open(manifest_path, "r", encoding="utf-8") as mf:
+                                    manifest_payload = json.load(mf)
+                                if isinstance(manifest_payload, dict) and manifest_payload:
+                                    # 单文件场景一般只有一个 key；这里统一挂到外层 file_name 下
+                                    if file_name in manifest_payload and isinstance(manifest_payload[file_name], dict):
+                                        merged_artifact_manifest[file_name] = manifest_payload[file_name]
+                                    else:
+                                        first_key = next(iter(manifest_payload.keys()))
+                                        first_item = manifest_payload.get(first_key, {})
+                                        if isinstance(first_item, dict):
+                                            merged_artifact_manifest[file_name] = first_item
+                    except Exception as e:
+                        print(f"[WARN] 读取产物清单失败 {f.name}: {e}")
+
                     processed_files.append(f.name)
                 else:
                     failed_files.append(f"表格文件处理为空: {f.name}")
@@ -140,6 +205,43 @@ def merge_multiple_tables_to_tree(file_list, conversation_id=None):
     # 如果有处理失败的文件，记录警告信息
     if failed_count > 0:
         print(f"[WARN] 有 {failed_count} 个文件未能成功处理")
+
+    # 多文件场景下，将每个文件的列视图汇总到最外层 dict，避免只保留最后一个文件
+    if conversation_id and merged_column_data:
+        try:
+            import json
+            column_out = os.path.join("history", conversation_id, "temp.column.json")
+            with open(column_out, "w", encoding="utf-8") as f:
+                json.dump(merged_column_data, f, ensure_ascii=False, indent=4)
+            print(f"[INFO] 已写入多文件列视图: {column_out}, keys={list(merged_column_data.keys())}")
+        except Exception as e:
+            print(f"[WARN] 写入多文件列视图失败: {e}")
+
+    if conversation_id and merged_row_data:
+        try:
+            import json
+            row_out = os.path.join("history", conversation_id, "temp1.json")
+            with open(row_out, "w", encoding="utf-8") as f:
+                json.dump(merged_row_data, f, ensure_ascii=False, indent=4)
+            print(f"[INFO] 已写入多文件行视图: {row_out}, keys={list(merged_row_data.keys())}")
+        except Exception as e:
+            print(f"[WARN] 写入多文件行视图失败: {e}")
+
+    if conversation_id and merged_artifact_manifest:
+        try:
+            import json
+            manifest_out = os.path.join("history", conversation_id, "temp.artifacts.json")
+            with open(manifest_out, "w", encoding="utf-8") as f:
+                json.dump(merged_artifact_manifest, f, ensure_ascii=False, indent=4)
+            print(f"[INFO] 已写入多文件产物清单: {manifest_out}, keys={list(merged_artifact_manifest.keys())}")
+        except Exception as e:
+            print(f"[WARN] 写入多文件产物清单失败: {e}")
+
+    if conversation_id and merged_column_data and merged_row_data:
+        try:
+            build_and_save_tree_id_mappings(os.path.join("history", conversation_id), typed_root_name="HO_TREE")
+        except Exception as e:
+            print(f"[WARN] 写入多文件ID映射失败: {e}")
     
     return merged_data, processed_files, failed_files
 
@@ -188,69 +290,52 @@ def load_from_upload(file):
             
             # table_processed 标记是否至少有一个文件被处理
             table_processed = False
-            
-            # 根据线路处理文件（用于更新界面显示）
-            if route == "hotree":
-                # 处理表格文件和文本文件 - 将所有表格和文本文件合并到一个根节点下
-                all_files = []
-                for f in file:
-                    file_path = f.name
-                    ext = os.path.splitext(file_path)[1].lower()
-                    if ext in [".xlsx", ".xls", ".docx", ".doc", ".txt", ".md", ".json"]:
-                        all_files.append(f)
-                
-                if all_files:
-                    # 如果有表格或文本文件，将它们合并到一个根节点下
-                    # 注意：merge_multiple_tables_to_tree 内部会调用 process_table_for_tree，不需要在这里预处理
-                    merged_data, processed_files, failed_files = merge_multiple_tables_to_tree(all_files, conversation_id=conversation_id)
-                    
-                    # 验证步骤：确保所有文档都正确纳入HOTree结构
-                    total_uploaded = len(all_files)
-                    total_processed = len(processed_files)
-                    total_failed = len(failed_files)
-                    
-                    if total_processed > 0:
-                        # 至少有一个文件被成功处理，构建树结构
-                        # 创建一个总的根节点
-                        root_name = "All_Documents"
-                        root_body = merged_data
-                        tree_data = json_to_tree_data(root_body, name=root_name)
-                        editor.data = [tree_data] if tree_data else copy.deepcopy(default_data)
-                        persist_tree()
-                        
-                        # 更新表处理状态，以便显示成功消息
-                        table_processed = True
-                        
-                        # 记录验证结果
-                        print(f"[INFO] 树结构构建完成，成功处理 {total_processed} 个文件")
-                    else:
-                        # 所有文件都处理失败
-                        editor.data = copy.deepcopy(default_data)
-                        persist_tree()
-                        print(f"[WARN] 所有上传的文件都处理失败")
-                        
-                        # 不显示成功消息，因为没有文件成功处理
-                        table_processed = False
-            else:
-                # 非 HOTree 路线，但仍然预处理表格文件以供后续使用
-                table_processed = False
-                for f in file:
-                    file_path = f.name
-                    ext = os.path.splitext(file_path)[1].lower()
-                    if ext in [".xlsx", ".xls", ".csv", ".txt", ".md", ".json", ".docx", ".doc"]:
-                        # 对表格文件进行预处理，不管最终路由是什么
+            processed_files = []
+            failed_files = []
+
+            # 无论 route 如何，只要上传列表中包含可构树文件，都应该生成树结构。
+            # 这样可以避免“xlsx + 图片”被 route 判到非 hotree 时，编辑器出现空树。
+            all_files = []
+            for f in file:
+                file_path = f.name
+                ext = os.path.splitext(file_path)[1].lower()
+                if ext in [".xlsx", ".xls", ".docx", ".doc", ".txt", ".md", ".json"]:
+                    all_files.append(f)
+                elif ext in [".csv"]:
+                    # csv 先走预处理缓存（保持原行为）
+                    try:
                         wrapped_file = types.SimpleNamespace(name=f.name)
-                        process_table_for_tree(wrapped_file, conversation_id=conversation_id)  # 预处理并缓存结果
-                        table_processed = True
-                
-                # 非 HOTree 路线不更新树结构，保持空树
+                        process_table_for_tree(wrapped_file, conversation_id=conversation_id)
+                        processed_files.append(f.name)
+                    except Exception as e:
+                        failed_files.append(f"CSV file processing failed: {f.name} - {str(e)}")
+
+            if all_files:
+                merged_data, merged_ok_files, merged_failed = merge_multiple_tables_to_tree(all_files, conversation_id=conversation_id)
+                processed_files.extend(merged_ok_files)
+                failed_files.extend(merged_failed)
+                if len(merged_ok_files) > 0:
+                    root_name = "All_Documents"
+                    root_body = merged_data
+                    tree_data = json_to_tree_data(root_body, name=root_name)
+                    editor.data = [tree_data] if tree_data else copy.deepcopy(default_data)
+                    persist_tree()
+                    table_processed = True
+                    print(f"[INFO] 树结构构建完成，成功处理 {len(merged_ok_files)} 个文件")
+                else:
+                    editor.data = copy.deepcopy(default_data)
+                    persist_tree()
+                    table_processed = len(processed_files) > 0
+            else:
+                # 没有可构树文件（比如全是图片），保持空树
                 editor.data = copy.deepcopy(default_data)
                 persist_tree()
+                table_processed = len(processed_files) > 0
             
             # 返回树界面、聊天消息和状态
             if table_processed:
                 # 根据 route 确定处理的文件数量
-                if route == "hotree" and 'processed_files' in locals():
+                if 'processed_files' in locals():
                     processed_count = len(processed_files)
                 else:
                     # 对于非 HOTree 路线，计算实际处理的文件数量

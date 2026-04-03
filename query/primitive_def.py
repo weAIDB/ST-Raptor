@@ -1,8 +1,144 @@
 import copy
 import re
 import types
+import time
+from typing import Any, Dict, List, Optional
 
 from table2tree.feature_tree import *
+
+_EXEC_TRACE_STATE: Dict[str, Any] = {
+    "events": [],
+    "ctx": {},
+    "step": 0,
+    "frame_seq": 0,
+    "operation_seq": 0,
+}
+_EXEC_NODE_ID_LOOKUP: Dict[int, str] = {}
+_EXEC_NODE_TRACE_LOOKUP: Dict[int, Dict[str, str]] = {}
+
+
+def reset_execution_trace():
+    _EXEC_TRACE_STATE["events"] = []
+    _EXEC_TRACE_STATE["ctx"] = {}
+    _EXEC_TRACE_STATE["step"] = 0
+    _EXEC_TRACE_STATE["frame_seq"] = 0
+    _EXEC_TRACE_STATE["operation_seq"] = 0
+    _EXEC_NODE_ID_LOOKUP.clear()
+    _EXEC_NODE_TRACE_LOOKUP.clear()
+
+
+def set_execution_trace_context(**kwargs):
+    ctx = _EXEC_TRACE_STATE.get("ctx", {})
+    for key, value in kwargs.items():
+        if value is None:
+            ctx.pop(key, None)
+        else:
+            ctx[key] = value
+    _EXEC_TRACE_STATE["ctx"] = ctx
+
+
+def get_execution_trace_events():
+    return list(_EXEC_TRACE_STATE.get("events", []))
+
+
+def get_execution_trace_context() -> Dict[str, Any]:
+    return dict(_EXEC_TRACE_STATE.get("ctx", {}))
+
+
+def replace_execution_trace_context(ctx: Optional[Dict[str, Any]] = None):
+    _EXEC_TRACE_STATE["ctx"] = dict(ctx or {})
+
+
+def next_execution_frame_id(prefix: str = "frame") -> str:
+    _EXEC_TRACE_STATE["frame_seq"] = int(_EXEC_TRACE_STATE.get("frame_seq", 0)) + 1
+    return f"{prefix}_{_EXEC_TRACE_STATE['frame_seq']}"
+
+
+def next_execution_operation_id(prefix: str = "op") -> str:
+    _EXEC_TRACE_STATE["operation_seq"] = int(_EXEC_TRACE_STATE.get("operation_seq", 0)) + 1
+    return f"{prefix}_{_EXEC_TRACE_STATE['operation_seq']}"
+
+
+def set_execution_node_id_lookup(lookup: Optional[Dict[int, str]] = None):
+    _EXEC_NODE_ID_LOOKUP.clear()
+    if lookup:
+        _EXEC_NODE_ID_LOOKUP.update(lookup)
+
+
+def set_execution_node_trace_lookup(lookup: Optional[Dict[int, Dict[str, str]]] = None):
+    _EXEC_NODE_TRACE_LOOKUP.clear()
+    if lookup:
+        for key, value in (lookup or {}).items():
+            try:
+                obj_id = int(key)
+            except Exception:
+                continue
+            if not isinstance(value, dict):
+                continue
+            canonical_id = str(value.get("canonical_id", "") or value.get("canonical_trace_id", "") or "").strip()
+            target_kind = str(value.get("target_kind", "") or "").strip()
+            if not canonical_id:
+                continue
+            if not target_kind:
+                target_kind = "group" if canonical_id.startswith("ct_tree_group_") or canonical_id.startswith("ct_semantic_group_") else "node"
+            _EXEC_NODE_TRACE_LOOKUP[obj_id] = {
+                "canonical_id": canonical_id,
+                "target_kind": target_kind,
+            }
+
+
+def _safe_value_text(value: Any) -> str:
+    try:
+        text = str(value)
+    except Exception:
+        text = repr(value)
+    return text[:160]
+
+
+def record_execution_event(
+    event_type: str,
+    node_type: str = "",
+    node_value: Any = None,
+    extra: Optional[Dict[str, Any]] = None,
+    node_ref: Any = None,
+):
+    _EXEC_TRACE_STATE["step"] = int(_EXEC_TRACE_STATE.get("step", 0)) + 1
+    entry = {
+        "step": _EXEC_TRACE_STATE["step"],
+        "ts": time.time(),
+        "event_type": event_type,
+        "node_type": node_type or "",
+        "node_value": _safe_value_text(node_value) if node_value is not None else "",
+        "context": dict(_EXEC_TRACE_STATE.get("ctx", {})),
+    }
+    if extra:
+        entry["extra"] = dict(extra)
+    canonical_id = ""
+    target_kind = ""
+    if isinstance(extra, dict):
+        canonical_id = str(extra.get("canonical_id", "") or extra.get("canonical_trace_id", "") or "").strip()
+        target_kind = str(extra.get("target_kind", "") or "").strip()
+    if node_ref is not None and (not canonical_id or not target_kind):
+        trace_meta = _EXEC_NODE_TRACE_LOOKUP.get(id(node_ref), {})
+        if not canonical_id:
+            canonical_id = str(trace_meta.get("canonical_id", "") or "").strip()
+        if not target_kind:
+            target_kind = str(trace_meta.get("target_kind", "") or "").strip()
+    if canonical_id:
+        entry["canonical_id"] = canonical_id
+        entry["canonical_trace_id"] = canonical_id
+    if canonical_id and not target_kind:
+        target_kind = "group" if canonical_id.startswith("ct_tree_group_") or canonical_id.startswith("ct_semantic_group_") else "node"
+    if target_kind:
+        entry["target_kind"] = target_kind
+    frontend_node_id = None
+    if isinstance(extra, dict):
+        frontend_node_id = extra.get("frontend_node_id")
+    if not frontend_node_id and node_ref is not None:
+        frontend_node_id = _EXEC_NODE_ID_LOOKUP.get(id(node_ref))
+    if frontend_node_id:
+        entry["frontend_node_id"] = str(frontend_node_id)
+    _EXEC_TRACE_STATE.setdefault("events", []).append(entry)
 
 
 def create_function(code_str, func_name):
@@ -74,6 +210,7 @@ def condition_search(f_tree: FeatureTree, column, op, value):
     # 找到要筛选的列
     index_node = None
     for index, i_node in enumerate(f_tree.index_tree.leaf_nodes):
+        record_execution_event("visit", "index_node", i_node.value, {"phase": "condition_search", "index": index}, node_ref=i_node)
         if i_node.value == column:
             index_node: IndexNode = i_node
             break
@@ -83,6 +220,7 @@ def condition_search(f_tree: FeatureTree, column, op, value):
     b_node_list = []
     if op == '==':
         for b_node in index_node.body:
+            record_execution_event("visit", "body_node", b_node.value, {"phase": "condition_match", "op": op, "column": column}, node_ref=b_node)
             if str(b_node.value) == str(value):
                 b_node_list.append(b_node)
     elif op == '!=':
@@ -175,11 +313,13 @@ def search_case_two(f_tree: FeatureTree, s: str):
     if len(f_tree.index_tree.leaf_nodes) == 0:
         return ans
     for item in f_tree.index_tree.leaf_nodes:
+        record_execution_event("visit", "index_node", item.value, {"phase": "search_case_two.index"}, node_ref=item)
         if not item.value:
             continue
         if s in item.value:  # 在标签中
             tmp = f_tree.index_tree.leaf_nodes[pos].body
             for item in tmp:
+                record_execution_event("visit", "body_node", item.value, {"phase": "search_case_two.body_from_index"}, node_ref=item)
                 if isinstance(item.value, str):
                     ans.append([item.value])
                 if isinstance(item.value, FeatureTree):
@@ -191,6 +331,7 @@ def search_case_two(f_tree: FeatureTree, s: str):
 
     body = f_tree.body_tree.root.children[:]
     while len(body) > 0:
+        record_execution_event("visit", "body_node", body[0].value, {"phase": "search_case_two.body_walk"}, node_ref=body[0])
         if isinstance(body[0].value, FeatureTree):
             ans.extend(search_case_two(body[0].value, s))
         elif isinstance(body[0].value, str):
@@ -222,9 +363,11 @@ def search_case_three(f_tree: FeatureTree, s: str):
     ans = []
     index = f_tree.index_tree.leaf_nodes
     for item in index:
+        record_execution_event("visit", "index_node", item.value, {"phase": "search_case_three.index"}, node_ref=item)
         if len(item.body) == 0:
             continue
         for i in item.body:
+            record_execution_event("visit", "body_node", i.value, {"phase": "search_case_three.body"}, node_ref=i)
             if isinstance(i.value, str) and s in i.value:
                 ans.append([item.value])
             elif isinstance(i.value, FeatureTree):
@@ -243,6 +386,7 @@ def search_case_four_iv(f_tree: FeatureTree, s1: str, s2: str):
     ans = []
     pos = 0
     for item in f_tree.index_tree.leaf_nodes:
+        record_execution_event("visit", "index_node", item.value, {"phase": "search_case_four_iv.index"}, node_ref=item)
         if not item.value:
             continue
         if s1 == item.value:  # 在标签中
@@ -308,6 +452,7 @@ def search_case_four(f_tree: FeatureTree, s1: str, s2: str):
     trees = [f_tree, f_tree]
 
     for item in f_tree.index_tree.leaf_nodes:
+        record_execution_event("visit", "index_node", item.value, {"phase": "search_case_four.index"}, node_ref=item)
         if not item.value:
             continue
         if s1 == item.value:
@@ -321,6 +466,7 @@ def search_case_four(f_tree: FeatureTree, s1: str, s2: str):
     body = [x for sub in body for x in sub.body]
     body_hir = [1] * len(body)
     while flag != [True, True] and len(body) > 0:
+        record_execution_event("visit", "body_node", body[0].value, {"phase": "search_case_four.body_walk"}, node_ref=body[0])
         if isinstance(body[0].value, FeatureTree):
             for item in body[0].value.index_tree.leaf_nodes:
                 if not item.value:
@@ -407,22 +553,35 @@ def meta_search(f_tree: FeatureTree, args: list):
     4. args==[content1, ->, content2]用二维结构查找
     """
     ans = []
+    record_execution_event("meta_search_start", "primitive", "meta_search", {"args": list(args)})
     if len(args) == 1:  # case 1 Exist
         if search_case_one(f_tree, args[0]):
             ans.append("Exists.")
+            record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": len(ans)})
             return ans
         else:
             ans.append("Does not exist.")
+            record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": len(ans)})
             return ans
     elif len(args) == 2 and args[1] == "n":  # case 2 CHL
-        return search_case_two(f_tree, args[0])
+        ans = search_case_two(f_tree, args[0])
+        record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": len(ans)})
+        return ans
     elif len(args) == 2 and args[0] == "n":  # case 3 FAT
+        record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": len(ans)})
         return ans
     elif len(args) == 3 and args[1] == "n":  # case 4 EXT
-        return search_case_four(f_tree, args[0], args[2])
+        ans = search_case_four(f_tree, args[0], args[2])
+        record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": len(ans)})
+        return ans
     elif len(args) == 3 and args[0] == "cond":  # condition
-        return condition(f_tree, args[1], args[2])
+        ans = condition(f_tree, args[1], args[2])
+        record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": len(ans) if isinstance(ans, list) else 1})
+        return ans
     elif len(args) == 4 and args[0] == "cmp":  # compare
-        return compare(f_tree, args[1], args[2], args[3])
+        ans = compare(f_tree, args[1], args[2], args[3])
+        record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": 1 if ans is not None else 0})
+        return ans
     else:
+        record_execution_event("meta_search_end", "primitive", "meta_search", {"result_count": len(ans)})
         return ans

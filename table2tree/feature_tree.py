@@ -378,6 +378,58 @@ class FeatureTree:
             json_dict = delete_dict_none_none(json_dict)
         return json_dict
 
+    def __json_column__(self):
+        """
+        按列导出 FeatureTree。
+
+        - kv 形式: 保持与 __json__ 一致的层级展开逻辑
+        - list 形式(底层表): {列名: [该列所有值]}
+        """
+        json_dict = {}
+
+        # 判断当前 Feature 是 kv 形式还是 list 形式
+        flag = False
+        for index_node in self.index_tree.leaf_nodes:
+            if (
+                len(index_node.body) >= 1
+                and type(index_node.body[0].value) == FeatureTree
+            ):
+                flag = True
+                break
+
+        if flag:  # kv形式，递归展开
+            for index_node in self.index_tree.leaf_nodes:
+                if len(index_node.body) >= 1:
+                    if type(index_node.body[0].value) == FeatureTree:
+                        res = index_node.body[0].value.__json_column__()
+                        if DEFAULT_TABLE_NAME in res:
+                            json_dict[index_node.value] = res[DEFAULT_TABLE_NAME]
+                        else:
+                            json_dict[index_node.value] = res
+                    else:
+                        json_dict[index_node.value] = index_node.body[0].value
+                    if (
+                        type(json_dict[index_node.value]) == list
+                        and len(json_dict[index_node.value]) == 1
+                    ):
+                        json_dict[index_node.value] = json_dict[index_node.value][0]
+        else:  # list形式，按列导出
+            col_view = {}
+            for index_node in self.index_tree.leaf_nodes:
+                key = str(index_node.value)
+                values = []
+                for b_node in index_node.body:
+                    if isinstance(b_node.value, FeatureTree):
+                        values.append(b_node.value.__json_column__())
+                    else:
+                        values.append(str(b_node.value))
+                col_view[key] = values
+
+            json_dict[DEFAULT_TABLE_NAME] = col_view
+            json_dict = delete_dict_none_none(json_dict)
+
+        return json_dict
+
     def __str__(self, level_list=[1]):
         s = ""
         for index in self.index_tree.leaf_nodes:
@@ -592,15 +644,37 @@ def build_split_info(f_tree: FeatureTree):
 
     for index, leaf_node in enumerate(index_tree.leaf_nodes):
         value_list = f_tree.get_list_value(index)
-        (
-            group_name_list,
-            group_id_list,
-            id2name,
-            name2id,
-            mapping,
-            group_type,
-            example_dict,
-        ) = tag_one_list(value_list)
+        type_counter = {}
+        none_count = 0
+        for v in value_list:
+            t_name = type(v).__name__
+            type_counter[t_name] = type_counter.get(t_name, 0) + 1
+            if v is None:
+                none_count += 1
+        sample_values = [repr(v) for v in value_list[:10]]
+
+        logger.info(
+            f"[split_debug] col={index} name={repr(leaf_node.value)} "
+            f"len={len(value_list)} none_count={none_count} "
+            f"types={type_counter} sample={sample_values}"
+        )
+        try:
+            (
+                group_name_list,
+                group_id_list,
+                id2name,
+                name2id,
+                mapping,
+                group_type,
+                example_dict,
+            ) = tag_one_list(value_list)
+        except Exception as e:
+            logger.error(
+                f"[split_debug][error] col={index} name={repr(leaf_node.value)} "
+                f"len={len(value_list)} none_count={none_count} "
+                f"types={type_counter} sample={sample_values} err={repr(e)}"
+            )
+            raise
 
         # print(value_list)
         # print(group_name_list)

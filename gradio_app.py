@@ -88,7 +88,7 @@ def main():
             return obj
 
         cleaned = strip_ids(data)
-        logger.info(f"[save_tree] saving cleaned tree to cache/temp.json and data/SSTQA/temp_tables/temp.json")
+        logger.info("[save_tree] saving cleaned tree and rebuilding feature views")
         ok, msg = rebuild_feature_tree_from_json(cleaned)
         if ok:
             return {"status": "ok"}

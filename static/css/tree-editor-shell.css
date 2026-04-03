@@ -1,0 +1,287 @@
+.tree-editor-shell {
+    position: relative;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+    /* Keep all tree overlays aligned to this shared offset. */
+    --tree-topbar-space: 72px;
+    --tree-trace-col-width: clamp(220px, 19vw, 300px);
+}
+
+#tree-content {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+    margin-inline: 0;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    overflow: hidden;
+}
+
+#tree-content iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    border: none;
+    border-radius: 16px;
+    background: transparent;
+    box-shadow: none;
+    display: block;
+}
+
+.tree-editor-topbar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    /* Topbar must sit above grid cards but below debug overlay. */
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(8, 8, 12, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.36),
+        0 2px 0 rgba(255,255,255,.04) inset;
+}
+
+.tree-editor-topbar.is-collapsed {
+    right: auto;
+    width: auto;
+    max-width: calc(100% - 20px);
+    padding: 6px 8px;
+    gap: 8px;
+}
+
+.tree-editor-topbar.is-collapsed #tree-mode-scroll,
+.tree-editor-topbar.is-collapsed #tree-mode-scroll-prev,
+.tree-editor-topbar.is-collapsed #tree-mode-scroll-next {
+    display: none !important;
+}
+
+.tree-mode-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 260px;
+}
+
+.tree-mode-scroll {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+    z-index: 3;
+}
+
+.tree-mode-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.tree-mode-scroll-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: max-content;
+    white-space: nowrap;
+    padding-right: 4px;
+}
+
+.tree-mode-nav {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.18s ease;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.tree-mode-nav:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.tree-mode-nav:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.tree-topbar-collapse-btn {
+    width: auto;
+    min-width: 58px;
+    padding: 0 9px;
+    gap: 4px;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+.tree-main-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--tree-trace-col-width) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 16px;
+    height: 100%;
+    min-height: 0;
+    /* Prevent cross-column overflow from iframes / cards. */
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-top: calc(var(--tree-topbar-space) + 6px);
+    transition: grid-template-columns .3s cubic-bezier(.22, .61, .36, 1);
+}
+
+.tree-main-grid > :not(.tree-side-chat-wrap) {
+    /* Force equal column card heights in grid mode. */
+    min-height: 0;
+    height: 100%;
+    /* Hard boundary: each panel paints only inside its own column. */
+    contain: layout paint;
+}
+
+.tree-main-grid > .tree-side-chat-wrap {
+    min-height: 0;
+    height: 100%;
+}
+
+.tree-editor-topbar.is-collapsed + .tree-main-grid {
+    padding-top: 52px;
+}
+
+.tree-main-grid.is-nested-hidden {
+    grid-template-columns: 0 var(--tree-trace-col-width) minmax(0, 1fr);
+}
+
+.tree-main-grid.is-trace-collapsed {
+    grid-template-columns: minmax(0, 1fr) 0 minmax(0, 1fr);
+}
+
+.tree-main-grid.is-nested-hidden.is-trace-collapsed {
+    grid-template-columns: 0 0 minmax(0, 1fr);
+}
+
+.tree-nested-side-pane {
+    position: relative;
+    grid-column: 1;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    /* Left dock should stay above right canvas interactions. */
+    z-index: 18;
+    display: flex;
+    overflow: hidden;
+    transition: opacity .38s ease, transform .48s cubic-bezier(.22, .61, .36, 1);
+}
+
+.tree-nested-side-pane.is-collapsed {
+    opacity: 0;
+    transform: translateX(-38px) scale(.978);
+    pointer-events: none;
+}
+
+.nested-side-close-floating {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 30;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    background: rgba(10, 14, 26, .58);
+    color: rgba(226, 232, 240, .95);
+    font-size: 14px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.nested-side-close-floating:hover {
+    background: rgba(30, 58, 138, .62);
+    border-color: rgba(186, 230, 253, .62);
+    transform: translateY(-1px);
+}
+
+.tree-nested-side-panel {
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    overflow: visible;
+    box-shadow: none;
+    transition: box-shadow .2s ease, transform .42s cubic-bezier(.22, .61, .36, 1), opacity .34s ease;
+    will-change: transform, opacity;
+}
+
+.tree-nested-side-pane.is-collapsed .tree-nested-side-panel {
+    transform: translateX(-18px) scale(.988);
+    opacity: .02;
+}
+
+.tree-nested-side-content {
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 16px;
+}
+
+.tree-nested-side-content .nested-viewer-fixed-title {
+    display: none;
+}
+
+.tree-nested-side-content .nested-world-holder {
+    height: 100% !important;
+    min-height: 0 !important;
+    border-radius: 16px;
+}
+
+.tree-nested-side-panel:hover {
+    box-shadow: none;
+}
+
+#nested-side-pane .trace-stage-head {
+    display: none;
+}
+
+#nested-side-pane .trace-stage-close {
+    border-color: rgba(15, 23, 42, 0.24);
+    background: rgba(15, 23, 42, 0.06);
+    color: rgba(15, 23, 42, 0.86);
+}
+
+@media (max-width: 1320px) {
+    .tree-nested-side-pane {
+        display: none !important;
+    }
+}

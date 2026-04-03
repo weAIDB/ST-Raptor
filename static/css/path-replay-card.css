@@ -1,0 +1,128 @@
+.trace-stage-drawer {
+    grid-column: 2;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    padding-right: 0;
+    box-sizing: border-box;
+    contain: layout paint;
+    transition: opacity .32s ease, transform .4s cubic-bezier(.22, .61, .36, 1);
+}
+
+.trace-stage-drawer.collapsed {
+    opacity: 0;
+    transform: translateX(-34px) scale(.978);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.trace-stage-panel {
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+    border-radius: 22px;
+    background: #1e3a8a;
+    height: 100%;
+    box-shadow: 0 16px 28px rgba(15, 23, 42, .22);
+    transform: none;
+    transition: box-shadow .2s ease;
+}
+
+.trace-stage-head {
+    background: rgba(255, 255, 255, .06);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    color: #e2e8f0;
+    font-weight: 700;
+}
+
+.trace-stage-list {
+    margin: 0;
+    padding: 12px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.trace-stage-list .trace-empty-state {
+    color: rgba(226,232,240,.9);
+}
+
+.trace-stage-list .trace-frame-card {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
+}
+
+.trace-stage-list .trace-frame-title,
+.trace-stage-list .trace-operation-title {
+    color: #f8fafc;
+}
+
+.trace-stage-list .trace-frame-meta,
+.trace-stage-list .trace-operation-sub,
+.trace-stage-list .trace-operation-detail {
+    color: rgba(224, 242, 254, .95);
+}
+
+.trace-stage-list .trace-mini-btn,
+.trace-stage-list .trace-status-pill {
+    border-color: rgba(125, 211, 252, .48);
+    color: #ecfeff;
+    background: rgba(14, 116, 144, .45);
+}
+
+.trace-stage-list .trace-operation-card {
+    border-color: rgba(255, 255, 255, .14);
+    background: rgba(255, 255, 255, .05);
+    box-shadow: none;
+}
+
+.trace-stage-list .trace-operation-card:hover,
+.trace-stage-list .trace-operation-card.is-active {
+    border-color: rgba(186, 230, 253, .52);
+    background: rgba(14, 116, 144, .35);
+}
+
+.trace-stage-list .trace-stage-title {
+    color: #ffffff;
+}
+
+.trace-stage-list .trace-stage-sub,
+.trace-stage-list .trace-detail-item {
+    color: rgba(224, 242, 254, .94);
+}
+
+.trace-stage-list .trace-subquery-tab {
+    border-color: rgba(125, 211, 252, .44);
+    background: rgba(30, 64, 175, .58);
+    color: #e0f2fe;
+}
+
+.trace-stage-list .trace-subquery-tab:hover,
+.trace-stage-list .trace-subquery-tab.is-active {
+    border-color: rgba(186, 230, 253, .8);
+    background: rgba(14, 116, 144, .9);
+    color: #ffffff;
+}
+
+.trace-stage-list .trace-subquery-summary,
+.trace-stage-list .trace-subquery-narrative-title,
+.trace-stage-list .trace-subquery-narrative-line {
+    color: rgba(224, 242, 254, .94);
+}
+
+.trace-stage-list details > summary {
+    color: rgba(224, 242, 254, .9) !important;
+}
+
+.trace-stage-list [class*="text-white/45"],
+.trace-stage-list [class*="text-white/50"],
+.trace-stage-list [class*="text-white/60"],
+.trace-stage-list [class*="text-white/70"] {
+    color: rgba(224, 242, 254, .9) !important;
+}
+
+.trace-stage-panel:hover {
+    box-shadow: 0 20px 34px rgba(15, 23, 42, .26);
+}
