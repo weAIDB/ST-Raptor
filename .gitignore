@@ -8,4 +8,4 @@ cache/
 history/
 data/uploads/
 data/SSTQA/
-utils/constants.py
+utils/constants_local.py
