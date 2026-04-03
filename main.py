@@ -107,7 +107,7 @@ def benchmark(
         if table_file.endswith(".xlsx"):
             pass
         elif table_file.endswith(".csv"):
-            df = pd.read_csv(new_table_file)
+            df = pd.read_csv(table_file)
             df.to_excel(new_table_file, index=False, engine='openpyxl')
         elif table_file.endswith(".html"):
             html_content = open(table_file).read()
@@ -197,7 +197,7 @@ def benchmark(
 def main():
     ##### You need to change this
     input_jsonl ="data/SSTQA-zh/test.jsonl"
-    table_dir = "data/SSTQA"
+    table_dir = "data/SSTQA-zh/table"
     pkl_dir = "data/SSTQA-zh/pkl"
     output_jsonl = "SSTQA-zh/output.jsonl"
     log_dir = "data/SSTQA-zh/log"
